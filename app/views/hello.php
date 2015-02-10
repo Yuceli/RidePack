@@ -73,7 +73,7 @@
                             </li>
                             <li><a href="#demo">demo</a>
                             </li>
-                            <li><a class="getApp" href="#getApp">Login</a>
+                            <li><a class="getApp" href="login">Login</a>
                             </li>
                             <!-- <li><a class="getApp" href="#support">Login</a> -->
                             </li>
