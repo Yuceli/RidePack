@@ -4,11 +4,12 @@
 	<meta charset="UTF-8">
 	<title>RidePack</title>
 	 <!-- Latest compiled and minified CSS -->
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 	 <link rel="stylesheet" href="css/login.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -27,8 +28,7 @@
                				<input type="submit" class="btn btn-lg btn-default btn-block" value="Sign In" />
                			</form>
                			<div id="tabs" data-tabs="tabs">
-               				<p class="text-center"><a href="#register" data-toggle="tab">Need an Account?</a></p>
-               				<p class="text-center"><a href="#select" data-toggle="tab">Select Account</a></p>
+               				<p class="text-center"><a href="register">Need an Account?</a></p>
               				</div>
 						</div>
 					</div>
