@@ -24,23 +24,23 @@ Documentation for the entire framework can be found on the [Laravel website](htt
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
 
-################################## PROYECTO RIDEPACK #########################################
-Descripción: 
-	-RIDEPACK ES UN SITIO WEB QUE CONECTA UNA COMUNIDAD DE VIAJEROS Y PERSONAS INTERESADAS EN ENVIAR PAQUETES DE MANERA MAS ECONOMICA, RIDEPACK NO SE VE INVOLUCRADO EN EL ENVIO Y NO SE HACE RESPONSABLE DE LOS MATERIALES QUE SE PUEDAN ENVIAR. RIDEPACK SOLAMENTE ESTABLECE UN DIRECTORIO DE VIAJEROS DISPONIBLES PARA LLEVAR UNO O VARIOS PAQUETES POR UNA REMUNERACION ECONOMICA, PARA QUE EL REMITENTE DEL PAQUETE NO TENGA QUE PAGAR MUCHO DINERO A UN SERVICIO DE PAQUETERIA.
+### Proyecto RidePack
 
-Lenguajes de Programación:
+RidePack es un sutio web que conecta una comunidad de viajeros y personas interesadas en enviar paquetes de manera más económica, RidePack no se ve involucrado en el envío y no se hace responsable de los materiales que se puedan enviar. RidePack solamente establece un directorio de viajeros disponibles para levar uno o varios paquetes por una remuneración económica, para que el remitente del paquete no tenga que pagar mucho dinero a un servicio de paquetería.
+
+### Lenguajes de Programación:
 	-PHP
 	-JavaScript
 	-CSS
 	-HTML5
+	
+### Frameworks:
+	-Laravel
 
-FRAMEWORKS:
-	-LARAVEL
-
-EQUIPO DE DESARROLLO:
-	-YUCELI POLANCO
-	-BRENT HEFTYE
-	-KARIMY CHABLE
-	-ALFONSO DEALBA
-	-ALDO CASTILLO
-	-YUSSEL PAREDES
+### Equipo de desarrollo:
+	-Yuceli Polanco
+	-Brent Heftye
+	-Karimy Chable
+	-Alfonso Dealba
+	-Aldo Castillo
+	-Yussel Paredes
