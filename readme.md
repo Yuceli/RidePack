@@ -23,3 +23,24 @@ Documentation for the entire framework can be found on the [Laravel website](htt
 ### License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+
+### Proyecto RidePack
+
+RidePack es un sutio web que conecta una comunidad de viajeros y personas interesadas en enviar paquetes de manera más económica, RidePack no se ve involucrado en el envío y no se hace responsable de los materiales que se puedan enviar. RidePack solamente establece un directorio de viajeros disponibles para levar uno o varios paquetes por una remuneración económica, para que el remitente del paquete no tenga que pagar mucho dinero a un servicio de paquetería.
+
+### Lenguajes de Programación:
+	-PHP
+	-JavaScript
+	-CSS
+	-HTML5
+	
+### Frameworks:
+	-Laravel
+
+### Equipo de desarrollo:
+	-Yuceli Polanco
+	-Brent Heftye
+	-Karimy Chable
+	-Alfonso Dealba
+	-Aldo Castillo
+	-Yussel Paredes
