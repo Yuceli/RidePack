@@ -20,7 +20,7 @@ class CreateRequestsTable extends Migration {
 			$table->morphs('requestable');
 
 			$table->timestamps();
-			$table->foreign('from_user')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
+			//$table->foreign('from_user')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
 		});
 	}
 

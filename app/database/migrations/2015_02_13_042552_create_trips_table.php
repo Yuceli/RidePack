@@ -29,9 +29,9 @@ class CreateTripsTable extends Migration {
 			$table->boolean('carry_reward')->default(false);
 			$table->string('transport', 45);
 
-			$table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
-			$table->foreign('departure_city')->references('id')->on('cities')->onDelete('RESTRICT')->onUpdate('CASCADE');
-			$table->foreign('arrival_city')->references('id')->on('cities')->onDelete('RESTRICT')->onUpdate('CASCADE');
+			//$table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
+			//$table->foreign('departure_city')->references('id')->on('cities')->onDelete('RESTRICT')->onUpdate('CASCADE');
+			//$table->foreign('arrival_city')->references('id')->on('cities')->onDelete('RESTRICT')->onUpdate('CASCADE');
 		});
 	}
 
