@@ -22,9 +22,13 @@ Route::get('/login', function()
 });
 
 Route::get('/register', function()
-{
+{	
 	return View::make('register');
 });
+
+Route::controller('register','RegisterController');
+Route::post('register-user','RegisterController@register');
+
 
 Route::get('ejemploModelo', function()
 {

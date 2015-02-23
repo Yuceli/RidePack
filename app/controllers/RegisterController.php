@@ -20,4 +20,18 @@ class RegisterController extends BaseController {
 		return View::make('register');
 	}
 
+	public function register($params = array()){
+		$name = Input::get('name');
+		$last_name = Input::get('last_name');
+		$email = Input::get('email');
+		$password = Crypt::encrypt(Input::get('password'));
+
+		DB::beginTransaction();
+		$id = DB::table('users')->insertGetId(
+		    array('email' => $email, 'name' => $name, 'last_name' => $last_name, 'password' => $password, 'city_id' => 1)
+		);
+		DB::commit();
+		return View::make('login');
+	}
+
 }
