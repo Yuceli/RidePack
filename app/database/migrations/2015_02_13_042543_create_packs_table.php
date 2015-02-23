@@ -30,9 +30,9 @@ class CreatePacksTable extends Migration {
 			$table->string('observation', 100)->nullable();
 			$table->enum('status', array('onhold','sending','arrived'));
 			
-			$table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
-			$table->foreign('from_city')->references('id')->on('cities')->onDelete('RESTRICT')->onUpdate('CASCADE');
-			$table->foreign('to_city')->references('id')->on('cities')->onDelete('RESTRICT')->onUpdate('CASCADE');
+			//$table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
+			//$table->foreign('from_city')->references('id')->on('cities')->onDelete('RESTRICT')->onUpdate('CASCADE');
+			//$table->foreign('to_city')->references('id')->on('cities')->onDelete('RESTRICT')->onUpdate('CASCADE');
 			
 		});
 	}

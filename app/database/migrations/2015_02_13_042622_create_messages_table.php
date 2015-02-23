@@ -21,7 +21,8 @@ class CreateMessagesTable extends Migration {
 			$table->morphs('messageable');
 
 			$table->timestamps();
-			$table->foreign('from_user')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
+
+			//$table->foreign('from_user')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
 		});
 	}
 

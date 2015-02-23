@@ -26,7 +26,6 @@ Route::get('/register', function()
 	return View::make('register');
 });
 
-
 Route::get('ejemploModelo', function()
 {
 	$user_id = 7;

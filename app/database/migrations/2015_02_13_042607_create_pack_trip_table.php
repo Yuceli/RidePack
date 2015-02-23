@@ -19,8 +19,9 @@ class CreatePackTripTable extends Migration {
 
 			$table->timestamps();
 			$table->primary(array('pack_id', 'trip_id'));
-			$table->foreign('pack_id')->references('id')->on('packs')->onDelete('CASCADE')->onUpdate('CASCADE');
-			$table->foreign('trip_id')->references('id')->on('trips')->onDelete('CASCADE')->onUpdate('CASCADE');
+
+			//$table->foreign('pack_id')->references('id')->on('packs')->onDelete('CASCADE')->onUpdate('CASCADE');
+			//$table->foreign('trip_id')->references('id')->on('trips')->onDelete('CASCADE')->onUpdate('CASCADE');
 		});
 	}
 

@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration {
 			$table->date('birthdate')->nullable();
 			$table->integer('city_id')->unsigned();
 
-			$table->foreign('city_id')->references('id')->on('cities')->onDelete('RESTRICT')->onUpdate('CASCADE');
+			//$table->foreign('city_id')->references('id')->on('cities')->onDelete('RESTRICT')->onUpdate('CASCADE');
 		});
 	}
 
