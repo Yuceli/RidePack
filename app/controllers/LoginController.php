@@ -17,11 +17,22 @@ class LoginController extends BaseController {
 
 	public function showWelcome()
 	{
+		if(Auth::check()) return Redirect::to('/');
 		return View::make('login');
 	}
-(
-	public function login(){
-		
+
+	public function store(){
+
+		if(Auth::attempt(Input::only('email', 'password')))
+		{
+			return 'Bienvenido '.Auth::user()->name;			
+		}
+		return Redirect::back()->withInput(Input::except('password'));
 	}
 
+	public function destroy(){
+
+		Auth::logout();
+		return Redirect::to('login');
+	}
 }

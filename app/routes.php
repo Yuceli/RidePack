@@ -26,6 +26,12 @@ Route::get('/register', function()
 	return View::make('register');
 });
 
+//Rutas para manejo de sesiones
+Route::get('login', 'LoginController@showWelcome');
+Route::post('store', 'LoginController@store');
+Route::get('logout', 'LoginController@destroy');
+
+//Rutas para registrar usuarios
 Route::controller('register','RegisterController');
 Route::post('register-user','RegisterController@register');
 
