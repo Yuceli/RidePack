@@ -60,7 +60,38 @@ class AddForeignKeys extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::table('users', function($table){
+			$table->dropForeign('users_city_id_foreign');
+		});
+
+		Schema::table('packs', function($table){
+			$table->dropForeign('packs_user_id_foreign');
+			$table->dropForeign('packs_from_city_foreign');
+			$table->dropForeign('packs_to_city_foreign');
+		});
+
+		Schema::table('trips', function($table){
+			$table->dropForeign('trips_user_id_foreign');
+			$table->dropForeign('trips_departure_city_foreign');
+			$table->dropForeign('trips_arrival_city_foreign');
+		});
+
+		Schema::table('pack_trip', function($table){
+			$table->dropForeign('pack_trip_pack_id_foreign');
+			$table->dropForeign('pack_trip_trip_id_foreign');
+		});
+
+		Schema::table('messages', function($table){
+			$table->dropForeign('messages_from_user_foreign');
+		});		
+		
+		Schema::table('requests', function($table){
+			$table->dropForeign('requests_from_user_foreign');
+		});	
+
+		Schema::table('cities', function($table){
+			$table->dropForeign('cities_country_code_foreign');
+		});	
 	}
 
 }
