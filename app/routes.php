@@ -16,6 +16,7 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
+
 Route::get('/login', function()
 {
 	return View::make('login');
@@ -24,6 +25,12 @@ Route::get('/login', function()
 Route::get('/register', function()
 {	
 	return View::make('register');
+});
+
+
+Route::get('/upcomingTrips', function()
+{
+	return View::make('upcoming-trips');
 });
 
 //Rutas para manejo de sesiones
