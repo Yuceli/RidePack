@@ -23,14 +23,6 @@ class Pack extends Eloquent {
 		return $this->belongsTo('User');
 	}
 
-	public function fromCity(){
-		return $this->belongsTo('City','from_city');
-	}
-
-	public function toCity(){
-		return $this->belongsTo('City','to_city');
-	}
-
 	public function trips(){
 		return $this->belongsToMany('Trip')->withTimestamps();
 	}

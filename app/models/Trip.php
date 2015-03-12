@@ -27,12 +27,4 @@ class Trip extends Eloquent {
 	public function packs(){
 		return $this->belongsToMany('Pack')->withTimestamps();
 	}
-
-	public function departureCity(){
-		return $this->belongsTo('City','departure_city');
-	}
-
-	public function arrivalCity(){
-		return $this->belongsTo('City','arrival_city');
-	}
 }
