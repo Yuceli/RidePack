@@ -33,14 +33,34 @@ Route::get('/upcomingTrips', function()
 	return View::make('upcoming-trips');
 });
 
+/*Route::get("/request", function(){
+	return View::make('user/request');
+});
+
+Route::get("/reset/{token}", function(){
+	return View::make('user/reset');
+});*/
+
 //Rutas para manejo de sesiones
 Route::get('login', 'LoginController@showWelcome');
 Route::post('store', 'LoginController@store');
 Route::get('logout', 'LoginController@destroy');
 
 //Rutas para registrar usuarios
-Route::controller('register','RegisterController');
+/*Route::controller('register','RegisterController');
 Route::post('register-user','RegisterController@register');
+
+Route::post('request', 'RemindersController@request');
+Route::post('reset', 'RemindersController@reset');*/
+Route::any("/request", [
+ "as" => "user/request",
+ "uses" => "RemindersController@request"
+]);
+ 
+Route::any("/reset/{token}", [
+ "as" => "user/reset",
+ "uses" => "RemindersController@reset"
+]);
 
 
 Route::get('ejemploModelo', function()
