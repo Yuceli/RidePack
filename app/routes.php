@@ -17,10 +17,28 @@ Route::get('/', function()
 });
 
 
-Route::get('/login', function()
-{
-	return View::make('login');
-});
+
+/*
+Rutas para Inicio de sesión
+CU-01
+*/
+
+//Ruta para inicio de sesión
+Route::get('login', 'UserController@login');
+
+//Ruta de redirección en inicio de sesión
+Route::post('store', 'UserController@store');
+
+/*
+Rutas para Cierre de sesión
+CU-02
+*/
+
+//Ruta para cierre de sesión
+Route::get('logout', 'UserController@logout');
+
+
+
 
 Route::get('/register', function()
 {	
@@ -41,14 +59,6 @@ Route::get("/reset/{token}", function(){
 	return View::make('user/reset');
 });*/
 
-//Rutas para manejo de sesiones
-Route::get('login', 'LoginController@showWelcome');
-Route::post('store', 'LoginController@store');
-Route::get('logout', 'LoginController@destroy');
-
-//Rutas para registrar usuarios
-Route::controller('register','RegisterController');
-Route::post('register-user','RegisterController@register');
 
 /*Route::post('request', 'RemindersController@request');
 Route::post('reset', 'RemindersController@reset');*/
