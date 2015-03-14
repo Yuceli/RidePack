@@ -17,10 +17,28 @@ Route::get('/', function()
 });
 
 
-Route::get('/login', function()
-{
-	return View::make('login');
-});
+
+/*
+Rutas para Inicio de sesión
+CU-01
+*/
+
+//Ruta para inicio de sesión
+Route::get('login', 'UserController@login');
+
+//Ruta de redirección en inicio de sesión
+Route::post('store', 'UserController@store');
+
+/*
+Rutas para Cierre de sesión
+CU-02
+*/
+
+//Ruta para cierre de sesión
+Route::get('logout', 'UserController@logout');
+
+
+
 
 Route::get('/register', function()
 {	
@@ -41,16 +59,8 @@ Route::get("/reset/{token}", function(){
 	return View::make('user/reset');
 });*/
 
-//Rutas para manejo de sesiones
-Route::get('login', 'LoginController@showWelcome');
-Route::post('store', 'LoginController@store');
-Route::get('logout', 'LoginController@destroy');
 
-//Rutas para registrar usuarios
-/*Route::controller('register','RegisterController');
-Route::post('register-user','RegisterController@register');
-
-Route::post('request', 'RemindersController@request');
+/*Route::post('request', 'RemindersController@request');
 Route::post('reset', 'RemindersController@reset');*/
 Route::any("/request", [
  "as" => "user/request",
@@ -65,7 +75,8 @@ Route::any("/reset/{token}", [
 
 Route::get('ejemploModelo', function()
 {
-	$user_id = 7;
+	// Poner el ID de un usuario de su DB.
+	$user_id = 3;
 
 	$user = User::find($user_id);
 
@@ -76,8 +87,7 @@ Route::get('ejemploModelo', function()
 	$res .= $user->last_name . '</br>';
 	$res .= $user->phone . '</br>';
 	$res .= $user->birthdate . '</br>';
-	$res .= $user->city->name . '</br>';
-	$res .= $user->city->country->name . '</br>';
+	$res .= $user->city . '</br>';
 
 	//Packs
 	$res .= '<h1>Packs</h1>';
@@ -92,10 +102,8 @@ Route::get('ejemploModelo', function()
 		$res .= $pack->weight. '</br>';
 		$res .= $pack->observation . '</br>';
 		$res .= $pack->status . '</br>';
-		$res .= $pack->fromCity->name . '</br>';
-		$res .= $pack->fromCity->country->name . '</br>';
-		$res .= $pack->toCity->name . '</br>';
-		$res .= $pack->toCity->country->name . '</br>';
+		$res .= $pack->fromCity . '</br>';
+		$res .= $pack->toCity . '</br>';
 		$res .= $pack->messages . '</br>';
 		$res .= $pack->requests . '</br>';
 		$res .= $pack->comment->first() . '</br>';
@@ -116,10 +124,8 @@ Route::get('ejemploModelo', function()
 		$res .= $trip->max_weight. '</br>';
 		$res .= $trip->observation . '</br>';
 		$res .= $trip->transport . '</br>';
-		$res .= $trip->departureCity->name . '</br>';
-		$res .= $trip->departureCity->country->name . '</br>';
-		$res .= $trip->arrivalCity->name . '</br>';
-		$res .= $trip->arrivalCity->country->name . '</br>';
+		$res .= $trip->departureCity . '</br>';
+		$res .= $trip->arrivalCity . '</br>';
 		$res .= $trip->messages . '</br>';
 		$res .= $trip->requests . '</br>';
 		$res .= $trip->comment->first() . '</br>';

@@ -24,8 +24,15 @@
                     alt="">
                     <hr class="colorgraph">
                     {{Form::open(array('url' => 'store', 'class'=>'form-signin'))}}
+                         @if(Session::has('error_message'))
+                          <div class="alert alert-warning alert-dismissable">
+                              <button type="button" class="close" data-dismiss="alert">&times;</button>
+                              <strong >{{ Session::get('error_message') }}</strong> 
+                          </div>
+
+                          @endif
                       <br>
-                      {{Form::text('email', '',array('class' => 'form-control', 'placeholder' => 'email' , 'required' => 'required'))}}
+                      {{Form::email('email', '',array('class' => 'form-control', 'type' => 'email' ,'placeholder' => 'email' , 'required' => 'required'))}}
                       <!--<input type="text" class="form-control" name="email" placeholder="email" required autofocus>-->
                       <br>
                       <input type="password" class="form-control" name="password" placeholder="Password" required>
