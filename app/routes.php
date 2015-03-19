@@ -19,12 +19,19 @@ Route::get('/', function()
 
 
 /*
-Rutas para Inicio de sesión
+Rutas para Inicio y cierre de sesión
 CU-01
 */
 
 //Ruta para inicio de sesión
 Route::get('login', 'UserController@login');
+
+
+//Ruta para cierre de sesión
+Route::get('logout', 'UserController@logout');
+
+
+
 
 //Ruta de redirección en inicio de sesión
 Route::post('store', 'UserController@store');
@@ -34,13 +41,7 @@ Route::get('register', 'RegisterController@register');
 
 
 
-/*
-Rutas para Cierre de sesión
-CU-02
-*/
 
-//Ruta para cierre de sesión
-Route::get('logout', 'UserController@logout');
 
 
 
@@ -54,6 +55,16 @@ Route::get('/register', function()
 Route::get('/upcomingTrips', function()
 {
 	return View::make('upcoming-trips');
+});
+
+Route::get('/sendItem', function()
+{
+	return View::make('send-item');
+});
+
+Route::get('/postTrip', function()
+{
+	return View::make('post-trip');
 });
 
 /*Route::get("/request", function(){

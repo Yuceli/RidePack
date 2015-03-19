@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
   <html lang="en">
   <head>
   <meta charset="UTF-8">
@@ -45,46 +45,13 @@
     </div>
   </header><!--//header--> 
 
-  <br><br><br> 
-
-  <section>
-    <div class="container">
-     <div class="row">
-      <form action="#" class="form-inline lead-big" role="form">
-        <h1>¿Qué estás buscando hoy (usuario)?</h1><br>
-        <div class="form-group">
-          <label>Yo quiero</label>
-          <select id="upcoming-trips">
-            <option value="0" selected>enviar paquete</option>
-            <option value="1">llevar paquete</option>
-          </select>
-          
-        </div>
-        <div class="form-group">
-          <label>desde</label>
-          <input id="lugar" placeholder="elige un lugar" required>
-          <label>a</label>
-        </div>
-        <div class="form-group">
-          <input type="text" id="destino" placeholder="elige destino" required>
-          ,
-          <select id="fecha">
-            <option value="0" selected>hoy</option>
-            <option value="1">mañana</option>
-            <option value="1">próxima semana</option>
-            <option value="1">próximo mes</option>
-          </select>
-        </div>
-        <br>
-        <button type="submit" class="btn btn-default btn-lg submit">Buscar</button>
-        
-      </form>
-    </div>
-  </div>
-  </section>
 
 
   
+
+
+
+
   <br><br><br>
   <!-- ******FOOTER****** --> 
   <footer class="footer">
