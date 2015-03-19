@@ -29,7 +29,10 @@ Route::get('login', 'UserController@login');
 //Ruta de redirección en inicio de sesión
 Route::post('store', 'UserController@store');
 
+//Ruta para carga de vista register
 Route::get('register', 'RegisterController@register');
+
+
 
 /*
 Rutas para Cierre de sesión
