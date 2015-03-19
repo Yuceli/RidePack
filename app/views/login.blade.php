@@ -36,6 +36,7 @@
                       <!--<input type="text" class="form-control" name="email" placeholder="email" required autofocus>-->
                       <br>
                       <input type="password" class="form-control" name="password" placeholder="Password" required>
+                      <p class="text-left"><a align="left" href="request">Forgot Password?</a></p>
                       <br>
                       <!--<input type="submit" class="btn btn-lg btn-default btn-block" value="Sign In" />
                       <br>-->
