@@ -29,6 +29,8 @@ Route::get('login', 'UserController@login');
 //Ruta de redirección en inicio de sesión
 Route::post('store', 'UserController@store');
 
+Route::get('register', 'RegisterController@register');
+
 /*
 Rutas para Cierre de sesión
 CU-02
