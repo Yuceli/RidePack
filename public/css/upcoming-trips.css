@@ -1,7 +1,10 @@
 section {
-    padding: 100px 0;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     text-align: center;
+}
+
+.user-container{
+    padding-top: 100px;
 }
 .lead-big {
     font-size: 28px;
@@ -45,10 +48,10 @@ section {
 @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700);
 /* written by riliwan balogun http://www.facebook.com/riliwan.rabo*/
 .board{
-    width: 75%;
-margin: 60px auto;
-height: 500px;
-background: #fff;
+    width: 100%;
+    margin: 60px auto;
+    height: 500px;
+    background: #fff;
 /*box-shadow: 10px 10px #ccc,-10px 20px #ddd;*/
 }
 .board .nav-tabs {
