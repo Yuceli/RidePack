@@ -67,6 +67,12 @@ Route::get('/postTrip', function()
 	return View::make('post-trip');
 });
 
+Route::get('/profile', function()
+{
+	return View::make('profile');
+});
+
+
 /*Route::get("/request", function(){
 	return View::make('user/request');
 });

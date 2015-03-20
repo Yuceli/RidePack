@@ -45,8 +45,83 @@
       </div>
     </header><!--//header--> 
 
-
     
+    <div class="container-fluid">
+      <div class="row">
+        <br><br><br><br><br>
+       <div class="col-md-12 toppad" >
+
+
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">Información personal: Sheena Kristin A.Eschor</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
+
+                
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Nombre:</td>
+                        <td>Yuceli</td>
+                      </tr>
+                      <tr>
+                        <td>Apellido</td>
+                        <td>Polanco</td>
+                      </tr>
+                      <tr>
+                        <td>Fecha de nacimiento</td>
+                        <td>02/11/1990</td>
+                      </tr>
+
+                      <tr>
+                       <tr>
+                        <td>Género</td>
+                        <td>Femenino</td>
+                      </tr>
+                      <tr>
+                        <td>Pais</td>
+                        <td>México</td>
+                      </tr>
+                      <tr>
+                        <td>Ciudad</td>
+                        <td>Mérida</td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td><a href="mailto:info@support.com">yuceli.polanco@gmail.com</a></td>
+                      </tr>
+                      <td>Acerca de mi</td>
+                      <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, corrupti eos! Nesciunt pariatur animi voluptas sequi nihil beatae facere temporibus ab repellat! Quod possimus ex architecto vitae accusamus amet cumque.
+                      </td>
+
+                    </tr>
+
+                  </tbody>
+                </table>
+
+                <a href="#" class="btn btn-primary">Editar información personal</a>
+      
+              </div>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+            <span class="pull-right">
+              <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+              <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove">Eliminar cuenta</i></a>
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+   
   <br><br><br>
   <!-- ******FOOTER****** --> 
   <footer class="footer">
