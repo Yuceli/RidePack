@@ -37,19 +37,21 @@ Route::get('logout', 'UserController@logout');
 Route::post('store', 'UserController@store');
 
 //Ruta para carga de vista register
-Route::get('register', 'RegisterController@register');
+//Route::get('register', 'RegisterController@register');
 
 
 
 
 
 
-
+//Rutas para registrar usuarios
 
 Route::get('/register', function()
 {	
 	return View::make('register');
 });
+Route::controller('register','RegisterController');
+Route::post('register-user','RegisterController@register');
 
 
 Route::get('/upcomingTrips', function()
