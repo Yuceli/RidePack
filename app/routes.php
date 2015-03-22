@@ -74,6 +74,11 @@ Route::get('/profile', function()
 	return View::make('profile');
 });
 
+Route::get('/edit-profile', function()
+{
+	return View::make('edit-profile');
+});
+
 
 /*Route::get("/request", function(){
 	return View::make('user/request');
