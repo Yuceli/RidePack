@@ -93,20 +93,20 @@ pre code {
 /* ======= Header ======= */
 .header {
   padding: 10px 0;
-  background: #17baef;
+  background: #042a36;
   color: #fff;
   position: fixed;
   width: 100%;
 }
 .header.navbar-fixed-top {
-  background: #fff;
+  background: #042a36;
   z-index: 9999;
   -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
 }
 .header.navbar-fixed-top .logo a {
-  color: #17baef;
+  color: #eebf3f;
 }
 .header.navbar-fixed-top .main-nav .nav .nav-item a {
   color: #666666;
