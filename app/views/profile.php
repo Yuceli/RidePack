@@ -103,13 +103,13 @@
                   </tbody>
                 </table>
 
-                <a href="#" class="btn btn-primary">Editar información personal</a>
+                <a href="editProfile" class="btn btn-primary">Editar información personal</a>
       
               </div>
             </div>
           </div>
           <div class="panel-footer">
-            <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+            <a href="message" data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
             <span class="pull-right">
               <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
             </span>

@@ -74,9 +74,15 @@ Route::get('/profile', function()
 	return View::make('profile');
 });
 
-Route::get('/edit-profile', function()
+Route::get('/editProfile', function()
 {
 	return View::make('edit-profile');
+});
+
+
+Route::get('/message', function()
+{
+	return View::make('message');
 });
 
 
