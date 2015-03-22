@@ -51,18 +51,18 @@
 		<div class="row">
 			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 				<?php echo Form::open(array('action' => 'RegisterController@register', 'method' => 'post')) ?>
-				<h2>Please Sign Up <small>It's free and always will be.</small></h2>
+				<h2>Please Sign Up</h2>
 				<hr class="colorgraph">
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<div class="form-group">
-							<?php echo Form::text('name', '',array('class' => 'form-control input-lg', 'placeholder' => 'First Name' , 'required' => 'required' , 'tabindex' => '1'))?>
+							<?php echo Form::text('name', '',array('class' => 'form-control input-lg', 'placeholder' => 'Nombre' , 'required' => 'required' , 'tabindex' => '1'))?>
 							<!--<input type="text" name="name" id="name" class="form-control input-lg" placeholder="First Name" tabindex="1">-->
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<div class="form-group">
-							<?php echo Form::text('last_name', '',array('class' => 'form-control input-lg', 'placeholder' => 'Last Name' , 'required' => 'required', 'tabindex' => '2'))?>
+							<?php echo Form::text('last_name', '',array('class' => 'form-control input-lg', 'placeholder' => 'Apellido' , 'required' => 'required', 'tabindex' => '2'))?>
 							<!--<input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2">-->
 						</div>
 					</div>
@@ -77,33 +77,28 @@
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<!--<?php echo Form::password('password', '',array('class' => 'form-control input-lg', 'placeholder' => 'Password' , 'required' => 'required' , 'tabindex' => '5'))?>-->
-						<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" required="required" tabindex="5">
+						<!--<?php echo Form::password('password', '',array('class' => 'form-control input-lg', 'placeholder' => 'Contraseña' , 'required' => 'required' , 'tabindex' => '5'))?>-->
+						<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Contraseña" required="required" tabindex="5">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<!--<?php echo Form::password('password_confirmation', '',array('class' => 'form-control input-lg', 'placeholder' => 'Confirm Password' , 'required' => 'required', 'tabindex' => '6'))?>-->
-						<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" required="required" placeholder="Confirm Password" tabindex="6">
+						<!--<?php echo Form::password('password_confirmation', '',array('class' => 'form-control input-lg', 'placeholder' => 'Confirmar contraseña' , 'required' => 'required', 'tabindex' => '6'))?>-->
+						<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" required="required" placeholder="Confirmar contraseña" tabindex="6">
 					</div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-4 col-sm-3 col-md-3">
-					<span class="button-checkbox">
-						<button type="button" class="btn" data-color="info" tabindex="7">I Agree</button>
-						<input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
-					</span>
-				</div>
+				
 				<div class="col-xs-8 col-sm-9 col-md-9">
-					By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
+					Al hacer click en <strong class="label label-primary">Registrar</strong> , tu aceptas los <a href="#" data-toggle="modal" data-target="#t_and_c_m">términos y condiciones</a> de éste sitio, incluyendo el uso de Cookies.
 				</div>
 			</div>
 			
 			<hr class="colorgraph">
 			<div class="row">
-				<div class="col-xs-12 col-md-6"><input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
-				<div class="col-xs-12 col-md-6"><a href="login" class="btn btn-success btn-block btn-lg">Sign In</a></div>
+				<div class="col-xs-12 col-md-6"><input type="submit" value="Registrar" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+				<div class="col-xs-12 col-md-6"><a href="login" class="btn btn-success btn-block btn-lg">Login</a></div>
 			</div>
 			<?php echo Form::close(); ?>
 		</div>
@@ -140,7 +135,7 @@
           <!-- ******FOOTER****** --> 
           <footer class="footer">
             <div class="container text-center">
-              <small class="copyright">Desarrollado con <i class="fa fa-heart"></i> por desarrolladores de RidePack</small>
+              <small class="copyright">Desarrollado con <i class="fa fa-heart"></i></small>
             </div><!--//container-->
           </footer><!--//footer-->
 

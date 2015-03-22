@@ -47,7 +47,7 @@
         </div>
     </header><!--//header--> 
 
-  <br><br><br>
+  <br>
   <div class="container">
     <div class="row">
       <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -70,14 +70,14 @@
               <!--<input type="text" class="form-control" name="email" placeholder="email" required autofocus>-->
               <br>
               <input type="password" class="form-control" name="password" placeholder="Password" required>
-              <p class="text-left"><a align="left" href="request">Forgot Password?</a></p>
+              <p class="text-left"><a align="left" href="request">¿Olvidaste tu contraseña?</a></p>
               <br>
                       <!--<input type="submit" class="btn btn-lg btn-default btn-block" value="Sign In" />
                       <br>-->
                       <div class="col-xs-12 col-md-6"><input type="submit" value="Sign In" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
                       {{Form::close()}}
                       <div id="tabs" data-tabs="tabs">
-                        <p class="text-center"><a href="register">Need an Account?</a></p>
+                        <p class="text-center"><a href="register">¿Necesitas una cuenta?</a></p>
                       </div>
                     </div>
                   </div>
@@ -86,11 +86,11 @@
             </div>
           </div>
           
-          <br><br><br>
+          <br><br>
           <!-- ******FOOTER****** --> 
           <footer class="footer">
             <div class="container text-center">
-              <small class="copyright">Desarrollado con <i class="fa fa-heart"></i> por desarrolladores de RidePack</small>
+              <small class="copyright">Desarrollado con <i class="fa fa-heart"></i></small>
             </div><!--//container-->
           </footer><!--//footer-->
 
