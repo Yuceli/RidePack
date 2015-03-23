@@ -1,3 +1,15 @@
+<?php 
+	$name = "";
+	$last_name = "";
+	$email = "";
+
+ 	if(isset($returned)){
+ 		$errors = (isset($returned["errors"]))? $returned["errors"]:$errors;
+ 		$name = (isset($returned["name"]))? $returned["name"]: "";
+ 		$last_name = (isset($returned["last_name"]))? $returned["last_name"]: "";
+ 		$email = (isset($returned["email"]))? $returned["email"]: "";
+ 	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,13 +68,27 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<div class="form-group">
-							<?php echo Form::text('name', '',array('class' => 'form-control input-lg', 'placeholder' => 'Nombre' , 'required' => 'required' , 'tabindex' => '1'))?>
+							<? if($errors -> has("name")){
+									foreach ($errors->get('name') as $message)
+									{
+									    echo $message."<br>";
+									}
+								}
+							?>
+							<?php echo Form::text('name', $name,array('class' => 'form-control input-lg', 'placeholder' => 'Nombre' , 'required' => 'required' , 'tabindex' => '1'))?>
 							<!--<input type="text" name="name" id="name" class="form-control input-lg" placeholder="First Name" tabindex="1">-->
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<div class="form-group">
-							<?php echo Form::text('last_name', '',array('class' => 'form-control input-lg', 'placeholder' => 'Apellido' , 'required' => 'required', 'tabindex' => '2'))?>
+							<? if($errors -> has("last_name")){
+									foreach ($errors->get('last_name') as $message)
+									{
+									    echo $message."<br>";
+									}
+								}
+							?>
+							<?php echo Form::text('last_name', $last_name,array('class' => 'form-control input-lg', 'placeholder' => 'Apellido' , 'required' => 'required', 'tabindex' => '2'))?>
 							<!--<input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2">-->
 						</div>
 					</div>
@@ -71,13 +97,27 @@
 				<input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="Display Name" tabindex="3">
 			</div>-->
 			<div class="form-group">
-				<?php echo Form::text('email', '',array('class' => 'form-control input-lg', 'placeholder' => 'Email' , 'required' => 'required','tabindex' => '4'))?>
+				<? if($errors -> has("email")){
+						foreach ($errors->get('email') as $message)
+						{
+						    echo $message."<br>";
+						}
+					}
+				?>
+				<?php echo Form::text('email', $email,array('class' => 'form-control input-lg', 'placeholder' => 'Email' , 'required' => 'required','tabindex' => '4'))?>
 				<!--<input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4">-->
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
 						<!--<?php echo Form::password('password', '',array('class' => 'form-control input-lg', 'placeholder' => 'Contraseña' , 'required' => 'required' , 'tabindex' => '5'))?>-->
+						<? if($errors -> has("password")){
+								foreach ($errors->get('password') as $message)
+								{
+								    echo $message."<br>";
+								}
+							}
+						?>
 						<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Contraseña" required="required" tabindex="5">
 					</div>
 				</div>

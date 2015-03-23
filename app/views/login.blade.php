@@ -57,6 +57,11 @@
               <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
               alt="">
               <hr class="colorgraph">
+              <?php
+                if(isset($message)){
+                  echo "<p>".$message."</p>";
+                }
+              ?>
               {{Form::open(array('url' => 'upcomingTrips', 'class'=>'form-signin'))}}
               @if(Session::has('error_message'))
               <div class="alert alert-warning alert-dismissable">
@@ -66,6 +71,7 @@
 
               @endif
               <br>
+
               {{Form::email('email', '',array('class' => 'form-control', 'type' => 'email' ,'placeholder' => 'email' , 'required' => 'required'))}}
               <!--<input type="text" class="form-control" name="email" placeholder="email" required autofocus>-->
               <br>
