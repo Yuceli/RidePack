@@ -11,11 +11,39 @@
 |
 */
 
+//Ruta de presentación Ridepack
+
 Route::get('/', function()
 {
 	return View::make('hello');
 });
 
+
+/* 
+|------------------------
+|Nos indica que las rutas que están dentro de este grupo 
+|sólo serán mostradas si el usuario se ha autenticado.
+|------------------------
+*/
+Route::group(array('before' => 'auth'), function()
+{
+    
+    //Ruta para cierre de sesión
+	Route::get('logout', 'UserController@logout');
+
+	/*
+	Ruta para visualizar información
+	CU-08
+	*/
+	//Ruta para visualizar la información del usuario
+	Route::get('/profile', function()
+	{
+	return View::make('profile');
+	});
+
+	
+    
+});
 
 
 /*
@@ -27,14 +55,11 @@ CU-01
 Route::get('login', 'UserController@login');
 
 
-//Ruta para cierre de sesión
-Route::get('logout', 'UserController@logout');
-
-
-
-
 //Ruta de redirección en inicio de sesión
-Route::post('store', 'UserController@store');
+Route::post('upcomingTrips', 'UserController@upcomingTrips');
+
+
+
 
 //Ruta para carga de vista register
 //Route::get('register', 'RegisterController@register');
