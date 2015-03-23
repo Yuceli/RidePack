@@ -16,12 +16,12 @@ public function login()
 	}
 
 //Función para almacenar al usuario
-	public function store(){
+	public function upcomingTrips(){
 		//Autentifica al usuario
 		if(Auth::attempt(Input::only('email', 'password')))
 		{
 			//Lo redirige a página correspondiente
-			return 'Bienvenido '.Auth::user()->name;			
+			return View::make('upcoming-trips');			
 		}else{
 			//Redirecciona a login con mensaje
 		return Redirect::back()->with('error_message', 'El correo electrónico y/o contraseña son incorrectos')->withInput(Input::except('password'));
