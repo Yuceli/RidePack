@@ -39,6 +39,8 @@
               <li class="nav-item"><a class="scrollto" href="#about">Buscar</a></li>
               <li class="nav-item"><a class="scrollto" href="#features">Enviar paquete</a></li>                        
               <li class="nav-item last"><a class="scrollto" href="#contact">Publicar viaje</a></li>
+              <li class="nav-item last"><a class="scrollto" href="{{URL::to('logout')}}">Cerrar sesión</a></li>
+              <li class="nav-item last"><a class="scrollto" href=""></a></li>
             </ul><!--//nav-->
           </div><!--//navabr-collapse-->
         </nav><!--//main-nav-->
@@ -54,7 +56,7 @@
 
         <div class="panel panel-info">
           <div class="panel-heading">
-            <h3 class="panel-title">Información personal: Sheena Kristin A.Eschor</h3>
+            <h3 class="panel-title">Información personal: {{ Auth::user()->name; }}  {{ Auth::user()->last_name; }} </h3>
           </div>
           <div class="panel-body">
             <div class="row">
@@ -66,25 +68,20 @@
                     <tbody>
                       <tr>
                         <td>Nombre:</td>
-                        <td>Yuceli</td>
+
+                        <td> {{ Auth::user()->name; }}</td>
                       </tr>
                       <tr>
                         <td>Apellido</td>
-                        <td>Polanco</td>
+                        <td>{{ Auth::user()->last_name; }}</td>
                       </tr>
                       <tr>
                         <td>Fecha de nacimiento</td>
-                        <td>02/11/1990</td>
-                      </tr>
-
-                      <tr>
-                       <tr>
-                        <td>Género</td>
-                        <td>Femenino</td>
+                        <td>{{ Auth::user()->birthdate; }}</td>
                       </tr>
                       <tr>
                         <td>Pais</td>
-                        <td>México</td>
+                        <td>Mexico</td>
                       </tr>
                       <tr>
                         <td>Ciudad</td>
@@ -92,13 +89,8 @@
                       </tr>
                       <tr>
                         <td>Email</td>
-                        <td><a href="mailto:info@support.com">yuceli.polanco@gmail.com</a></td>
-                      </tr>
-                      <td>Acerca de mi</td>
-                      <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, corrupti eos! Nesciunt pariatur animi voluptas sequi nihil beatae facere temporibus ab repellat! Quod possimus ex architecto vitae accusamus amet cumque.
-                      </td>
-
-                    </tr>
+                        <td>{{ Auth::user()->email; }}</td>
+                      
 
                   </tbody>
                 </table>
