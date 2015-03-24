@@ -158,78 +158,21 @@
   <script type="text/javascript" src="js/main.js"></script>  
 
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+    <script type="text/javascript" src="js/googlePlaces.js"></script>
 
     <script type="text/javascript">
-        "use strict"
-        var inputPlaceID = document.getElementById('city_id');
-        var inputCity = document.getElementById('city');
-        var inputState = document.getElementById('state');
-        var inputCountry = document.getElementById('country');
-        var input = document.getElementById('search_city');
 
-        var options = {
-          types: ['(cities)']
-        };
+      window.onload= function(){
+        googlePlaces.initAutocomplete(document.getElementById('search_city'));
 
-        var autocomplete = new google.maps.places.Autocomplete(input, options);
+        googlePlaces.inputPlaceID = document.getElementById('city_id');
 
-        google.maps.event.addListener(autocomplete, 'place_changed', function() {
-          var place = autocomplete.getPlace();
+        googlePlaces.outputCity = document.getElementById('city');
+        googlePlaces.outputState = document.getElementById('state');
+        googlePlaces.outputCountry = document.getElementById('country');
 
-          displayPlaceDetails(place);
-        });
-
-        function getPlaceDetails(placeID){
-            if(placeID){
-                var request = {
-                    placeId: placeID
-                };
-
-                var oDvMap = document.createElement('div');
-                var service = new google.maps.places.PlacesService(oDvMap);
-                service.getDetails(request, showPlaceDetails);
-            }
-            else{
-                displayPlaceDetails({});
-            }
-        }
-
-        function showPlaceDetails(place, status) {
-            if (status == google.maps.places.PlacesServiceStatus.OK) {
-                displayPlaceDetails(place);
-            }else{
-                displayPlaceDetails({});
-            }
-        }
-
-        function displayPlaceDetails(place){
-            inputCity.value = getAddressElement('locality',place.address_components);
-            inputState.value = getAddressElement('administrative_area_level_1',place.address_components);
-            inputCountry.value = getAddressElement('country',place.address_components);
-
-            inputPlaceID.value = place.place_id;
-        }
-
-        function getAddressElement(type, aAddress){
-            var sAddressElement = '';
-
-            if(!aAddress) return sAddressElement;
-
-            for(var i=0; i<aAddress.length; i++){
-                var typesLength = aAddress[i].types.length;
-                for(var j=0; j<typesLength; j++){
-                    if(aAddress[i] && aAddress[i].types[j] == type){
-                        sAddressElement = aAddress[i].long_name;
-                    }
-                }
-            }
-
-            return sAddressElement;
-        }
-
-        window.onload= function(){
-            getPlaceDetails(inputPlaceID.value);
-        };
+        googlePlaces.getPlaceDetails();
+      };
     </script>
 
   </body>
