@@ -1,6 +1,6 @@
 body{
     background: #ffffff;
-    /*background: #eee url(http://subtlepatterns.com/patterns/sativa.png);*/
+    background: url(http://subtlepatterns.com/patterns/sativa.png);
 }
 .form-signin
 {

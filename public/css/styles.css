@@ -181,7 +181,9 @@ pre code {
 }
 /* ======= Promo Section ======= */
 .promo {
-  background: #17baef;
+  background: url(http://cdn2.hellogiggles.com/wp-content/uploads/2014/11/06/tumblr_ln7ko6ewPu1qzpe8uo1_500.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   color: #fff;
   padding-top: 150px;
 }
