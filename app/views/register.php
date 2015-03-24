@@ -68,7 +68,7 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<div class="form-group">
-							<? if($errors -> has("name")){
+							<?php if($errors -> has("name")){
 									foreach ($errors->get('name') as $message)
 									{
 									    echo $message."<br>";
@@ -81,7 +81,7 @@
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<div class="form-group">
-							<? if($errors -> has("last_name")){
+							<?php if($errors -> has("last_name")){
 									foreach ($errors->get('last_name') as $message)
 									{
 									    echo $message."<br>";
@@ -97,7 +97,7 @@
 				<input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="Display Name" tabindex="3">
 			</div>-->
 			<div class="form-group">
-				<? if($errors -> has("email")){
+				<?php if($errors -> has("email")){
 						foreach ($errors->get('email') as $message)
 						{
 						    echo $message."<br>";
@@ -111,7 +111,7 @@
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
 						<!--<?php echo Form::password('password', '',array('class' => 'form-control input-lg', 'placeholder' => 'Contraseña' , 'required' => 'required' , 'tabindex' => '5'))?>-->
-						<? if($errors -> has("password")){
+						<?php if($errors -> has("password")){
 								foreach ($errors->get('password') as $message)
 								{
 								    echo $message."<br>";
