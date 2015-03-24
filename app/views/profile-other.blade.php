@@ -54,71 +54,113 @@
 
         <div class="panel panel-info">
           <div class="panel-heading">
-            <h3 class="panel-title">Información personal: Sheena Kristin A.Eschor</h3>
-          </div>
+           </div>
           <div class="panel-body">
             <div class="row">
-              <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
-
-                
+              <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>                
                 <div class=" col-md-9 col-lg-9 "> 
-                  <table class="table table-user-information">
-                    <tbody>
-                      <tr>
-                        <td>Nombre:</td>
-                        <td>Yuceli</td>
-                      </tr>
-                      <tr>
-                        <td>Apellido</td>
-                        <td>Polanco</td>
-                      </tr>
-                      <tr>
-                        <td>Fecha de nacimiento</td>
-                        <td>02/11/1990</td>
-                      </tr>
-
-                      <tr>
-                       <tr>
-                        <td>Género</td>
-                        <td>Femenino</td>
-                      </tr>
-                      <tr>
-                        <td>Pais</td>
-                        <td>México</td>
-                      </tr>
-                      <tr>
-                        <td>Ciudad</td>
-                        <td>Mérida</td>
-                      </tr>
-                      <tr>
-                        <td>Email</td>
-                        <td><a href="mailto:info@support.com">yuceli.polanco@gmail.com</a></td>
-                      </tr>
-                      <td>Acerca de mi</td>
-                      <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, corrupti eos! Nesciunt pariatur animi voluptas sequi nihil beatae facere temporibus ab repellat! Quod possimus ex architecto vitae accusamus amet cumque.
-                      </td>
-
-                    </tr>
-
-                  </tbody>
-                </table>
-
-                <a href="editProfile" class="btn btn-primary">Editar información personal</a>
-      
+                  <h3>Nombre: Alfonso de Alba <br><small>Se unio el 22/03/2015</small></h3>
               </div>
             </div>
           </div>
-          <div class="panel-footer">
-            <a href="message" data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
-            <span class="pull-right">
-              <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-            </span>
-          </div>
-
         </div>
       </div>
     </div>
   </div>
+
+    <!-Tabla de objetos -->
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">Objetos a enviar:</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">                
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>Nombre:</td>
+                        <td>Objeto1</td>
+                      </tr>
+                      <tr>
+                        <td>Lugar de salida:</td>
+                        <td>México > México</td>
+                      </tr>
+                      <tr>
+                        <td>Fecha de salida:</td>
+                        <td>02/11/1990</td>
+                      </tr>
+                        <td>Fecha de entrada:</td>
+                        <td>02/11/1990</td>
+                      <tr>
+                       <tr>
+                        <td>Precio de entrada:</td>
+                        <td>$20</td>
+                      </tr>
+                      <tr>
+                        <td>Peso maximo:</td>
+                        <td>20 Kg</td>
+                      </tr>
+                      <tr>
+                        <td>Volumen</td>
+                        <td>Peqúeño</td>
+                      </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    <!-Tabla de viajes -->
+
+
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">Viajes a llevar acabo:</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">                
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>Nombre:</td>
+                        <td>Objeto1</td>
+                      </tr>
+                      <tr>
+                        <td>Lugar de salida:</td>
+                        <td>México > México</td>
+                      </tr>
+                      <tr>
+                        <td>Fecha de salida:</td>
+                        <td>02/11/1990</td>
+                      </tr>
+                        <td>Fecha de entrada:</td>
+                        <td>02/11/1990</td>
+                      <tr>
+                        <td>Peso maximo:</td>
+                        <td>20 Kg</td>
+                      </tr>
+                      <tr>
+                        <td>Volumen</td>
+                        <td>Peqúeño</td>
+                      </tr>
+                      <tr>
+                        <td>Metodo de viaje</td>
+                        <td>Avion</td>
+                      </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
 
    
   <br><br><br>
