@@ -206,3 +206,9 @@ Route::get('ejemploModelo', function()
 
 	return $res;
 });
+
+
+Route::get('/forgotPassword', function()
+	{
+		return View::make('forgot-password');
+	});

@@ -2,6 +2,20 @@ body{
     background: #ffffff;
     background: url(http://subtlepatterns.com/patterns/sativa.png);
 }
+
+.container-login{
+
+   padding-top: 35px;
+
+}
+
+
+.container-reset{
+
+    padding-top: 12%;
+    padding-bottom: 14.5%;
+}
+
 .form-signin
 {
     max-width: 330px;

@@ -43,7 +43,7 @@
     <header id="header" class="header">  
         <div class="container">            
             <h1 class="logo pull-left">
-                <a class="scrollto" href="#promo">
+                <a class="scrollto" href="#home">
                     <span class="logo-title">RidePack</span>
                 </a>
             </h1><!--//logo-->              
@@ -58,8 +58,8 @@
                 </div><!--//navbar-header-->            
                 <div class="navbar-collapse collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
-                        <li class="nav-item"><a class="scrollto" href="#about">Nosotros</a></li>
+                        <li class="active nav-item sr-only"><a class="scrollto" href="#home">Home</a></li>
+                        <li class="nav-item"><a class="scrollto" href="#home">Nosotros</a></li>
                         <li class="nav-item"><a class="scrollto" href="#features">Caracteristicas</a></li>                        
                         <li class="nav-item last"><a class="scrollto" href="#contact">Contacto</a></li>
                     </ul><!--//nav-->
@@ -69,13 +69,13 @@
     </header><!--//header-->
     
     <!-- ******PROMO****** -->
-    <section id="promo" class="promo section offset-header">
+    <section id="#home" class="promo section offset-header">
         <div class="container text-center">
             <h2 class="title">Ride<span class="highlight">Pack</span></h2>
             <p class="intro">¿Deseas enviar o transportar algún paquete?</p>
             <div class="btns">
-                <a class="btn btn-cta-secondary" href="login" target="_blank">Login</a>
-                <a class="btn btn-cta-primary" href="register" target="_blank">Registro</a>
+                <a class="btn btn-cta-secondary" href="login">Login</a>
+                <a class="btn btn-cta-primary" href="register">Registro</a>
             </div>
             <ul class="meta list-inline">
                 <li><br>Registrate y publica cuándo y donde deseas enviar un artículo.</li>
@@ -101,13 +101,14 @@
                     <li class="github-follow"><iframe src="http://ghbtns.com/github-btn.html?user=mdo&type=follow&count=true"
   allowtransparency="true" frameborder="0" scrolling="0" width="165" height="20"></iframe></li>
                     -->
+                    <br>
                 </ul>
             </div>
         </div>
     </section><!--//promo-->
     
     <!-- ******ABOUT****** --> 
-    <section id="about" class="about section">
+    <section id="home" class="about section">
         <div class="container">
             <h2 class="title text-center">¿Que es RidePack?</h2>
             <p class="intro text-center">RidePack pretende ofrecer un método de contacto para que las personas que tengan necesidad de enviar un paquete y que deseen ahorrar dinero en el envío, puedan buscar y contactar de una manera rápida y sencilla a aquellos viajeros que se adapten a sus necesidades.</p>
@@ -138,67 +139,59 @@
                         <i class="fa fa-crosshairs"></i>
                     </div>
                     <div class="content">
-                        <h3 class="sub-title">Espir</h3>
-                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the </p>
+                        <h3 class="sub-title">Paquetes en cualquier lugar y momento</h3>
+                        <p>¿Deseas enviar algo a un amigo que vive en otra ciudad?¿Tienes espacio libre en tu equipaje y deseas ganar dinero extra?
+                        Registrate en RidePack.</p>
                     </div><!--//content-->
-                </div><!--//item-->           
-                <div class="clearfix visible-md"></div>    
-                <div class="item col-md-4 col-sm-6 col-xs-12">
-                    <div class="icon-holder">
-                        <i class="fa fa-tablet"></i>
-                    </div>
-                    <div class="content">
-                        <h3 class="sub-title">Mobile-friendly</h3>
-                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
-                    </div><!--//content-->
-                </div><!--//item-->                
-                <div class="item col-md-4 col-sm-6 col-xs-12">
-                    <div class="icon-holder">
-                        <i class="fa fa-code"></i>
-                    </div>
-                    <div class="content">
-                        <h3 class="sub-title">Easy to customise</h3>
-                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
-                    </div><!--//content-->
-                </div><!--//item-->
-                <div class="item col-md-4 col-sm-6 col-xs-12">
-                    <div class="icon-holder">
-                        <i class="fa fa-coffee"></i>
-                    </div>
-                    <div class="content">
-                        <h3 class="sub-title">LESS files included</h3>
-                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
-                    </div><!--//content-->
-                </div><!--//item-->               
+                </div><!--//item-->                         
             </div><!--//row-->            
         </div><!--//container-->
     </section><!--//about-->
-    
+
+
+
     <!-- ******FEATURES****** --> 
     <section id="features" class="features section">
         <div class="container text-center">
-            <h2 class="title">Features</h2>
+            <h2 class="title">Características</h2>
             <ul class="feature-list list-unstyled">
-                <li><i class="fa fa-check"></i> Fully responsive</li>
-                <li><i class="fa fa-check"></i> HTML5 + CSS3</li>
-                <li><i class="fa fa-check"></i> Built on <a href="http://getbootstrap.com/" target="_blank">Bootstrap 3.3</a></li>
-                <li><i class="fa fa-check"></i> 400+ FontAwesome icons</li>
-                <li><i class="fa fa-check"></i> 4 colour schemes</li>
-                <li><i class="fa fa-check"></i> LESS files included</li>
-                <li><i class="fa fa-check"></i> Compatible with all modern browsers</li>
+                <li><i class="fa fa-check"></i> Seguro</li>
+                 <li><i class="fa fa-check"></i> Confiable</li>
+                <li><i class="fa fa-check"></i> Sistema de autenticación</li>
+                <li><i class="fa fa-check"></i> Comunicacipon interna entre usuarios</li>
             </ul>
         </div><!--//container-->
     </section><!--//features-->
-    
-    
-    
-    
+
+
+
+    <!-- ******CONTACT****** --> 
+    <section id="contact" class="contact section has-pattern">
+        <div class="container">
+            <div class="contact-inner">
+                <h2 class="title  text-center">Contacto</h2>
+                <div class="author-message">                      
+                    <div class="profile">
+                    </div><!--//profile-->
+                   
+                <div class="clearfix"></div>
+                <div class="info text-center">
+                    <ul class="social-icons list-inline">
+                        <li><a href="https://twitter.com/3rdwave_themes" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.facebook.com/3rdwavethemes" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/xiaoying"><i class="fa fa-linkedin"></i></a></li>   
+                        <li class="last"><a href="mailto: hello@3rdwavemedia.com"><i class="fa fa-envelope"></i></a></li>              
+                    </ul>
+                </div><!--//info-->
+            </div><!--//contact-inner-->
+        </div><!--//container-->
+    </section><!--//contact-->  
     
       
     <!-- ******FOOTER****** --> 
     <footer class="footer">
         <div class="container text-center">
-            <small class="copyright">Desarrollado con <i class="fa fa-heart"></i> por desarrolladores de RidePack</small>
+            <small class="copyright">Desarrollado con <i class="fa fa-heart"></i></small>
         </div><!--//container-->
     </footer><!--//footer-->
      
