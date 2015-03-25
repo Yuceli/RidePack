@@ -48,15 +48,36 @@ Route::group(array('before' => 'auth'), function()
 	//Ruta para visualizar la información del usuario
 
 	Route::get('/profileOther', function()
-{
-	return View::make('profile-other');
-});
+	{
+		return View::make('profile-other');
+	});
 	
+	Route::get('/sendItem', function()
+	{
+		return View::make('send-item');
+	});
+
+	Route::get('/postTrip', function()
+	{
+		return View::make('post-trip');
+	});
+
+	Route::get('/editProfile', function()
+	{
+		return View::make('edit-profile');
+	});
+
+	Route::get('/deleteUser','EditProfileController@deleteUser');
+
+	Route::get('/message', function()
+	{
+		return View::make('message');
+	});
     
 });
 
 
-	Route::get('/profileOther', function()
+Route::get('/profileOther', function()
 {
 	return View::make('profile-other');
 });
@@ -98,33 +119,6 @@ Route::get('/upcomingTrips', function()
 {
 	return View::make('upcoming-trips');
 });
-
-Route::get('/sendItem', function()
-{
-	return View::make('send-item');
-});
-
-Route::get('/postTrip', function()
-{
-	return View::make('post-trip');
-});
-
-Route::get('/profile', function()
-{
-	return View::make('profile');
-});
-
-Route::get('/editProfile', function()
-{
-	return View::make('edit-profile');
-});
-
-
-Route::get('/message', function()
-{
-	return View::make('message');
-});
-
 
 /*Route::get("/request", function(){
 	return View::make('user/request');
