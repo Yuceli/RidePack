@@ -69,13 +69,23 @@
           </div>
         </div>
 
-        <div class="form-group">
-          {{Form::text('birthdate', null, array('id'=>'birthdate','class'=>'form-control input-lg','placeholder'=>'Fecha de nacimiento (aaaa-mm-dd)','tabindex'=>'3'))}}
-          <div id ="birthdate_error">{{ $errors->first('birthdate') }}</div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              {{Form::text('birthdate', null, array('id'=>'birthdate','class'=>'form-control input-lg','placeholder'=>'Fecha de nacimiento (aaaa-mm-dd)','tabindex'=>'3'))}}
+              <div id ="birthdate_error">{{ $errors->first('birthdate') }}</div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              {{Form::text('phone', null, array('id'=>'phone','class'=>'form-control input-lg','placeholder'=>'Teléfono','tabindex'=>'4'))}}
+              <div id ="phone_error">{{ $errors->first('phone') }}</div>
+            </div>
+          </div>
         </div>
 
         <div class="form-group">
-          {{Form::text('search_city', null, array('id'=>'search_city','class'=>'form-control input-lg','placeholder'=>'Buscar ciudad','tabindex'=>'4'))}}
+          {{Form::text('search_city', null, array('id'=>'search_city','class'=>'form-control input-lg','placeholder'=>'Buscar ciudad','tabindex'=>'5'))}}
         </div>
 
         <div class="row">
@@ -97,20 +107,20 @@
         </div>
 
          <div class="form-group">
-          {{Form::email('email', null, array('id'=>'email','class'=>'form-control input-lg', 'placeholder'=>'E-mail','tabindex'=>'5','required'=>'true'))}} 
+          {{Form::email('email', null, array('id'=>'email','class'=>'form-control input-lg', 'placeholder'=>'E-mail','tabindex'=>'6','required'=>'true'))}} 
           <div id ="email_error">{{ $errors->first('email') }}</div>
         </div>
 
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-              {{Form::password('password', array('id'=>'password','class'=>'form-control input-lg','placeholder'=>'Nueva Contraseña','tabindex'=>'6'))}}
+              {{Form::password('password', array('id'=>'password','class'=>'form-control input-lg','placeholder'=>'Nueva Contraseña','tabindex'=>'7'))}}
               <div id ="password_error">{{ $errors->first('password') }}</div>
             </div>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-              {{Form::password('password_confirmation', array('id'=>'password_confirmation','class'=>'form-control input-lg','placeholder'=>'Confirmar contraseña','tabindex'=>'7'))}}
+              {{Form::password('password_confirmation', array('id'=>'password_confirmation','class'=>'form-control input-lg','placeholder'=>'Confirmar contraseña','tabindex'=>'8'))}}
               <div id ="password_confirmation_error">{{ $errors->first('password_confirmation ') }}</div>
             </div>
           </div>
@@ -121,7 +131,7 @@
         <hr class="colorgraph">
         <div class="row">
           <div class="col-xs-12 col-md-2">
-            {{Form::submit('Guardar', array('class'=>'btn btn-primary btn-block btn-lg','tabindex'=>'8'))}}
+            {{Form::submit('Guardar', array('class'=>'btn btn-primary btn-block btn-lg','tabindex'=>'9'))}}
           </div>
         </div>
 
