@@ -90,7 +90,7 @@ CU-01
 */
 
 //Ruta para inicio de sesión
-Route::get('login', 'UserController@showLogin');
+Route::get('login', 'UserController@login');
 
 
 //Ruta de redirección en inicio de sesión
@@ -122,17 +122,10 @@ Route::get('/upcomingTrips', function()
 	return View::make('upcoming-trips');
 });
 
-/*Route::get("/request", function(){
-	return View::make('user/request');
-});
-
-Route::get("/reset/{token}", function(){
-	return View::make('user/reset');
-});*/
-
-
-/*Route::post('request', 'RemindersController@request');
-Route::post('reset', 'RemindersController@reset');*/
+/*
+ Rutas para recuperar y reiniciar contraseña
+ CU-16
+ */
 Route::any("/request", [
  "as" => "user/request",
  "uses" => "RemindersController@request"

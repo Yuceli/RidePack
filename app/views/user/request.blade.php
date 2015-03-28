@@ -14,7 +14,7 @@
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
     <!-- Global CSS -->
-    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css" type="text/css">
     <!-- Plugins CSS -->    
     <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="plugins/prism/prism.css">
@@ -71,8 +71,9 @@
                       @if (Session::get("status"))
                         {{ Session::get("status") }}<br />
                       @endif
-                      {{ Form::label("email", "Email") }}
-                      {{ Form::text("email", Input::old("email")) }}
+                      {{ Form::label("email", "Email:") }}<br />
+                      {{ Form::text("email", Input::old("email")) }}<br />
+                      <br />
                       {{ Form::submit("Reenviar") }}
                     {{ Form::close() }}
                     <hr class="colorgraph">
