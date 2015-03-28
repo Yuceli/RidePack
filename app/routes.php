@@ -122,6 +122,19 @@ Route::get('/upcomingTrips', function()
 	return View::make('upcoming-trips');
 });
 
+
+Route::get('/detailsPackage', function()
+{
+	return View::make('details-package');
+});
+
+Route::get('/detailsTravel', function()
+{
+	return View::make('details-travel');
+});
+
+
+
 /*
  Rutas para recuperar y reiniciar contraseña
  CU-16
