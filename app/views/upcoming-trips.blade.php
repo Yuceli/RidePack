@@ -296,8 +296,8 @@
           </p>
         </div>
         <div class="clearfix"></div>
+        <button type="button" class="btn btn-default btn-lg">Ver más..</button>
       </div>
-
     </div>
   </div>
 </div>
