@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="plugins/prism/prism.css">
     <!-- Theme CSS -->  
     <link id="theme-style" rel="stylesheet" href="css/styles.css">
-    <link id="theme-style" rel="stylesheet" href="css/details-packages.css">
+    <link id="theme-style" rel="stylesheet" href="css/profile.css">
     <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet" media="screen">  
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

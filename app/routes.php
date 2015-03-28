@@ -79,9 +79,9 @@ Route::group(array('before' => 'auth'), function()
 });
 
 
-Route::get('/profileOther', function()
+Route::get('/users', function()
 {
-	return View::make('profile-other');
+	return View::make('users-profile');
 });
 
 /*
