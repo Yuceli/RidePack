@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
-<html lang="en">
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="">
-  <meta name="author" content=""> 
-  <title>RidePack</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Latest compiled and minified CSS -->
-  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.css">
-  <link rel="stylesheet" href="plugins/prism/prism.css">
-  <!-- Theme CSS -->  
-  <link id="theme-style" rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/upcoming-trips.css">
-</head>
+    <title>RidePack</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">    
+    <link rel="shortcut icon" href="img/favicon.ico">  
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="plugins/prism/prism.css">
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="css/styles.css">
+    <link id="theme-style" rel="stylesheet" href="css/upcoming-trips.css">
+    <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet" media="screen">  
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head> 
 <body>
 
   <!-- ******HEADER****** --> 
@@ -126,17 +133,11 @@
                     <div class="info">
                       <h2 class="title">Pastel Tere Cazola</h2>
                       <p class="desc">Mérida > Chihuahua</p>
+                      <p class="desc">Peso: 2 kg , Tamaño: pequeño</p>
+                      <p class="desc">Recompensa: $200</p>
                       <ul>
-                        <li style="width:33%;"><span class="glyphicon glyphicon-usd">140</span></li>
-                        <li style="width:34%;"><span class="glyphicon glyphicon-scale"> 1KG</span></li>
+                        <li style="width:33%;"><span class="fa fa-user-plus"></span></li>
                         <li style="width:33%;"><span class="fa fa-envelope"></span></li>
-                      </ul>
-                    </div>
-                    <div class="social">
-                      <ul>
-                        <li class="facebook" style="width:33%;"><a href="#facebook"><span class="fa fa-facebook"></span></a></li>
-                        <li class="twitter" style="width:34%;"><a href="#twitter"><span class="fa fa-twitter"></span></a></li>
-                        <li class="google-plus" style="width:33%;"><a href="#google-plus"><span class="fa fa-google-plus"></span></a></li>
                       </ul>
                     </div>
                   </li>
@@ -151,17 +152,11 @@
                     <div class="info">
                       <h2 class="title">Pastel Tere Cazola</h2>
                       <p class="desc">Mérida > Chihuahua</p>
+                      <p class="desc">Peso: 2 kg , Tamaño: pequeño</p>
+                      <p class="desc">Recompensa: $200</p>
                       <ul>
-                        <li style="width:33%;"><span class="glyphicon glyphicon-usd">140</span></li>
-                        <li style="width:34%;"><span class="glyphicon glyphicon-scale"> 1KG</span></li>
+                        <li style="width:33%;"><span class="fa fa-user-plus"></span></li>
                         <li style="width:33%;"><span class="fa fa-envelope"></span></li>
-                      </ul>
-                    </div>
-                    <div class="social">
-                      <ul>
-                        <li class="facebook" style="width:33%;"><a href="#facebook"><span class="fa fa-facebook"></span></a></li>
-                        <li class="twitter" style="width:34%;"><a href="#twitter"><span class="fa fa-twitter"></span></a></li>
-                        <li class="google-plus" style="width:33%;"><a href="#google-plus"><span class="fa fa-google-plus"></span></a></li>
                       </ul>
                     </div>
                   </li>
@@ -177,17 +172,11 @@
                     <div class="info">
                       <h2 class="title">Pastel Tere Cazola</h2>
                       <p class="desc">Mérida > Chihuahua</p>
+                      <p class="desc">Peso: 2 kg , Tamaño: pequeño</p>
+                      <p class="desc">Recompensa: $200</p>
                       <ul>
-                        <li style="width:33%;"><span class="glyphicon glyphicon-usd">140</span></li>
-                        <li style="width:34%;"><span class="glyphicon glyphicon-scale"> 1KG</span></li>
+                        <li style="width:33%;"><span class="fa fa-user-plus"></span></li>
                         <li style="width:33%;"><span class="fa fa-envelope"></span></li>
-                      </ul>
-                    </div>
-                    <div class="social">
-                      <ul>
-                        <li class="facebook" style="width:33%;"><a href="#facebook"><span class="fa fa-facebook"></span></a></li>
-                        <li class="twitter" style="width:34%;"><a href="#twitter"><span class="fa fa-twitter"></span></a></li>
-                        <li class="google-plus" style="width:33%;"><a href="#google-plus"><span class="fa fa-google-plus"></span></a></li>
                       </ul>
                     </div>
                   </li>
@@ -207,18 +196,11 @@
                     <img src="https://avatars1.githubusercontent.com/u/5461654?v=3&s=460" />
                     <div class="info">
                       <h2 class="title">Mérida > Chihuahua</h2>
-                      <p class="desc">Yuceli Polanco viaja el 27 de abril del 2015</p>
+                      <p class="desc">Modo de viaje: Terrestre</p>
+                      <p class="desc">Espacio disponible: 4 kg, Tamaño: pequeño</p>
                       <ul>
-                        <li style="width:34%;"><span class="glyphicon glyphicon-scale"> 2KG</span></li>
-                        <li style="width:33%;"><span class="glyphicon glyphicon-plane"> AEREO</span></li>
+                        <li style="width:33%;"><span class="fa fa-suitcase"></span></li>
                         <li style="width:33%;"><span class="fa fa-envelope"></span></li>
-                      </ul>
-                    </div>
-                    <div class="social">
-                      <ul>
-                        <li class="facebook" style="width:33%;"><a href="#facebook"><span class="fa fa-facebook"></span></a></li>
-                        <li class="twitter" style="width:34%;"><a href="#twitter"><span class="fa fa-twitter"></span></a></li>
-                        <li class="google-plus" style="width:33%;"><a href="#google-plus"><span class="fa fa-google-plus"></span></a></li>
                       </ul>
                     </div>
                   </li>
@@ -232,18 +214,11 @@
                     <img alt="My 24th Birthday!" src="https://avatars1.githubusercontent.com/u/5461654?v=3&s=460" />
                     <div class="info">
                       <h2 class="title">Mérida > Chihuahua</h2>
-                      <p class="desc">Yuceli Polanco viaja el 27 de abril del 2015</p>
+                      <p class="desc">Modo de viaje: Terrestre</p>
+                      <p class="desc">Espacio disponible: 4 kg, Tamaño: pequeño</p>
                       <ul>
-                        <li style="width:34%;"><span class="glyphicon glyphicon-scale"> 2KG</span></li>
-                        <li style="width:33%;"><span class="glyphicon glyphicon-plane"> AEREO</span></li>
+                       <li style="width:33%;"><span class="fa fa-suitcase"></span></li>
                         <li style="width:33%;"><span class="fa fa-envelope"></span></li>
-                      </ul>
-                    </div>
-                    <div class="social">
-                      <ul>
-                        <li class="facebook" style="width:33%;"><a href="#facebook"><span class="fa fa-facebook"></span></a></li>
-                        <li class="twitter" style="width:34%;"><a href="#twitter"><span class="fa fa-twitter"></span></a></li>
-                        <li class="google-plus" style="width:33%;"><a href="#google-plus"><span class="fa fa-google-plus"></span></a></li>
                       </ul>
                     </div>
                   </li>
@@ -257,19 +232,12 @@
                     </time>
                     <img alt="My 24th Birthday!" src="https://avatars1.githubusercontent.com/u/5461654?v=3&s=460" />
                     <div class="info">
-                      <h2 class="title">Mérida > Chihuahua</h2>
-                      <p class="desc">Yuceli Polanco viaja el 27 de abril del 2015</p>
+                     <h2 class="title">Mérida > Chihuahua</h2>
+                      <p class="desc">Modo de viaje: Terrestre</p>
+                      <p class="desc">Espacio disponible: 4 kg, Tamaño: pequeño</p>
                       <ul>
-                        <li style="width:34%;"><span class="glyphicon glyphicon-scale"> 2KG</span></li>
-                        <li style="width:33%;"><span class="glyphicon glyphicon-plane"> TERRESTRE</span></li>
+                        <li style="width:33%;"><span class="fa fa-suitcase"></span></li>
                         <li style="width:33%;"><span class="fa fa-envelope"></span></li>
-                      </ul>
-                    </div>
-                    <div class="social">
-                      <ul>
-                        <li class="facebook" style="width:33%;"><a href="#facebook"><span class="fa fa-facebook"></span></a></li>
-                        <li class="twitter" style="width:34%;"><a href="#twitter"><span class="fa fa-twitter"></span></a></li>
-                        <li class="google-plus" style="width:33%;"><a href="#google-plus"><span class="fa fa-google-plus"></span></a></li>
                       </ul>
                     </div>
                   </li>
