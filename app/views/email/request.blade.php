@@ -19,10 +19,11 @@
             	<div class="account-wall">
                 	<div id="my-tab-content" class="tab-content">
             			<div class="tab-pane active" align="center">
-							<h2>Password Reset</h2>
+							<h2>RESTABLECER CONTRASEÑA</h2>
 							<div>
-								To reset your password, complete this form: {{ URL::route('user/reset', array($token)) }}.<br/>
-								This link will expire in {{ Config::get('auth.reminder.expire', 60) }} minutes.
+								Da clic en el siguiente enlace para restablecer tu contraseña:<br/>
+                <a href={{ URL::route('user/reset', array($token)) }}>RESTABLECER CONTRASEÑA</a><br/>
+								ATENCIÓN: EL ENLACE CADUCARÁ EN 24HRS.
 							</div>
 						</div>
             		</div>
