@@ -90,7 +90,7 @@ CU-01
 */
 
 //Ruta para inicio de sesión
-Route::get('login', 'UserController@login');
+Route::get('login', 'UserController@showLogin');
 
 
 //Ruta de redirección en inicio de sesión

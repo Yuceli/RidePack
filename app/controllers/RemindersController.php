@@ -31,7 +31,8 @@ class RemindersController extends BaseController {
 			$response = $this->resetPassword($credentials);
 
 			if($response === Password::PASSWORD_RESET) {
-				return Redirect::to('login');
+				//return Redirect::to('login');
+				return Redirect::action("UserController@showLogin");
 			}
 
 			return Redirect::back()
