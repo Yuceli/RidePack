@@ -64,23 +64,16 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h2>Publica tu viaje</h2>
+          <h2>Publica tus paquetes</h2>
           <hr class="colorgraph">
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6">
-              <div class="form-group">
-                <select class="form-control input-lg" id="status" name="status">
-                  <option>Estoy viajando...</option>
-                  <option>Via Terestre</option>
-                  <option>Via Aerea</option>
-                  <option>Via Maritima</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-6">
-              <div class="form-group">
+          <div class="form-group">
+           <input type="text" name="descripcion" class="form-control input-lg" placeholder="Título o descripción del paquete" tabindex="3">
+        </div>  
+        
+        <div class="form-group">
+          <div class="form-group">
                <select class="form-control input-lg" id="status" name="status">
-                <option>Puedo transportar un paquete...</option>
+                <option>Volumen de mi paquete...</option>
                 <option>Extra pequeño</option>
                 <option>Pequeño</option>
                 <option>Mediano</option>
@@ -88,41 +81,37 @@
                 <option>Extra-Grande</option>
               </select>
             </div>
-          </div>
         </div>
         <div class="form-group">
-          <input type="number" name="quantity" min="1" max="15" class="form-control input-lg" placeholder="Peso en Kg" required="required" tabindex="5">
-        </div>  
+           <input type="number" name="quantity" min="1" max="15" class="form-control input-lg" placeholder="Peso de mi paquete en kg" required="required" tabindex="5">
+        </div>
         <div class="form-group">
-          <input type="text" name="ciudad_salida" class="form-control input-lg" placeholder="Ciudad de salida" tabindex="3">
+          <input type="text" name="ciudad_salida"  class="form-control input-lg" placeholder="Ciudad de salida" tabindex="4">
         </div>
         <div class="form-group">
           <input type="text" name="ciudad_destino"  class="form-control input-lg" placeholder="Ciudad de destino" tabindex="4">
         </div>
-        <div class="row">
-          <div class="col-xs-12 col-sm-6 col-md-6">
-            <div class="form-group">
-              <input type="date" name="fecha_salida" id="date" class="form-control input-lg" placeholder="Fecha" required="required" tabindex="5">
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-6 col-md-6">
-            <div class="form-group">
-             <input type="date" name="fecha_llegada" id="date" class="form-control input-lg" placeholder="Fecha" required="required" tabindex="5">
-           </div>
-         </div>
-       </div>
+         <div class="form-group">
+           <input type="date" name="fecha_salida" id="date" class="form-control input-lg" placeholder="Fecha salida" required="required">
+        </div>
+         <div class="form-group">
+           <input type="date" name="fecha_llegada" id="date" class="form-control input-lg" placeholder="Fecha llegada" required="required">
+        </div>
+
        <div class="row">
         <div class="col-md-12">
-          <textarea class="form-control input-lg" placeholder="Observaciones y comentarios" rows="3"></textarea>
+          <textarea class="form-control input-lg" placeholder="Observaciones y comentarios" rows="2"></textarea>
         </div>
       </div>
     </div>
+
+   
     
     <div class="container">
       <hr class="colorgraph">
       <div class="row">
         <div class="col-md-6  col-sm-offset-3">
-          <input type="submit" value="Publicar mi viaje" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+          <input type="submit" value="Publicar mi paquete" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
         </div>
       </div>
     </div>

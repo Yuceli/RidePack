@@ -62,6 +62,11 @@ Route::group(array('before' => 'auth'), function()
 		return View::make('post-trip');
 	});
 
+	Route::get('/postPackage', function()
+	{
+		return View::make('post-package');
+	});
+
 	Route::get('/editProfile', function()
 	{
 		return View::make('edit-profile');
