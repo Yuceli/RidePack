@@ -45,12 +45,9 @@ Route::group(array('before' => 'auth'), function()
 	Ruta para visualizar información de otro usuario
 	CU-03 y CU-04
 	*/
-	//Ruta para visualizar la información del usuario
+	//Ruta para visualizar la información del usuario 
 
-	Route::get('/profileOther', function()
-	{
-		return View::make('profile-other');
-	});
+	Route::get('/users','UsersProfileController@showUserProfile');
 	
 	Route::get('/sendItem', function()
 	{
@@ -83,11 +80,7 @@ Route::group(array('before' => 'auth'), function()
     
 });
 
-
-Route::get('/users', function()
-{
-	return View::make('users-profile');
-});
+Route::get('/users','UsersProfileController@showUserProfile');
 
 /*
 Rutas para Inicio y cierre de sesión
