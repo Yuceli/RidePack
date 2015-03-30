@@ -126,9 +126,9 @@ Route::get('/detailsPackage', function()
 	return View::make('details-package');
 });
 
-Route::get('/detailsTravel', function()
+Route::get('/detailsTrip', function()
 {
-	return View::make('details-travel');
+	return View::make('details-trip');
 });
 
 
