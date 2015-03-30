@@ -3,9 +3,10 @@
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
 <head>
+
     <title>RidePack</title>
     <!-- Meta -->
-    <meta charset="utf-8">
+   <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -97,10 +98,19 @@
                 <div class="row coralbg white">
                     <div class="col-md-6 no-pad">
                         <div class="user-pad">
-                            <h3>Yuceli Polanco</h3>
-                            <h4 class="white"><i class="fa fa-map-marker"></i> Miembro desde: 3/02/2015</h4>
-                            <h4 class="white"><i class="fa fa-birthday-cake"></i> Edad: 22 años</h4>
-                            <h4 class="white"><i class="fa fa-line-chart"></i> Rating: 8/10</h4>
+                          <?php
+                            echo '<h3>'. $user->name . $user->last_name. '<br><small class="white">' .$user->email.'</small></h3>';
+                            echo '<h4 class="white"><i class="fa fa-map-marker"></i> Miembro desde: '. $user->created_at. '</h4>';
+                            $birthdate=$user->birthdate;
+                            $birthday=new DateTime($birthdate);
+                            $today= time();
+                            $now= new DateTime(date("Y-m-d",$today));
+                            $age = $birthday->diff($now)->format('%y');
+                            if($age==0){
+                            echo '<h4 class="white"><i class="fa fa-birthday-cake"></i> Edad: ? </h4>';
+                            }else{
+                            echo '<h4 class="white"><i class="fa fa-birthday-cake"></i> Edad: '.$age.' </h4>';
+                            }?>
                         </div>
                     </div>
                     <div class="col-md-6 no-pad">
@@ -112,26 +122,129 @@
                 <div class="row overview">
                     <div class="col-md-6 user-pad text-center">
                         <h3>PAQUETES </h3>
-                        <h4>21</h4>
+                        <?php
+                        $counter=0;
+                        foreach($user->packs as $pack){
+                          $counter++;}
+                        echo'<h4>'.$counter.'</h4>';
+                        ?>
                     </div>
                     <div class="col-md-6 user-pad text-center">
-                        <h3>VIAJES</h3>
-                        <h4>456</h4>
+                        <h3>VIAJES</h3>                        <?php
+                        $counter=0;
+                        foreach($user->trips as $trip){
+                          $counter++;}
+                        echo'<h4>'.$counter.'</h4>';
+                        ?>
                     </div>
                 </div>
             </div>    
         </div>
     </div>
-</div>
-</div> 
-</div>
+
+    <!-Tabla de objetos -->
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">Objetos a enviar:</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">                
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-bordered">
+                    <tbody>
+                      <tr>
+                        <td>Nombre:</td>
+                        <td>Lugar de salida</td>
+                        <td>Lugar de llegada</td>
+                        <td>Fecha de salida</td>
+                        <td>Fecha de entrada</td>
+                        <td>Peso maximo:</td>
+                        <td>Volumen</td> 
+                      </tr>
+                  <?php
+                  foreach($user->packs as $pack){
+                        echo '<td>';
+                        echo "$pack->title";
+                        echo '</td><td>';
+                        echo "$pack->from_city";
+                        echo '</td><td>';
+                        echo "$pack->to_city";
+                        echo '</td><td>';
+                        echo "$pack->sending_date";
+                        echo'</td><td>';
+                        echo "$pack->arrival_date";
+                        echo'</td><td>';
+                        echo "$pack->weight";
+                        echo'</td><td>';
+                        echo "$pack->volume";
+                        echo'</td>
+                      </tr>';
+                    };?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    <!-Tabla de viajes -->
+
+
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">Viajes a llevar acabo:</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">                
+                <div class=" col-md-9 col-lg-9 "> 
+                   <table class="table table-bordered">
+                    <tbody>
+                      <tr>
+                        <td>Lugar de salida</td>
+                        <td>Lugar de llegada</td>
+                        <td>Fecha de salida</td>
+                        <td>Fecha de entrada</td>
+                        <td>Peso maximo</td>
+                        <td>Volumen</td> 
+                        <td>Transporte</td> 
+                      </tr>
+                  <?php
+                  foreach($user->trips as $trip){
+                        echo '<td>';
+                        echo "$trip->departure_city";
+                        echo '</td><td>';
+                        echo "$trip->arrival_city";
+                        echo '</td><td>';
+                        echo "$trip->departure_date";
+                        echo'</td><td>';
+                        echo "$trip->arrival_date";
+                        echo'</td><td>';
+                        echo "$trip->max_weight";
+                        echo'</td><td>';
+                        echo "$trip->max_volume";
+                        echo'</td><td>';
+                        echo "$trip->transport";
+                        echo'</td>
+                      </tr>';
+                    };?>
+                  </tbody>
+                </table>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
  <!-- ******FOOTER****** --> 
     <footer class="footer">
         <div class="container text-center">
             <small class="copyright">Desarrollado con <i class="fa fa-heart"></i></small>
         </div><!--//container-->
     </footer><!--//footer-->
-     
+ 
     <!-- Javascript -->          
     <script type="text/javascript" src="plugins/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="plugins/jquery-migrate-1.2.1.min.js"></script>    
