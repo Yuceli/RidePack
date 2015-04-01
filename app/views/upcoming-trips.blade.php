@@ -134,7 +134,7 @@
                       <h2 class="title">Pastel Tere Cazola</h2>
                       <p class="desc">Mérida > Chihuahua</p>
                       <p class="desc">Peso: 2 kg , Tamaño: pequeño</p>
-                      <p class="desc">Recompensa: $200</p>
+                     
                       <ul>
                         <li style="width:33%;"><span class="fa fa-user-plus"></span></li>
                         <li style="width:33%;"><span class="fa fa-envelope"></span></li>
@@ -153,7 +153,7 @@
                       <h2 class="title">Pastel Tere Cazola</h2>
                       <p class="desc">Mérida > Chihuahua</p>
                       <p class="desc">Peso: 2 kg , Tamaño: pequeño</p>
-                      <p class="desc">Recompensa: $200</p>
+                      
                       <ul>
                         <li style="width:33%;"><span class="fa fa-user-plus"></span></li>
                         <li style="width:33%;"><span class="fa fa-envelope"></span></li>
@@ -173,7 +173,7 @@
                       <h2 class="title">Pastel Tere Cazola</h2>
                       <p class="desc">Mérida > Chihuahua</p>
                       <p class="desc">Peso: 2 kg , Tamaño: pequeño</p>
-                      <p class="desc">Recompensa: $200</p>
+                      
                       <ul>
                         <li style="width:33%;"><span class="fa fa-user-plus"></span></li>
                         <li style="width:33%;"><span class="fa fa-envelope"></span></li>
