@@ -73,9 +73,9 @@ Route::group(array('before' => 'auth'), function()
 
 	Route::get('/deleteUser', 'UserController@deleteUser');
 
-	Route::get('/message', function()
+	Route::get('/inbox', function()
 	{
-		return View::make('message');
+		return View::make('inbox');
 	});
     
 });

@@ -1,12 +1,12 @@
 <?php 
 
 
-class MessageController extends BaseController {
+class InboxController extends BaseController {
 
 
 	public function showWelcome()
 	{
-		return View::make('message');
+		return View::make('inbox');
 	}
 
 

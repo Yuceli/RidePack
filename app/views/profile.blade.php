@@ -196,7 +196,7 @@
                                         </div>
                                     </li>
                                 </ul> 
-                                <a class="btn btn-info btn-circle text-uppercase pull-right" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Ver más solicitudes</a>
+                                <a class="btn btn-info btn-circle text-uppercase pull-right" href="inbox" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Ver más solicitudes</a>
                             </div>
 
 
@@ -238,7 +238,7 @@
                                                         <p class="media-comment">
                                                             Classy!
                                                         </p>
-                                                        <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
+                                                        <a class="btn btn-info btn-circle text-uppercase" href="" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
                                                     </div>              
                                                 </div>
                                             </li>
@@ -292,7 +292,7 @@
                                         </ul>  
                                     </div>
                                 </li>
-                             <a class="btn btn-info btn-circle text-uppercase pull-right" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Ver más mensajes</a>  
+                             <a class="btn btn-info btn-circle text-uppercase pull-right" href="inbox" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Ver más mensajes</a>  
                             </div>
 
 
