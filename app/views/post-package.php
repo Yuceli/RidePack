@@ -94,8 +94,11 @@
          <div class="form-group">
            <input type="date" name="fecha_salida" id="date" class="form-control input-lg" placeholder="Fecha salida" required="required">
         </div>
-         <div class="form-group">
+        <div class="form-group">
            <input type="date" name="fecha_llegada" id="date" class="form-control input-lg" placeholder="Fecha llegada" required="required">
+        </div>
+        <div class="form-group">
+           <input type="file" name="file" id="date" class="form-control input-lg" placeholder="file" required="required">
         </div>
 
        <div class="row">

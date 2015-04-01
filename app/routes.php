@@ -49,11 +49,6 @@ Route::group(array('before' => 'auth'), function()
 
 	Route::get('/users','UsersProfileController@showUserProfile');
 	
-	Route::get('/sendItem', function()
-	{
-		return View::make('send-item');
-	});
-
 	Route::get('/postTrip', function()
 	{
 		return View::make('post-trip');

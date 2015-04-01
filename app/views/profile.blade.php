@@ -114,13 +114,13 @@
                         <div class="col-xs-12 divider text-center">
                             <div class="col-xs-12 col-sm-6 emphasis">
                                 <h2><strong> 20 </strong></h2>                    
-                                <p><small>Viajes</small></p>
-                                <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Publicar viaje</button>
+                                <p><small>Viajes publicados</small></p>
+                                <a href="postTrip"><button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Publicar viaje</button></a>
                             </div>
                             <div class="col-xs-12 col-sm-6 emphasis">
                                 <h2><strong>245</strong></h2>                    
-                                <p><small>Paquetes</small></p>
-                                <button class="btn btn-info btn-block"><span class="fa fa-user"></span> Publicar paquete </button>
+                                <p><small>Paquetes publicados</small></p>
+                                <a href="postPackage"><button class="btn btn-info btn-block"><span class="fa fa-user"></span> Publicar paquete </button></a>
                             </div>
                         </div>
 
@@ -132,7 +132,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-6 emphasis">           
                                 <p><small>Restablecer contraseña</small></p>
-                                <button class="btn btn-warning btn-block"><span class="fa fa-user"></span> Restablecer contraseña </button>
+                                <a href="request"><button class="btn btn-warning btn-block"><span class="fa fa-user"></span> Restablecer contraseña </button></a>
                             </div>
                         </div>
                     </div>                 

@@ -110,6 +110,11 @@
              <input type="date" name="fecha_llegada" id="date" class="form-control input-lg" placeholder="Fecha" required="required" tabindex="5">
            </div>
          </div>
+         <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+            <input type="file" name="file" id="date" class="form-control input-lg" placeholder="file" required="required">
+           </div>
+         </div>
        </div>
        <div class="row">
         <div class="col-md-12">
