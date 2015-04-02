@@ -72,6 +72,20 @@ Route::group(array('before' => 'auth'), function()
 	{
 		return View::make('inbox');
 	});
+
+	Route::get('/detailsPackage', function()
+	{
+		return View::make('details-package');
+	});
+
+	Route::post('/detailsPackage', 'DetailsPackageController@sendMessage');
+
+	Route::get('/detailsTrip', function()
+	{
+		return View::make('details-trip');
+	});
+
+	Route::post('/detailsTrip', 'DetailsTripController@sendMessage');
     
 });
 
@@ -113,17 +127,6 @@ Route::post('register-user','RegisterController@register');
 Route::get('/upcomingTrips', function()
 {
 	return View::make('upcoming-trips');
-});
-
-
-Route::get('/detailsPackage', function()
-{
-	return View::make('details-package');
-});
-
-Route::get('/detailsTrip', function()
-{
-	return View::make('details-trip');
 });
 
 
@@ -208,3 +211,4 @@ Route::get('ejemploModelo', function()
 	return $res;
 });
 
+?>

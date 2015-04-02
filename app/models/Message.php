@@ -1,13 +1,17 @@
 <?php
 
-	class Message extends Eloquent {
+class Message extends Eloquent {
 
-		public function messageable()
-	    {
-	        return $this->morphTo();
-	    }
+	protected $fillable = ['from_user','content','status'];
 
-	    public function fromUser(){
-	    	return $this->belongsTo('User','from_user');
-	    }
-	}
+	public function messageable()
+    {
+        return $this->morphTo();
+    }
+
+    public function fromUser(){
+    	return $this->belongsTo('User','from_user');
+    }
+}
+
+?>
