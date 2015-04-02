@@ -79,46 +79,22 @@
                         <div class="col-xs-12 col-sm-8">
                             <h2>{{ Auth::user()->name; }}  {{ Auth::user()->last_name; }}</h2>
                             <p><strong>Email: </strong> {{ Auth::user()->email; }} </p>
-                            <p><strong>Usuario desde: </strong> 12/02/2015 </p>
-                            <p><strong>Cumpleaños: </strong>2/11/90</p>
-                            <p><strong>Genero: </strong>Femenino</p>
-                            <p><strong>Pais: </strong>México</p>
-                            <p><strong>Estado: </strong>Yucatán</p>
-                            <p><strong>Ciudad: </strong>Mérida</p>
+                            <p><strong>Usuario desde: </strong> {{ Auth::user()->created_at->toDateString(); }}  </p>
+                            <p><strong>Cumpleaños: </strong>{{ Auth::user()->birthdate; }}</p>
+                            <input id="city_id" value="{{ Auth::user()->city_id; }}" type="hidden">
+                            <p><strong>Pais: </strong><span id="country"> </span></p>
+                            <p><strong>Estado: </strong><span id="state"> </span></p>
+                            <p><strong>Ciudad: </strong><span id="city"> </span></p>
                             </div>             
-                            <div class="col-xs-12 col-sm-4 text-center">
-                                <figure>
-                                    <img src="http://www.localcrimenews.com/wp-content/uploads/2013/07/default-user-icon-profile.png" alt="" class="img-circle img-responsive">
-                                    <figcaption class="ratings">
-                                        <p>Ratings
-                                            <a href="#">
-                                                <span class="fa fa-star"></span>
-                                            </a>
-                                            <a href="#">
-                                                <span class="fa fa-star"></span>
-                                            </a>
-                                            <a href="#">
-                                                <span class="fa fa-star"></span>
-                                            </a>
-                                            <a href="#">
-                                                <span class="fa fa-star"></span>
-                                            </a>
-                                            <a href="#">
-                                                <span class="fa fa-star-o"></span>
-                                            </a> 
-                                        </p>
-                                    </figcaption>
-                                </figure>
-                            </div>
                         </div>            
                         <div class="col-xs-12 divider text-center">
                             <div class="col-xs-12 col-sm-6 emphasis">
-                                <h2><strong> 20 </strong></h2>                    
+                                <h2><strong> {{count(Auth::user()->trips)}} </strong></h2>                    
                                 <p><small>Viajes publicados</small></p>
                                 <a href="postTrip"><button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Publicar viaje</button></a>
                             </div>
                             <div class="col-xs-12 col-sm-6 emphasis">
-                                <h2><strong>245</strong></h2>                    
+                                <h2><strong>{{count(Auth::user()->packs)}}</strong></h2>                    
                                 <p><small>Paquetes publicados</small></p>
                                 <a href="postPackage"><button class="btn btn-info btn-block"><span class="fa fa-user"></span> Publicar paquete </button></a>
                             </div>
@@ -606,5 +582,27 @@
     <script type="text/javascript" src="plugins/prism/prism.js"></script>    
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/details-package.js"></script>       
+
+
+    <!--Api google-->
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+    <script type="text/javascript" src="js/googlePlaces.js"></script>
+
+    <script type="text/javascript">
+
+      window.onload= function(){
+        // Input hidden con el city_id
+        googlePlaces.inputPlaceID = document.getElementById('city_id');
+
+        // Divs o inputs para mostrar la ciudad, estado y país.
+        googlePlaces.outputCity = document.getElementById('city');
+        googlePlaces.outputState = document.getElementById('state');
+        googlePlaces.outputCountry = document.getElementById('country');
+
+        // Muestra los detalles correspondientes al city_id en el outputCity, outputState y outputCountry.
+        googlePlaces.getPlaceDetails();
+      };
+    </script>
+
 </body>
 </html> 
