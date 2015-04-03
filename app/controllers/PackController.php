@@ -40,9 +40,9 @@ class PackController extends BaseController {
 	    $pack->to_city = Input::get('to_city');
 	    //$pack->pack_picture = Input::file('pack_picture')->getFilename();
 
-	    Auth::user()->save($pack);
+	    Auth::user()->packs()->save($pack);
 
-		return Redirect::to('detailsPackage/'.$pack->id)->withMessage('Paquete publicado.');
+		return Redirect::to('detailsPackage/'/*.$pack->id*/)->withMessage('Paquete publicado.');
 	}
 
 	public function deletePack($id)

@@ -168,21 +168,43 @@
   <script type="text/javascript" src="js/main.js"></script>  
 
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
-    <script type="text/javascript" src="js/googlePlaces.js"></script>
+    <script type="text/javascript" src="js/googlePlaces2.js"></script>
 
     <script type="text/javascript">
 
+      var gp = null;
       window.onload= function(){
-        googlePlaces.initAutocomplete(document.getElementById('search_city'));
+        gp = new googlePlaces();
 
-        googlePlaces.inputPlaceID = document.getElementById('city_id');
+        gp.displaySearch = function() {
+            var place = gp.autocomplete.getPlace();
 
-        googlePlaces.outputCity = document.getElementById('city');
-        googlePlaces.outputState = document.getElementById('state');
-        googlePlaces.outputCountry = document.getElementById('country');
+            gp.displayPlaceDetails(place);
+        }
 
-        googlePlaces.getPlaceDetails();
+        gp.initAutocomplete(document.getElementById('search_city'));
+
+        gp.inputPlaceID = document.getElementById('city_id');
+
+        gp.outputCity = document.getElementById('city');
+        gp.outputState = document.getElementById('state');
+        gp.outputCountry = document.getElementById('country');
+
+        gp.showPlaceDetails = function (place, status) {
+
+            if (status == google.maps.places.PlacesServiceStatus.OK) {
+                gp.displayPlaceDetails(place);
+            }else{
+                gp.displayPlaceDetails({});
+            }
+        };
+
+        
+
+        gp.getPlaceDetails();
       };
+
+
     </script>
 
   </body>

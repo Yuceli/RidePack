@@ -211,5 +211,73 @@
 <script type="text/javascript" src="plugins/prism/prism.js"></script>    
 <script type="text/javascript" src="js/main.js"></script>  
 
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+<script type="text/javascript" src="js/googlePlaces2.js"></script>
+
+<script type="text/javascript">
+
+  var gp1, gp2;
+  window.onload= function(){
+    var gp1 = new googlePlaces();
+
+    gp1.displaySearch = function() {
+      var place = gp1.autocomplete.getPlace();
+
+      gp1.displayPlaceDetails(place);
+    };
+
+    gp1.initAutocomplete(document.getElementById('search_from_city'));
+
+    gp1.inputPlaceID = document.getElementById('from_city');
+
+    gp1.outputCity = document.getElementById('city_from');
+    gp1.outputState = document.getElementById('state_from');
+    gp1.outputCountry = document.getElementById('country_from');
+
+    gp1.showPlaceDetails = function (place, status) {
+      
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+            gp1.displayPlaceDetails(place);
+        }else{
+            gp1.displayPlaceDetails({});
+        }
+    };
+
+    gp1.getPlaceDetails();
+
+
+
+    gp2 = new googlePlaces();
+
+    gp2.displaySearch = function() {
+      var place = gp2.autocomplete.getPlace();
+
+      gp2.displayPlaceDetails(place);
+    };
+
+
+    gp2.initAutocomplete(document.getElementById('search_to_city'));
+
+    gp2.inputPlaceID = document.getElementById('to_city');
+
+    gp2.outputCity = document.getElementById('city_to');
+    gp2.outputState = document.getElementById('state_to');
+    gp2.outputCountry = document.getElementById('country_to');
+
+    gp2.showPlaceDetails = function (place, status) {
+      
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+            gp2.displayPlaceDetails(place);
+        }else{
+            gp2.displayPlaceDetails({});
+        }
+    };
+
+    gp2.getPlaceDetails();
+  };
+
+
+</script>
+
 </body>
 </html>
