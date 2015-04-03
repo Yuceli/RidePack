@@ -28,7 +28,7 @@
       <![endif]-->
     </head> 
 
-
+  <body>  
     <!-- ******HEADER****** --> 
     <header id="header" class="header">  
       <div class="container">            
@@ -48,12 +48,13 @@
           </div><!--//navbar-header-->            
           <div class="navbar-collapse collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
-            <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
-            <li class="nav-item"><a href="upcomingTrips">Buscar</a></li>
-            <li class="nav-item"><a href="postPackage">Publicar paquete</a></li>                        
-            <li class="nav-item last"><a href="postTrip">Publicar viaje</a></li>
-            <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
-          </ul><!--//nav-->
+              <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
+              <li class="nav-item"><a href="profile">Perfil</a></li>
+              <li class="nav-item"><a href="upcomingTrips">Buscar</a></li>
+              <li class="nav-item"><a href="postPackage">Publicar paquete</a></li>                        
+              <li class="nav-item active"><a href="postTrip">Publicar viaje</a></li>
+              <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
+            </ul><!--//nav-->
           </div><!--//navabr-collapse-->
         </nav><!--//main-nav-->
       </div>
@@ -107,11 +108,6 @@
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
              <input type="date" name="fecha_llegada" id="date" class="form-control input-lg" placeholder="Fecha" required="required" tabindex="5">
-           </div>
-         </div>
-         <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-            <input type="file" name="file" id="date" class="form-control input-lg" placeholder="file" required="required">
            </div>
          </div>
        </div>

@@ -30,36 +30,36 @@
 </head> 
 
 <body>
-    <!-- ******HEADER****** --> 
-    <header id="header" class="header">  
-        <div class="container">            
-            <h1 class="logo pull-left">
-                <a class="scrollto" href="#promo">
-                    <span class="logo-title">RidePack</span>
-                </a>
-            </h1><!--//logo-->              
-            <nav id="main-nav" class="main-nav navbar-right" role="navigation">
-                <div class="navbar-header">
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button><!--//nav-toggle-->
-                </div><!--//navbar-header-->            
-                <div class="navbar-collapse collapse" id="navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
-                        <li class="nav-item"><a class="scrollto" href="#about">Buscar</a></li>
-                        <li class="nav-item"><a class="scrollto" href="#features">Enviar paquete</a></li>                        
-                        <li class="nav-item last"><a class="scrollto" href="#contact">Publicar viaje</a></li>
-                        <li class="nav-item last"><a class="scrollto" href="{{URL::to('logout')}}">Cerrar sesión</a></li>
-                        <li class="nav-item last"><a class="scrollto" href=""></a></li>
-                    </ul><!--//nav-->
-                </div><!--//navabr-collapse-->
-            </nav><!--//main-nav-->
-        </div>
-    </header><!--//header--> 
+     <!-- ******HEADER****** --> 
+  <header id="header" class="header">  
+    <div class="container">            
+      <h1 class="logo pull-left">
+        <a class="scrollto" href="">
+          <span class="logo-title">RidePack</span>
+        </a>
+      </h1><!--//logo-->              
+      <nav id="main-nav" class="main-nav navbar-right" role="navigation">
+        <div class="navbar-header">
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button><!--//nav-toggle-->
+        </div><!--//navbar-header-->            
+        <div class="navbar-collapse collapse" id="navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
+            <li class="nav-item active"><a href="profile">Perfil</a></li>
+            <li class="nav-item"><a href="upcomingTrips">Buscar</a></li>
+            <li class="nav-item"><a href="postPackage">Publicar paquete</a></li>                        
+            <li class="nav-item"><a href="postTrip">Publicar viaje</a></li>
+            <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
+          </ul><!--//nav-->
+        </div><!--//navabr-collapse-->
+      </nav><!--//main-nav-->
+    </div>
+  </header><!--//header--> 
 
 
     <br><br><br>

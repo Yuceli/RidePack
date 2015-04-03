@@ -26,10 +26,10 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
-    </head> 
+    </head>
 
-
-    <!-- ******HEADER****** --> 
+<body>
+     <!-- ******HEADER****** --> 
     <header id="header" class="header">  
       <div class="container">            
         <h1 class="logo pull-left">
@@ -48,16 +48,19 @@
           </div><!--//navbar-header-->            
           <div class="navbar-collapse collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
-            <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
-            <li class="nav-item"><a href="upcomingTrips">Buscar</a></li>
-            <li class="nav-item"><a href="postPackage">Publicar paquete</a></li>                        
-            <li class="nav-item last"><a href="postTrip">Publicar viaje</a></li>
-            <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
-          </ul><!--//nav-->
+              <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
+              <li class="nav-item"><a href="profile">Perfil</a></li>
+              <li class="nav-item"><a href="upcomingTrips">Buscar</a></li>
+              <li class="nav-item active"><a href="postPackage">Publicar paquete</a></li>                        
+              <li class="nav-item"><a href="postTrip">Publicar viaje</a></li>
+              <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
+            </ul><!--//nav-->
           </div><!--//navabr-collapse-->
         </nav><!--//main-nav-->
       </div>
-    </header><!--//header--> 
+    </header><!--//header-->  
+
+
 
     <br><br><br><br>
     <div class="container">

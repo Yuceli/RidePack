@@ -29,37 +29,37 @@
 </head> 
 
 <body>
-
-  <!-- ******HEADER****** --> 
-  <header id="header" class="header">  
-    <div class="container">
-      <h1 class="logo pull-left">
-        <a class="scrollto" href="">
-          <span class="logo-title">RidePack</span>
-        </a>
-      </h1><!--//logo-->
-      <nav id="main-nav" class="main-nav navbar-right" role="navigation">
-        <div class="navbar-header">
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button><!--//nav-toggle-->
-        </div><!--//navbar-header-->            
-        <div class="navbar-collapse collapse" id="navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
-            <li class="nav-item"><a class="scrollto" href="#buscar">Buscar</a></li>
-            <li class="nav-item"><a class="scrollto" href="#paquete">Enviar paquete</a></li>                        
-            <li class="nav-item last"><a class="scrollto" href="#viaje">Publicar viaje</a></li>
-            <li class="nav-item last"><a class="scrollto" href="{{URL::to('logout')}}">Cerrar sesión</a></li>
-            <li class="nav-item last"><a class="scrollto" href=""></a></li>
-          </ul><!--//nav-->
-        </div><!--//navabr-collapse-->
-      </nav><!--//main-nav-->
-    </div>
-  </header><!--//header--> 
+     <!-- ******HEADER****** --> 
+    <header id="header" class="header">  
+      <div class="container">            
+        <h1 class="logo pull-left">
+          <a class="scrollto" href="">
+            <span class="logo-title">RidePack</span>
+          </a>
+        </h1><!--//logo-->              
+        <nav id="main-nav" class="main-nav navbar-right" role="navigation">
+          <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button><!--//nav-toggle-->
+          </div><!--//navbar-header-->            
+          <div class="navbar-collapse collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
+              <li class="nav-item"><a href="profile">Perfil</a></li>
+              <li class="nav-item"><a href="upcomingTrips">Buscar</a></li>
+              <li class="nav-item"><a href="postPackage">Publicar paquete</a></li>                        
+              <li class="nav-item"><a href="postTrip">Publicar viaje</a></li>
+              <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
+            </ul><!--//nav-->
+          </div><!--//navabr-collapse-->
+        </nav><!--//main-nav-->
+      </div>
+    </header><!--//header-->   
+ 
 
   <br><br><br><br><br>
   <div class="container">
@@ -127,7 +127,7 @@
             </div>
           </div>
         </div>
-        <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Atras</a>
+        <a href="upcomingTrips" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Atras</a>
       </div>
 
       <div class="col-md-3">
@@ -144,11 +144,15 @@
                   <tr>
                     <td colspan="8"> <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Enviar mensaje<span class="glyphicon glyphicon-chevron-right"></span></a></td>
                   </tr>
-
+                   <tr>
+                    <td colspan="8"> <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#ratings">Valorar usuario<span class="glyphicon glyphicon-chevron-right"></span></a></td>
+                  </tr>
                   <tr>
                     <td colspan="8"> <a href="#" class="btn btn-primary pull-right">Enviar petición<span class="glyphicon glyphicon-chevron-right"></span></a></td>
                   </tr>
-
+                  <tr>
+                    <td colspan="8"><strong>Miembro desde: </strong>12/01/2015</td>
+                  </tr>
                   <tr>
                     <td colspan="8"><strong>Viajes publicados: </strong>4 viajes</td>
                   </tr>
@@ -158,11 +162,9 @@
                   </tr>
                   
                   <tr>
-                    <td colspan="8"><strong>Valoraciones: </strong>8/10</td>
+                    <td colspan="8"><strong>Rating: </strong>4/5</td>
                   </tr>
-                  
                 </tbody>
-                
               </table>
             </div>
           </div>
@@ -210,6 +212,40 @@
       </div>
     </div>
   </div>
+
+
+
+  <!-- Modal ratings -->
+  <div class="modal fade" id="ratings" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">×</span>
+            <span class="sr-only">Close</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">
+            <i class="fa fa-envelope"></i> Califica a este usuario
+          </h4>
+        </div>
+        <div class="modal-body">
+          <p>Puedes elegir un número 1 al 5 para calificar a este usuario</p>
+          <select class="form-control">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select> 
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Calificar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <br><br><br><br><br>
   <!-- ******FOOTER****** --> 

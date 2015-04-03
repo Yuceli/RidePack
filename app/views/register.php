@@ -63,7 +63,7 @@
 		<div class="row">
 			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 				<?php echo Form::open(array('action' => 'RegisterController@register', 'method' => 'post')) ?>
-				<h2>Please Sign Up</h2>
+				<h2>Únete hoy a RidePack</h2>
 				<hr class="colorgraph">
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-6">
@@ -163,7 +163,7 @@
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
 				</div>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->
