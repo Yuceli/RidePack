@@ -54,6 +54,8 @@ Route::group(array('before' => 'auth'), function()
 		return View::make('post-trip');
 	});
 
+	Route::post('/postTrip', 'PostTripController@createTrip');
+
 	Route::get('/postPackage', function()
 	{
 		return View::make('post-package');
