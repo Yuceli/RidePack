@@ -59,6 +59,8 @@ Route::group(array('before' => 'auth'), function()
 		return View::make('post-package');
 	});
 
+	Route::post('/postPackage', 'PackController@createPack');
+
 	Route::get('/editProfile', function()
 	{
 		return View::make('edit-profile');
