@@ -3,7 +3,7 @@
 
 class PackageController extends BaseController {
 
-
+ 
 	public function createPack()
 	{
 		$rules = array(
@@ -38,9 +38,29 @@ class PackageController extends BaseController {
 	    $pack->status = 'onhold';
 	    $pack->from_city = Input::get('from_city');
 	    $pack->to_city = Input::get('to_city');
-	    //$pack->pack_picture = Input::file('pack_picture')->getFilename();
 
-	    Auth::user()->packs()->save($pack);
+	    $user = Auth::user();
+
+	    if( Input::hasFile('pack_picture') ){
+
+	    	$uploadedFile = Input::file('pack_picture');
+
+	    	if( $uploadedFile->isValid() ){
+
+	    		$destinantionPath = public_path($user->getImagesPath());
+
+	    		if( File::exists($destinantionPath.'/'.$uploadedFile->getClientOriginalName()) ){
+
+	    			return Redirect::back()->withErrors(array('pack_picture'=>'Ya existe una imagen con ese nombre.'))->withInput(Input::except('pack_picture'));
+	    		}
+
+				$uploadedFile->move($destinantionPath , $uploadedFile->getClientOriginalName());
+
+				$pack->pack_picture = $user->getImagesPath() .'/'. $uploadedFile->getClientOriginalName();
+	    	}
+	    }
+	    
+	    $user->packs()->save($pack);
 
 		return Redirect::to('package_details/'/*.$pack->id*/)->withMessage('Paquete publicado.');
 	}
