@@ -102,7 +102,7 @@ Route::get('login', 'UserController@showLogin');
 
 
 //Ruta de redirección en inicio de sesión
-Route::post('upcomingTrips', 'UserController@login');
+Route::post('search', 'UserController@login');
 
 
 
@@ -125,9 +125,14 @@ Route::controller('register','RegisterController');
 Route::post('register-user','RegisterController@register');
 
 
-Route::get('/upcomingTrips', function()
+Route::get('/search', function()
 {
-	return View::make('upcoming-trips');
+	return View::make('search');
+});
+
+Route::get('/management', function()
+{
+	return View::make('management');
 });
 
 
