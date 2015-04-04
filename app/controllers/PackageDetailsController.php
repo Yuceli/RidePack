@@ -1,11 +1,11 @@
 <?php
 
-class DetailsPackageController extends BaseController {
+class PackageDetailsController extends BaseController {
 
 
 	public function showWelcome()
 	{
-		return View::make('details-package');
+		return View::make('package_details');
 	}
 
 	public function sendMessage()
@@ -23,7 +23,7 @@ class DetailsPackageController extends BaseController {
 				Session::flash('message', 'Error al enviar el mensaje!');
 				Session::flash('class', 'danger');
 			}
-			return Redirect::to('/detailsPackage');
+			return Redirect::to('/package_details');
 		}
 	}
 

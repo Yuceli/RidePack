@@ -23,7 +23,7 @@
 </head>
 <body>
 
-  <!-- ******HEADER****** --> 
+    <!-- ******HEADER****** --> 
   <header id="header" class="header">  
     <div class="container">            
       <h1 class="logo pull-left">
@@ -43,9 +43,11 @@
         <div class="navbar-collapse collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
-            <li class="nav-item"><a class="scrollto" href="#buscar">Buscar</a></li>
-            <li class="nav-item"><a class="scrollto" href="#paquete">Enviar paquete</a></li>                        
-            <li class="nav-item last"><a class="scrollto" href="#viaje">Publicar viaje</a></li>
+            <li class="nav-item active"><a href="profile">Perfil</a></li>
+            <li class="nav-item"><a href="search">Buscar</a></li>
+            <li class="nav-item"><a href="post_package">Publicar paquete</a></li>                        
+            <li class="nav-item"><a href="post_travel">Publicar viaje</a></li>
+            <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
           </ul><!--//nav-->
         </div><!--//navabr-collapse-->
       </nav><!--//main-nav-->

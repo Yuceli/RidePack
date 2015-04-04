@@ -130,7 +130,7 @@
             </div>
           </div>
         </div>
-        <a href="upcomingTrips" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Atras</a>
+        <a href="search" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Atras</a>
       </div>
 
       <div class="col-md-3">
@@ -191,7 +191,7 @@
         </div>
         <div class="modal-body">
           <p>Solicita más detalles al viajero</p>
-          {{ Form::open( array('action' => 'DetailsTripController@sendMessage') ) }}
+          {{ Form::open( array('action' => 'TripDetailsController@sendMessage') ) }}
             <div class='input-group'>
               <span class='input-group-addon'>
                 <i class='fa fa-envelope'></i>

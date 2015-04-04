@@ -49,20 +49,21 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('/users/{user_id}','UsersProfileController@showUserProfile');
 
 
-	Route::get('/postTrip', function()
+	Route::get('/post_travel', function()
 	{
-		return View::make('post-trip');
+		return View::make('post_travel');
 	});
 
-	Route::post('/postTrip', 'PostTripController@createTrip');
+	Route::post('/post_travel', 'TripController@createTrip');
 
-	Route::get('/postPackage', function()
+	Route::get('/post_package', function()
 	{
-		return View::make('post-package');
+		return View::make('post_package');
 	});
 
-	Route::post('/postPackage', 'PackController@createPack');
-
+	Route::post('/post_package', 'PackageController@createPack');
+    
+    //Eliminar esta ruta despues de pasar la información de esta vista a la vista profile - Para: Yussel
 	Route::get('/editProfile', function()
 	{
 		return View::make('edit-profile');
@@ -77,19 +78,20 @@ Route::group(array('before' => 'auth'), function()
 		return View::make('inbox');
 	});
 
-	Route::get('/detailsPackage', function()
+	Route::get('/package_details', function()
 	{
-		return View::make('details-package');
+		return View::make('package_details');
 	});
 
-	Route::post('/detailsPackage', 'DetailsPackageController@sendMessage');
+	Route::post('/package_details', 'PackageDetailsController@sendMessage');
+	
 
-	Route::get('/detailsTrip', function()
+	Route::get('/trip_details', function()
 	{
-		return View::make('details-trip');
+		return View::make('trip_details');
 	});
 
-	Route::post('/detailsTrip', 'DetailsTripController@sendMessage');
+	Route::post('/trip_details', 'TripDetailsController@sendMessage');
     
 });
 /*

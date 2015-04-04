@@ -1,7 +1,7 @@
 <?php 
 
 
-class PostTripController extends BaseController {
+class TripController extends BaseController {
 
 
 	public function createTrip()
@@ -40,7 +40,7 @@ class PostTripController extends BaseController {
 	    
 	    Auth::user()->trips()->save($trip);
 
-		return Redirect::to('detailsTrip/')->withMessage('Viaje publicado.');
+		return Redirect::to('trip_details/')->withMessage('Viaje publicado.');
 	}
 
 	public function deleteTrip($id)

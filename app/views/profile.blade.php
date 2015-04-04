@@ -51,9 +51,9 @@
           <ul class="nav navbar-nav">
             <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
             <li class="nav-item active"><a href="profile">Perfil</a></li>
-            <li class="nav-item"><a href="upcomingTrips">Buscar</a></li>
-            <li class="nav-item"><a href="postPackage">Publicar paquete</a></li>                        
-            <li class="nav-item"><a href="postTrip">Publicar viaje</a></li>
+            <li class="nav-item"><a href="search">Buscar</a></li>
+            <li class="nav-item"><a href="post_package">Publicar paquete</a></li>                        
+            <li class="nav-item"><a href="post_travel">Publicar viaje</a></li>
             <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
           </ul><!--//nav-->
         </div><!--//navabr-collapse-->
@@ -88,15 +88,16 @@
                             </div>             
                         </div>            
                         <div class="col-xs-12 divider text-center">
+                            <a href="management"><button class="btn btn-primary btn-block"><span class="fa fa-plus-circle"></span> Gestionar mis viajes</button></a>
                             <div class="col-xs-12 col-sm-6 emphasis">
                                 <h2><strong> {{count(Auth::user()->trips)}} </strong></h2>                    
                                 <p><small>Viajes publicados</small></p>
-                                <a href="postTrip"><button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Publicar viaje</button></a>
+                                <a href="post_travel"><button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Publicar viaje</button></a>
                             </div>
                             <div class="col-xs-12 col-sm-6 emphasis">
                                 <h2><strong>{{count(Auth::user()->packs)}}</strong></h2>                    
                                 <p><small>Paquetes publicados</small></p>
-                                <a href="postPackage"><button class="btn btn-info btn-block"><span class="fa fa-user"></span> Publicar paquete </button></a>
+                                <a href="post_package"><button class="btn btn-info btn-block"><span class="fa fa-user"></span> Publicar paquete </button></a>
                             </div>
                         </div>
 

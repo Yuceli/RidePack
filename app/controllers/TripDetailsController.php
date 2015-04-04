@@ -1,11 +1,11 @@
 <?php
 
-class DetailsTripController extends BaseController {
+class TripDetailsController extends BaseController {
 
 
 	public function showWelcome()
 	{
-		return View::make('details-trip');
+		return View::make('trip_details');
 	}
 
 	public function sendMessage()
@@ -23,7 +23,7 @@ class DetailsTripController extends BaseController {
 				Session::flash('message', 'Error al enviar el mensaje!');
 				Session::flash('class', 'danger');
 			}
-			return Redirect::to('/detailsTrip');
+			return Redirect::to('/trip_details');
 		}
 	}
 }

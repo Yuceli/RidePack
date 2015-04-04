@@ -1,7 +1,7 @@
 <?php 
 
 
-class PackController extends BaseController {
+class PackageController extends BaseController {
 
 
 	public function createPack()
@@ -42,7 +42,7 @@ class PackController extends BaseController {
 
 	    Auth::user()->packs()->save($pack);
 
-		return Redirect::to('detailsPackage/'/*.$pack->id*/)->withMessage('Paquete publicado.');
+		return Redirect::to('package_details/'/*.$pack->id*/)->withMessage('Paquete publicado.');
 	}
 
 	public function deletePack($id)

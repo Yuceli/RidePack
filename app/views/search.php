@@ -52,8 +52,8 @@
             <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
             <li class="nav-item"><a href="profile">Perfil</a></li>
             <li class="nav-item"><a href="#buscar">Buscar</a></li>
-            <li class="nav-item"><a href="postPackage">Publicar paquete</a></li>                        
-            <li class="nav-item"><a href="postTrip">Publicar viaje</a></li>
+            <li class="nav-item"><a href="post_package">Publicar paquete</a></li>                        
+            <li class="nav-item"><a href="post_travel">Publicar viaje</a></li>
             <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
           </ul><!--//nav-->
         </div><!--//navabr-collapse-->
@@ -136,7 +136,7 @@
                       <p class="desc">Peso: 2 kg , Tamaño: pequeño</p>
                      
                       <ul>
-                        <a href="detailsPackage"><li style="width:100%;"><span class="fa fa-user-plus"></span></li></a>
+                        <a href="package_details"><li style="width:100%;"><span class="fa fa-user-plus"></span></li></a>
                       </ul>
                     </div>
                   </li>
@@ -154,7 +154,7 @@
                       <p class="desc">Peso: 2 kg , Tamaño: pequeño</p>
                       
                       <ul>
-                         <a href="detailsPackage"><li style="width:100%;"><span class="fa fa-user-plus"></span></li></a>
+                         <a href="package_details"><li style="width:100%;"><span class="fa fa-user-plus"></span></li></a>
                       </ul>
                     </div>
                   </li>
@@ -173,7 +173,7 @@
                       <p class="desc">Peso: 2 kg , Tamaño: pequeño</p>
                       
                       <ul>
-                        <a href="detailsPackage"><li style="width:100%;"><span class="fa fa-user-plus"></span></li></a>
+                        <a href="package_details"><li style="width:100%;"><span class="fa fa-user-plus"></span></li></a>
                       </ul>
                     </div>
                   </li>
@@ -196,7 +196,7 @@
                       <p class="desc">Modo de viaje: Terrestre</p>
                       <p class="desc">Espacio disponible: 4 kg, Tamaño: pequeño</p>
                       <ul>
-                         <a href="detailsTrip"><li style="width:100%;"><span class="fa fa-suitcase"></span></li></a>
+                         <a href="trip_details"><li style="width:100%;"><span class="fa fa-suitcase"></span></li></a>
                       </ul>
                     </div>
                   </li>
@@ -213,7 +213,7 @@
                       <p class="desc">Modo de viaje: Terrestre</p>
                       <p class="desc">Espacio disponible: 4 kg, Tamaño: pequeño</p>
                       <ul>
-                        <a href="detailsTrip"><li style="width:100%;"><span class="fa fa-suitcase"></span></li></a>
+                        <a href="trip_details"><li style="width:100%;"><span class="fa fa-suitcase"></span></li></a>
                       </ul>
                     </div>
                   </li>
@@ -231,7 +231,7 @@
                       <p class="desc">Modo de viaje: Terrestre</p>
                       <p class="desc">Espacio disponible: 4 kg, Tamaño: pequeño</p>
                       <ul>
-                        <a href="detailsTrip"><li style="width:100%;"><span class="fa fa-suitcase"></span></li></a>
+                        <a href="trip_details"><li style="width:100%;"><span class="fa fa-suitcase"></span></li></a>
                       </ul>
                     </div>
                   </li>
