@@ -46,9 +46,9 @@ Route::group(array('before' => 'auth'), function()
 	CU-03 y CU-04
 	*/
 	//Ruta para visualizar la información del usuario 
+	Route::get('/users/{user_id}','UsersProfileController@showUserProfile');
 
-	Route::get('/users','UsersProfileController@showUserProfile');
-	
+
 	Route::get('/postTrip', function()
 	{
 		return View::make('post-trip');
@@ -92,9 +92,6 @@ Route::group(array('before' => 'auth'), function()
 	Route::post('/detailsTrip', 'DetailsTripController@sendMessage');
     
 });
-
-Route::get('/users','UsersProfileController@showUserProfile');
-
 /*
 Rutas para Inicio y cierre de sesión
 CU-01

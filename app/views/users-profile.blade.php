@@ -11,17 +11,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">    
-    <link rel="shortcut icon" href="img/favicon.ico">  
+    <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}">  
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
     <!-- Global CSS -->
-    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}">
     <!-- Plugins CSS -->    
-    <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="plugins/prism/prism.css">
+    <link rel="stylesheet" href="{{asset('plugins/font-awesome/css/font-awesome.css')}}">
+    <link rel="stylesheet" href="{{asset('plugins/prism/prism.css')}}")>
     <!-- Theme CSS -->  
-    <link id="theme-style" rel="stylesheet" href="css/styles.css">
-    <link id="theme-style" rel="stylesheet" href="css/profile.css">
+    <link id="theme-style" rel="stylesheet" href="{{asset('css/styles.css')}}">
+    <link id="theme-style" rel="stylesheet" href="{{asset('css/profile.css')}}">
     <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet" media="screen">  
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -73,7 +73,7 @@
             </h1><!--//logo-->              
             <nav id="main-nav" class="main-nav navbar-right" role="navigation">
                 <div class="navbar-header">
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="{{asset('#navbar-collapse')}}">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -100,7 +100,7 @@
                         <div class="user-pad">
                           <?php
                             echo '<h3>'. $user->name . $user->last_name. '<br><small class="white">' .$user->email.'</small></h3>';
-                            echo '<h4 class="white"><i class="fa fa-map-marker"></i> Miembro desde: '. $user->created_at. '</h4>';
+                            echo '<h4 class="white"><i class="fa fa-map-marker"></i> Miembro desde: '. $user->created_at->toDateString(). '</h4>';
                             $birthdate=$user->birthdate;
                             $birthday=new DateTime($birthdate);
                             $today= time();
@@ -123,18 +123,13 @@
                     <div class="col-md-6 user-pad text-center">
                         <h3>PAQUETES </h3>
                         <?php
-                        $counter=0;
-                        foreach($user->packs as $pack){
-                          $counter++;}
-                        echo'<h4>'.$counter.'</h4>';
+                        echo'<h4>'.count($user->packs).'</h4>';
                         ?>
                     </div>
                     <div class="col-md-6 user-pad text-center">
-                        <h3>VIAJES</h3>                        <?php
-                        $counter=0;
-                        foreach($user->trips as $trip){
-                          $counter++;}
-                        echo'<h4>'.$counter.'</h4>';
+                        <h3>VIAJES</h3>
+                        <?php
+                        echo'<h4>'.count($user->trips).'</h4>';
                         ?>
                     </div>
                 </div>
@@ -245,14 +240,14 @@
         </div><!--//container-->
     </footer><!--//footer-->
  
-    <!-- Javascript -->          
-    <script type="text/javascript" src="plugins/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="plugins/jquery-migrate-1.2.1.min.js"></script>    
-    <script type="text/javascript" src="plugins/jquery.easing.1.3.js"></script>   
-    <script type="text/javascript" src="plugins/bootstrap/js/bootstrap.min.js"></script>     
-    <script type="text/javascript" src="plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script> 
-    <script type="text/javascript" src="plugins/prism/prism.js"></script>    
-    <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/details-package.js"></script>       
+    <!-- Javascript -->     
+    <script type="text/javascript" src="{{asset('plugins/jquery-1.11.1.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('plugins/jquery-migrate-1.2.1.min.js')}}"></script>    
+    <script type="text/javascript" src="{{asset('plugins/jquery.easing.1.3.js')}}"></script>   
+    <script type="text/javascript" src="{{asset('plugins/bootstrap/js/bootstrap.min.js')}}"></script>     
+    <script type="text/javascript" src="{{asset('plugins/jquery-scrollTo/jquery.scrollTo.min.js')}}"></script> 
+    <script type="text/javascript" src="{{asset('plugins/prism/prism.js')}}"></script>    
+    <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/details-package.js')}}"></script>       
 </body>
 </html> 
