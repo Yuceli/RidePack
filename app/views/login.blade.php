@@ -70,7 +70,7 @@
                   echo "<p>".$message."</p>";
                 }
               ?>
-              {{Form::open(array('url' => 'upcomingTrips', 'class'=>'form-signin'))}}
+              {{Form::open(array('url' => 'search', 'class'=>'form-signin'))}}
               @if(Session::has('error_message'))
               <div class="alert alert-warning alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
