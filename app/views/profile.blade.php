@@ -128,103 +128,100 @@
                         </ul>            
                         <div class="tab-content">
                             <div class="tab-pane active" id="comments-logout">                
-                                <ul class="media-list">
-                                    <li class="media">
-                                        <a class="pull-left" href="#">
-                                            <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg" alt="profile">
-                                        </a>
-                                        <div class="media-body">
-                                            <div class="well well-lg">
-                                                <h4 class="media-heading text-uppercase reviews">Marco </h4>
-                                                <ul class="media-date text-uppercase reviews list-inline">
-                                                    <li class="dd">22</li>
-                                                    <li class="mm">09</li>
-                                                    <li class="aaaa">2014</li>
-                                                </ul>
-                                                <p class="media-comment">
-                                                    Marco se ha postulado para transportar tu paquete
-                                                </p>
-                                                <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Aceptar</a>
-                                                <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Rechazar</a>
-                                                <a class="btn btn-info btn-circle text-uppercase" href="#" data-title="profile_user" data-toggle="modal" data-target="#profile_user"><span class="glyphicon glyphicon-share-alt"></span> Ver perfil</a>
-                                            </div>              
-                                        </div>
-                                    </li>          
+                              <div class="table-responsive">
+                                <table id="mytable" class="table table-bordred table-striped">
+                                   <thead>
+                                     <th>ID</th>
+                                     <th>Descripción</th>
+                                     <th>Fecha</th>
+                                 </thead>
+                                 <tbody>
 
-                                    <li class="media">
-                                        <a class="pull-left" href="#">
-                                            <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/lady_katherine/128.jpg" alt="profile">
-                                        </a>
-                                        <div class="media-body">
-                                            <div class="well well-lg">
-                                                <h4 class="media-heading text-uppercase reviews">Kriztine</h4>
-                                                <ul class="media-date text-uppercase reviews list-inline">
-                                                    <li class="dd">22</li>
-                                                    <li class="mm">09</li>
-                                                    <li class="aaaa">2014</li>
-                                                </ul>
-                                                <p class="media-comment">
-                                                    Kristine se ha postulado para transportar tu paquete
-                                                </p>
-                                                <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Aceptar</a>
-                                                <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Rechazar</a>
-                                                <a class="btn btn-info btn-circle text-uppercase" href="#" data-title="profile_user" data-toggle="modal" data-target="#profile_user"><span class="glyphicon glyphicon-share-alt"></span> Ver perfil</a>
-                                            </div>              
-                                        </div>
-                                    </li>
-                                </ul> 
-                                <a class="btn btn-info btn-circle text-uppercase pull-right" href="inbox" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Ver más solicitudes</a>
+                                  <tr>
+                                    <td>1</td>
+                                    <td>Marco se ha postulado para transportar tu paquete</td>
+                                    <td>10/12/2015</td>
+                                </tr>
+
+                                <tr>
+                                    <td>2</td>
+                                    <td>Marco se ha postulado para transportar tu paquete</td>
+                                    <td>10/12/2015</td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>3</td>
+                                    <td>Marco se ha postulado para transportar tu paquete</td>
+                                    <td>10/12/2015</td>  
+                                </tr>
+
+                                <tr>
+                                    <td>4</td>
+                                    <td>Marco se ha postulado para transportar tu paquete</td>
+                                     <td>10/12/2015</td>
+                                </tr>
+
+                                <tr>
+                                    <td>5</td>
+                                    <td>Marco se ha postulado para transportar tu paquete</td>
+                                     <td>10/12/2015</td>
+                                </tr>
+                            </tbody>
+                          </table>
+                                <a class="btn btn-info btn-circle text-uppercase pull-right" href="handle_request" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Gestionar solicitudes</a>
+                            </div>
                             </div>
 
 
                             <div class="tab-pane" id="add-comment">
-                                 <ul class="media-list">
-                                    <li class="media">
-                                        <a class="pull-left" href="#">
-                                            <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/lady_katherine/128.jpg" alt="profile">
-                                        </a>
-                                        <div class="media-body">
-                                            <div class="well well-lg">
-                                                <h4 class="media-heading text-uppercase reviews">Marco </h4>
-                                                <ul class="media-date text-uppercase reviews list-inline">
-                                                    <li class="dd">22</li>
-                                                    <li class="mm">09</li>
-                                                    <li class="aaaa">2014</li>
-                                                </ul>
-                                                <p class="media-comment">
-                                                    Marco solicita tus servicios como viajero
-                                                </p>
-                                                <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Aceptar</a>
-                                                <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Rechazar</a>
-                                                <a class="btn btn-info btn-circle text-uppercase" href="#" data-title="profile_user" data-toggle="modal" data-target="#profile_user"><span class="glyphicon glyphicon-share-alt"></span> Ver perfil</a>
-                                            </div>              
-                                        </div>
-                                    </li>          
+                                <div class="table-responsive">
+                                <table id="mytable" class="table table-bordred table-striped">
+                                   <thead>
+                                     <th>ID</th>
+                                     <th>Descripción</th>
+                                     <th>Fecha</th>
+                                 </thead>
+                                 <tbody>
 
-                                    <li class="media">
-                                        <a class="pull-left" href="#">
-                                            <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg" alt="profile">
-                                        </a>
-                                        <div class="media-body">
-                                            <div class="well well-lg">
-                                                <h4 class="media-heading text-uppercase reviews">Kriztine</h4>
-                                                <ul class="media-date text-uppercase reviews list-inline">
-                                                    <li class="dd">22</li>
-                                                    <li class="mm">09</li>
-                                                    <li class="aaaa">2014</li>
-                                                </ul>
-                                                <p class="media-comment">
-                                                    Kristine solicita tus servicios como viajero
-                                                </p>
-                                                <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Aceptar</a>
-                                                <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Rechazar</a>
-                                                <a class="btn btn-info btn-circle text-uppercase" href="#" data-title="profile_user" data-toggle="modal" data-target="#profile_user"><span class="glyphicon glyphicon-share-alt"></span> Ver perfil</a>
-                                            </div>              
-                                        </div>
-                                    </li>
-                                </ul> 
-                                <a class="btn btn-info btn-circle text-uppercase pull-right" href="inbox" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Ver más solicitudes</a>
+                                  <tr>
+                                    <td>1</td>
+                                    <td>Yussel ha solicitado tus servicios como viajero</td>
+                                    <td>10/12/2015</td>
+                                </tr>
+
+                                <tr>
+                                    <td>2</td>
+                                    <td>Yussel ha solicitado tus servicios como viajero</td>
+                                    <td>10/12/2015</td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>3</td>
+                                    <td>Yussel ha solicitado tus servicios como viajero</td>
+                                    <td>10/12/2015</td>  
+                                </tr>
+
+                                <tr>
+                                    <td>4</td>
+                                    <td>Yussel ha solicitado tus servicios como viajero</td>
+                                     <td>10/12/2015</td>
+                                </tr>
+
+                                <tr>
+                                    <td>5</td>
+                                    <td>Yussel ha solicitado tus servicios como viajero</td>
+                                     <td>10/12/2015</td>
+                                </tr>
+                            </tbody>
+                          </table>
+                                <a class="btn btn-info btn-circle text-uppercase pull-right" href="handle_request" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Gestionar solicitudes</a>
                             </div>
+                            </div>
+
+                                 
+                           
 
 
                             <div class="tab-pane" id="account-settings">
@@ -299,6 +296,7 @@
                     </div>
                 </div>
             </div>
+        </div>
             
 
     <!--Nodal para eliminar cuenta del sistema-->
@@ -323,38 +321,6 @@
                   </div>
                   <!-- /.modal-dialog --> 
                 </div>
-
-
-      <!--Nodal para ver el perfil de otro usuario-->
-     <div class="modal fade" id="profile_user" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                          <h4 class="modal-title custom_align" id="Heading">Ver pefil</h4>
-                        </div>
-                        <div class="modal-body">
-                          <center>
-                            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
-                            <h3 class="media-heading">Joe Sixpack <small>USA</small></h3>
-                            <span><strong>Skills: </strong></span>
-                            <span class="label label-warning">HTML5/CSS</span>
-                            <span class="label label-info">Adobe CS 5.5</span>
-                            <span class="label label-info">Microsoft Office</span>
-                            <span class="label label-success">Windows XP, Vista, 7</span>
-                        </center>
-                        <hr>
-                        <center>
-                            <p class="text-left"><strong>Bio: </strong><br>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</p>
-                                <br>
-                            </center>
-                        </div>
-                      </div>
-                      <!-- /.modal-content --> 
-                    </div>
-                    <!-- /.modal-dialog --> 
-                  </div>            
 
     <br><br><br>
 
