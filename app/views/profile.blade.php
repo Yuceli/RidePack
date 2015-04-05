@@ -105,7 +105,7 @@
                             <h2>Opciones de la cuenta</h2>
                             <div class="col-xs-12 col-sm-6 emphasis">             
                                 <p><small>Eliminar cuenta</small></p>
-                                <button class="btn btn-danger btn-block"><span class="fa fa-plus-circle"></span> Eliminar cuenta</button>
+                                <button class="btn btn-danger btn-block" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="fa fa-plus-circle"></span> Eliminar cuenta</button>
                             </div>
                             <div class="col-xs-12 col-sm-6 emphasis">           
                                 <p><small>Restablecer contraseña</small></p>
@@ -564,6 +564,29 @@
             </div>
         </div>
     </div>
+
+    <!--Nodal para eliminar cuenta del sistema-->
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                          <h4 class="modal-title custom_align" id="Heading">Eliminar cuenta</h4>
+                        </div>
+                        <div class="modal-body">
+
+                         <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> ¿Está seguro que desea eliminar su cuenta?</div>
+
+                       </div>
+                       <div class="modal-footer ">
+                        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Si</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                      </div>
+                    </div>
+                    <!-- /.modal-content --> 
+                  </div>
+                  <!-- /.modal-dialog --> 
+                </div>
 
     <br><br><br>
 
