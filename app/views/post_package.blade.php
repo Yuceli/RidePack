@@ -85,7 +85,7 @@
 
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
-            {{Form::number('weight', null, array('id'=>'weight','class'=>'form-control input-lg','placeholder'=>'Peso de mi paquete en kg','tabindex'=>'3','required'=>'true'))}}
+            {{Form::number('weight', null, array('id'=>'weight','class'=>'form-control input-lg','placeholder'=>'Peso de mi paquete en kg','tabindex'=>'3','required'=>'true','min'=>'0'))}}
             <div>{{ $errors->first('weight') }}</div>
           </div>
         </div>
@@ -167,7 +167,7 @@
       </div>
 
       <div class="form-group">
-        {{Form::number('reward', null, array('id'=>'reward','class'=>'form-control input-lg','placeholder'=>'Recompenza','tabindex'=>'9'))}}
+        {{Form::number('reward', null, array('id'=>'reward','class'=>'form-control input-lg','min'=>'0','placeholder'=>'Recompenza','tabindex'=>'9'))}}
         <div>{{ $errors->first('reward') }}</div>
       </div>
 
