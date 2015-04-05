@@ -53,4 +53,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return $this->email;
 	}
+
+	public function getImagesPath()
+	{
+		return 'img/user'. $this->id;
+	}
 }

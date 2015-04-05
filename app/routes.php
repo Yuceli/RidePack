@@ -62,6 +62,9 @@ Route::group(array('before' => 'auth'), function()
 	});
 
 	Route::post('/post_package', 'PackageController@createPack');
+
+	Route::get('/edit_package/{id}', 'PackageController@showUpdatePack');
+	Route::post('/edit_package/{id}', 'PackageController@updatePack');
     
     //Eliminar esta ruta despues de pasar la información de esta vista a la vista profile - Para: Yussel
 	Route::get('/editProfile', function()
