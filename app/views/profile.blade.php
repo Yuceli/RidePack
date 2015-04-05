@@ -164,7 +164,7 @@
                                                     <li class="aaaa">2014</li>
                                                 </ul>
                                                 <p class="media-comment">
-                                                    Yehhhh... Thanks for sharing.
+                                                    Kristine a solicitado tu ayuda para transportar paquete.
                                                 </p>
                                                 <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Aceptar</a>
                                                 <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Rechazar</a>
