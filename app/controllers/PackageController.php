@@ -149,8 +149,7 @@ class PackageController extends BaseController {
 			App::abort(404);
 		}
 
-		//return View::make('edit_package')->withPack($pack);
-		return $pack;
+		return View::make('edit_package')->withPack($pack);
 	}
 
 }
