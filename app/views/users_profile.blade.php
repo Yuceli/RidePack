@@ -128,7 +128,8 @@
             </div>
           </div>
         </div>
-        <a href="handle_request" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Atras</a>
+        <!--El href debe ser cambiando por base_url o similar. Fines de prueba-->
+        <a href="http://localhost/ridepack/public/handle_request" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Atras</a>
       </div>
     </div>
   </div>
