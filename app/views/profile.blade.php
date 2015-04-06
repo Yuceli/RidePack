@@ -80,7 +80,7 @@
                             <h2>{{ Auth::user()->name; }}  {{ Auth::user()->last_name; }}</h2>
                             <p><strong>Email: </strong> {{ Auth::user()->email; }} </p>
                             <p><strong>Usuario desde: </strong> {{ Auth::user()->created_at->toDateString(); }}  </p>
-                            <p><strong>Cumpleaños: </strong>{{ Auth::user()->birthdate; }}</p>
+                            <p><strong>Edad: </strong>{{ Auth::user()->birthdate; }}</p>
                             <input id="city_id" value="{{ Auth::user()->city_id; }}" type="hidden">
                             <p><strong>Pais: </strong><span id="country"> </span></p>
                             <p><strong>Estado: </strong><span id="state"> </span></p>
@@ -256,9 +256,9 @@
                                         </div>
                                     </div>  
                                     <div class="form-group">
-                                        <label for="newPassword" class="col-sm-2 control-label">Fecha de nacimiento</label>
+                                        <label for="newPassword" class="col-sm-2 control-label">Edad</label>
                                         <div class="col-sm-10">
-                                            <input type="password" class="form-control" name="birthday" id="birthday">
+                                            <input type="password" class="form-control" name="age" id="age">
                                         </div>
                                     </div> 
                                     <div class="form-group">

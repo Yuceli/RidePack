@@ -190,43 +190,6 @@
                     </div>
                   
 
-
-                  <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                          <h4 class="modal-title custom_align" id="Heading">Cambiar detalles de tu viaje</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="form-group">
-                            <input class="form-control " type="text" placeholder="Peso">
-                          </div>
-                          <div class="form-group">
-                            <input class="form-control " type="text" placeholder="Volumen">
-                          </div>
-                          <div class="form-group">
-                            <input class="form-control " type="text" placeholder="Vía">
-                          </div>
-                          <div class="form-group">
-                            <input class="form-control " type="date" placeholder="Fecha salida">
-                          </div>
-                          <div class="form-group">
-                            <input class="form-control " type="date" placeholder="Fecha llegada">
-                          </div>
-                          
-                        </div>
-                        <div class="modal-footer ">
-                          <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Actualizar</button>
-                        </div>
-                      </div>
-                      <!-- /.modal-content --> 
-                    </div>
-                    <!-- /.modal-dialog --> 
-                  </div>
-
-
-
                   <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
@@ -350,41 +313,6 @@
                           </ul>
                     </div>
                   
-
-
-                  <div class="modal fade" id="edit_package" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                          <h4 class="modal-title custom_align" id="Heading">Cambiar detalles de tu paquete</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="form-group">
-                            <input class="form-control " type="text" placeholder="Descripción">
-                          </div>
-                          <div class="form-group">
-                            <input class="form-control " type="text" placeholder="Volumen">
-                          </div>
-                          <div class="form-group">
-                            <input class="form-control " type="text" placeholder="Peso">
-                          </div>
-                          <div class="form-group">
-                            <input class="form-control " type="text" placeholder="Recompensa">
-                          </div>
-                         
-                          
-                        </div>
-                        <div class="modal-footer ">
-                          <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Actualizar</button>
-                        </div>
-                      </div>
-                      <!-- /.modal-content --> 
-                    </div>
-                    <!-- /.modal-dialog --> 
-                  </div>
-
-
 
                   <div class="modal fade" id="delete_package" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
                     <div class="modal-dialog">

@@ -29,210 +29,142 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head> 
-  <body>
 
-    <!-- ******HEADER****** --> 
-    <header id="header" class="header">  
-      <div class="container">            
-        <h1 class="logo pull-left">
-          <a class="scrollto" href="#promo">
-            <span class="logo-title">RidePack</span>
-          </a>
-        </h1><!--//logo-->              
-        <nav id="main-nav" class="main-nav navbar-right" role="navigation">
-          <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button><!--//nav-toggle-->
-          </div><!--//navbar-header-->            
-          <div class="navbar-collapse collapse" id="navbar-collapse">
-            <ul class="nav navbar-nav">
-              <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
-              <li class="nav-item"><a class="scrollto" href="#about">Buscar</a></li>
-              <li class="nav-item"><a class="scrollto" href="#features">Enviar paquete</a></li>                        
-              <li class="nav-item last"><a class="scrollto" href="#contact">Publicar viaje</a></li>
-              <li class="nav-item last"><a class="scrollto" href="{{URL::to('logout')}}">Cerrar sesión</a></li>
-              <li class="nav-item last"><a class="scrollto" href=""></a></li>
-            </ul><!--//nav-->
-          </div><!--//navabr-collapse-->
-        </nav><!--//main-nav-->
-      </div>
-    </header><!--//header--> 
-
-    <body>
- <!-- ******HEADER****** --> 
-    <header id="header" class="header">  
-        <div class="container">            
-            <h1 class="logo pull-left">
-                <a class="scrollto" href="#home">
-                    <span class="logo-title">RidePack</span>
-                </a>
-            </h1><!--//logo-->              
-            <nav id="main-nav" class="main-nav navbar-right" role="navigation">
-                <div class="navbar-header">
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="{{asset('#navbar-collapse')}}">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button><!--//nav-toggle-->
-                </div><!--//navbar-header-->            
-                <div class="navbar-collapse collapse" id="navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active nav-item sr-only"><a class="scrollto" href="#home">Home</a></li>
-                        <li class="nav-item"><a class="scrollto" href="{{URL::to('logout')}}">Logout</a></li>
-                    </ul><!--//nav-->
-                </div><!--//navabr-collapse-->
-            </nav><!--//main-nav-->
-        </div>
-    </header><!--//header-->
-
-
-    <div class="container container-details">
-        <h2>Perfil Viajero/Remitente</h2>
-        <div class="row user-menu-container square">
-            <div class="col-md-12 user-details">
-                <div class="row coralbg white">
-                    <div class="col-md-6 no-pad">
-                        <div class="user-pad">
-                          <?php
-                            echo '<h3>'. $user->name . $user->last_name. '<br><small class="white">' .$user->email.'</small></h3>';
-                            echo '<h4 class="white"><i class="fa fa-map-marker"></i> Miembro desde: '. $user->created_at->toDateString(). '</h4>';
-                            $birthdate=$user->birthdate;
-                            $birthday=new DateTime($birthdate);
-                            $today= time();
-                            $now= new DateTime(date("Y-m-d",$today));
-                            $age = $birthday->diff($now)->format('%y');
-                            if($age==0){
-                            echo '<h4 class="white"><i class="fa fa-birthday-cake"></i> Edad: ? </h4>';
-                            }else{
-                            echo '<h4 class="white"><i class="fa fa-birthday-cake"></i> Edad: '.$age.' </h4>';
-                            }?>
-                        </div>
-                    </div>
-                    <div class="col-md-6 no-pad">
-                        <div class="user-image">
-                            <img src="https://farm7.staticflickr.com/6163/6195546981_200e87ddaf_b.jpg" class="img-responsive thumbnail">
-                        </div>
-                    </div>
-                </div>
-                <div class="row overview">
-                    <div class="col-md-6 user-pad text-center">
-                        <h3>PAQUETES </h3>
-                        <?php
-                        echo'<h4>'.count($user->packs).'</h4>';
-                        ?>
-                    </div>
-                    <div class="col-md-6 user-pad text-center">
-                        <h3>VIAJES</h3>
-                        <?php
-                        echo'<h4>'.count($user->trips).'</h4>';
-                        ?>
-                    </div>
-                </div>
-            </div>    
-        </div>
+<body>
+     <!-- ******HEADER****** --> 
+  <header id="header" class="header">  
+    <div class="container">            
+      <h1 class="logo pull-left">
+        <a class="scrollto" href="">
+          <span class="logo-title">RidePack</span>
+        </a>
+      </h1><!--//logo-->              
+      <nav id="main-nav" class="main-nav navbar-right" role="navigation">
+        <div class="navbar-header">
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button><!--//nav-toggle-->
+        </div><!--//navbar-header-->            
+        <div class="navbar-collapse collapse" id="navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
+            <li class="nav-item"><a href="profile">Perfil</a></li>
+            <li class="nav-item"><a href="search">Buscar</a></li>
+            <li class="nav-item"><a href="post_package">Publicar paquete</a></li>                        
+            <li class="nav-item"><a href="post_travel">Publicar viaje</a></li>
+            <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
+          </ul><!--//nav-->
+        </div><!--//navabr-collapse-->
+      </nav><!--//main-nav-->
     </div>
+  </header><!--//header-->   
 
-    <!-Tabla de objetos -->
-        <div class="panel panel-info">
+   <br><br><br><br><br>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <ol class="breadcrumb">
+          <li><a href="#">RidePack</a></li>
+          <li class="active">Perfil de usuario</li>
+        </ol>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-info panel-shadow">
           <div class="panel-heading">
-            <h3 class="panel-title">Objetos a enviar:</h3>
+            <h3>
+              <img class="img-circle img-thumbnail" src="http://bootdey.com/img/Content/user_3.jpg">
+              {{ Auth::user()->name; }}  {{ Auth::user()->last_name; }}
+            </h3>
           </div>
-          <div class="panel-body">
-            <div class="row">                
-                <div class=" col-md-9 col-lg-9 "> 
-                  <table class="table table-bordered">
-                    <tbody>
-                      <tr>
-                        <td>Nombre:</td>
-                        <td>Lugar de salida</td>
-                        <td>Lugar de llegada</td>
-                        <td>Fecha de salida</td>
-                        <td>Fecha de entrada</td>
-                        <td>Peso maximo:</td>
-                        <td>Volumen</td> 
-                      </tr>
-                  <?php
-                  foreach($user->packs as $pack){
-                        echo '<td>';
-                        echo "$pack->title";
-                        echo '</td><td>';
-                        echo "$pack->from_city";
-                        echo '</td><td>';
-                        echo "$pack->to_city";
-                        echo '</td><td>';
-                        echo "$pack->sending_date";
-                        echo'</td><td>';
-                        echo "$pack->arrival_date";
-                        echo'</td><td>';
-                        echo "$pack->weight";
-                        echo'</td><td>';
-                        echo "$pack->volume";
-                        echo'</td>
-                      </tr>';
-                    };?>
-                  </tbody>
-                </table>
-              </div>
+          <div class="panel-body"> 
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Detalles</th>
+                  </tr>
+                </thead>
+                
+                <tbody>
+                  <tr>
+                    <td colspan="8"><strong>Miembro desde: </strong>12/02/2015</td>
+                  </tr>
+
+                   <tr>
+                    <td colspan="8"><strong>Ciudad: </strong>Mérida</td>
+                  </tr>
+
+                  <tr>
+                    <td colspan="8"><strong>Email: </strong>{{ Auth::user()->email; }} </td>
+                  </tr>
+
+                  <tr>
+                    <td colspan="8"><strong>Paquetes publicados: </strong>{{count(Auth::user()->packs)}}</td>
+                  </tr>
+
+                  <tr>
+                    <td colspan="8"><strong>Viajes publicados: </strong>3</td>
+                  </tr>
+
+                  <tr>
+                    <td colspan="8"><strong>Paquetes transportados: </strong>4</td>
+                  </tr>
+
+                  <tr>
+                    <td colspan="8"><strong>Rating: </strong>4/10</td>
+                  </tr>
+
+                  <tr>
+                    <td colspan="8"> <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Enviar mensaje<span class="glyphicon glyphicon-chevron-right"></span></a></td>
+                  </tr>
+                </tbody>
+                
+              </table>
             </div>
           </div>
         </div>
+        <a href="handle_request" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Atras</a>
+      </div>
+    </div>
+  </div>
 
-    <!-Tabla de viajes -->
-
-
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <h3 class="panel-title">Viajes a llevar acabo:</h3>
-          </div>
-          <div class="panel-body">
-            <div class="row">                
-                <div class=" col-md-9 col-lg-9 "> 
-                   <table class="table table-bordered">
-                    <tbody>
-                      <tr>
-                        <td>Lugar de salida</td>
-                        <td>Lugar de llegada</td>
-                        <td>Fecha de salida</td>
-                        <td>Fecha de entrada</td>
-                        <td>Peso maximo</td>
-                        <td>Volumen</td> 
-                        <td>Transporte</td> 
-                      </tr>
-                  <?php
-                  foreach($user->trips as $trip){
-                        echo '<td>';
-                        echo "$trip->departure_city";
-                        echo '</td><td>';
-                        echo "$trip->arrival_city";
-                        echo '</td><td>';
-                        echo "$trip->departure_date";
-                        echo'</td><td>';
-                        echo "$trip->arrival_date";
-                        echo'</td><td>';
-                        echo "$trip->max_weight";
-                        echo'</td><td>';
-                        echo "$trip->max_volume";
-                        echo'</td><td>';
-                        echo "$trip->transport";
-                        echo'</td>
-                      </tr>';
-                    };?>
-                  </tbody>
-                </table>
-                </table>
-              </div>
-            </div>
-          </div>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">×</span>
+            <span class="sr-only">Close</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">
+            <i class="fa fa-envelope"></i> Enviar mensaje
+          </h4>
         </div>
+        <div class="modal-body">
+          <p>Solicita más detalles</p>
+            <div class='input-group'>
+              <span class='input-group-addon'>
+                <i class='fa fa-envelope'></i>
+              </span>
+            </div>
+            <br />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
-
+  <br><br><br><br><br>
  <!-- ******FOOTER****** --> 
     <footer class="footer">
         <div class="container text-center">
