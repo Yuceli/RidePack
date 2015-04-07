@@ -78,7 +78,7 @@
           <div class="panel-heading">
             <h3>
               <img class="img-circle img-thumbnail" src="http://bootdey.com/img/Content/user_3.jpg">
-              {{ Auth::user()->name; }}  {{ Auth::user()->last_name; }}
+                {{$user->name}}  {{$user->last_name}}
             </h3>
           </div>
           <div class="panel-body"> 
@@ -92,31 +92,34 @@
                 
                 <tbody>
                   <tr>
-                    <td colspan="8"><strong>Miembro desde: </strong>12/02/2015</td>
+                    <td colspan="8"><strong>Miembro desde: </strong>{{$user->created_at->toDateString()}}</td>
                   </tr>
 
                    <tr>
-                    <td colspan="8"><strong>Ciudad: </strong>Mérida</td>
+                    <td colspan="8"><strong>Ciudad: </strong>{{$user->city}}</td>
                   </tr>
 
                   <tr>
-                    <td colspan="8"><strong>Email: </strong>{{ Auth::user()->email; }} </td>
+                    <td colspan="8"><strong>Email: </strong>{{$user->email}} </td>
                   </tr>
 
                   <tr>
-                    <td colspan="8"><strong>Paquetes publicados: </strong>{{count(Auth::user()->packs)}}</td>
+                    <td colspan="8"><strong>Paquetes publicados: </strong>{{count($user->packs)}}</td>
                   </tr>
 
                   <tr>
-                    <td colspan="8"><strong>Viajes publicados: </strong>3</td>
+                    <td colspan="8"><strong>Viajes publicados: </strong>{{count($user->trips)}}</td>
                   </tr>
-
+                  <?php
+                  $counter=0;
+                  foreach ($user->trips as $trip){
+                    $counter+=count($trip->packs);
+                  }?>
                   <tr>
-                    <td colspan="8"><strong>Paquetes transportados: </strong>4</td>
+                    <td colspan='8'><strong>Paquetes transportados: </strong>{{$counter}}</td>
                   </tr>
-
                   <tr>
-                    <td colspan="8"><strong>Rating: </strong>4/10</td>
+                    <td colspan="8"><strong>Rating: </strong>{{$user->Rating()}}/10</td>
                   </tr>
 
                   <tr>
