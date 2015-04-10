@@ -28,7 +28,10 @@ Route::get('/', function()
 Route::group(array('before' => 'auth'), function()
 {
     
-    //Ruta para cierre de sesión
+    /*
+    Ruta para cerrar sesión
+	CU-02
+    */
 	Route::get('logout', 'UserController@logout');
 
 	/*
@@ -48,7 +51,10 @@ Route::group(array('before' => 'auth'), function()
 	//Ruta para visualizar la información del usuario 
 	Route::get('/users/{user_id}','UsersProfileController@showUserProfile');
 
-
+	/*
+	Rutas para publicar un viaje
+	CU-12
+	*/
 	Route::get('/post_travel', function()
 	{
 		return View::make('post_travel');
@@ -56,6 +62,10 @@ Route::group(array('before' => 'auth'), function()
 
 	Route::post('/post_travel', 'TripController@createTrip');
 
+	/*
+	Rutas para crear paquetes
+	CU-11
+	*/
 	Route::get('/post_package', function()
 	{
 		return View::make('post_package');
@@ -63,9 +73,24 @@ Route::group(array('before' => 'auth'), function()
 
 	Route::post('/post_package', 'PackageController@createPack');
 
+	/*
+	Rutas para Editar paquetes
+	CU-17
+	*/
 	Route::get('/edit_package/{id}', 'PackageController@showUpdatePack');
+	
 	Route::post('/edit_package/{id}', 'PackageController@updatePack');
     
+	/*
+	Rutas para Editar viajes
+	CU-22
+	*/
+	Route::get('/edit_travel/{id}', 'TripController@showUpdateTrip');
+	
+	Route::post('/edit_travel/{id}', 'TripController@updateTrip');
+    
+
+
     //Eliminar esta ruta despues de pasar la información de esta vista a la vista profile - Para: Yussel
 	Route::get('/editProfile', function()
 	{
