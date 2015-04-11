@@ -121,7 +121,7 @@ Route::group(array('before' => 'auth'), function()
 
 	Route::post('/trip_details', 'TripDetailsController@sendMessage');
 
-	Route::get('/search', 'SearchController@index');
+	//Route::get('/search', 'SearchController@index');
 
 	Route::post('/search', 'SearchController@search');
 

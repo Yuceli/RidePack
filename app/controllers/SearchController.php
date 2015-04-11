@@ -63,8 +63,9 @@ class SearchController extends BaseController {
 	}
 
 	public function index(){
-
-		return View::make('search');
+		$trips = null;
+	    $packs = null;
+		return View::make('search', compact('packs','trips'));
 	}
 
 }

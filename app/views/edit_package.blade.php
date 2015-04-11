@@ -50,7 +50,7 @@
             <ul class="nav navbar-nav">
               <li class="active nav-item sr-only"><a class="scrollto" href="{{URL::to('/')}}">Home</a></li>
               <li class="nav-item"><a href="{{URL::to('profile')}}">Perfil</a></li>
-              <li class="nav-item"><a href="{{URL::to('search')}}">Buscar</a></li>
+              <li class="nav-item"><a href="{{URL::to('upcoming-packages')}}">Buscar</a></li>
               <li class="nav-item active"><a href="{{URL::to('post_package')}}">Publicar paquete</a></li>                        
               <li class="nav-item"><a href="{{URL::to('post_travel')}}">Publicar viaje</a></li>
               <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>

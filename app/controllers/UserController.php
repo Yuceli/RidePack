@@ -21,7 +21,7 @@ class UserController extends BaseController {
 		if(Auth::attempt(Input::only('email', 'password')))
 		{
 			//Lo redirige a página correspondiente
-			return Redirect::intended('search');			
+			return Redirect::intended('upcoming-packages');			
 		}else{
 			//Redirecciona a login con mensaje
 			return Redirect::back()->with('error_message', 'El correo electrónico y/o contraseña son incorrectos')->withInput(Input::except('password'));
@@ -67,7 +67,7 @@ class UserController extends BaseController {
 
 	    $user->save();
 
-		return Redirect::to('search');
+		return Redirect::to('profile');
 	}
 
 	//Función para eliminar del sistema al usuario autentificado.

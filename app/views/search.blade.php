@@ -31,7 +31,7 @@
 <div class="tab-pane fade in active" id="search">
   <div class="col-md-12">
     
-    @if($packs)
+    @if($packs) 
       <h1>Resultados de la búsqueda: {{$packs->getTotal()}}</h1><br>
       <ul class="event-list">
         @foreach($packs as $pack)
@@ -68,7 +68,7 @@
         @endforeach
       </ul>
 
-    @else
+    @elseif ($trips)
       <h1>Resultados de la búsqueda: {{$trips->getTotal()}}</h1><br>
       <ul class="event-list">
         @foreach($trips as $trip)
@@ -113,7 +113,7 @@
 <div class="clearfix"></div>
 @if($packs)
   {{ $packs->links() }}
-@else
+@elseif ($trips)
   {{ $trips->links() }}
 @endif
 

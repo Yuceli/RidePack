@@ -51,7 +51,7 @@
           <ul class="nav navbar-nav">
             <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
             <li class="nav-item active"><a href="profile">Perfil</a></li>
-            <li class="nav-item"><a href="search">Buscar</a></li>
+            <li class="nav-item"><a href="upcoming-packages">Buscar</a></li>
             <li class="nav-item"><a href="post_package">Publicar paquete</a></li>                        
             <li class="nav-item"><a href="post_travel">Publicar viaje</a></li>
             <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
