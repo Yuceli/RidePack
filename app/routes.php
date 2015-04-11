@@ -13,10 +13,10 @@
 
 //Ruta de presentación Ridepack
 
-Route::get('/', function()
+Route::get('/', array( 'before' => 'guest', function()
 {
 	return View::make('hello');
-});
+}));
 
 
 /* 
@@ -120,6 +120,14 @@ Route::group(array('before' => 'auth'), function()
 	});
 
 	Route::post('/trip_details', 'TripDetailsController@sendMessage');
+
+	Route::get('/search', 'SearchController@index');
+
+	Route::post('/search', 'SearchController@search');
+
+	Route::get('/upcoming-packages', 'SearchController@upcomingPackages');
+
+	Route::get('/upcoming-trips', 'SearchController@upcomingTrips');
     
 });
 /*
@@ -132,7 +140,7 @@ Route::get('login', 'UserController@showLogin');
 
 
 //Ruta de redirección en inicio de sesión
-Route::post('search', 'UserController@login');
+Route::post('login', 'UserController@login');
 
 
 
@@ -153,12 +161,6 @@ Route::get('/register', function()
 });
 Route::controller('register','RegisterController');
 Route::post('register-user','RegisterController@register');
-
-
-Route::get('/search', function()
-{
-	return View::make('search');
-});
 
 Route::get('/management', function()
 {

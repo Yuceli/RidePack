@@ -4,6 +4,8 @@ use Illuminate\Database\Eloquent\SoftDeletingTrait;
 class Pack extends Eloquent {
 	use SoftDeletingTrait;
 
+	protected $dates = array('sending_date','arrival_date');
+
 	public function messages()
 	{
 		return $this->morphMany('Message', 'messageable');
