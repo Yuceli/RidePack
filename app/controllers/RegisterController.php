@@ -96,7 +96,7 @@ class RegisterController extends BaseController {
 
 			if(Auth::attempt(array("email" => $user -> email, "password" => Input::get('password'))))
 			{
-				return Redirect::intended('upcomingTrips');			
+				return Redirect::intended('profile');			
 			}
 			return Redirect::Redirect('login')->with('message', "Registro Exitoso, inicia sesión.");
 		}	
