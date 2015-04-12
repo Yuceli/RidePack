@@ -77,7 +77,7 @@
           <div class="panel-heading">
             <h3>
               <img class="img-circle img-thumbnail" src="http://bootdey.com/img/Content/user_3.jpg">
-              Yussel Paredes
+              <?php echo Auth::user()->name . " " . Auth::user()->last_name;?>
             </h3>
           </div>
           <div class="panel-body"> 
@@ -229,75 +229,53 @@
                                <th>Recompesa</th>
                              </thead>
                              <tbody>
+                             <?php
+                              if(count($packs) > 0){
+                                foreach ($packs as $pack){   
+                                
+                                $created = explode(" ", $pack -> created_at);
+                                $created = $created[0];
+                                $created = explode("-", $created);
+                                $created = $created[2]."/".$created[1]."/".substr($created[0], 2);
 
-                              <tr>
-                                <td>1</td>
-                                <td>12/02/2015</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-                                <td>Mérida - 14/03/15</td>
-                                <td>Pakistan - 15/03/15</td>
-                                <td>Pequeño</td>
-                                <td>3Kg</td>
-                                <td>$200</td>
-                                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit_package" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                                <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete_package" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-                              </tr>
+                                $sending_date = explode(" ", $pack -> sending_date);
+                                $sending_date = $sending_date[0];
+                                $sending_date = explode("-", $sending_date);
+                                $sending_date = $sending_date[2]."/".$sending_date[1]."/".substr($sending_date[0], 2);
 
-                              <tr>
-                                <td>2</td>
-                                <td>12/02/2015</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-                                <td>Mérida - 14/03/15</td>
-                                <td>Pakistan - 15/03/15</td>
-                                <td>Pequeño</td>
-                                <td>3Kg</td>
-                                <td>$200</td>
-                                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit_package" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                                <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete_package" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-                              </tr>
+                                $arrival_date = explode(" ", $pack -> arrival_date);
+                                $arrival_date = $arrival_date[0];
+                                $arrival_date = explode("-", $arrival_date);
+                                $arrival_date = $arrival_date[2]."/".$arrival_date[1]."/".substr($arrival_date[0], 2);
 
 
-                              <tr>
-                                <td>3</td>
-                                <td>12/02/2015</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-                                <td>Mérida - 14/03/15</td>
-                                <td>Pakistan - 15/03/15</td>
-                                <td>Pequeño</td>
-                                <td>3Kg</td>
-                                <td>$200</td>
-                                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit_package" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                                <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete_package" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-                              </tr>
-
-
-
-                              <tr>
-                                <td>4</td>
-                                <td>12/02/2015</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-                                <td>Mérida - 14/03/15</td>
-                                <td>Pakistan - 15/03/15</td>
-                                <td>Pequeño</td>
-                                <td>3Kg</td>
-                                <td>$200</td>
-                                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit_package" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                                <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete_package" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-                              </tr>
-
-
-                              <tr>
-                                <td>5</td>
-                                <td>12/02/2015</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-                                <td>Mérida - 14/03/15</td>
-                                <td>Pakistan - 15/03/15</td>
-                                <td>Pequeño</td>
-                                <td>3Kg</td>
-                                <td>$200</td>
-                                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit_package" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                                <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete_package" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-                              </tr>
+                                $volumes = array('1' => 'Extra pequeño', '2'=>'Pequeño','3'=>'Mediano', '4'=>'Grande', '5'=>'Extra grande');       
+                                $volume = $volumes[''.$pack -> volume.''];
+                             ?>
+                                <tr>
+                                  <td><?php echo $pack -> id; ?></td>
+                                  <td><?php echo $created; ?></td>
+                                  <td><?php echo $pack -> title;?></td>
+                                  <td> 
+                                    <input type="hidden" placeid="placeid" value="<?php echo $pack->from_city;?>">
+                                    <span placeid="city-<?php echo $pack->from_city;?>"></span> - <?php echo $sending_date; ?>
+                                  </td>
+                                  <td>
+                                    <input type="hidden" placeid="placeid" value="<?php echo $pack->to_city;?>">
+                                    <span placeid="city-<?php echo $pack->to_city;?>"></span> - <?php echo $arrival_date;?>
+                                  </td>
+                                  <td><?php echo $volume; ?></td>
+                                  <td><?php echo $pack -> weight;?>Kg</td>
+                                  <td>$<?php echo $pack -> reward;?></td>
+                                  <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit_package" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                                  <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete_package" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                                </tr>
+                            <?php }
+                              }
+                              else{
+                                echo "No hay paquetes publicados";
+                              } 
+                            ?>
                             </tbody>
                           </table>
 
@@ -365,7 +343,7 @@
                   </tr>
                  
                   <tr>
-                    <td colspan="8"><strong>Paquetes publicados: </strong>10 paquetes</td>
+                    <td colspan="8"><strong>Paquetes publicados: </strong><?php echo count($packs);?> paquetes</td>
                   </tr>
 
                   <tr>
@@ -401,6 +379,68 @@
   <script type="text/javascript" src="plugins/jquery.easing.1.3.js"></script>   
   <script type="text/javascript" src="plugins/bootstrap/js/bootstrap.min.js"></script>     
   <script type="text/javascript" src="plugins/prism/prism.js"></script>    
-  <script type="text/javascript" src="js/main.js"></script>       
+  <script type="text/javascript" src="js/main.js"></script>   
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+  <script type="text/javascript" src="js/googlePlaces2.js"></script>
+
+  <script type="text/javascript">
+    
+    var aPlacess = [];
+    var aInputPlaceIDs = $('input[placeid="placeid"]');
+
+    var getAddressElement = function(type, aAddress){
+      var sAddressElement = '';
+
+      if(!aAddress) return sAddressElement;
+
+      for(var i=0; i<aAddress.length; i++){
+          var typesLength = aAddress[i].types.length;
+          for(var j=0; j<typesLength; j++){
+              if(aAddress[i] && aAddress[i].types[j] == type){
+                  sAddressElement = aAddress[i].long_name;
+              }
+          }
+      }
+
+      return sAddressElement;
+    };
+
+    for(var i=0; i<aInputPlaceIDs.length; i++){
+
+      var placeID = aInputPlaceIDs[i].value;
+
+      if(aPlacess && placeID && aPlacess.indexOf(placeID) >= 0)
+        continue;
+
+      aPlacess.push(placeID);
+
+      console.log(placeID);
+
+      var request = {
+          placeId: placeID
+      };
+
+      var oDvMap = document.createElement('div');
+      var service = new google.maps.places.PlacesService(oDvMap);
+      service.getDetails(request, function(place, status){
+
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+          var oCitySpans = $('span[placeid="city-'+place.place_id+'"]');
+          //var oStateSpans = $('span[placeid="state-'+place.place_id+'"]');
+          //var oCountrySpans = $('span[placeid="country-'+place.place_id+'"]');
+
+          for(var j=0; j<oCitySpans.length; j++){
+
+            oCitySpans[j].innerHTML = getAddressElement('locality',place.address_components);
+            //oStateSpans[j].innerHTML = getAddressElement('administrative_area_level_1',place.address_components)
+            //oCountrySpans[j].innerHTML = getAddressElement('country',place.address_components)
+          }
+        }
+      });
+    }
+
+  </script>
+
 </body>
 </html>

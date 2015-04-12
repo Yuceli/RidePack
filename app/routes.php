@@ -162,12 +162,7 @@ Route::get('/register', function()
 Route::controller('register','RegisterController');
 Route::post('register-user','RegisterController@register');
 
-Route::get('/management', function()
-{
-	return View::make('management');
-});
-
-
+Route::get('/management', 'ManagementController@index');
 
 /*
  Rutas para recuperar y reiniciar contraseña

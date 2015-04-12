@@ -3,12 +3,14 @@
 
 class ManagementController extends BaseController {
 
-	public function showWelcome()
+	public function index()
 	{
-		return View::make('management');
-		
+		$user_id = Auth::user() -> id;
+	    $user = User::find($user_id);
+	    $packs = $user -> packs;
+	    
+		return View::make('management', compact("packs"));
 	}
-
-
+}
 
  ?>
