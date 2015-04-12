@@ -106,10 +106,7 @@ Route::group(array('before' => 'auth'), function()
 		return View::make('handle_requests');
 	});
 
-	Route::get('/package_details', function()
-	{
-		return View::make('package_details');
-	});
+	Route::get('/package_details/{id}', 'PackageDetailsController@showDetails');
 
 	Route::post('/package_details', 'PackageDetailsController@sendMessage');
 	

@@ -10,16 +10,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">    
-  <link rel="shortcut icon" href="img/favicon.ico">  
+  <link rel="shortcut icon" href="{{ URL::asset('img/favicon.ico') }}">  
   <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
   <!-- Global CSS -->
-  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ URL::asset('plugins/bootstrap/css/bootstrap.min.css') }}">
   <!-- Plugins CSS -->    
-  <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.css">
-  <link rel="stylesheet" href="plugins/prism/prism.css">
+  <link rel="stylesheet" href="{{ URL::asset('plugins/font-awesome/css/font-awesome.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('plugins/prism/prism.css') }}">
   <!-- Theme CSS -->  
-  <link id="theme-style" rel="stylesheet" href="css/styles.css">
+  <link id="theme-style" rel="stylesheet" href="{{ URL::asset('css/styles.css') }}">
   <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet" media="screen">  
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -50,10 +50,10 @@
           <div class="navbar-collapse collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
               <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
-              <li class="nav-item"><a href="profile">Perfil</a></li>
-              <li class="nav-item"><a href="upcomingTrips">Buscar</a></li>
-              <li class="nav-item"><a href="postPackage">Publicar paquete</a></li>                        
-              <li class="nav-item"><a href="postTrip">Publicar viaje</a></li>
+              <li class="nav-item"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
+              <li class="nav-item"><a href="{{ URL::asset('upcoming_trips')}}">Buscar</a></li>
+              <li class="nav-item"><a href="{{ URL::asset('post_package')}}">Publicar paquete</a></li>                        
+              <li class="nav-item"><a href="{{ URL::asset('post_travel')}}">Publicar viaje</a></li>
               <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
             </ul><!--//nav-->
           </div><!--//navabr-collapse-->
@@ -80,7 +80,7 @@
           <div class="panel-heading">
             <h3>
               <img class="img-circle img-thumbnail" src="http://bootdey.com/img/Content/user_3.jpg">
-              Yussel Paredes
+              {{$user -> name}} {{$user -> last_name}}
             </h3>
           </div>
           <div class="panel-body"> 
@@ -96,29 +96,47 @@
                 
                 <tbody>
                   <tr>
-                    <td><img src="http://www.hangerworld.co.uk/blog/wp-content/uploads/2013/12/vintage1.jpg" class="img-cart"></td>
+                    <td><img src="{{ URL::asset($pack -> picture) }}" class="img-cart"></td>
                     <td>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                      <strong>Volumen:</strong><p>Pequeño</p> 
-                      <strong>Peso:</strong><p>2 kg</p>
-                      <strong>Recompensa:</strong><p>$234.00</p>  
+                      <p>{{$pack -> title }}</p>
+                      <?php 
+                        $volumes = array('1' => 'Extra pequeño', '2'=>'Pequeño','3'=>'Mediano', '4'=>'Grande', '5'=>'Extra grande');       
+                        $volume = $volumes[''.$pack -> volume.''];
+                      ?>
+                      <strong>Volumen:</strong><p>{{$volume}}</p> 
+                      <strong>Peso:</strong><p>{{$pack -> weight }} kg</p>
+                      <strong>Recompensa:</strong><p>${{$pack -> reward }}</p>  
                     </td>
                   </tr>
                   
                   <tr>
-                    <td colspan="8"><strong>De: </strong>Mérida</td>
+                    <td colspan="8">
+                      <strong>De: </strong>
+                      <input type="hidden" placeid="placeid" value="<?php echo $pack->from_city;?>">
+                      <span placeid="city-<?php echo $pack->from_city;?>"></span>
+                    </td>
                   </tr>
                   
                   <tr>
-                    <td colspan="8"><strong>Hacia: </strong>México</td>
+                    <td colspan="8">
+                      <strong>Hacia: </strong>
+                      <input type="hidden" placeid="placeid" value="<?php echo $pack->to_city;?>">
+                      <span placeid="city-<?php echo $pack->to_city;?>"></span> 
+                    </td>
                   </tr>
 
                   <tr>
-                    <td colspan="8"><strong>Fecha de entrega: </strong>12/11/2015</td>
+                    <?php 
+                        $arrival_date = explode(" ", $pack -> arrival_date);
+                        $arrival_date = $arrival_date[0];
+                        $arrival_date = explode("-", $arrival_date);
+                        $arrival_date = $arrival_date[2]."/".$arrival_date[1]."/".substr($arrival_date[0], 2);
+                    ?>
+                    <td colspan="8"><strong>Fecha de entrega: </strong>{{$arrival_date}}</td>
                   </tr>
 
                   <tr>
-                    <td colspan="8"><strong>Observaciones: </strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit</td>
+                    <td colspan="8"><strong>Observaciones: </strong>{{$pack -> observation}}</td>
                   </tr>
                 </tbody>
 
@@ -141,22 +159,28 @@
                 <tbody>
                   <tr>
                     <td colspan="8">
-                      <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Enviar mensaje
+                      <a href="#" class="btn btn-primary pull-right <?php echo ($user -> id == Auth::user()-> id)? 'disabled' : '';?>" data-toggle="modal" data-target="#myModal">Enviar mensaje
                         <span class="glyphicon glyphicon-chevron-right"></span>
                       </a>
                     </td>
                   </tr>
                   <tr>
-                    <td colspan="8"> <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#ratings">Valorar usuario<span class="glyphicon glyphicon-chevron-right"></span></a></td>
+                    <td colspan="8"> <a href="#" class="btn btn-primary pull-right <?php echo ($user -> id == Auth::user()-> id)? 'disabled' : '';?>" data-toggle="modal" data-target="#ratings">Valorar usuario<span class="glyphicon glyphicon-chevron-right"></span></a></td>
                   </tr>
                   <tr>
-                    <td colspan="8"> <a href="#" class="btn btn-primary pull-right">Postularme a paquete<span class="glyphicon glyphicon-chevron-right"></span></a></td>
+                    <td colspan="8"> <a href="#" class="btn btn-primary pull-right <?php echo ($user -> id == Auth::user()-> id)? 'disabled' : '';?>">Postularme a paquete<span class="glyphicon glyphicon-chevron-right"></span></a></td>
                   </tr>
                   <tr>
-                    <td colspan="8"><strong>Miembro desde: </strong>12/01/2015</td>
+                    <?php
+                        $created = explode(" ", $user -> created_at);
+                        $created = $created[0];
+                        $created = explode("-", $created);
+                        $created = $created[2]."/".$created[1]."/".substr($created[0], 2);
+                    ?>
+                    <td colspan="8"><strong>Miembro desde: </strong>{{$created}}</td>
                   </tr>
                   <tr>
-                    <td colspan="8"><strong>Viajes publicados: </strong>4 viajes</td>
+                    <td colspan="8"><strong>Viajes publicados: </strong>{{count($trips)}} viajes</td>
                   </tr>
 
                   <tr>
@@ -164,7 +188,7 @@
                   </tr>
                   
                   <tr>
-                    <td colspan="8"><strong>Rating: </strong>4/5</td>
+                    <td colspan="8"><strong>Rating: </strong>{{$user -> total_rating; ?>/5</td>
                   </tr>
                 </tbody>
               
@@ -259,12 +283,72 @@
   </footer><!--//footer-->
 
   <!-- Javascript -->          
-  <script type="text/javascript" src="plugins/jquery-1.11.1.min.js"></script>
-  <script type="text/javascript" src="plugins/jquery-migrate-1.2.1.min.js"></script>    
-  <script type="text/javascript" src="plugins/jquery.easing.1.3.js"></script>   
-  <script type="text/javascript" src="plugins/bootstrap/js/bootstrap.min.js"></script>     
-  <script type="text/javascript" src="plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script> 
-  <script type="text/javascript" src="plugins/prism/prism.js"></script>    
-  <script type="text/javascript" src="js/main.js"></script>       
+  <script type="text/javascript" src="{{ URL::asset('plugins/jquery-1.11.1.min.js') }}"></script>
+  <script type="text/javascript" src="{{ URL::asset('plugins/jquery-migrate-1.2.1.min.js') }}"></script>    
+  <script type="text/javascript" src="{{ URL::asset('plugins/jquery.easing.1.3.js') }}"></script>   
+  <script type="text/javascript" src="{{ URL::asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>     
+  <script type="text/javascript" src="{{ URL::asset('plugins/jquery-scrollTo/jquery.scrollTo.min.js') }}"></script> 
+  <script type="text/javascript" src="{{ URL::asset('plugins/prism/prism.js') }}"></script>    
+  <script type="text/javascript" src="{{ URL::asset('js/main.js') }}"></script>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+  <script type="text/javascript" src="{{ URL::asset('js/googlePlaces2.js') }}"></script>
+  <script type="text/javascript">
+    
+    var aPlacess = [];
+    var aInputPlaceIDs = $('input[placeid="placeid"]');
+
+    var getAddressElement = function(type, aAddress){
+      var sAddressElement = '';
+
+      if(!aAddress) return sAddressElement;
+
+      for(var i=0; i<aAddress.length; i++){
+          var typesLength = aAddress[i].types.length;
+          for(var j=0; j<typesLength; j++){
+              if(aAddress[i] && aAddress[i].types[j] == type){
+                  sAddressElement = aAddress[i].long_name;
+              }
+          }
+      }
+
+      return sAddressElement;
+    };
+
+    for(var i=0; i<aInputPlaceIDs.length; i++){
+
+      var placeID = aInputPlaceIDs[i].value;
+
+      if(aPlacess && placeID && aPlacess.indexOf(placeID) >= 0)
+        continue;
+
+      aPlacess.push(placeID);
+
+      console.log(placeID);
+
+      var request = {
+          placeId: placeID
+      };
+
+      var oDvMap = document.createElement('div');
+      var service = new google.maps.places.PlacesService(oDvMap);
+      service.getDetails(request, function(place, status){
+
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+          var oCitySpans = $('span[placeid="city-'+place.place_id+'"]');
+          //var oStateSpans = $('span[placeid="state-'+place.place_id+'"]');
+          //var oCountrySpans = $('span[placeid="country-'+place.place_id+'"]');
+
+          for(var j=0; j<oCitySpans.length; j++){
+
+            oCitySpans[j].innerHTML = getAddressElement('locality',place.address_components);
+            //oStateSpans[j].innerHTML = getAddressElement('administrative_area_level_1',place.address_components)
+            //oCountrySpans[j].innerHTML = getAddressElement('country',place.address_components)
+          }
+        }
+      });
+    }
+
+  </script>   
 </body>
 </html>

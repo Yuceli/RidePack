@@ -27,6 +27,16 @@ class PackageDetailsController extends BaseController {
 		}
 	}
 
+	public function showDetails($id){
+		if (Auth::check()){
+			$pack = Pack::find($id);
+			$user_id = $pack -> user_id;
+			$user = User::find($user_id);
+			$trips = $user -> trips;
+			return View::make('package_details', compact("pack", "user", "trips"));
+		}
+	}
+
 }
 
 ?>
