@@ -94,124 +94,82 @@
                 <!-- Tab panes -->
                 <div class="tab-content">
                   <div role="tabpanel" class="tab-pane active" id="home"> 
-                          <h4>Viajes publicados</h4>
-                          <div class="table-responsive">
-                            <table id="mytable" class="table table-bordred table-striped">
+                    <h4>Viajes publicados</h4>
+                    <div class="table-responsive">
+                      <table id="mytable" class="table table-bordred table-striped">
 
-                             <thead>
-                               <th>ID</th>
-                               <th>Fecha publicación</th>
-                               <th>Salida</th>
-                               <th>Destino</th>
-                               <th>Volumen</th>
-                               <th>Peso</th>
-                               <th>Via</th>
-                               <th>Editar</th>
-                               <th>Borrar</th>
-                             </thead>
-                             <tbody>
-
-                              <tr>
-                                <td>1</td>
-                                <td>12/02/2015</td>
-                                <td>Mérida - 14/03/15</td>
-                                <td>Pakistan - 15/03/15</td>
-                                <td>Pequeño</td>
-                                <td>3Kg</td>
-                                <td>Terrestre</td>
-                                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                                <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-                              </tr>
-
-                              <tr>
-                                <td>2</td>
-                                <td>12/02/2015</td>
-                                <td>Mérida - 14/03/15</td>
-                                <td>Pakistan - 15/03/15</td>
-                                <td>Pequeño</td>
-                                <td>3Kg</td>
-                                <td>Terrestre</td>
-                                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                                <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-                              </tr>
-
-
-                              <tr>
-                                <td>3</td>
-                                <td>12/02/2015</td>
-                                <td>Mérida - 14/03/15</td>
-                                <td>Pakistan - 15/03/15</td>
-                                <td>Pequeño</td>
-                                <td>3Kg</td>
-                                <td>Terrestre</td>
-                                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                                <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-                              </tr>
-
-
-
-                              <tr>
-                                <td>4</td>
-                                <td>12/02/2015</td>
-                                <td>Mérida - 14/03/15</td>
-                                <td>Pakistan - 15/03/15</td>
-                                <td>Pequeño</td>
-                                <td>3Kg</td>
-                                <td>Terrestre</td>
-                                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                                <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-                              </tr>
-
-
-                              <tr>
-                                <td>5</td>
-                                <td>12/02/2015</td>
-                                <td>Mérida - 14/03/15</td>
-                                <td>Pakistan - 15/03/15</td>
-                                <td>Pequeño</td>
-                                <td>3Kg</td>
-                                <td>Maritima</td>
-                                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                                <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-                              </tr>
-                            </tbody>
-                          </table>
-
-                          <div class="clearfix"></div>
-                          <ul class="pagination pull-right">
-                            <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-                          </ul>
+                        <thead>
+                          <th>ID</th>
+                          <th>Fecha publicación</th>
+                          <th>Salida</th>
+                          <th>Destino</th>
+                          <th>Volumen</th>
+                          <th>Peso</th>
+                          <th>Via</th>
+                          <th>Editar</th>
+                          <th>Borrar</th>
+                        </thead>
+                        <tbody>
+                        @if(count($myTrips->getItems()) > 0)
+                          @foreach($myTrips->getItems() as $myTrip)
+                          <tr>
+                            <td>{{$myTrip['id']}}</td>
+                            <td>{{$myTrip['created_at']}}</td>
+                            <td>
+                              <input type="hidden" placeid="placeid" value="{{$myTrip['departure_city']}}">
+                              <span placeid="city-{{$myTrip['departure_city']}}"></span> - {{$myTrip['departure_date']}}
+                            </td>
+                            <td>
+                              <input type="hidden" placeid="placeid" value="{{$myTrip['arrival_city']}}">
+                              <span placeid="city-{{$myTrip['arrival_city']}}"></span> - {{$myTrip['arrival_date']}}
+                            </td>
+                            <td>{{$myTrip['volume']}}</td>
+                            <td>{{$myTrip['max_weight']}}kg</td>
+                            <td>{{$myTrip['transport']}}</td>
+                            <td>
+                              <p data-placement="top" data-toggle="tooltip" title="Edit">
+                                <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit_package" >
+                                  <span class="glyphicon glyphicon-pencil"></span>
+                                </button>
+                              </p>
+                            </td>
+                            <td>
+                              <p data-placement="top" data-toggle="tooltip" title="Delete">
+                                <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete_package" >
+                                  <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                              </p>
+                            </td>
+                          </tr>
+                          @endforeach
+                        @else
+                          No hay viajes publicados
+                        @endif  
+                        </tbody>
+                      </table>
+                      <div class="clearfix"></div>
+                      {{$myTrips->links()}}
                     </div>
-                  
 
-                  <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                          <h4 class="modal-title custom_align" id="Heading">Eliminar viaje</h4>
+                    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                            <h4 class="modal-title custom_align" id="Heading">Eliminar viaje</h4>
+                          </div>
+                          <div class="modal-body">
+                            <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> ¿Está seguro que desea eliminar este viaje?</div>
+                          </div>
+                          <div class="modal-footer ">
+                            <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Si</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                          </div>
                         </div>
-                        <div class="modal-body">
-
-                         <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> ¿Está seguro que desea eliminar este viaje?</div>
-
-                       </div>
-                       <div class="modal-footer ">
-                        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Si</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                        <!-- /.modal-content --> 
                       </div>
+                      <!-- /.modal-dialog --> 
                     </div>
-                    <!-- /.modal-content --> 
-                  </div>
-                  <!-- /.modal-dialog --> 
-                </div>
-
                   </div>
                   <div role="tabpanel" class="tab-pane" id="profile">
                     <h4>Paquetes publicados</h4>
