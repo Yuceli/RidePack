@@ -46,9 +46,10 @@ class ManagementController extends BaseController {
 				"departure_date" => $departure_date, 
 				"arrival_city" => $trip->arrival_city,
 				"arrival_date" => $arrival_date,
-				"volume" => $trip -> max_volume,
+				//"volume" => $trip -> max_volume,
 				"max_weight" => $trip -> max_weight,
-				"transport" => $transport
+				"transport" => $transport,
+				"carry_reward" => $trip -> carry_reward
 			);
 			array_push($infoTrips, $infoTrip);
 		}

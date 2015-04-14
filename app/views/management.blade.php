@@ -99,13 +99,13 @@
                       <table id="mytable" class="table table-bordred table-striped">
 
                         <thead>
-                          <th>ID</th>
                           <th>Fecha publicación</th>
                           <th>Salida</th>
                           <th>Destino</th>
-                          <th>Volumen</th>
+                          <th>Tamaño</th>
                           <th>Peso</th>
                           <th>Via</th>
+                          <th>Recompensa</th>
                           <th>Editar</th>
                           <th>Borrar</th>
                         </thead>
@@ -113,8 +113,7 @@
                         @if(count($myTrips->getItems()) > 0)
                           @foreach($myTrips->getItems() as $myTrip)
                           <tr>
-                            <td>{{$myTrip['id']}}</td>
-                            <td>{{$myTrip['created_at']}}</td>
+                            <td align="center">{{$myTrip['created_at']}}</td>
                             <td>
                               <input type="hidden" placeid="placeid" value="{{$myTrip['departure_city']}}">
                               <span placeid="city-{{$myTrip['departure_city']}}"></span> - {{$myTrip['departure_date']}}
@@ -123,9 +122,10 @@
                               <input type="hidden" placeid="placeid" value="{{$myTrip['arrival_city']}}">
                               <span placeid="city-{{$myTrip['arrival_city']}}"></span> - {{$myTrip['arrival_date']}}
                             </td>
-                            <td>{{$myTrip['volume']}}</td>
-                            <td>{{$myTrip['max_weight']}}kg</td>
-                            <td>{{$myTrip['transport']}}</td>
+                            <td align="center"></td>
+                            <td align="center">{{$myTrip['max_weight']}}kg</td>
+                            <td align="center">{{$myTrip['transport']}}</td>
+                            <td align="center">${{$myTrip['carry_reward']}}</td>
                             <td>
                               <p data-placement="top" data-toggle="tooltip" title="Edit">
                                 <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit_package" >
