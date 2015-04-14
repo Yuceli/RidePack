@@ -112,16 +112,16 @@
                   <tr>
                     <td colspan="8">
                       <strong>De: </strong>
-                      <input type="hidden" placeid="placeid" value="<?php echo $pack->from_city;?>">
-                      <span placeid="city-<?php echo $pack->from_city;?>"></span>
+                      <input type="hidden" placeid="placeid" value="{{$pack->from_city}}">
+                      <span placeid="city-{{$pack->from_city}}"></span>
                     </td>
                   </tr>
                   
                   <tr>
                     <td colspan="8">
                       <strong>Hacia: </strong>
-                      <input type="hidden" placeid="placeid" value="<?php echo $pack->to_city;?>">
-                      <span placeid="city-<?php echo $pack->to_city;?>"></span> 
+                      <input type="hidden" placeid="placeid" value="{{$pack->to_city}}">
+                      <span placeid="city-{{$pack->to_city}}"></span> 
                     </td>
                   </tr>
 

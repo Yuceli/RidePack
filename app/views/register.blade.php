@@ -1,13 +1,6 @@
 <?php 
-	$name = "";
-	$last_name = "";
-	$email = "";
-
  	if(isset($returned)){
  		$errors = (isset($returned["errors"]))? $returned["errors"]:$errors;
- 		$name = (isset($returned["name"]))? $returned["name"]: "";
- 		$last_name = (isset($returned["last_name"]))? $returned["last_name"]: "";
- 		$email = (isset($returned["email"]))? $returned["email"]: "";
  	}
 ?>
 <!DOCTYPE html>
@@ -62,85 +55,69 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-				<?php echo Form::open(array('action' => 'RegisterController@register', 'method' => 'post')) ?>
+				{{Form::open(array('action' => 'RegisterController@register', 'method' => 'post'))}}
 				<h2>Únete hoy a RidePack</h2>
 				<hr class="colorgraph">
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<div class="form-group">
-							<?php if($errors -> has("name")){
-									foreach ($errors->get('name') as $message)
-									{
-									    echo $message."<br>";
-									}
-								}
-							?>
-							<?php echo Form::text('name', $name,array('class' => 'form-control input-lg', 'placeholder' => 'Nombre' , 'required' => 'required' , 'tabindex' => '1'))?>
-							<!--<input type="text" name="name" id="name" class="form-control input-lg" placeholder="First Name" tabindex="1">-->
+							@if($errors -> has("name"))
+									@foreach ($errors->get('name') as $message)
+									    {{$message}} <br>
+									@endforeach
+							@endif
+							{{Form::text('name', '',array('class' => 'form-control input-lg', 'placeholder' => 'Nombre' , 'required' => 'required' , 'tabindex' => '1'))}}
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<div class="form-group">
-							<?php if($errors -> has("last_name")){
-									foreach ($errors->get('last_name') as $message)
-									{
-									    echo $message."<br>";
-									}
-								}
-							?>
-							<?php echo Form::text('last_name', $last_name,array('class' => 'form-control input-lg', 'placeholder' => 'Apellido' , 'required' => 'required', 'tabindex' => '2'))?>
-							<!--<input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2">-->
+							@if($errors -> has("last_name"))
+									@foreach ($errors->get('last_name') as $message)
+									    {{$message}} <br>
+									@endforeach
+							@endif
+							{{Form::text('last_name', '',array('class' => 'form-control input-lg', 'placeholder' => 'Apellido' , 'required' => 'required', 'tabindex' => '2'))}}
 						</div>
 					</div>
 				</div>
-			<!--<div class="form-group">
-				<input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="Display Name" tabindex="3">
-			</div>-->
-			<div class="form-group">
-				<?php if($errors -> has("email")){
-						foreach ($errors->get('email') as $message)
-						{
-						    echo $message."<br>";
-						}
-					}
-				?>
-				<?php echo Form::text('email', $email,array('class' => 'form-control input-lg', 'placeholder' => 'Email' , 'required' => 'required','tabindex' => '4'))?>
-				<!--<input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4">-->
-			</div>
-			<div class="row">
-				<div class="col-xs-12 col-sm-6 col-md-6">
-					<div class="form-group">
-						<!--<?php echo Form::password('password', '',array('class' => 'form-control input-lg', 'placeholder' => 'Contraseña' , 'required' => 'required' , 'tabindex' => '5'))?>-->
-						<?php if($errors -> has("password")){
-								foreach ($errors->get('password') as $message)
-								{
-								    echo $message."<br>";
-								}
-							}
-						?>
-						<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Contraseña" required="required" tabindex="5">
+				<div class="form-group">
+					@if($errors -> has("email"))
+							@foreach ($errors->get('email') as $message)
+							    {{$message}} <br>
+							@endforeach
+					@endif
+					{{Form::text('email', '',array('class' => 'form-control input-lg', 'placeholder' => 'Email' , 'required' => 'required','tabindex' => '4'))}}
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+							@if($errors -> has("password"))
+								@foreach ($errors->get('password') as $message)
+								    {{$message}} <br>
+								@endforeach
+							@endif
+							<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Contraseña" required="required" tabindex="5">
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+							<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" required="required" placeholder="Confirmar contraseña" tabindex="6">
+						</div>
 					</div>
 				</div>
-				<div class="col-xs-12 col-sm-6 col-md-6">
-					<div class="form-group">
-						<!--<?php echo Form::password('password_confirmation', '',array('class' => 'form-control input-lg', 'placeholder' => 'Confirmar contraseña' , 'required' => 'required', 'tabindex' => '6'))?>-->
-						<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" required="required" placeholder="Confirmar contraseña" tabindex="6">
+				<div class="row">
+					
+					<div class="col-xs-8 col-sm-9 col-md-9">
+						Al hacer click en <strong class="label label-primary">Registrar</strong> , tu aceptas los <a href="#" data-toggle="modal" data-target="#t_and_c_m">términos y condiciones</a> de éste sitio, incluyendo el uso de Cookies.
 					</div>
 				</div>
-			</div>
-			<div class="row">
 				
-				<div class="col-xs-8 col-sm-9 col-md-9">
-					Al hacer click en <strong class="label label-primary">Registrar</strong> , tu aceptas los <a href="#" data-toggle="modal" data-target="#t_and_c_m">términos y condiciones</a> de éste sitio, incluyendo el uso de Cookies.
+				<hr class="colorgraph">
+				<div class="row">
+					<div class="col-xs-12 col-md-6"><input type="submit" value="Registrar" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+					<div class="col-xs-12 col-md-6"><a href="login" class="btn btn-success btn-block btn-lg">Login</a></div>
 				</div>
-			</div>
-			
-			<hr class="colorgraph">
-			<div class="row">
-				<div class="col-xs-12 col-md-6"><input type="submit" value="Registrar" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
-				<div class="col-xs-12 col-md-6"><a href="login" class="btn btn-success btn-block btn-lg">Login</a></div>
-			</div>
-			<?php echo Form::close(); ?>
+			{{Form::close()}}
 		</div>
 	</div>
 

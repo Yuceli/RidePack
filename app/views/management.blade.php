@@ -77,7 +77,7 @@
           <div class="panel-heading">
             <h3>
               <img class="img-circle img-thumbnail" src="http://bootdey.com/img/Content/user_3.jpg">
-              <?php echo Auth::user()->name . " " . Auth::user()->last_name;?>
+              {{Auth::user()->name}} {{Auth::user()->last_name}}
             </h3>
           </div>
           <div class="panel-body"> 
@@ -187,10 +187,10 @@
                                <th>Recompesa</th>
                              </thead>
                              <tbody>
-                             <?php
-                              if(count($packs) > 0){
-                                foreach ($packs as $pack){   
-                                
+                             
+                            @if (count($packs) > 0)
+                                @foreach ($packs as $pack) 
+                              <?php
                                 $created = explode(" ", $pack -> created_at);
                                 $created = $created[0];
                                 $created = explode("-", $created);
@@ -209,31 +209,29 @@
 
                                 $volumes = array('1' => 'Extra pequeño', '2'=>'Pequeño','3'=>'Mediano', '4'=>'Grande', '5'=>'Extra grande');       
                                 $volume = $volumes[''.$pack -> volume.''];
-                             ?>
+                              ?>
                                 <tr>
-                                  <td><?php echo $pack -> id; ?></td>
-                                  <td><?php echo $created; ?></td>
-                                  <td><?php echo $pack -> title;?></td>
+                                  <td>{{$pack -> id}}</td>
+                                  <td>{{$created}}</td>
+                                  <td>{{{$pack -> title}}}</td>
                                   <td> 
-                                    <input type="hidden" placeid="placeid" value="<?php echo $pack->from_city;?>">
-                                    <span placeid="city-<?php echo $pack->from_city;?>"></span> - <?php echo $sending_date; ?>
+                                    <input type="hidden" placeid="placeid" value="{{$pack->from_city}}">
+                                    <span placeid="city-{{$pack->from_city}}"></span> - {{$sending_date}}
                                   </td>
                                   <td>
-                                    <input type="hidden" placeid="placeid" value="<?php echo $pack->to_city;?>">
-                                    <span placeid="city-<?php echo $pack->to_city;?>"></span> - <?php echo $arrival_date;?>
+                                    <input type="hidden" placeid="placeid" value="{{$pack->to_city}}">
+                                    <span placeid="city-{{$pack->to_city}}"></span> - {{$arrival_date}}
                                   </td>
-                                  <td><?php echo $volume; ?></td>
-                                  <td><?php echo $pack -> weight;?>Kg</td>
-                                  <td>$<?php echo $pack -> reward;?></td>
+                                  <td>{{$volume}}</td>
+                                  <td>{{$pack -> weight}}Kg</td>
+                                  <td>${{$pack -> reward}}</td>
                                   <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit_package" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
                                   <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete_package" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                                 </tr>
-                            <?php }
-                              }
-                              else{
-                                echo "No hay paquetes publicados";
-                              } 
-                            ?>
+                                @endforeach
+                              @else
+                                No hay paquetes publicados
+                              @endif
                             </tbody>
                           </table>
 
@@ -301,7 +299,7 @@
                   </tr>
                  
                   <tr>
-                    <td colspan="8"><strong>Paquetes publicados: </strong><?php echo count($packs);?> paquetes</td>
+                    <td colspan="8"><strong>Paquetes publicados: </strong>{{count($packs)}} paquetes</td>
                   </tr>
 
                   <tr>
