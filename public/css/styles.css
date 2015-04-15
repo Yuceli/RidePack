@@ -880,13 +880,7 @@ li.active:after {
     border-bottom-color: #ddd;
     
 }
-.nav-tabs > li a{
-   width: 70px;
-   height: 70px;
-   margin: 20px auto;
-   border-radius: 100%;
-   padding: 0;
-}
+
 
 .nav-tabs > li a:hover{
     background: transparent;
