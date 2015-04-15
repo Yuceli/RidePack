@@ -42,9 +42,9 @@
                 <div class="navbar-collapse collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
-                        <li class="nav-item"><a class="scrollto" href="#about">Nosotros</a></li>
-                        <li class="nav-item"><a class="scrollto" href="#features">Caracteristicas</a></li>                        
-                        <li class="nav-item last"><a class="scrollto" href="#contact">Contacto</a></li>
+                        <li class="nav-item"><a href="#about">Nosotros</a></li>
+                        <li class="nav-item"><a href="#features">Caracteristicas</a></li>                        
+                        <li class="nav-item last"><a href="#contact">Contacto</a></li>
                     </ul><!--//nav-->
                 </div><!--//navabr-collapse-->
             </nav><!--//main-nav-->
