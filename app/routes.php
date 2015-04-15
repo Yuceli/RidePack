@@ -118,13 +118,23 @@ Route::group(array('before' => 'auth'), function()
 
 	Route::post('/trip_details', 'TripDetailsController@sendMessage');
 
-	//Route::get('/search', 'SearchController@index');
-
+	/*
+	 *	Ruta para buscar paquetes y viajes.
+	 *	CU-05 y CU-06
+	 */
 	Route::post('/search', 'SearchController@search');
 
-	Route::get('/upcoming-packages', 'SearchController@upcomingPackages');
+	/*
+	 *	Ruta para ver los últimos paquetes registrados.
+	 *	CU-27
+	 */
+	Route::get('/upcoming-packages', 'SearchController@showLastPacks');
 
-	Route::get('/upcoming-trips', 'SearchController@upcomingTrips');
+	/*
+	 *	Ruta para ver los últimos viajes registrados.
+	 *	CU-28
+	 */
+	Route::get('/upcoming-trips', 'SearchController@showLastTrips');
     
 });
 /*

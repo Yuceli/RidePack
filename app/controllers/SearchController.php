@@ -3,8 +3,13 @@
 
 class SearchController extends BaseController {
 
+	/*
+	 * Función para buscar paquetes o viajes de acuerdo a
+	 * su fecha de envío, lugar de origen y lugar de destino.
+	 */
 	public function search()
 	{
+		// Reglas para la validación de datos del formulario.
 		$rules = array(
 			'send_package' => 'required|min:0|max:1',
 			'sending_date' => 'date|date_format:Y-m-d|required',
@@ -12,14 +17,16 @@ class SearchController extends BaseController {
 			'to_city' => 'required'
 		);
 
+		// Validación de los datos del formulario.
 	    $validator = Validator::make(Input::all(), $rules);
 
+	    // Si la validación falla se regresa al formulario de búsqueda con los errores.
 	    if ($validator->fails())
 	    {
 	        return Redirect::back()->withErrors($validator)->withInput(Input::all());
 	    }
 
-	    
+	 	// Se obtienen los datos del formulario.
 	    $fromCity = Input::get('from_city');
 	    $toCity = Input::get('to_city');
 	    $sendingDate = Input::get('sending_date');
@@ -27,45 +34,47 @@ class SearchController extends BaseController {
 	    $trips = null;
 	    $packs = null;
 	    
+	    // Si se quiere enviar un paquete, se realiza la búsqueda de viajes.
 	    if(Input::get('send_package')){
 	    	$trips = Trip::where('departure_city', '=', $fromCity)
 					->where('arrival_city', '=', $toCity)
 					->where('departure_date', '=', $sendingDate)
 					->paginate(5);
 
-			//return View::make('search')->withTrips($trips)->withInput(Input::all());
 	    }
+	    // Sino se realiza la búsqueda de paquetes.
 	    else {
 	    	$packs = Pack::where('from_city', '=', $fromCity)
 					->where('to_city', '=', $toCity)
 					->where('sending_date', '=', $sendingDate)
 					->paginate(5);
 
-			//return View::make('search')->withPacks($packs)->withInput(Input::all());
 	    }
 
-	    return View::make('search', compact('packs','trips'))->withInput(Input::all());
+	    // Se devuelven los resultados de la búsqueda a la vista.
+	    return View::make('Search', compact('packs','trips'))->withInput(Input::all());
 	}
 
-	public function upcomingPackages(){
+	/*
+	 * Función para mostrar los últimos paquetes que se han publicado.
+	 */
+	public function showLastPacks(){
 
+		// Se obtienen los paquetes en páginas de 5 y en orden descendente de acuerdo a su fecha de creación.
 		$packs = Pack::orderBy('created_at','DESC')->paginate(5);
 
-
-		return View::make('upcoming_packages', compact('packs'));
+		return View::make('LastPacks', compact('packs'));
 	}
 
-	public function upcomingTrips(){
+	/*
+	 * Función para mostrar los últimos viajes que se han publicado.
+	 */
+	public function showLastTrips(){
 
+		// Se obtienen los viajes en páginas de 5 y en orden descendente de acuerdo a su fecha de creación.
 		$trips = Trip::orderBy('created_at','DESC')->paginate(5);
 
-		return View::make('upcoming_trips', compact('trips'));
-	}
-
-	public function index(){
-		$trips = null;
-	    $packs = null;
-		return View::make('search', compact('packs','trips'));
+		return View::make('LastTrips', compact('trips'));
 	}
 
 }
