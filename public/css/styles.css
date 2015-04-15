@@ -955,3 +955,16 @@ left: 35%;
 .background{
   background: #f2f2f2;
 }
+
+
+
+/*CSS Register.php*/
+.register-wrap{
+  padding-top: 120px;
+  padding-bottom: 8px;
+
+}
+
+.btn-wrap{
+  padding-bottom: 10px;
+}
