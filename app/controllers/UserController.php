@@ -37,6 +37,8 @@ class UserController extends BaseController {
 
 	//Función para actualizar los datos del usuario autentificado.
 	function updateUser(){
+
+		// Reglas para validar la información del formulario.
 		$rules = array(
 			'name' => 'max:30|required',
 			'last_name' => 'max:30|required',
@@ -46,8 +48,10 @@ class UserController extends BaseController {
 			'picture'=>'image'
 		);
 
+		// Se valida la información del formulario.
 	    $validator = Validator::make(Input::only('name','last_name','birthdate','email','password','password_confirmation','picture'), $rules);
 
+	    // Si la validación falla, se notifica al usuario los errores.
 	    if ($validator->fails())
 	    {
 	        return Redirect::back()->withErrors($validator)->withInput(Input::except('password','password_confirmation','picture'));
@@ -55,6 +59,7 @@ class UserController extends BaseController {
 
 	    $user = Auth::user();
 
+	    // Se actualiza la información del usuario.
 	    $user->name = Input::get('name');
 	    $user->last_name = Input::get('last_name');
 	    $user->birthdate = Input::get('birthdate');
@@ -62,29 +67,36 @@ class UserController extends BaseController {
 	    $user->phone = Input::get('phone');
 	    $user->city_id = Input::get('city_id');
 
+	    // Si se ingresó un nuevo password, se actualiza.
 	    if(Input::get('password')){
 	    	$user->password = Hash::make(Input::get('password'));
 	    }
 
+	    // Si se agregó una imagen, se verifica y se guarda.
 	    if( Input::hasFile('picture') ){
 
+	    	// Se obtiene la imagen del formulario.
 	    	$uploadedFile = Input::file('picture');
 
 	    	if( $uploadedFile->isValid() ){
 
 	    		$destinantionPath = public_path($user->getImagesPath());
 
+	    		// Si existe en el servidor una imagen con el mismo nombre, notifica el error al usuario.
 	    		if( File::exists($destinantionPath.'/'.$uploadedFile->getClientOriginalName()) ){
 
 	    			return Redirect::back()->withErrors(array('picture'=>'Ya existe una imagen con ese nombre.'))->withInput(Input::except('picture','password','password_confirmation'));
 	    		}
 
+	    		// Guarda la imagen en el servidor.
 				$uploadedFile->move($destinantionPath , $uploadedFile->getClientOriginalName());
 
+				// Guarda la ruta de la imagen en la base de datos.
 				$user->picture = $user->getImagesPath() .'/'. $uploadedFile->getClientOriginalName();
 	    	}
 	    }
 
+	    // Se guarda la información del usuario
 	    $user->save();
 
 		return Redirect::to('profile');
@@ -100,6 +112,18 @@ class UserController extends BaseController {
 
         	return Redirect::to('/')->with('msg', 'Tu cuenta ha sido eliminada.');
     	}
+	}
+
+	//Función para mostrar el perfil del usuario autentificado.
+	function showMyProfile(){
+
+		return View::make('profile');
+	}
+
+	//Función para mostrar la página para editar el perfil de usuario.
+	function showUpdateUser(){
+		
+		return View::make('edit-profile');
 	}
 
 }

@@ -50,26 +50,15 @@ Route::group(array('before' => 'auth'), function()
 	 * Ruta para visualizar información del usuario.
 	 * CU-07
 	 */
-	Route::get('/profile', function()
-	{
-		return View::make('profile');
-	});
+	Route::get('/profile', 'UserController@showMyProfile');
 
 	/*
 	 *	Rutas para editar el perfil de usuario.
 	 *	CU-07
 	 */
-	Route::get('/editProfile', function()
-	{
-		return View::make('edit-profile');
-	});
+	Route::get('/editProfile', 'UserController@showUpdateUser');
 
 	Route::post('/editProfile', 'UserController@updateUser');
-
-	Route::post('/users/{user_id}', array(
-		'as' => 'users',
-		'uses' => 'UsersProfileController@sendMessage'
-	));
 
 	/*
 	 *	Rutas para eliminar la cuenta de un usuario.
@@ -170,6 +159,11 @@ Route::group(array('before' => 'auth'), function()
 	Route::post('/trip_details', 'TripDetailsController@sendMessage');
 
 	Route::get('/management', 'ManagementController@index');
+
+	Route::post('/users/{user_id}', array(
+		'as' => 'users',
+		'uses' => 'UsersProfileController@sendMessage'
+	));
 });
 
 
