@@ -65,9 +65,11 @@ class PackageController extends BaseController {
 		return Redirect::to('package_details/'/*.$pack->id*/)->withMessage('Paquete publicado.');
 	}
 
-	public function deletePack($id)
+	public function deletePack()
 	{
-		
+		$pack=Pack::findorFail(Input::get('tripid'));
+		$pack->delete();
+		return Redirect::to('/management');
 	}
 
 	public function updatePack($id)

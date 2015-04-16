@@ -91,6 +91,7 @@
                   <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Dummy</a></li>
                 </ul>
 
+                {{Form::open(array('url'=>'DeleteTrip'))}}
                 <!-- Tab panes -->
                 <div class="tab-content">
                   <div role="tabpanel" class="tab-pane active" id="home"> 
@@ -135,7 +136,9 @@
                             </td>
                             <td>
                               <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete_package" >
+                                <?php
+                                $tripid=$myTrip['id'];
+                                echo "<button class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-tripid='$tripid' data-target='#delete_trip' >"?>
                                   <span class="glyphicon glyphicon-trash"></span>
                                 </button>
                               </p>
@@ -151,7 +154,7 @@
                       {{$myTrips->links()}}
                     </div>
 
-                    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+                    <div class="modal fade" id="delete_trip" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -162,7 +165,8 @@
                             <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> ¿Está seguro que desea eliminar este viaje?</div>
                           </div>
                           <div class="modal-footer ">
-                            <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Si</button>
+                            {{ Form::hidden('tripid', '', array('id' => 'tripid')) }}
+                            <button type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Si</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
                           </div>
                         </div>
@@ -171,6 +175,9 @@
                       <!-- /.modal-dialog --> 
                     </div>
                   </div>
+                  {{Form::close()}}
+
+
                   <div role="tabpanel" class="tab-pane" id="profile">
                     <h4>Paquetes publicados</h4>
                           <div class="table-responsive">
@@ -397,6 +404,17 @@
     }
 
   </script>
-
+<!-- Dialog show event handler -->
+<script type="text/javascript">
+ $('#delete_trip').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('tripid') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('New message to ' + recipient)
+  modal.find('.modal-footer input').val(recipient)
+})
+</script>
 </body>
 </html>

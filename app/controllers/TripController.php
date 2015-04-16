@@ -43,9 +43,11 @@ class TripController extends BaseController {
 		return Redirect::to('trip_details/')->withMessage('Viaje publicado.');
 	}
 
-	public function deleteTrip($id)
+	public function deleteTrip()
 	{
-		
+		$trip=Trip::findorFail(Input::get('tripid'));
+		$trip->delete();
+		return Redirect::to('/management');
 	}
 
 	public function updateTrip($id){
