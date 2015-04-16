@@ -53,7 +53,7 @@
         <h2>Editar perfil </h2>
         <hr class="colorgraph">
 
-        {{Form::model(Auth::user(),array('id'=>'editForm'))}}
+        {{Form::model(Auth::user(),array('id'=>'editForm','files'=>true))}}
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
@@ -86,6 +86,7 @@
 
         <div class="form-group">
           {{Form::text('search_city', null, array('id'=>'search_city','class'=>'form-control input-lg','placeholder'=>'Buscar ciudad','tabindex'=>'5'))}}
+          {{Form::hidden('city_id', null, array('id'=>'city_id'))}}
         </div>
 
         <div class="row">
@@ -126,7 +127,19 @@
           </div>
         </div>
 
-        {{Form::hidden('city_id', null, array('id'=>'city_id'))}}
+        
+        @if (Auth::user()->picture)
+          <div class="form-group">
+            <div class="col-sm-4">
+              <img class="img-rounded" width="140px" height="140px" src="{{ asset(Auth::user()->picture) }}" />
+            </div>
+          </div>
+        @endif
+
+        <div class="form-group">
+          {{Form::file('picture', array('id'=>'picture','class'=>'form-control input-lg'))}}
+          <div>{{ $errors->first('picture') }}</div>
+        </div>
         
         <hr class="colorgraph">
         <div class="row">

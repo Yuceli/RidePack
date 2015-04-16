@@ -42,14 +42,15 @@ class UserController extends BaseController {
 			'last_name' => 'max:30|required',
 			'birthdate' => 'date|date_format:Y-m-d',
 			'email' => 'max:60|email|unique:users,email,'.Auth::user()->id.'|required',
-			'password' => 'min:6|max:30|confirmed'
+			'password' => 'min:6|max:30|confirmed',
+			'picture'=>'image'
 		);
 
-	    $validator = Validator::make(Input::only('name','last_name','birthdate','email','password','password_confirmation'), $rules);
+	    $validator = Validator::make(Input::only('name','last_name','birthdate','email','password','password_confirmation','picture'), $rules);
 
 	    if ($validator->fails())
 	    {
-	        return Redirect::back()->withErrors($validator)->withInput(Input::except('password','password_confirmation'));
+	        return Redirect::back()->withErrors($validator)->withInput(Input::except('password','password_confirmation','picture'));
 	    }
 
 	    $user = Auth::user();
@@ -63,6 +64,25 @@ class UserController extends BaseController {
 
 	    if(Input::get('password')){
 	    	$user->password = Hash::make(Input::get('password'));
+	    }
+
+	    if( Input::hasFile('picture') ){
+
+	    	$uploadedFile = Input::file('picture');
+
+	    	if( $uploadedFile->isValid() ){
+
+	    		$destinantionPath = public_path($user->getImagesPath());
+
+	    		if( File::exists($destinantionPath.'/'.$uploadedFile->getClientOriginalName()) ){
+
+	    			return Redirect::back()->withErrors(array('picture'=>'Ya existe una imagen con ese nombre.'))->withInput(Input::except('picture','password','password_confirmation'));
+	    		}
+
+				$uploadedFile->move($destinantionPath , $uploadedFile->getClientOriginalName());
+
+				$user->picture = $user->getImagesPath() .'/'. $uploadedFile->getClientOriginalName();
+	    	}
 	    }
 
 	    $user->save();
