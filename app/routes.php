@@ -161,6 +161,12 @@ Route::group(array('before' => 'auth'), function()
 	 */
     Route::post('/DeleteTrip', 'TripController@deleteTrip');
 
+	/*
+	 * Ruta par eliminar un paquete
+	 * CU-23
+	 */
+    Route::post('/DeletePack', 'PackageController@DeletePack');
+
 	Route::post('/trip_details', 'TripDetailsController@sendMessage');
 
 	Route::get('/management', 'ManagementController@index');

@@ -67,7 +67,7 @@ class PackageController extends BaseController {
 
 	public function deletePack()
 	{
-		$pack=Pack::findorFail(Input::get('tripid'));
+		$pack=Pack::findorFail(Input::get('packid'));
 		$pack->delete();
 		return Redirect::to('/management');
 	}

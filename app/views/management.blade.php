@@ -138,7 +138,7 @@
                               <p data-placement="top" data-toggle="tooltip" title="Delete">
                                 <?php
                                 $tripid=$myTrip['id'];
-                                echo "<button class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-tripid='$tripid' data-target='#delete_trip' >"?>
+                                echo "<button type='button' class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-tripid='$tripid' data-target='#delete_trip' >"?>
                                   <span class="glyphicon glyphicon-trash"></span>
                                 </button>
                               </p>
@@ -176,9 +176,8 @@
                     </div>
                   </div>
                   {{Form::close()}}
-
-
                   <div role="tabpanel" class="tab-pane" id="profile">
+                    {{Form::open(array('url'=>'DeletePack'))}}
                     <h4>Paquetes publicados</h4>
                           <div class="table-responsive">
                             <table id="mytable" class="table table-bordred table-striped">
@@ -233,7 +232,12 @@
                                   <td>{{$pack -> weight}}Kg</td>
                                   <td>${{$pack -> reward}}</td>
                                   <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit_package" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                                  <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete_package" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                                  <td><p data-placement="top" data-toggle="tooltip" title="Delete">
+                                    <?php
+                                $packid=$pack->id;
+                                echo "<button type='button' class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-packid='$packid' data-target='#delete_package' >"?>
+                                  <span class="glyphicon glyphicon-trash"></span>
+                                </button></td>
                                 </tr>
                                 @endforeach
                               @else
@@ -268,7 +272,8 @@
 
                        </div>
                        <div class="modal-footer ">
-                        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Si</button>
+                        {{ Form::hidden('packid', '', array('id' => 'packid')) }}
+                        <button type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Si</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
                       </div>
                     </div>
@@ -277,7 +282,7 @@
                   <!-- /.modal-dialog 2 --> 
                 </div>
                   </div>
-                   
+                   {{Form::close()}}
                   <!-- /.Tabs dummys no borrar --> 
                   <div role="tabpanel" class="tab-pane" id="messages">..ff.</div>
                   <div role="tabpanel" class="tab-pane" id="settings">.gg..</div>
@@ -409,6 +414,17 @@
  $('#delete_trip').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
   var recipient = button.data('tripid') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-footer input').val(recipient)
+})
+</script>
+
+<script type="text/javascript">
+ $('#delete_package').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('packid') // Extract info from data-* attributes
   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
   var modal = $(this)
