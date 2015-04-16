@@ -51,6 +51,11 @@ Route::group(array('before' => 'auth'), function()
 	//Ruta para visualizar la información del usuario 
 	Route::get('/users/{user_id}','UsersProfileController@showUserProfile');
 
+	Route::post('/users/{user_id}', array(
+		'as' => 'users',
+		'uses' => 'UsersProfileController@sendMessage'
+	));
+
 	/*
 	Rutas para publicar un viaje
 	CU-12

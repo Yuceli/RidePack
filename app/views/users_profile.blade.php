@@ -64,6 +64,12 @@
 
    <br><br><br><br><br>
   <div class="container">
+    @if(Session::has('message'))
+     <div class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong >{{ Session::get('message') }}</strong> 
+      </div>
+    @endif
     <div class="row">
       <div class="col-md-12">
         <ol class="breadcrumb">
@@ -152,15 +158,26 @@
         </div>
         <div class="modal-body">
           <p>Solicita más detalles</p>
+          {{ Form::open( array('action' => array('UsersProfileController@sendMessage', $user->id)) ) }}
             <div class='input-group'>
               <span class='input-group-addon'>
                 <i class='fa fa-envelope'></i>
               </span>
+              {{ Form::textarea('message', null, array(
+                'class' => 'form-control',
+                'rows' => '6')
+              ) }}
             </div>
             <br />
+            {{ Form::button("<i class='fa fa-share'></i> Enviar", array(
+              'type' => 'submit',
+              'class' => 'btn btn-primary',
+              'name' => 'submit'
+            )) }}
+          {{ Form::close() }}
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>

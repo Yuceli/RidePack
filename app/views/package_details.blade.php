@@ -188,7 +188,7 @@
                   </tr>
                   
                   <tr>
-                    <td colspan="8"><strong>Rating: </strong>{{$user -> total_rating; ?>/5</td>
+                    <td colspan="8"><strong>Rating: </strong>{{$user -> total_rating}}/5</td>
                   </tr>
                 </tbody>
               
