@@ -18,7 +18,6 @@
     <!-- Plugins CSS -->    
     <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="plugins/prism/prism.css">
-    <link rel="stylesheet" href="css/login.css">
     <!-- Theme CSS -->  
     <link id="theme-style" rel="stylesheet" href="css/styles.css">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -26,7 +25,9 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-</head> 
+</head>
+
+<body class="background"> 
 
  <!-- ******HEADER****** --> 
     <header id="header" class="header">  
@@ -48,8 +49,7 @@
                 <div class="navbar-collapse collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
-                        <li class="nav-item"><a class="scrollto" href="login">Login</a></li>
-                        <li class="nav-item"><a class="scrollto" href="register">Registro</a></li>                        
+                        <li class="nav-item"><a href="register">Regístrate</a></li>                        
                     </ul><!--//nav-->
                 </div><!--//navabr-collapse-->
             </nav><!--//main-nav-->
@@ -100,7 +100,7 @@
             </div>
           </div>
           
-          <br><br>
+          
           <!-- ******FOOTER****** --> 
           <footer class="footer">
             <div class="container text-center">

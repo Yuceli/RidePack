@@ -61,17 +61,9 @@
     </div>
   </header><!--//header--> 
 
-
+<body class="background">
     <br><br><br>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12 container-profile">
-                <ol class="breadcrumb">
-                    <li><a href="#">RidePack</a></li>
-                    <li class="active">Perfil de usuario</li>
-                </ol>
-            </div>
-        </div>
         <div class="row">
             <div class="col-md-6 container-profile">
                 <div class="well profile">
@@ -88,6 +80,7 @@
                             </div>             
                         </div>            
                         <div class="col-xs-12 divider text-center">
+                             <a href="editProfile"><button class="btn btn-default btn-block"><span class="fa fa-plus-circle"></span> Editar perfil</button></a><hr>
                             <a href="management"><button class="btn btn-primary btn-block"><span class="fa fa-plus-circle"></span> Gestionar mis viajes</button></a>
                             <div class="col-xs-12 col-sm-6 emphasis">
                                 <h2><strong> {{count(Auth::user()->trips)}} </strong></h2>                    
@@ -124,7 +117,6 @@
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="active"><a href="#comments-logout" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Solcitudes paquetes</h4></a></li>
                             <li><a href="#add-comment" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Solicitudes viajes</h4></a></li>
-                            <li><a href="#account-settings" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Editar perfil</h4></a></li>
                         </ul>            
                         <div class="tab-content">
                             <div class="tab-pane active" id="comments-logout">                
@@ -218,79 +210,6 @@
                           </table>
                                 <a class="btn btn-info btn-circle text-uppercase pull-right" href="handle_request" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Gestionar solicitudes</a>
                             </div>
-                            </div>
-
-                                 
-                           
-
-
-                            <div class="tab-pane" id="account-settings">
-                                <form action="#" method="post" class="form-horizontal" id="accountSetForm" role="form">
-                                    <div class="form-group">
-                                        <label for="avatar" class="col-sm-2 control-label">Foto de perfil</label>
-                                        <div class="col-sm-10">                                
-                                            <div class="custom-input-file">
-                                                <label class="uploadPhoto">
-                                                    Cambiar
-                                                    <input type="file" class="change-avatar" name="avatar" id="avatar">
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="name" class="col-sm-2 control-label">Nombre</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="name" id="name">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="nickName" class="col-sm-2 control-label">Apellido</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="lastname" id="lastname">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email" class="col-sm-2 control-label">Email</label>
-                                        <div class="col-sm-10">
-                                            <input type="email" class="form-control" name="email" id="email">
-                                        </div>
-                                    </div>  
-                                    <div class="form-group">
-                                        <label for="newPassword" class="col-sm-2 control-label">Edad</label>
-                                        <div class="col-sm-10">
-                                            <input type="password" class="form-control" name="age" id="age">
-                                        </div>
-                                    </div> 
-                                    <div class="form-group">
-                                        <label for="confirmPassword" class="col-sm-2 control-label">Buscar Ciudad</label>
-                                        <div class="col-sm-10">
-                                            <input type="password" class="form-control" name="city" id="city">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="confirmPassword" class="col-sm-2 control-label">Ciudad</label>
-                                        <div class="col-sm-10">
-                                            <input type="password" class="form-control" name="city" id="city">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="confirmPassword" class="col-sm-2 control-label">Estado</label>
-                                        <div class="col-sm-10">
-                                            <input type="password" class="form-control" name="city" id="city">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="confirmPassword" class="col-sm-2 control-label">Pais</label>
-                                        <div class="col-sm-10">
-                                            <input type="password" class="form-control" name="city" id="city">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-offset-2 col-sm-10">                    
-                                            <button class="btn btn-primary btn-circle text-uppercase" type="submit" id="submit">Guardar cambios</button>
-                                        </div>
-                                    </div>            
-                                </form>
                             </div>
                         </div>
                     </div>

@@ -4,25 +4,37 @@
  	}
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
 <head>
-	<meta charset="UTF-8">
-	<title>RidePack</title>
-
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/login.css">
-	<link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.css">
-  	<link rel="stylesheet" href="plugins/prism/prism.css">
-	<!-- Theme CSS -->  
-	<link id="theme-style" rel="stylesheet" href="css/styles.css">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/register.js"></script>
+    <title>RidePack</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">    
+    <link rel="shortcut icon" href="img/favicon.ico">  
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="plugins/prism/prism.css">
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="css/styles.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
-<body>
-	<!-- ******HEADER****** --> 
+
+<body class="background"> 
+
+ <!-- ******HEADER****** --> 
     <header id="header" class="header">  
         <div class="container">            
             <h1 class="logo pull-left">
@@ -42,17 +54,15 @@
                 <div class="navbar-collapse collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
-                        <li class="nav-item"><a class="scrollto" href="#about">Nosotros</a></li>
-                        <li class="nav-item"><a class="scrollto" href="#features">Caracteristicas</a></li>                        
-                        <li class="nav-item last"><a class="scrollto" href="#contact">Contacto</a></li>
+                        <li class="nav-item"><a href="login">Login</a></li>                        
                     </ul><!--//nav-->
                 </div><!--//navabr-collapse-->
             </nav><!--//main-nav-->
         </div>
     </header><!--//header--> 
 
-	<br><br><br><br><br><br>
-	<div class="container">
+	
+	<div class="container register-wrap">
 		<div class="row">
 			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 				{{Form::open(array('action' => 'RegisterController@register', 'method' => 'post'))}}
@@ -106,15 +116,14 @@
 					</div>
 				</div>
 				<div class="row">
-					
-					<div class="col-xs-8 col-sm-9 col-md-9">
-						Al hacer click en <strong class="label label-primary">Registrar</strong> , tu aceptas los <a href="#" data-toggle="modal" data-target="#t_and_c_m">términos y condiciones</a> de éste sitio, incluyendo el uso de Cookies.
+					<div class="col-xs-11 col-sm-12 col-md-12">
+						Al hacer click en <strong class="label label-primary">Registrar</strong> , tu aceptas los <a href="#" data-toggle="modal" data-target="#t_and_c_m">el aviso de privacidad</a> de éste sitio, incluyendo el uso de Cookies.
 					</div>
 				</div>
 				
 				<hr class="colorgraph">
 				<div class="row">
-					<div class="col-xs-12 col-md-6"><input type="submit" value="Registrar" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+					<div class="col-xs-12 col-md-6 btn-wrap"><input type="submit" value="Registrar" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
 					<div class="col-xs-12 col-md-6"><a href="login" class="btn btn-success btn-block btn-lg">Login</a></div>
 				</div>
 			{{Form::close()}}
@@ -128,16 +137,25 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-					<h4 class="modal-title" id="myModalLabel">Terms & Conditions</h4>
+					<h4 class="modal-title" id="myModalLabel">Aviso de privacidad</h4>
 				</div>
 				<div class="modal-body">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+					<p>En "RidePack" estamos comprometidos a proteger tu privacidad, así como a hacer
+					uso correcto de tus datos personales de conformidad con lo que exige la ley.
+					Con fundamento en los artículos 15 y 16 de la Ley Federal de Protección de Datos Personales
+					en Posesión de Particulares hacemos de tu conocimiento que "RidePack"
+					es responsable de recabar sus datos personales, del uso que se le dé a los mismos y de su
+					protección.<br><br>
+					En "RidePack" no transferiremos tus datos personales a terceros ajenos a nuestra
+					organización.
+					La empresa divulgará su información personal solamente si así debe hacerlo por ley o por mandato
+					de los procesos legales relacionados con el sitio; o para proteger y defender los derechos de
+					propiedad de "RidePack". Si hubiera cambios y/o actualizaciones en los Aviso de
+					Privacidad también se actualizará la fecha de "última actualización" de este aviso y aparecerá
+					un aviso destacado informando de esta situación.<br><br> 
+
+                    Última Actualización: 15 de abril de 2015</p>
+					
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>

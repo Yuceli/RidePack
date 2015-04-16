@@ -29,27 +29,42 @@ Route::group(array('before' => 'auth'), function()
 {
     
     /*
-    Ruta para cerrar sesión
-	CU-02
-    */
+     * Ruta para cerrar sesión.
+	 * CU-02
+     */
 	Route::get('logout', 'UserController@logout');
 
 	/*
-	Ruta para visualizar información
-	CU-08
-	*/
-	//Ruta para visualizar la información del usuario
+	 * Ruta para visualizar información de otro usuario.
+	 * CU-04
+	 */
+	Route::get('/users/{user_id}','UsersProfileController@showUserProfile');
+
+	/*
+	 *	Ruta para buscar paquetes y viajes.
+	 *	CU-05 y CU-06
+	 */
+	Route::post('/search', 'SearchController@search');
+
+	/*
+	 * Ruta para visualizar información del usuario.
+	 * CU-07
+	 */
 	Route::get('/profile', function()
 	{
-	return View::make('profile');
+		return View::make('profile');
 	});
 
 	/*
-	Ruta para visualizar información de otro usuario
-	CU-03 y CU-04
-	*/
-	//Ruta para visualizar la información del usuario 
-	Route::get('/users/{user_id}','UsersProfileController@showUserProfile');
+	 *	Rutas para editar el perfil de usuario.
+	 *	CU-07
+	 */
+	Route::get('/editProfile', function()
+	{
+		return View::make('edit-profile');
+	});
+
+	Route::post('/editProfile', 'UserController@updateUser');
 
 	Route::post('/users/{user_id}', array(
 		'as' => 'users',
@@ -57,9 +72,15 @@ Route::group(array('before' => 'auth'), function()
 	));
 
 	/*
-	Rutas para publicar un viaje
-	CU-12
-	*/
+	 *	Rutas para eliminar la cuenta de un usuario.
+	 *	CU-07
+	 */
+	Route::get('/deleteUser', 'UserController@deleteUser');
+
+	/*
+	 * Rutas para publicar un viaje.
+	 * CU-08
+	 */
 	Route::get('/post_travel', function()
 	{
 		return View::make('post_travel');
@@ -68,9 +89,9 @@ Route::group(array('before' => 'auth'), function()
 	Route::post('/post_travel', 'TripController@createTrip');
 
 	/*
-	Rutas para crear paquetes
-	CU-11
-	*/
+	 * Rutas para publicar un paquete.
+	 * CU-09
+	 */
 	Route::get('/post_package', function()
 	{
 		return View::make('post_package');
@@ -79,43 +100,56 @@ Route::group(array('before' => 'auth'), function()
 	Route::post('/post_package', 'PackageController@createPack');
 
 	/*
-	Rutas para Editar paquetes
-	CU-17
-	*/
+	 * Rutas para editar un paquete.
+	 * CU-17
+	 */
 	Route::get('/edit_package/{id}', 'PackageController@showUpdatePack');
 	
 	Route::post('/edit_package/{id}', 'PackageController@updatePack');
     
 	/*
-	Rutas para Editar viajes
-	CU-22
+	 * Rutas para editar un viaje.
+	 * CU-22
 	*/
 	Route::get('/edit_travel/{id}', 'TripController@showUpdateTrip');
 	
 	Route::post('/edit_travel/{id}', 'TripController@updateTrip');
+
+	/*
+	 *	Ruta para ver los últimos paquetes registrados.
+	 *	CU-26
+	 */
+	Route::get('/upcoming-packages', 'SearchController@showLastPacks');
+
+	/*
+	 *	Ruta para ver los últimos viajes registrados.
+	 *	CU-27
+	 */
+	Route::get('/upcoming-trips', 'SearchController@showLastTrips');
     
 
-
-    //Eliminar esta ruta despues de pasar la información de esta vista a la vista profile - Para: Yussel
-	Route::get('/editProfile', function()
-	{
-		return View::make('edit-profile');
-	});
-
-	Route::post('/editProfile', 'UserController@updateUser');
-
-	Route::get('/deleteUser', 'UserController@deleteUser');
-
+	/*
+	 *	Ruta para aceptar o rechazar solicitudes.
+	 *	CU-15
+	 *  CU-20
+	 */
 	Route::get('/handle_request', function()
 	{
 		return View::make('handle_requests');
 	});
 
+	/*
+	 *	Ruta par ver los detalles de un paquete.
+	 *	CU-19
+	 */
 	Route::get('/package_details/{id}', 'PackageDetailsController@showDetails');
 
 	Route::post('/package_details', 'PackageDetailsController@sendMessage');
 	
-
+	/*
+	 *	Ruta para ver los detalles de un viaje.
+	 *  CU-28
+	 */
 	Route::get('/trip_details', function()
 	{
 		return View::make('trip_details');
@@ -123,52 +157,37 @@ Route::group(array('before' => 'auth'), function()
 
 	Route::post('/trip_details', 'TripDetailsController@sendMessage');
 
-	//Route::get('/search', 'SearchController@index');
-
-	Route::post('/search', 'SearchController@search');
-
-	Route::get('/upcoming-packages', 'SearchController@upcomingPackages');
-
-	Route::get('/upcoming-trips', 'SearchController@upcomingTrips');
-    
+	Route::get('/management', 'ManagementController@index');
 });
-/*
-Rutas para Inicio y cierre de sesión
-CU-01
-*/
 
-//Ruta para inicio de sesión
+
+/*
+ * Rutas para Inicio y cierre de sesión
+ * CU-01
+ */
+
+//Ruta para mostrar inicio de sesión
 Route::get('login', 'UserController@showLogin');
 
-
-//Ruta de redirección en inicio de sesión
+//Ruta para iniciar sesión
 Route::post('login', 'UserController@login');
 
 
-
-
-//Ruta para carga de vista register
-//Route::get('register', 'RegisterController@register');
-
-
-
-
-
-
-//Rutas para registrar usuarios
-
+/*
+ * Ruta para el registro de usuarios.
+ * CU-03
+ */
 Route::get('/register', function()
 {	
 	return View::make('register');
 });
-Route::controller('register','RegisterController');
+
 Route::post('register-user','RegisterController@register');
 
-Route::get('/management', 'ManagementController@index');
 
 /*
- Rutas para recuperar y reiniciar contraseña
- CU-16
+ * Rutas para recuperar y reiniciar contraseña
+ * CU-16
  */
 Route::any("/request", [
  "as" => "user/request",
@@ -179,71 +198,5 @@ Route::any("/reset/{token}", [
  "as" => "user/reset",
  "uses" => "RemindersController@reset"
 ]);
-
-
-Route::get('ejemploModelo', function()
-{
-	// Poner el ID de un usuario de su DB.
-	$user_id = 3;
-
-	$user = User::find($user_id);
-
-	$res = '<h1>User</h1>';
-	$res .= $user->email . '</br>';
-	$res .= Hash::check('12345', $user->password) . '</br>';
-	$res .= $user->name . '</br>';
-	$res .= $user->last_name . '</br>';
-	$res .= $user->phone . '</br>';
-	$res .= $user->birthdate . '</br>';
-	$res .= $user->city . '</br>';
-
-	//Packs
-	$res .= '<h1>Packs</h1>';
-
-	foreach($user->packs as $pack)
-	{
-		$res .= $pack->title . '</br>';
-		$res .= $pack->sending_date . '</br>';
-		$res .= $pack->arrival_date . '</br>';
-		$res .= $pack->reward . '</br>';
-		$res .= $pack->volume . '</br>';
-		$res .= $pack->weight. '</br>';
-		$res .= $pack->observation . '</br>';
-		$res .= $pack->status . '</br>';
-		$res .= $pack->fromCity . '</br>';
-		$res .= $pack->toCity . '</br>';
-		$res .= $pack->messages . '</br>';
-		$res .= $pack->requests . '</br>';
-		$res .= $pack->comment->first() . '</br>';
-
-		$res .= '<h3>Associated Trips </h3>';
-		$res .= $pack->trips . '</br>';
-	}
-
-	//Trip
-	$res .= '<h1>Trips</h1>';
-
-	foreach($user->trips as $trip)
-	{
-		$res .= $trip->departure_date . '</br>';
-		$res .= $trip->arrival_date . '</br>';
-		$res .= $trip->carry_reward . '</br>';
-		$res .= $trip->max_volume . '</br>';
-		$res .= $trip->max_weight. '</br>';
-		$res .= $trip->observation . '</br>';
-		$res .= $trip->transport . '</br>';
-		$res .= $trip->departureCity . '</br>';
-		$res .= $trip->arrivalCity . '</br>';
-		$res .= $trip->messages . '</br>';
-		$res .= $trip->requests . '</br>';
-		$res .= $trip->comment->first() . '</br>';
-
-		$res .= '<h3>Associated Packs</h3>';
-		$res .= $trip->packs . '</br>';
-	}
-
-
-	return $res;
-});
 
 ?>
