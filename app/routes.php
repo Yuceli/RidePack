@@ -27,7 +27,7 @@ Route::get('/', array( 'before' => 'guest', function()
 */
 Route::group(array('before' => 'auth'), function()
 {
-    
+
     /*
      * Ruta para cerrar sesión.
 	 * CU-02
@@ -65,6 +65,11 @@ Route::group(array('before' => 'auth'), function()
 	});
 
 	Route::post('/editProfile', 'UserController@updateUser');
+
+	Route::post('/users/{user_id}', array(
+		'as' => 'users',
+		'uses' => 'UsersProfileController@sendMessage'
+	));
 
 	/*
 	 *	Rutas para eliminar la cuenta de un usuario.
@@ -149,6 +154,18 @@ Route::group(array('before' => 'auth'), function()
 	{
 		return View::make('trip_details');
 	});
+
+	/*
+	 * Ruta par eliminar un viaje
+	 * CU-23
+	 */
+    Route::post('/DeleteTrip', 'TripController@deleteTrip');
+
+	/*
+	 * Ruta par eliminar un paquete
+	 * CU-23
+	 */
+    Route::post('/DeletePack', 'PackageController@DeletePack');
 
 	Route::post('/trip_details', 'TripDetailsController@sendMessage');
 
