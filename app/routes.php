@@ -64,7 +64,7 @@ Route::group(array('before' => 'auth'), function()
 	 *	Rutas para eliminar la cuenta de un usuario.
 	 *	CU-07
 	 */
-	Route::get('/deleteUser', 'UserController@deleteUser');
+	Route::post('/deleteUser', 'UserController@deleteUser');
 
 	/*
 	 * Rutas para publicar un viaje.

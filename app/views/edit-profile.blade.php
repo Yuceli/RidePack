@@ -58,13 +58,13 @@
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
              {{Form::text('name', null, array('id'=>'name','class'=>'form-control input-lg','placeholder'=>'Nombre','tabindex'=>'1','required'=>'true'))}}
-             <div id ="name_error">{{ $errors->first('name') }}</div>
+             @if($errors->first('name'))<div class="alert alert-danger" role="alert">{{ $errors->first('name') }}</div>@endif
             </div>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
               {{Form::text('last_name', null, array('id'=>'last_name','class'=>'form-control input-lg','placeholder'=>'Apellido','tabindex'=>'2','required'=>'true'))}}
-              <div id ="last_name_error">{{ $errors->first('last_name') }}</div>
+              @if($errors->first('last_name'))<div class="alert alert-danger" role="alert">{{ $errors->first('last_name') }}</div>@endif
             </div>
           </div>
         </div>
@@ -72,14 +72,14 @@
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-              {{Form::text('birthdate', null, array('id'=>'birthdate','class'=>'form-control input-lg','placeholder'=>'Fecha de nacimiento (aaaa-mm-dd)','tabindex'=>'3'))}}
-              <div id ="birthdate_error">{{ $errors->first('birthdate') }}</div>
+              {{Form::date('birthdate', Auth::user()->birthdate->toDateString(), array('id'=>'birthdate','class'=>'form-control input-lg','placeholder'=>'Fecha de nacimiento','tabindex'=>'3'))}}
+              @if($errors->first('birthdate'))<div class="alert alert-danger" role="alert">{{ $errors->first('birthdate') }}</div>@endif
             </div>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
               {{Form::text('phone', null, array('id'=>'phone','class'=>'form-control input-lg','placeholder'=>'Teléfono','tabindex'=>'4'))}}
-              <div id ="phone_error">{{ $errors->first('phone') }}</div>
+              @if($errors->first('phone'))<div class="alert alert-danger" role="alert">{{ $errors->first('phone') }}</div>@endif
             </div>
           </div>
         </div>
@@ -87,6 +87,7 @@
         <div class="form-group">
           {{Form::text('search_city', null, array('id'=>'search_city','class'=>'form-control input-lg','placeholder'=>'Buscar ciudad','tabindex'=>'5'))}}
           {{Form::hidden('city_id', null, array('id'=>'city_id'))}}
+          @if($errors->first('city_id'))<div class="alert alert-danger" role="alert">{{ $errors->first('city_id') }}</div>@endif
         </div>
 
         <div class="row">
@@ -109,20 +110,20 @@
 
          <div class="form-group">
           {{Form::email('email', null, array('id'=>'email','class'=>'form-control input-lg', 'placeholder'=>'E-mail','tabindex'=>'6','required'=>'true'))}} 
-          <div id ="email_error">{{ $errors->first('email') }}</div>
+          @if($errors->first('email'))<div class="alert alert-danger" role="alert">{{ $errors->first('email') }}</div>@endif
         </div>
 
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
               {{Form::password('password', array('id'=>'password','class'=>'form-control input-lg','placeholder'=>'Nueva Contraseña','tabindex'=>'7'))}}
-              <div id ="password_error">{{ $errors->first('password') }}</div>
+              @if($errors->first('password'))<div class="alert alert-danger" role="alert">{{ $errors->first('password') }}</div>@endif
             </div>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
               {{Form::password('password_confirmation', array('id'=>'password_confirmation','class'=>'form-control input-lg','placeholder'=>'Confirmar contraseña','tabindex'=>'8'))}}
-              <div id ="password_confirmation_error">{{ $errors->first('password_confirmation ') }}</div>
+              @if($errors->first('password_confirmation'))<div class="alert alert-danger" role="alert">{{ $errors->first('password_confirmation ') }}</div>@endif
             </div>
           </div>
         </div>
@@ -138,7 +139,7 @@
 
         <div class="form-group">
           {{Form::file('picture', array('id'=>'picture','class'=>'form-control input-lg'))}}
-          <div>{{ $errors->first('picture') }}</div>
+          @if($errors->first('picture'))<div class="alert alert-danger" role="alert">{{ $errors->first('picture') }}</div>@endif
         </div>
         
         <hr class="colorgraph">
@@ -185,36 +186,36 @@
 
     <script type="text/javascript">
 
-      var gp = null;
+      var googlePlace = null;
       window.onload= function(){
-        gp = new googlePlaces();
+        googlePlace = new googlePlaces();
 
-        gp.displaySearch = function() {
-            var place = gp.autocomplete.getPlace();
+        googlePlace.displaySearch = function() {
+            var place = googlePlace.autocomplete.getPlace();
 
-            gp.displayPlaceDetails(place);
+            googlePlace.displayPlaceDetails(place);
         }
 
-        gp.initAutocomplete(document.getElementById('search_city'));
+        googlePlace.initAutocomplete(document.getElementById('search_city'));
 
-        gp.inputPlaceID = document.getElementById('city_id');
+        googlePlace.inputPlaceID = document.getElementById('city_id');
 
-        gp.outputCity = document.getElementById('city');
-        gp.outputState = document.getElementById('state');
-        gp.outputCountry = document.getElementById('country');
+        googlePlace.outputCity = document.getElementById('city');
+        googlePlace.outputState = document.getElementById('state');
+        googlePlace.outputCountry = document.getElementById('country');
 
-        gp.showPlaceDetails = function (place, status) {
+        googlePlace.showPlaceDetails = function (place, status) {
 
             if (status == google.maps.places.PlacesServiceStatus.OK) {
-                gp.displayPlaceDetails(place);
+                googlePlace.displayPlaceDetails(place);
             }else{
-                gp.displayPlaceDetails({});
+                googlePlace.displayPlaceDetails({});
             }
         };
 
         
 
-        gp.getPlaceDetails();
+        googlePlace.getPlaceDetails();
       };
 
 

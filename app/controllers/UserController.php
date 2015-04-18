@@ -99,7 +99,7 @@ class UserController extends BaseController {
 	    // Se guarda la información del usuario
 	    $user->save();
 
-		return Redirect::to('profile');
+		return Redirect::to('profile')->withMsg('Los datos se han guardado satisfactoriamente.');
 	}
 
 	//Función para eliminar del sistema al usuario autentificado.
@@ -110,7 +110,12 @@ class UserController extends BaseController {
 
 		if ($user->delete()) {
 
-        	return Redirect::to('/')->with('msg', 'Tu cuenta ha sido eliminada.');
+        	return Redirect::to('/')->with('msg', 'Tu cuenta ha sido eliminada satisfactoriamente.');
+    	}
+    	else {
+    		Auth::login($user);
+
+    		return Redirect::back()->withError('Tu cuenta no pudo ser eliminada, intenta de nuevo.');
     	}
 	}
 

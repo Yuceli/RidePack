@@ -14,6 +14,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	total_rating es la suma total de todos los ratings que tiene el usuario.
 	number_ratings es el numero de veces que el usuario se le ha asignado un rating.
 	*/
+	protected $dates = array('birthdate');
+
 	protected $fillable = ['email','password','name','last_name','city_id','total_rating','number_ratings'];
 
 	protected $hidden = array('password', 'remember_token');

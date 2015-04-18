@@ -70,6 +70,12 @@
     
     <!-- ******PROMO****** -->
     <section id="#home" class="promo section offset-header">
+        @if(Session::has('msg'))
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                {{ Session::get('msg') }}
+            </div>
+        @endif
         <div class="container text-center">
             <h2 class="title">Ride<span class="highlight">Pack</span></h2>
             <p class="intro">¿Deseas enviar o transportar algún paquete?</p>

@@ -64,6 +64,21 @@
 <body class="background">
     <br><br><br>
     <div class="container-fluid">
+
+        @if(Session::has('error'))
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                {{ Session::get('error') }}
+            </div>
+        @endif
+
+        @if(Session::has('msg'))
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                {{ Session::get('msg') }}
+            </div>
+        @endif
+
         <div class="row">
             <div class="col-md-6 container-profile">
                 <div class="well profile">
@@ -72,13 +87,13 @@
                             <h2>{{ Auth::user()->name; }}  {{ Auth::user()->last_name; }}</h2>
                             <p><strong>Email: </strong> {{ Auth::user()->email; }} </p>
                             <p><strong>Usuario desde: </strong> {{ Auth::user()->created_at->toDateString(); }}  </p>
-                            <p><strong>Edad: </strong>{{ Auth::user()->birthdate; }}</p>
+                            <p><strong>Edad: </strong>{{ Auth::user()->birthdate->age; }}</p>
                             <input id="city_id" value="{{ Auth::user()->city_id; }}" type="hidden">
                             <p><strong>Pais: </strong><span id="country"> </span></p>
                             <p><strong>Estado: </strong><span id="state"> </span></p>
                             <p><strong>Ciudad: </strong><span id="city"> </span></p>
                             </div>             
-                        </div>            
+                        </div>
                         <div class="col-xs-12 divider text-center">
                              <a href="editProfile"><button class="btn btn-default btn-block"><span class="fa fa-plus-circle"></span> Editar perfil</button></a><hr>
                             <a href="management"><button class="btn btn-primary btn-block"><span class="fa fa-plus-circle"></span> Gestionar mis viajes</button></a>
@@ -232,8 +247,10 @@
 
                        </div>
                        <div class="modal-footer ">
-                        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Si</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                        <form method="POST" action="{{ url('deleteUser') }}">
+                            <button type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Si</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                        </form>
                       </div>
                     </div>
                     <!-- /.modal-content --> 
