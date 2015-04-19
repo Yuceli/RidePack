@@ -137,10 +137,7 @@ Route::group(array('before' => 'auth'), function()
 	 *	Ruta para ver los detalles de un viaje.
 	 *  CU-28
 	 */
-	Route::get('/trip_details', function()
-	{
-		return View::make('trip_details');
-	});
+	Route::get('/trip_details/{id}', 'TripDetailsController@showDetails');
 
 	/*
 	 * Ruta par eliminar un viaje

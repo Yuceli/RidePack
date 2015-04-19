@@ -105,11 +105,11 @@
                     </td>
                     <td>
                       <p>{{$pack -> title }}</p>
-                      <?php 
-                        $volumes = array('1' => 'Extra pequeño', '2'=>'Pequeño','3'=>'Mediano', '4'=>'Grande', '5'=>'Extra grande');       
-                        $volume = $volumes[''.$pack -> volume.''];
-                      ?>
-                      <strong>Volumen:</strong><p>{{$volume}}</p> 
+                      <!-- <?php 
+                        //$volumes = array('1' => 'Extra pequeño', '2'=>'Pequeño','3'=>'Mediano', '4'=>'Grande', '5'=>'Extra grande');       
+                        //$volume = $volumes[''.$pack -> volume.''];
+                      ?> !-->
+                      <strong>Volumen:</strong><p>{{$pack -> size}}</p> 
                       <strong>Peso:</strong><p>{{$pack -> weight }} kg</p>
                       <strong>Recompensa:</strong><p>${{$pack -> reward }}</p>  
                     </td>
