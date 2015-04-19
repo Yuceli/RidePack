@@ -72,7 +72,7 @@
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-              {{Form::date('birthdate', Auth::user()->birthdate->toDateString(), array('id'=>'birthdate','class'=>'form-control input-lg','placeholder'=>'Fecha de nacimiento','tabindex'=>'3'))}}
+              {{Form::date('birthdate', Auth::user()->birthdate?Auth::user()->birthdate->toDateString():null, array('id'=>'birthdate','class'=>'form-control input-lg','placeholder'=>'Fecha de nacimiento','tabindex'=>'3'))}}
               @if($errors->first('birthdate'))<div class="alert alert-danger" role="alert">{{ $errors->first('birthdate') }}</div>@endif
             </div>
           </div>

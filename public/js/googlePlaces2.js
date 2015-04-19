@@ -53,7 +53,7 @@ function googlePlaces () {
              }
         }
 
-        if(this.inputPlaceID && this.inputPlaceID.nodeName == 'INPUT'){
+        if(this.inputPlaceID && this.inputPlaceID.nodeName == 'INPUT' && place.place_id){
             this.inputPlaceID.value = place.place_id;
         }
         

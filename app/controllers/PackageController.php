@@ -62,7 +62,7 @@ class PackageController extends BaseController {
 	    
 	    $user->packs()->save($pack);
 
-		return Redirect::to('package_details/'/*.$pack->id*/)->withMessage('Paquete publicado.');
+		return Redirect::to('package_details/'.$pack->id)->withMessage('Paquete publicado.')->withClass('success');
 	}
 
 	public function deletePack()
