@@ -11,11 +11,6 @@ class Trip extends Eloquent {
 		return $this->belongsTo('User');
 	}
 
-	public function messages()
-	{
-		return $this->morphMany('Message', 'messageable');
-	}
-
 	public function requests()
 	{
 		return $this->morphMany('Petition', 'requestable');

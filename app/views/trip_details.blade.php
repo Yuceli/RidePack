@@ -144,9 +144,6 @@
 
                 <tbody>
 
-                  <tr>
-                    <td colspan="8"> <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Enviar mensaje<span class="glyphicon glyphicon-chevron-right"></span></a></td>
-                  </tr>
                    <tr>
                     <td colspan="8"> <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#ratings">Valorar usuario<span class="glyphicon glyphicon-chevron-right"></span></a></td>
                   </tr>
@@ -175,49 +172,7 @@
       </div>
     </div>
   </div>
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">
-            <span aria-hidden="true">×</span>
-            <span class="sr-only">Close</span>
-          </button>
-          <h4 class="modal-title" id="myModalLabel">
-            <i class="fa fa-envelope"></i> Enviar mensaje
-          </h4>
-        </div>
-        <div class="modal-body">
-          <p>Solicita más detalles al viajero</p>
-          {{ Form::open( array('action' => 'TripDetailsController@sendMessage') ) }}
-            <div class='input-group'>
-              <span class='input-group-addon'>
-                <i class='fa fa-envelope'></i>
-              </span>
-              {{ Form::textarea('message', null, array(
-                'class' => 'form-control',
-                'rows' => '6')
-              ) }}
-            </div>
-            <br />
-            {{ Form::button("<i class='fa fa-share'></i> Enviar", array(
-              'type' => 'submit',
-              'class' => 'btn btn-primary',
-              'name' => 'submit'
-            )) }}
-          {{ Form::close() }}
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
+  
   <!-- Modal ratings -->
   <div class="modal fade" id="ratings" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">

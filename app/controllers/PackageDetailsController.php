@@ -8,25 +8,6 @@ class PackageDetailsController extends BaseController {
 		return View::make('package_details');
 	}
 
-	public function sendMessage()
-	{
-		if (Auth::check()){
-			$message = new Message;
-			$message->from_user = Auth::id();
-			$message->content = Input::get('message');
-			$message->status = 'sent';
-			if($message->save()){
-				Session::flash('message','Mensaje enviado!');
-				Session::flash('class', 'success');
-			}
-			else{
-				Session::flash('message', 'Error al enviar el mensaje!');
-				Session::flash('class', 'danger');
-			}
-			return Redirect::to('/package_details');
-		}
-	}
-
 	public function showDetails($id){
 		if (Auth::check()){
 			$pack = Pack::find($id);
@@ -35,6 +16,39 @@ class PackageDetailsController extends BaseController {
 			$trips = $user -> trips;
 			return View::make('package_details', compact("pack", "user", "trips"));
 		}
+	}
+
+	public function sendRequest($id)
+	{
+		
+			$myPetitions = Petition::where('from_user', '=', Auth::id())->where('requestable_id', '=', $id)->get();
+			if( sizeof($myPetitions->toArray())==0 )
+			{
+				$petition = new Petition;
+				$petition->from_user = Auth::id();
+				$petition->status = 'onhold';
+				$pack = Pack::find($id);
+
+				if($petition->save() && $pack->requests()->save($petition))
+				{
+					Session::flash('message','La petición a sido registrada');
+					Session::flash('class', 'success');
+					return Redirect::to('/management');
+				}
+				else
+				{
+					Session::flash('message', 'Ocurrió un error con la petición. Intente nuevamente');
+					Session::flash('class', 'danger');
+					return Redirect::back();
+				}
+			}
+			else
+			{
+				Session::flash('message', 'Ya se postuló antes. No puede postularse más de una vez');
+				Session::flash('class', 'danger');
+				return Redirect::back();
+			}
+		
 	}
 
 }

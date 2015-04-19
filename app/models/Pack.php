@@ -6,11 +6,6 @@ class Pack extends Eloquent {
 
 	protected $dates = array('sending_date','arrival_date');
 
-	public function messages()
-	{
-		return $this->morphMany('Message', 'messageable');
-	}
-
 	public function requests()
 	{
 		return $this->morphMany('Petition', 'requestable');

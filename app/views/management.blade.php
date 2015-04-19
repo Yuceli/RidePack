@@ -63,6 +63,9 @@
 
   <br><br><br><br><br>
   <div class="container">
+    @if(Session::has('message'))
+      <div class="alert alert-{{ Session::get('class') }}">{{ Session::get('message')}}</div>
+    @endif
     <div class="row">
       <div class="col-md-12">
         <ol class="breadcrumb">

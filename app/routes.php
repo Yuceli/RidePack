@@ -40,6 +40,10 @@ Route::group(array('before' => 'auth'), function()
 	 */
 	Route::get('/users/{user_id}','UsersProfileController@showUserProfile');
 
+	Route::post('/users/{user_id}', array(
+		'as' => 'users',
+		'uses' => 'UsersProfileController@sendMessage'
+	));
 	/*
 	 *	Ruta para buscar paquetes y viajes.
 	 *	CU-05 y CU-06
@@ -133,7 +137,7 @@ Route::group(array('before' => 'auth'), function()
 	 */
 	Route::get('/package_details/{id}', 'PackageDetailsController@showDetails');
 
-	Route::post('/package_details', 'PackageDetailsController@sendMessage');
+	Route::post('/package_details/{id}', 'PackageDetailsController@sendRequest');
 	
 	/*
 	 *	Ruta para ver los detalles de un viaje.
@@ -156,14 +160,7 @@ Route::group(array('before' => 'auth'), function()
 	 */
     Route::post('/DeletePack', 'PackageController@DeletePack');
 
-	Route::post('/trip_details', 'TripDetailsController@sendMessage');
-
 	Route::get('/management', 'ManagementController@index');
-
-	Route::post('/users/{user_id}', array(
-		'as' => 'users',
-		'uses' => 'UsersProfileController@sendMessage'
-	));
 });
 
 
