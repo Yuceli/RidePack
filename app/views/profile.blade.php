@@ -87,7 +87,7 @@
                             <h2>{{ Auth::user()->name; }}  {{ Auth::user()->last_name; }}</h2>
                             <p><strong>Email: </strong> {{ Auth::user()->email; }} </p>
                             <p><strong>Usuario desde: </strong> {{ Auth::user()->created_at->toDateString(); }}  </p>
-                            <p><strong>Edad: </strong>{{ Auth::user()->birthdate->age; }}</p>
+                            <p><strong>Edad: </strong>{{ Auth::user()->birthdate?Auth::user()->birthdate->age:'' }}</p>
                             <input id="city_id" value="{{ Auth::user()->city_id; }}" type="hidden">
                             <p><strong>Pais: </strong><span id="country"> </span></p>
                             <p><strong>Estado: </strong><span id="state"> </span></p>
