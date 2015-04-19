@@ -96,55 +96,21 @@
                           <th>Rechazar</th>
                         </thead>
                         <tbody>
-
+                          @foreach($requests as $request)
+                            <?php $user=User::findorFail($request->requestable_id) ?>
+                            @if($request->status=='onhold')
                           <tr>
-                            <td>1</td>
-                            <td>12/02/2015</td>
-                            <td>Marco se ha postulado para transportar tu paquete</td>
+                            <td>{{$request->id}}</td>
+                            <td>{{$request->created_at}}</td>
+                            <td>{{$user->name." se ha postulado para transportar tu paquete"}}</td>
                             <td><button class="btn btn-primary btn-xs"><span class="fa fa-user"></span></button></td>
-                            <td><button class="btn btn-primary btn-xs"><span class="fa fa-check"></span></button></td>
+                            <td><button class="btn btn-primary btn-xs" onclick=$request><span class="fa fa-check"></span></button></td>
                             <td><button class="btn btn-danger btn-xs"><span class="fa fa-times"></span></button></td>
                           </tr>
+                          @else
+                          @endif 
+                          @endforeach
 
-                          <tr>
-                            <td>2</td>
-                            <td>12/02/2015</td>
-                            <td>Marco se ha postulado para transportar tu paquete</td>
-                            <td><button class="btn btn-primary btn-xs"><span class="fa fa-user"></span></button></td>
-                            <td><button class="btn btn-primary btn-xs"><span class="fa fa-check"></span></button></td>
-                            <td><button class="btn btn-danger btn-xs"><span class="fa fa-times"></span></button></td>
-                          </tr>
-
-
-                          <tr>
-                            <td>3</td>
-                            <td>12/02/2015</td>
-                            <td>Marco se ha postulado para transportar tu paquete</td>
-                            <td><button class="btn btn-primary btn-xs"><span class="fa fa-user"></span></button></td>
-                            <td><button class="btn btn-primary btn-xs"><span class="fa fa-check"></span></button></td>
-                            <td><button class="btn btn-danger btn-xs"><span class="fa fa-times"></span></button></td>
-                          </tr>
-
-
-
-                          <tr>
-                            <td>4</td>
-                            <td>12/02/2015</td>
-                            <td>Marco se ha postulado para transportar tu paquete</td>
-                            <td><button class="btn btn-primary btn-xs"><span class="fa fa-user"></span></button></td>
-                            <td><button class="btn btn-primary btn-xs"><span class="fa fa-check"></span></button></td>
-                            <td><button class="btn btn-danger btn-xs"><span class="fa fa-times"></span></button></td>
-                          </tr>
-
-
-                          <tr>
-                            <td>5</td>
-                            <td>12/02/2015</td>
-                            <td>Marco se ha postulado para transportar tu paquete</td>
-                            <td><button class="btn btn-primary btn-xs"><span class="fa fa-user"></span></button></td>
-                            <td><button class="btn btn-primary btn-xs"><span class="fa fa-check"></span></button></td>
-                            <td><button class="btn btn-danger btn-xs"><span class="fa fa-times"></span></button></td>
-                          </tr>
                         </tbody>
                       </table>
                     </div>

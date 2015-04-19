@@ -126,10 +126,7 @@ Route::group(array('before' => 'auth'), function()
 	 *	CU-15
 	 *  CU-20
 	 */
-	Route::get('/handle_request', function()
-	{
-		return View::make('handle_requests');
-	});
+	Route::get('/handle_request', 'HandleRequestsController@showWelcome');
 
 	/*
 	 *	Ruta par ver los detalles de un paquete.

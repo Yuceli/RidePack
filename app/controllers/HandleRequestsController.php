@@ -6,7 +6,13 @@ class HandleRequestsController extends BaseController {
 
 	public function showWelcome()
 	{
-		return View::make('handle_requests');
+		$user = Auth::user();
+		$userid=$user->id;
+		$requests= DB::table('requests')
+            ->where('requestable_id', '=', $userid)
+            ->get();
+		return View::make('handle_requests')->with('requests', $requests);
+	}
 	}
 
 
