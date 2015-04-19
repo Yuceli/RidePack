@@ -96,7 +96,13 @@
                 
                 <tbody>
                   <tr>
-                    <td><img src="{{ URL::asset($pack -> picture) }}" class="img-cart"></td>
+                    <td>
+                    @if($pack->user->picture)
+                      <img src="{{ $pack->user->picture }}" class="img-cart" />
+                    @else
+                      <img src="https://s3.amazonaws.com/FringeBucket/default-user.png" class="img-cart" />
+                    @endif
+                    </td>
                     <td>
                       <p>{{$pack -> title }}</p>
                       <?php 
@@ -144,7 +150,7 @@
             </div>
           </div>
         </div>
-        <a href="upcoming-packages" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Atras</a>
+        <a href="/upcoming-packages" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Atras</a>
       </div>
 
       <div class="col-md-3">
