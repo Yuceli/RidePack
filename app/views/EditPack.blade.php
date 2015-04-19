@@ -102,8 +102,7 @@
 
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
-            <!--<input type="date" name="sending_date" id="sending_date" class="form-control input-lg" placeholder="Fecha de salida" required="required" tabindex="6">-->
-            {{Form::date('sending_date', null, array('id'=>'sending_date','class'=>'form-control input-lg', 'required'=>'true', 'tabindex'=>'5'))}}
+            {{Form::date('sending_date', $pack->sending_date->toDateString(), array('id'=>'sending_date','class'=>'form-control input-lg', 'required'=>'true', 'tabindex'=>'5'))}}
             <div>{{ $errors->first('sending_date') }}</div>
           </div>
         </div>
@@ -138,8 +137,7 @@
 
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
-            <!--<input type="date" name="arrival_date" id="arrival_date" class="form-control input-lg" placeholder="Fecha de llegada" required="required" tabindex="7">-->
-            {{Form::date('arrival_date', null, array('id'=>'arrival_date','class'=>'form-control input-lg', 'required'=>'true', 'tabindex'=>'7'))}}
+            {{Form::date('arrival_date', $pack->arrival_date->toDateString(), array('id'=>'arrival_date','class'=>'form-control input-lg', 'required'=>'true', 'tabindex'=>'7'))}}
             <div>{{ $errors->first('arrival_date') }}</div>
           </div>
         </div>
