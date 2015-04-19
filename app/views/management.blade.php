@@ -126,7 +126,7 @@
                               <input type="hidden" placeid="placeid" value="{{$myTrip['arrival_city']}}">
                               <span placeid="city-{{$myTrip['arrival_city']}}"></span> - {{$myTrip['arrival_date']}}
                             </td>
-                            <td align="center"></td>
+                            <td align="center">{{$myTrip['max_size']}}</td>
                             <td align="center">{{$myTrip['max_weight']}}kg</td>
                             <td align="center">{{$myTrip['transport']}}</td>
                             <td align="center">${{$myTrip['carry_reward']}}</td>
@@ -216,8 +216,8 @@
                                 $arrival_date = $arrival_date[2]."/".$arrival_date[1]."/".substr($arrival_date[0], 2);
 
 
-                                $volumes = array('1' => 'Extra pequeño', '2'=>'Pequeño','3'=>'Mediano', '4'=>'Grande', '5'=>'Extra grande');       
-                                $volume = $volumes[''.$pack -> volume.''];
+                                /*$volumes = array('1' => 'Extra pequeño', '2'=>'Pequeño','3'=>'Mediano', '4'=>'Grande', '5'=>'Extra grande');       
+                                $volume = $volumes[''.$pack -> volume.''];*/
                               ?>
                                 <tr>
                                   <td>{{$pack -> id}}</td>
@@ -231,7 +231,7 @@
                                     <input type="hidden" placeid="placeid" value="{{$pack->to_city}}">
                                     <span placeid="city-{{$pack->to_city}}"></span> - {{$arrival_date}}
                                   </td>
-                                  <td>{{$volume}}</td>
+                                  <td>{{$pack -> size}}</td>
                                   <td>{{$pack -> weight}}Kg</td>
                                   <td>${{$pack -> reward}}</td>
                                   <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit_package" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>

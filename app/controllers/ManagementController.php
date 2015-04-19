@@ -33,20 +33,17 @@ class ManagementController extends BaseController {
 			$arrival_date = explode("-", $arrival_date);
 			$arrival_date = $arrival_date[2]."/".$arrival_date[1]."/".substr($arrival_date[0], 2);
 
-			//$volumes = array('1' => 'Extra pequeño', '2'=>'Pequeño','3'=>'Mediano', '4'=>'Grande', '5'=>'Extra grande');       
-			//$volume = $volumes[''.$trip -> max_volume.''];
-
 			$transports = array('1' => 'Terrestre', '2' => 'Áerea', '3' => 'Maritima');
 			$transport = $transports[''.$trip -> transport.''];
 
 			$infoTrip = array(
 				"id" => $trip -> id,
 				"created_at" => $created,
-				"departure_city" => $trip->departure_city,
+				"departure_city" => $trip -> departure_city,
 				"departure_date" => $departure_date, 
-				"arrival_city" => $trip->arrival_city,
+				"arrival_city" => $trip -> arrival_city,
 				"arrival_date" => $arrival_date,
-				//"volume" => $trip -> max_volume,
+				"max_size" => $trip -> max_size,
 				"max_weight" => $trip -> max_weight,
 				"transport" => $transport,
 				"carry_reward" => $trip -> carry_reward
