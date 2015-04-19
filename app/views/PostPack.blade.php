@@ -216,64 +216,64 @@
 
 <script type="text/javascript">
 
-  var gp1, gp2;
+  var googlePlaceFrom, googlePlaceTo;
   window.onload= function(){
-    var gp1 = new googlePlaces();
+    var googlePlaceFrom = new googlePlaces();
 
-    gp1.displaySearch = function() {
-      var place = gp1.autocomplete.getPlace();
+    googlePlaceFrom.displaySearch = function() {
+      var place = googlePlaceFrom.autocomplete.getPlace();
 
-      gp1.displayPlaceDetails(place);
+      googlePlaceFrom.displayPlaceDetails(place);
     };
 
-    gp1.initAutocomplete(document.getElementById('search_from_city'));
+    googlePlaceFrom.initAutocomplete(document.getElementById('search_from_city'));
 
-    gp1.inputPlaceID = document.getElementById('from_city');
+    googlePlaceFrom.inputPlaceID = document.getElementById('from_city');
 
-    gp1.outputCity = document.getElementById('city_from');
-    gp1.outputState = document.getElementById('state_from');
-    gp1.outputCountry = document.getElementById('country_from');
+    googlePlaceFrom.outputCity = document.getElementById('city_from');
+    googlePlaceFrom.outputState = document.getElementById('state_from');
+    googlePlaceFrom.outputCountry = document.getElementById('country_from');
 
-    gp1.showPlaceDetails = function (place, status) {
+    googlePlaceFrom.showPlaceDetails = function (place, status) {
       
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-            gp1.displayPlaceDetails(place);
+            googlePlaceFrom.displayPlaceDetails(place);
         }else{
-            gp1.displayPlaceDetails({});
+            googlePlaceFrom.displayPlaceDetails({});
         }
     };
 
-    gp1.getPlaceDetails();
+    googlePlaceFrom.getPlaceDetails();
 
 
 
-    gp2 = new googlePlaces();
+    googlePlaceTo = new googlePlaces();
 
-    gp2.displaySearch = function() {
-      var place = gp2.autocomplete.getPlace();
+    googlePlaceTo.displaySearch = function() {
+      var place = googlePlaceTo.autocomplete.getPlace();
 
-      gp2.displayPlaceDetails(place);
+      googlePlaceTo.displayPlaceDetails(place);
     };
 
 
-    gp2.initAutocomplete(document.getElementById('search_to_city'));
+    googlePlaceTo.initAutocomplete(document.getElementById('search_to_city'));
 
-    gp2.inputPlaceID = document.getElementById('to_city');
+    googlePlaceTo.inputPlaceID = document.getElementById('to_city');
 
-    gp2.outputCity = document.getElementById('city_to');
-    gp2.outputState = document.getElementById('state_to');
-    gp2.outputCountry = document.getElementById('country_to');
+    googlePlaceTo.outputCity = document.getElementById('city_to');
+    googlePlaceTo.outputState = document.getElementById('state_to');
+    googlePlaceTo.outputCountry = document.getElementById('country_to');
 
-    gp2.showPlaceDetails = function (place, status) {
+    googlePlaceTo.showPlaceDetails = function (place, status) {
       
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-            gp2.displayPlaceDetails(place);
+            googlePlaceTo.displayPlaceDetails(place);
         }else{
-            gp2.displayPlaceDetails({});
+            googlePlaceTo.displayPlaceDetails({});
         }
     };
 
-    gp2.getPlaceDetails();
+    googlePlaceTo.getPlaceDetails();
   };
 
 

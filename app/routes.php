@@ -85,20 +85,17 @@ Route::group(array('before' => 'auth'), function()
 	 * Rutas para publicar un paquete.
 	 * CU-09
 	 */
-	Route::get('/post_package', function()
-	{
-		return View::make('post_package');
-	});
+	Route::get('/post_package', 'PackController@showPostPack');
 
-	Route::post('/post_package', 'PackageController@createPack');
+	Route::post('/post_package', 'PackController@createPack');
 
 	/*
 	 * Rutas para editar un paquete.
 	 * CU-17
 	 */
-	Route::get('/edit_package/{id}', 'PackageController@showUpdatePack');
+	Route::get('/edit_package/{id}', 'PackController@showUpdatePack');
 	
-	Route::post('/edit_package/{id}', 'PackageController@updatePack');
+	Route::post('/edit_package/{id}', 'PackController@updatePack');
     
 	/*
 	 * Rutas para editar un viaje.
@@ -155,7 +152,7 @@ Route::group(array('before' => 'auth'), function()
 	 * Ruta par eliminar un paquete
 	 * CU-23
 	 */
-    Route::post('/DeletePack', 'PackageController@DeletePack');
+    Route::post('/DeletePack', 'PackController@DeletePack');
 
 	Route::get('/management', 'ManagementController@index');
 });
