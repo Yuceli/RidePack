@@ -163,7 +163,7 @@
                   <tr>
                     <td colspan="8">
                       {{ Form::open( array('action' => array('PackageDetailsController@sendRequest', $pack->id)))}}
-                      {{ Form::button("Postularme a paquetee<span class='glyphicon glyphicon-chevron-right'></span>", array(
+                      {{ Form::button("Postularme a paquete<span class='glyphicon glyphicon-chevron-right'></span>", array(
                         'type' => 'submit',
                         'class' => 'btn btn-primary pull-right ' . (($user -> id == Auth::user()-> id)? 'disabled' : ''),
                         'name' => 'submit',
@@ -171,9 +171,6 @@
                       )) }}
                       {{ Form::close() }}
                     </td>
-                  </tr>
-                  <tr>
-                    <td colspan="8"> <a href="{{ URL::action('PackageDetailsController@sendRequest') }}" class="btn btn-primary pull-right <?php echo ($user -> id == Auth::user()-> id)? 'disabled' : '';?>">Postularme a paquete<span class="glyphicon glyphicon-chevron-right"></span></a></td>
                   </tr>
                   <tr>
                     <?php
