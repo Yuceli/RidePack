@@ -143,37 +143,23 @@
                                      <th>Fecha</th>
                                  </thead>
                                  <tbody>
-
-                                  <tr>
-                                    <td>1</td>
-                                    <td>Marco se ha postulado para transportar tu paquete</td>
-                                    <td>10/12/2015</td>
-                                </tr>
-
-                                <tr>
-                                    <td>2</td>
-                                    <td>Marco se ha postulado para transportar tu paquete</td>
-                                    <td>10/12/2015</td>
-                                </tr>
-
-
-                                <tr>
-                                    <td>3</td>
-                                    <td>Marco se ha postulado para transportar tu paquete</td>
-                                    <td>10/12/2015</td>  
-                                </tr>
-
-                                <tr>
-                                    <td>4</td>
-                                    <td>Marco se ha postulado para transportar tu paquete</td>
-                                     <td>10/12/2015</td>
-                                </tr>
-
-                                <tr>
-                                    <td>5</td>
-                                    <td>Marco se ha postulado para transportar tu paquete</td>
-                                     <td>10/12/2015</td>
-                                </tr>
+                                    @foreach(Auth::user()->packs as $pack)
+                                        @foreach($pack -> requests as $petition)
+                                        <?php 
+                                            $created = explode(" ", $petition -> created_at);
+                                            $created = $created[0];
+                                            $created = explode("-", $created);
+                                            $created = $created[2]."/".$created[1]."/".substr($created[0], 2);
+                                            $id_user = $petition -> from_user;
+                                            $user = User::find($id_user);
+                                        ?>
+                                        <tr>
+                                            <td>{{$petition -> id}}</td>
+                                            <td>{{$user -> name}} se ha postulado para transportar tu paquete</td>
+                                            <td>{{$created}}</td>
+                                        </tr>
+                                        @endforeach
+                                    @endforeach
                             </tbody>
                           </table>
                                 <a class="btn btn-info btn-circle text-uppercase pull-right" href="handle_request" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Gestionar solicitudes</a>
@@ -190,37 +176,23 @@
                                      <th>Fecha</th>
                                  </thead>
                                  <tbody>
-
-                                  <tr>
-                                    <td>1</td>
-                                    <td>Yussel ha solicitado tus servicios como viajero</td>
-                                    <td>10/12/2015</td>
-                                </tr>
-
-                                <tr>
-                                    <td>2</td>
-                                    <td>Yussel ha solicitado tus servicios como viajero</td>
-                                    <td>10/12/2015</td>
-                                </tr>
-
-
-                                <tr>
-                                    <td>3</td>
-                                    <td>Yussel ha solicitado tus servicios como viajero</td>
-                                    <td>10/12/2015</td>  
-                                </tr>
-
-                                <tr>
-                                    <td>4</td>
-                                    <td>Yussel ha solicitado tus servicios como viajero</td>
-                                     <td>10/12/2015</td>
-                                </tr>
-
-                                <tr>
-                                    <td>5</td>
-                                    <td>Yussel ha solicitado tus servicios como viajero</td>
-                                     <td>10/12/2015</td>
-                                </tr>
+                                    @foreach(Auth::user()->trips as $trip)
+                                        @foreach($trip -> requests as $petition)
+                                        <?php 
+                                            $created = explode(" ", $petition -> created_at);
+                                            $created = $created[0];
+                                            $created = explode("-", $created);
+                                            $created = $created[2]."/".$created[1]."/".substr($created[0], 2);
+                                            $id_user = $petition -> from_user;
+                                            $user = User::find($id_user);
+                                        ?>
+                                        <tr>
+                                            <td>{{$petition -> id}}</td>
+                                            <td>{{$user -> name}} ha solicitado tus servicios como viajero</td>
+                                            <td>{{$created}}</td>
+                                        </tr>
+                                        @endforeach
+                                    @endforeach
                             </tbody>
                           </table>
                                 <a class="btn btn-info btn-circle text-uppercase pull-right" href="handle_request" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Gestionar solicitudes</a>
