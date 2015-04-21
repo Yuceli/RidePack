@@ -234,13 +234,13 @@
                                   <td>{{$pack -> size}}</td>
                                   <td>{{$pack -> weight}}Kg</td>
                                   <td>${{$pack -> reward}}</td>
-                                  <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit_package" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                                  <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="{{url('edit_package/'.$pack->id)}}"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
                                   <td><p data-placement="top" data-toggle="tooltip" title="Delete">
                                     <?php
                                 $packid=$pack->id;
                                 echo "<button type='button' class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-packid='$packid' data-target='#delete_package' >"?>
                                   <span class="glyphicon glyphicon-trash"></span>
-                                </button></td>
+                                </button></p></td>
                                 </tr>
                                 @endforeach
                               @else
@@ -384,8 +384,6 @@
         continue;
 
       aPlacess.push(placeID);
-
-      console.log(placeID);
 
       var request = {
           placeId: placeID
