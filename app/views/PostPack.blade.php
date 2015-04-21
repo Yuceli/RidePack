@@ -78,8 +78,8 @@
       <div class="row">
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
-              {{Form::select('volume', array(''=>'Volumen de mi paquete',1=>'Extra pequeño',2=>'Pequeño',3=>'Mediano',4=>'Grande',5=>'Extra grande'), null, array('id'=>'volume','class'=>'form-control input-lg','tabindex'=>'2','required'=>'true'))}}
-              <div>{{ $errors->first('volume') }}</div>
+              {{Form::select('size', array(''=>'Tamaño del paquete', 'Extra pequeño'=>'Extra pequeño', 'Pequeño'=>'Pequeño', 'Mediano'=>'Mediano', 'Grande'=>'Grande', 'Extra grande'=>'Extra grande'), null, array('id'=>'size','class'=>'form-control input-lg','tabindex'=>'2','required'=>'true'))}}
+              <div>{{ $errors->first('size') }}</div>
           </div>
         </div>
 

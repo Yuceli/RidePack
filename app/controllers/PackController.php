@@ -12,7 +12,7 @@ class PackController extends BaseController {
 			'sending_date' => 'date|date_format:Y-m-d|required',
 			'arrival_date' => 'date|date_format:Y-m-d|required',
 			'reward' => 'numeric|min:0',
-			'volume' => 'numeric|required',
+			'size' => 'required',
 			'weight' => 'numeric|min:0|required',
 			'observation' => 'max:100',
 			'from_city' => 'required',
@@ -36,7 +36,7 @@ class PackController extends BaseController {
 	    $pack->sending_date = Input::get('sending_date');
 	    $pack->arrival_date = Input::get('arrival_date');
 	    $pack->reward = Input::get('reward');
-	    $pack->volume = Input::get('volume');
+	    $pack->size = Input::get('size');
 	    $pack->weight = Input::get('weight');
 	    $pack->observation = Input::get('observation');
 	    $pack->status = 'onhold';
@@ -102,7 +102,7 @@ class PackController extends BaseController {
 			'sending_date' => 'date|date_format:Y-m-d|required',
 			'arrival_date' => 'date|date_format:Y-m-d|required',
 			'reward' => 'numeric|min:0',
-			'volume' => 'numeric|required',
+			'size' => 'required',
 			'weight' => 'numeric|min:0|required',
 			'observation' => 'max:100',
 			'from_city' => 'required',
@@ -124,7 +124,7 @@ class PackController extends BaseController {
 	    $pack->sending_date = Input::get('sending_date');
 	    $pack->arrival_date = Input::get('arrival_date');
 	    $pack->reward = Input::get('reward');
-	    $pack->volume = Input::get('volume');
+	    $pack->size = Input::get('size');
 	    $pack->weight = Input::get('weight');
 	    $pack->observation = Input::get('observation');
 	    $pack->from_city = Input::get('from_city');

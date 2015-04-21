@@ -48,7 +48,7 @@
               <input type="hidden" placeid="placeid" value="{{ $pack->from_city }}">
               <input type="hidden" placeid="placeid" value="{{ $pack->to_city }}">
             </p>
-            <p class="desc">Peso: {{ $pack->weight }} kg, Tamaño: {{ $pack->volume }}</p>
+            <p class="desc">Peso: {{ $pack->weight }} kg, Tamaño: {{ $pack->size }}</p>
              
             <ul>
               <a href="package_details/{{ $pack->id }}"><li style="width:100%;"><span class="fa fa-user-plus"></span></li></a>

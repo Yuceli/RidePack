@@ -78,8 +78,8 @@
       <div class="row">
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
-              {{Form::select('volume', array(''=>'Volumen de mi paquete',1=>'Extra pequeño',2=>'Pequeño',3=>'Mediano',4=>'Grande',5=>'Extra grande'), null, array('id'=>'volume','class'=>'form-control input-lg','tabindex'=>'2','required'=>'true'))}}
-              <div>{{ $errors->first('volume') }}</div>
+              {{Form::select('size', array(''=>'Tamaño del paquete', 'Extra pequeño'=>'Extra pequeño', 'Pequeño'=>'Pequeño', 'Mediano'=>'Mediano', 'Grande'=>'Grande', 'Extra grande'=>'Extra grande'), null, array('id'=>'size','class'=>'form-control input-lg','tabindex'=>'2','required'=>'true'))}}
+              <div>{{ $errors->first('size') }}</div>
           </div>
         </div>
 
@@ -219,64 +219,64 @@
 
 <script type="text/javascript">
 
-  var gp1, gp2;
+  var googlePlaceFrom, googlePlaceFrom;
   window.onload= function(){
-    var gp1 = new googlePlaces();
+    var googlePlaceFrom = new googlePlaces();
 
-    gp1.displaySearch = function() {
-      var place = gp1.autocomplete.getPlace();
+    googlePlaceFrom.displaySearch = function() {
+      var place = googlePlaceFrom.autocomplete.getPlace();
 
-      gp1.displayPlaceDetails(place);
+      googlePlaceFrom.displayPlaceDetails(place);
     };
 
-    gp1.initAutocomplete(document.getElementById('search_from_city'));
+    googlePlaceFrom.initAutocomplete(document.getElementById('search_from_city'));
 
-    gp1.inputPlaceID = document.getElementById('from_city');
+    googlePlaceFrom.inputPlaceID = document.getElementById('from_city');
 
-    gp1.outputCity = document.getElementById('city_from');
-    gp1.outputState = document.getElementById('state_from');
-    gp1.outputCountry = document.getElementById('country_from');
+    googlePlaceFrom.outputCity = document.getElementById('city_from');
+    googlePlaceFrom.outputState = document.getElementById('state_from');
+    googlePlaceFrom.outputCountry = document.getElementById('country_from');
 
-    gp1.showPlaceDetails = function (place, status) {
+    googlePlaceFrom.showPlaceDetails = function (place, status) {
       
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-            gp1.displayPlaceDetails(place);
+            googlePlaceFrom.displayPlaceDetails(place);
         }else{
-            gp1.displayPlaceDetails({});
+            googlePlaceFrom.displayPlaceDetails({});
         }
     };
 
-    gp1.getPlaceDetails();
+    googlePlaceFrom.getPlaceDetails();
 
 
 
-    gp2 = new googlePlaces();
+    googlePlaceFrom = new googlePlaces();
 
-    gp2.displaySearch = function() {
-      var place = gp2.autocomplete.getPlace();
+    googlePlaceFrom.displaySearch = function() {
+      var place = googlePlaceFrom.autocomplete.getPlace();
 
-      gp2.displayPlaceDetails(place);
+      googlePlaceFrom.displayPlaceDetails(place);
     };
 
 
-    gp2.initAutocomplete(document.getElementById('search_to_city'));
+    googlePlaceFrom.initAutocomplete(document.getElementById('search_to_city'));
 
-    gp2.inputPlaceID = document.getElementById('to_city');
+    googlePlaceFrom.inputPlaceID = document.getElementById('to_city');
 
-    gp2.outputCity = document.getElementById('city_to');
-    gp2.outputState = document.getElementById('state_to');
-    gp2.outputCountry = document.getElementById('country_to');
+    googlePlaceFrom.outputCity = document.getElementById('city_to');
+    googlePlaceFrom.outputState = document.getElementById('state_to');
+    googlePlaceFrom.outputCountry = document.getElementById('country_to');
 
-    gp2.showPlaceDetails = function (place, status) {
+    googlePlaceFrom.showPlaceDetails = function (place, status) {
       
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-            gp2.displayPlaceDetails(place);
+            googlePlaceFrom.displayPlaceDetails(place);
         }else{
-            gp2.displayPlaceDetails({});
+            googlePlaceFrom.displayPlaceDetails({});
         }
     };
 
-    gp2.getPlaceDetails();
+    googlePlaceFrom.getPlaceDetails();
   };
 
 

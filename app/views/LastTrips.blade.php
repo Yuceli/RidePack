@@ -48,7 +48,7 @@
               <input type="hidden" placeid="placeid" value="{{ $trip->arrival_city }}">
             </h2>
             <p class="desc">Modo de viaje: {{ $trip->transport }}</p>
-            <p class="desc">Espacio disponible: {{ $trip->max_weight }} kg, Tamaño: {{ $trip->max_volume }}</p>
+            <p class="desc">Espacio disponible: {{ $trip->max_weight }} kg, Tamaño: {{ $trip->max_size }}</p>
              
             <ul>
               <a href="trip_details/{{ $trip->id }}"><li style="width:100%;"><span class="fa fa-suitcase"></span></li></a>
