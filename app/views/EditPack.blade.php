@@ -219,7 +219,7 @@
 
 <script type="text/javascript">
 
-  var googlePlaceFrom, googlePlaceFrom;
+  var googlePlaceFrom, googlePlaceTo;
   window.onload= function(){
     var googlePlaceFrom = new googlePlaces();
 
@@ -250,33 +250,33 @@
 
 
 
-    googlePlaceFrom = new googlePlaces();
+    googlePlaceTo = new googlePlaces();
 
-    googlePlaceFrom.displaySearch = function() {
-      var place = googlePlaceFrom.autocomplete.getPlace();
+    googlePlaceTo.displaySearch = function() {
+      var place = googlePlaceTo.autocomplete.getPlace();
 
-      googlePlaceFrom.displayPlaceDetails(place);
+      googlePlaceTo.displayPlaceDetails(place);
     };
 
 
-    googlePlaceFrom.initAutocomplete(document.getElementById('search_to_city'));
+    googlePlaceTo.initAutocomplete(document.getElementById('search_to_city'));
 
-    googlePlaceFrom.inputPlaceID = document.getElementById('to_city');
+    googlePlaceTo.inputPlaceID = document.getElementById('to_city');
 
-    googlePlaceFrom.outputCity = document.getElementById('city_to');
-    googlePlaceFrom.outputState = document.getElementById('state_to');
-    googlePlaceFrom.outputCountry = document.getElementById('country_to');
+    googlePlaceTo.outputCity = document.getElementById('city_to');
+    googlePlaceTo.outputState = document.getElementById('state_to');
+    googlePlaceTo.outputCountry = document.getElementById('country_to');
 
-    googlePlaceFrom.showPlaceDetails = function (place, status) {
+    googlePlaceTo.showPlaceDetails = function (place, status) {
       
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-            googlePlaceFrom.displayPlaceDetails(place);
+            googlePlaceTo.displayPlaceDetails(place);
         }else{
-            googlePlaceFrom.displayPlaceDetails({});
+            googlePlaceTo.displayPlaceDetails({});
         }
     };
 
-    googlePlaceFrom.getPlaceDetails();
+    googlePlaceTo.getPlaceDetails();
   };
 
 
