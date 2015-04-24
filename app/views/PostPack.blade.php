@@ -168,7 +168,7 @@
       </div>
 
       <div class="form-group">
-        {{Form::number('reward', null, array('id'=>'reward','class'=>'form-control input-lg','min'=>'0','placeholder'=>'Recompenza','tabindex'=>'9'))}}
+        {{Form::number('reward', null, array('id'=>'reward','class'=>'form-control input-lg','min'=>'0','placeholder'=>'Recompensa','tabindex'=>'9'))}}
         <div>{{ $errors->first('reward') }}</div>
       </div>
 

@@ -74,10 +74,7 @@ Route::group(array('before' => 'auth'), function()
 	 * Rutas para publicar un viaje.
 	 * CU-08
 	 */
-	Route::get('/post/travel', function()
-	{
-		return View::make('post_travel');
-	});
+	Route::get('/post/travel', 'TripController@showPostTrip');
 
 	Route::post('/post/travel', 'TripController@createTrip');
 

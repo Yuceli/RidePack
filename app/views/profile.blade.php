@@ -100,12 +100,12 @@
                             <div class="col-xs-12 col-sm-6 emphasis">
                                 <h2><strong> {{count(Auth::user()->trips)}} </strong></h2>                    
                                 <p><small>Viajes publicados</small></p>
-                                <a href="post_travel"><button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Publicar viaje</button></a>
+                                <a href="post/travel"><button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Publicar viaje</button></a>
                             </div>
                             <div class="col-xs-12 col-sm-6 emphasis">
                                 <h2><strong>{{count(Auth::user()->packs)}}</strong></h2>                    
                                 <p><small>Paquetes publicados</small></p>
-                                <a href="post_package"><button class="btn btn-info btn-block"><span class="fa fa-user"></span> Publicar paquete </button></a>
+                                <a href="post/package"><button class="btn btn-info btn-block"><span class="fa fa-user"></span> Publicar paquete </button></a>
                             </div>
                         </div>
 
