@@ -10,16 +10,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">    
-  <link rel="shortcut icon" href="img/favicon.ico">  
+  <link rel="shortcut icon" href="{{ URL::asset('img/favicon.ico') }}">  
   <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
   <!-- Global CSS -->
-  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ URL::asset('plugins/bootstrap/css/bootstrap.min.css') }}">
   <!-- Plugins CSS -->    
-  <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.css">
-  <link rel="stylesheet" href="plugins/prism/prism.css">
+  <link rel="stylesheet" href="{{ URL::asset('plugins/font-awesome/css/font-awesome.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('plugins/prism/prism.css') }}">
   <!-- Theme CSS -->  
-  <link id="theme-style" rel="stylesheet" href="css/styles.css">
+  <link id="theme-style" rel="stylesheet" href="{{ URL::asset('css/styles.css') }}">
   <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet" media="screen">  
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -50,10 +50,10 @@
         <div class="navbar-collapse collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
-            <li class="nav-item active"><a href="profile">Perfil</a></li>
-            <li class="nav-item"><a href="upcoming-packages">Buscar</a></li>
-            <li class="nav-item"><a href="post_package">Publicar paquete</a></li>                        
-            <li class="nav-item"><a href="post_travel">Publicar viaje</a></li>
+            <li class="nav-item active"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
+            <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
+            <li class="nav-item"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
+            <li class="nav-item"><a href="{{ URL::asset('post/travel')}}">Publicar viaje</a></li>
             <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
           </ul><!--//nav-->
         </div><!--//navabr-collapse-->

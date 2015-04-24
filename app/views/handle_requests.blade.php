@@ -11,15 +11,18 @@
   <title>RidePack</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Latest compiled and minified CSS -->
+  <link rel="shortcut icon" href="{{ URL::asset('img/favicon.ico') }}">  
   <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.css">
-  <link rel="stylesheet" href="plugins/prism/prism.css">
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="{{ URL::asset('plugins/bootstrap/css/bootstrap.min.css') }}">
+  <!-- Plugins CSS -->    
+  <link rel="stylesheet" href="{{ URL::asset('plugins/font-awesome/css/font-awesome.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('plugins/prism/prism.css') }}">
   <!-- Theme CSS -->  
-  <link id="theme-style" rel="stylesheet" href="css/styles.css">
-  <link id="theme-style" rel="stylesheet" href="css/profile.css">
+  <link id="theme-style" rel="stylesheet" href="{{ URL::asset('css/styles.css') }}">
+  <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet" media="screen">  
+  
 </head>
 <body>
 
@@ -43,10 +46,10 @@
         <div class="navbar-collapse collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
-            <li class="nav-item active"><a href="profile">Perfil</a></li>
-            <li class="nav-item"><a href="search">Buscar</a></li>
-            <li class="nav-item"><a href="post_package">Publicar paquete</a></li>                        
-            <li class="nav-item"><a href="post_travel">Publicar viaje</a></li>
+            <li class="nav-item active"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
+            <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
+            <li class="nav-item"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
+            <li class="nav-item"><a href="{{ URL::asset('post/travel')}}">Publicar viaje</a></li>
             <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
             <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/48.jpg" alt="profile">
           </ul><!--//nav-->
@@ -96,21 +99,37 @@
                           <th>Rechazar</th>
                         </thead>
                         <tbody>
-                          @foreach($requests as $request)
-                            <?php $user=User::findorFail($request->requestable_id) ?>
-                            @if($request->status=='onhold')
-                          <tr>
-                            <td>{{$request->id}}</td>
-                            <td>{{$request->created_at}}</td>
-                            <td>{{$user->name." se ha postulado para transportar tu paquete"}}</td>
-                            <td><button class="btn btn-primary btn-xs"><span class="fa fa-user"></span></button></td>
-                            <td><button class="btn btn-primary btn-xs" onclick=$request><span class="fa fa-check"></span></button></td>
-                            <td><button class="btn btn-danger btn-xs"><span class="fa fa-times"></span></button></td>
-                          </tr>
-                          @else
-                          @endif 
-                          @endforeach
-
+                        @foreach(Auth::user()->packs as $pack)
+                            @foreach($pack -> requests as $request)
+                                @if($request->status=='onhold')
+                                <?php 
+                                    $created = explode(" ", $request -> created_at);
+                                    $created = $created[0];
+                                    $created = explode("-", $created);
+                                    $created = $created[2]."/".$created[1]."/".substr($created[0], 2);
+                                    $id_user = $request -> from_user;
+                                    $user = User::find($id_user);
+                                ?>
+                                <tr>
+                                    <td>{{$request -> id}}</td>
+                                    <td>{{$created}}</td>
+                                    <td>{{$user -> name}} se ha postulado para transportar tu paquete</td>
+                                    <td><button class="btn btn-primary btn-xs"><span class="fa fa-user"></span></button></td>
+                                    <td>
+                                      {{ Form::open( array('action' => array('HandleRequestsController@acceptRequest', $request->id)))}}
+                                      {{ Form::button("<span class='fa fa-check'></span>", array(
+                                        'type' => 'submit',
+                                        'class' => 'btn btn-primary btn-xs ',
+                                        'name' => 'submit',
+                                      )) }}
+                                      {{ Form::close() }}
+                                    </td>
+                                    <td><button class="btn btn-danger btn-xs"><span class="fa fa-times"></span></button></td>
+                                </tr>
+                                
+                                @endif
+                            @endforeach
+                        @endforeach
                         </tbody>
                       </table>
                     </div>
@@ -130,56 +149,38 @@
                             <th>Borrar</th>
                           </thead>
                           <tbody>
-
-                            <tr>
-                              <td>1</td>
-                              <td>12/02/2015</td>
-                              <td>Yussel ha solicitado tus servicios como viajero</td>
-                              <td><button class="btn btn-primary btn-xs"><span class="fa fa-user"></span></button></td>
-                              <td><button class="btn btn-primary btn-xs"><span class="fa fa-check"></span></button></td>
-                              <td><button class="btn btn-danger btn-xs"><span class="fa fa-times"></span></button></td>
-                            </tr>
-
-                            <tr>
-                              <td>2</td>
-                              <td>12/02/2015</td>
-                              <td>Yussel ha solicitado tus servicios como viajero</td>
-                              <td><button class="btn btn-primary btn-xs"><span class="fa fa-user"></span></button></td>
-                              <td><button class="btn btn-primary btn-xs"><span class="fa fa-check"></span></button></td>
-                              <td><button class="btn btn-danger btn-xs"><span class="fa fa-times"></span></button></td>
-                            </tr>
-
-
-                            <tr>
-                              <td>3</td>
-                              <td>12/02/2015</td>
-                              <td>Yussel ha solicitado tus servicios como viajero</td>
-                              <td><button class="btn btn-primary btn-xs"><span class="fa fa-user"></span></button></td>
-                              <td><button class="btn btn-primary btn-xs"><span class="fa fa-check"></span></button></td>
-                              <td><button class="btn btn-danger btn-xs"><span class="fa fa-times"></span></button></td>
-                            </tr>
-
-
-
-                            <tr>
-                              <td>4</td>
-                              <td>12/02/2015</td>
-                              <td>Yussel ha solicitado tus servicios como viajero</td>
-                              <td><button class="btn btn-primary btn-xs"><span class="fa fa-user"></span></button></td>
-                              <td><button class="btn btn-primary btn-xs"><span class="fa fa-check"></span></button></td>
-                              <td><button class="btn btn-danger btn-xs"><span class="fa fa-times"></span></button></td>
-                            </tr>
-
-
-                            <tr>
-                              <td>5</td>
-                              <td>12/02/2015</td>
-                              <td>Yussel ha solicitado tus servicios como viajero</td>
-                              <td><button class="btn btn-primary btn-xs"><span class="fa fa-user"></span></button></td>
-                              <td><button class="btn btn-primary btn-xs"><span class="fa fa-check"></span></button></td>
-                              <td><button class="btn btn-danger btn-xs"><span class="fa fa-times"></span></button></td>
-                            </tr>
-                          </tbody>
+                          @foreach(Auth::user()->trips as $trip)
+                              @foreach($trip -> requests as $request)
+                                  @if($request->status=='onhold')
+                                  <?php 
+                                      $created = explode(" ", $request -> created_at);
+                                      $created = $created[0];
+                                      $created = explode("-", $created);
+                                      $created = $created[2]."/".$created[1]."/".substr($created[0], 2);
+                                      $id_user = $request -> from_user;
+                                      $user = User::find($id_user);
+                                  ?>
+                                  <tr>
+                                      <td>{{$request -> id}}</td>
+                                      <td>{{$created}}</td>
+                                      <td>{{$user -> name}} ha solicitado tu viaje</td>
+                                      <td><button class="btn btn-primary btn-xs"><span class="fa fa-user"></span></button></td>
+                                      <td>
+                                      {{ Form::open( array('action' => array('HandleRequestsController@acceptRequest', $request->id)))}}
+                                      {{ Form::button("<span class='fa fa-check'></span>", array(
+                                        'type' => 'submit',
+                                        'class' => 'btn btn-primary btn-xs ',
+                                        'name' => 'submit',
+                                      )) }}
+                                      {{ Form::close() }}
+                                    </td>                                      
+                                    <td><button class="btn btn-danger btn-xs"><span class="fa fa-times"></span></button></td>
+                                  </tr>
+                                  
+                                  @endif
+                              @endforeach
+                          @endforeach
+                        </tbody>
                         </table>
                       </div>
                     </div>
@@ -187,8 +188,38 @@
 
                   <div class="tab-pane" id="account-settings">     
                     <div class="tab-pane active" id="comments-logout">
+                      <div class="table-responsive">
+                        <table id="mytable" class="table table-bordred table-striped">
 
+                          <thead>
+                            <th>ID</th>
+                            <th>Fecha</th>
+                            <th>Descripción</th>
+                            <th>Ver perfil</th>
+                          </thead>
+                          <tbody>
+                          @foreach($requests as $request)
+                                  @if($request->status=='accepted')
+                                  <?php 
+                                      $created = explode(" ", $request -> created_at);
+                                      $created = $created[0];
+                                      $created = explode("-", $created);
+                                      $created = $created[2]."/".$created[1]."/".substr($created[0], 2);
+                                      $id_user = $request -> from_user;
+                                      $user = User::find($id_user);
+                                  ?>
+                                  <tr>
+                                      <td>{{$request -> id}}</td>
+                                      <td>{{$created}}</td>
+                                      <td>{{$user -> name}} ha solicitado tu viaje</td>
+                                      <td><button class="btn btn-primary btn-xs"><span class="fa fa-user"></span></button></td>
 
+                                  </tr>
+                                  @endif
+                          @endforeach
+                        </tbody>
+                        </table>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -212,14 +243,14 @@
 
 
   <!-- Javascript -->          
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="plugins/jquery-migrate-1.2.1.min.js"></script>    
-  <script type="text/javascript" src="plugins/jquery.easing.1.3.js"></script>   
-
-  <script type="text/javascript" src="plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script> 
-  <script type="text/javascript" src="plugins/prism/prism.js"></script>    
-  <script type="text/javascript" src="js/main.js"></script>  
+  <script type="text/javascript" src="{{ URL::asset('plugins/jquery-1.11.1.min.js') }}"></script>
+  <script type="text/javascript" src="{{ URL::asset('plugins/jquery-migrate-1.2.1.min.js') }}"></script>    
+  <script type="text/javascript" src="{{ URL::asset('plugins/jquery.easing.1.3.js') }}"></script>   
+  <script type="text/javascript" src="{{ URL::asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>     
+  <script type="text/javascript" src="{{ URL::asset('plugins/jquery-scrollTo/jquery.scrollTo.min.js') }}"></script> 
+  <script type="text/javascript" src="{{ URL::asset('plugins/prism/prism.js') }}"></script>    
+  <script type="text/javascript" src="{{ URL::asset('js/main.js') }}"></script>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+  <script type="text/javascript" src="{{ URL::asset('js/googlePlaces2.js') }}"></script>  
 </body>
 </html>

@@ -74,48 +74,48 @@ Route::group(array('before' => 'auth'), function()
 	 * Rutas para publicar un viaje.
 	 * CU-08
 	 */
-	Route::get('/post_travel', function()
+	Route::get('/post/travel', function()
 	{
 		return View::make('post_travel');
 	});
 
-	Route::post('/post_travel', 'TripController@createTrip');
+	Route::post('/post/travel', 'TripController@createTrip');
 
 	/*
 	 * Rutas para publicar un paquete.
 	 * CU-09
 	 */
-	Route::get('/post_package', 'PackController@showPostPack');
+	Route::get('/post/package', 'PackController@showPostPack');
 
-	Route::post('/post_package', 'PackController@createPack');
+	Route::post('/post/package', 'PackController@createPack');
 
 	/*
 	 * Rutas para editar un paquete.
 	 * CU-17
 	 */
-	Route::get('/edit_package/{id}', 'PackController@showUpdatePack');
+	Route::get('/edit/package/{id}', 'PackController@showUpdatePack');
 	
-	Route::post('/edit_package/{id}', 'PackController@updatePack');
+	Route::post('/edit/package/{id}', 'PackController@updatePack');
     
 	/*
 	 * Rutas para editar un viaje.
 	 * CU-22
 	*/
-	Route::get('/edit_travel/{id}', 'TripController@showUpdateTrip');
+	Route::get('/edit/travel/{id}', 'TripController@showUpdateTrip');
 	
-	Route::post('/edit_travel/{id}', 'TripController@updateTrip');
+	Route::post('/edit/travel/{id}', 'TripController@updateTrip');
 
 	/*
 	 *	Ruta para ver los últimos paquetes registrados.
 	 *	CU-26
 	 */
-	Route::get('/upcoming-packages', 'SearchController@showLastPacks');
+	Route::get('/upcoming/packages', 'SearchController@showLastPacks');
 
 	/*
 	 *	Ruta para ver los últimos viajes registrados.
 	 *	CU-27
 	 */
-	Route::get('/upcoming-trips', 'SearchController@showLastTrips');
+	Route::get('/upcoming/trips', 'SearchController@showLastTrips');
     
 
 	/*
@@ -123,21 +123,23 @@ Route::group(array('before' => 'auth'), function()
 	 *	CU-15
 	 *  CU-20
 	 */
-	Route::get('/handle_request', 'HandleRequestsController@showWelcome');
+	Route::get('/handle/request', 'HandleRequestsController@showWelcome');
 
 	/*
 	 *	Ruta par ver los detalles de un paquete.
 	 *	CU-19
 	 */
-	Route::get('/package_details/{id}', 'PackageDetailsController@showDetails');
+	Route::get('/package/details/{id}', 'PackageDetailsController@showDetails');
 
-	Route::post('/package_details/{id}', 'PackageDetailsController@sendRequest');
+	Route::post('/package/details/{id}', 'PackageDetailsController@sendRequest');
 	
 	/*
 	 *	Ruta para ver los detalles de un viaje.
 	 *  CU-28
 	 */
-	Route::get('/trip_details/{id}', 'TripDetailsController@showDetails');
+	Route::get('/trip/details/{id}', 'TripDetailsController@showDetails');
+
+	Route::post('/trip/details/{id}', 'TripDetailsController@sendRequest');
 
 	/*
 	 * Ruta par eliminar un viaje
@@ -152,6 +154,14 @@ Route::group(array('before' => 'auth'), function()
     Route::post('/DeletePack', 'PackController@DeletePack');
 
 	Route::get('/management', 'ManagementController@index');
+
+	/*
+	 *Ruta para aceptar una petición de paquete, Ruta para aceptar una solicitud de viaje
+	 *CU-15.ResponderPeticiónAPaquetesv1.0, CU-20.ResponderPeticionRealizadaAlViajev1.0
+	*/
+	Route::post('/handle/request/{id}', 'HandleRequestsController@acceptRequest');
+
+
 });
 
 

@@ -2,7 +2,7 @@
 
 @section('tabs')
   <li>
-    <a href="{{URL::to('upcoming-packages')}}" title="Últimos paquetes registrados">
+    <a href="{{URL::to('upcoming/packages')}}" title="Últimos paquetes registrados">
       <span class="round-tabs one">
         <i class="glyphicon glyphicon-briefcase"></i>
       </span> 
@@ -10,7 +10,7 @@
   </li>
 
   <li>
-    <a href="{{URL::to('upcoming-trips')}}" title="Últimos viajes registrados">
+    <a href="{{URL::to('upcoming/trips')}}" title="Últimos viajes registrados">
       <span class="round-tabs two">
         <i class="glyphicon glyphicon-plane"></i>
       </span>
@@ -61,7 +61,7 @@
               <p class="desc">Peso: {{ $pack->weight }} kg, Tamaño: {{ $pack->size }}</p>
                
               <ul>
-                <a href="package_details/{{ $pack->id }}"><li style="width:100%;"><span class="fa fa-user-plus"></span></li></a>
+                <a href="package/details/{{ $pack->id }}"><li style="width:100%;"><span class="fa fa-user-plus"></span></li></a>
               </ul>
             </div>
           </li>
@@ -98,7 +98,7 @@
               <p class="desc">Espacio disponible: {{ $trip->max_weight }} kg, Tamaño: {{ $trip->max_size }}</p>
                
               <ul>
-                <a href="trip_details"><li style="width:100%;"><span class="fa fa-suitcase"></span></li></a>
+                <a href="trip/details"><li style="width:100%;"><span class="fa fa-suitcase"></span></li></a>
               </ul>
             </div>
           </li>

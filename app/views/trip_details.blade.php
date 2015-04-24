@@ -49,10 +49,10 @@
           <div class="navbar-collapse collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
               <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
-              <li class="nav-item"><a href="profile">Perfil</a></li>
-              <li class="nav-item"><a href="upcomingTrips">Buscar</a></li>
-              <li class="nav-item"><a href="postPackage">Publicar paquete</a></li>                        
-              <li class="nav-item"><a href="postTrip">Publicar viaje</a></li>
+              <li class="nav-item"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
+              <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
+              <li class="nav-item"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
+              <li class="nav-item"><a href="{{ URL::asset('post/travel')}}">Publicar viaje</a></li>
               <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
             </ul><!--//nav-->
           </div><!--//navabr-collapse-->
@@ -160,7 +160,16 @@
                     <td colspan="8"> <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#ratings">Valorar usuario<span class="glyphicon glyphicon-chevron-right"></span></a></td>
                   </tr>
                   <tr>
-                    <td colspan="8"> <a href="#" class="btn btn-primary pull-right">Enviar petición<span class="glyphicon glyphicon-chevron-right"></span></a></td>
+                    <td colspan="8">
+                      {{ Form::open( array('action' => array('TripDetailsController@sendRequest', $trip->id)))}}
+                      {{ Form::button("Enviar petici&oacute;n<span class='glyphicon glyphicon-chevron-right'></span>", array(
+                        'type' => 'submit',
+                        'class' => 'btn btn-primary pull-right ' . (($user -> id == Auth::user()-> id)? 'disabled' : ''),
+                        'name' => 'submit',
+                        'value' => 'Enviar petici&oacute;n'
+                      )) }}
+                      {{ Form::close() }}
+                    </td>
                   </tr>
                   <tr>
                     <?php

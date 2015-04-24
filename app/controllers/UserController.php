@@ -21,7 +21,7 @@ class UserController extends BaseController {
 		if(Auth::attempt(Input::only('email', 'password')))
 		{
 			//Lo redirige a página correspondiente
-			return Redirect::intended('upcoming-packages');			
+			return Redirect::intended('upcoming/packages');			
 		}else{
 			//Redirecciona a login con mensaje
 			return Redirect::back()->with('error_message', 'El correo electrónico y/o contraseña son incorrectos')->withInput(Input::except('password'));
@@ -128,7 +128,7 @@ class UserController extends BaseController {
 	//Función para mostrar la página para editar el perfil de usuario.
 	function showUpdateUser(){
 		
-		return View::make('edit-profile');
+		return View::make('edit/profile');
 	}
 
 }
