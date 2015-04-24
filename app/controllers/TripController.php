@@ -132,7 +132,7 @@ class TripController extends BaseController {
 	// Mostrar la vista para publicar un viaje.
 	public function showPostTrip(){
 		
-		return View::make('PostTravel');
+		return View::make('PostTrip');
 	}
 
  }
