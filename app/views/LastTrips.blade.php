@@ -2,7 +2,7 @@
 
 @section('tabs')
   <li>
-    <a href="{{URL::to('upcoming-packages')}}" title="Últimos paquetes registrados">
+    <a href="{{URL::to('upcoming/packages')}}" title="Últimos paquetes registrados">
       <span class="round-tabs one">
         <i class="glyphicon glyphicon-briefcase"></i>
       </span> 
@@ -10,7 +10,7 @@
   </li>
 
   <li class="active">
-    <a href="{{URL::to('upcoming-trips')}}" title="Últimos viajes registrados">
+    <a href="{{URL::to('upcoming/trips')}}" title="Últimos viajes registrados">
       <span class="round-tabs two">
         <i class="glyphicon glyphicon-plane"></i>
       </span>
