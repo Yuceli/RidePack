@@ -165,7 +165,8 @@
               </span>
               {{ Form::textarea('message', null, array(
                 'class' => 'form-control',
-                'rows' => '6')
+                'rows' => '6',
+                'required'=>'true')
               ) }}
             </div>
             <br />
