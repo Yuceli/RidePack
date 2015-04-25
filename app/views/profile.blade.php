@@ -95,7 +95,7 @@
                             </div>             
                         </div>
                         <div class="col-xs-12 divider text-center">
-                             <a href="editProfile"><button class="btn btn-default btn-block"><span class="fa fa-plus-circle"></span> Editar perfil</button></a><hr>
+                             <a href="edit/profile"><button class="btn btn-default btn-block"><span class="fa fa-plus-circle"></span> Editar perfil</button></a><hr>
                             <a href="management"><button class="btn btn-primary btn-block"><span class="fa fa-plus-circle"></span> Gestionar mis viajes</button></a>
                             <div class="col-xs-12 col-sm-6 emphasis">
                                 <h2><strong> {{count(Auth::user()->trips)}} </strong></h2>                    
