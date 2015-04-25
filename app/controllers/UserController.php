@@ -122,13 +122,13 @@ class UserController extends BaseController {
 	//Función para mostrar el perfil del usuario autentificado.
 	function showMyProfile(){
 
-		return View::make('profile');
+		return View::make('Profile');
 	}
 
 	//Función para mostrar la página para editar el perfil de usuario.
 	function showUpdateUser(){
 		
-		return View::make('edit/profile');
+		return View::make('EditProfile');
 	}
 
 }

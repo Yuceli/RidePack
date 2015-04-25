@@ -60,9 +60,9 @@ Route::group(array('before' => 'auth'), function()
 	 *	Rutas para editar el perfil de usuario.
 	 *	CU-07
 	 */
-	Route::get('/editProfile', 'UserController@showUpdateUser');
+	Route::get('/edit/profile', 'UserController@showUpdateUser');
 
-	Route::post('/editProfile', 'UserController@updateUser');
+	Route::post('/edit/profile', 'UserController@updateUser');
 
 	/*
 	 *	Rutas para eliminar la cuenta de un usuario.

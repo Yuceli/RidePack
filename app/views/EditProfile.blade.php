@@ -5,11 +5,11 @@
   <title>RidePack</title>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.css">
-  <link rel="stylesheet" href="plugins/prism/prism.css">
+  <link rel="stylesheet" href="{{ URL::asset('plugins/font-awesome/css/font-awesome.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('plugins/prism/prism.css') }}">
   <!-- Theme CSS -->  
-  <link id="theme-style" rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/login.css">
+  <link id="theme-style" rel="stylesheet" href="{{ URL::asset('css/styles.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('css/login.css') }}">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -173,16 +173,16 @@
   </footer><!--//footer-->
 
   <!-- Javascript -->          
-  <script type="text/javascript" src="plugins/jquery-1.11.1.min.js"></script>
-  <script type="text/javascript" src="plugins/jquery-migrate-1.2.1.min.js"></script>    
-  <script type="text/javascript" src="plugins/jquery.easing.1.3.js"></script>   
-  <script type="text/javascript" src="plugins/bootstrap/js/bootstrap.min.js"></script>     
-  <script type="text/javascript" src="plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script> 
-  <script type="text/javascript" src="plugins/prism/prism.js"></script>    
-  <script type="text/javascript" src="js/main.js"></script>  
+  <script type="text/javascript" src="{{ URL::asset('plugins/jquery-1.11.1.min.js') }}"></script>
+  <script type="text/javascript" src="{{ URL::asset('plugins/jquery-migrate-1.2.1.min.js') }}"></script>    
+  <script type="text/javascript" src="{{ URL::asset('plugins/jquery.easing.1.3.js') }}"></script>   
+  <script type="text/javascript" src="{{ URL::asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>     
+  <script type="text/javascript" src="{{ URL::asset('plugins/jquery-scrollTo/jquery.scrollTo.min.js') }}"></script> 
+  <script type="text/javascript" src="{{ URL::asset('plugins/prism/prism.js') }}"></script>    
+  <script type="text/javascript" src="{{ URL::asset('js/main.js') }}"></script>  
 
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
-    <script type="text/javascript" src="js/googlePlaces2.js"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/googlePlaces2.js') }}"></script>
 
     <script type="text/javascript">
 
