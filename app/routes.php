@@ -178,10 +178,7 @@ Route::post('login', 'UserController@login');
  * Ruta para el registro de usuarios.
  * CU-03
  */
-Route::get('/register', function()
-{	
-	return View::make('register');
-});
+Route::get('/register', 'RegisterController@showUserRegister');
 
 Route::post('register-user','RegisterController@register');
 

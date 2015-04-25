@@ -15,9 +15,9 @@ class RegisterController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
+	public function showUserRegister()
 	{
-		return View::make('register');
+		return View::make('Register');
 	}
 
 	public function register($params = array())
