@@ -237,7 +237,7 @@
                                   <td>{{$pack -> size}}</td>
                                   <td>{{$pack -> weight}}Kg</td>
                                   <td>${{$pack -> reward}}</td>
-                                  <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="{{url('edit_package/'.$pack->id)}}"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
+                                  <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="{{url('edit/package/'.$pack->id)}}"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
                                   <td><p data-placement="top" data-toggle="tooltip" title="Delete">
                                     <?php
                                 $packid=$pack->id;
