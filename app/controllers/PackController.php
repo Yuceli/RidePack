@@ -73,7 +73,7 @@ class PackController extends BaseController {
 	    $user->packs()->save($pack);
 
 	    // Se redirecciona a los detalles del paquete y se notifica al usuario que se ha publicado el paquete.
-		return Redirect::to('package_details/'.$pack->id)->withMessage('Paquete publicado.')->withClass('success');
+		return Redirect::to('package/details/'.$pack->id)->withMessage('Paquete publicado.')->withClass('success');
 	}
 
 	// Borrar un paquete

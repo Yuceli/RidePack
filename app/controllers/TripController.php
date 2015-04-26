@@ -74,7 +74,7 @@ class TripController extends BaseController {
 			'travel' => 'required',
 			'package' => 'required',
 			'quantity' => 'numeric|min:1|max:15|required',
-			'reward' => 'required|numeric|min:0',
+			'reward' => 'required|min:0',
 			'from_city' => 'required',
 			'to_city' => 'required',
 			'departure_date' => 'date|date_format:Y-m-d|required',
@@ -125,7 +125,7 @@ class TripController extends BaseController {
 			App::abort(404);
 		}
 		//Se crea la vista con los datos del viaje
-		return View::make('edit_travel')->withTrip($trip);
+		return View::make('EditTrip')->withTrip($trip);
 		
 	}
 

@@ -33,7 +33,7 @@ class ManagementController extends BaseController {
 			$arrival_date = explode("-", $arrival_date);
 			$arrival_date = $arrival_date[2]."/".$arrival_date[1]."/".substr($arrival_date[0], 2);
 
-			$transports = array('1' => 'Terrestre', '2' => 'Áerea', '3' => 'Maritima');
+			$transports = array('Vía terrestre' => 'Terrestre', 'Vía áerea' => 'Áerea', 'Vía marítima' => 'Maritima');
 			$transport = $transports[''.$trip -> transport.''];
 
 			$infoTrip = array(

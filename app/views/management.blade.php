@@ -132,7 +132,10 @@
                             <td align="center">${{$myTrip['carry_reward']}}</td>
                             <td>
                               <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit_package" >
+                                <?php
+                                $tripid=$myTrip['id'];
+                                echo "<a href='edit/travel/$tripid'><button type='button' class='btn btn-primary btn-xs' data-title='Edit' data-toggle='modal' data-tripid='$tripid'>"?>
+
                                   <span class="glyphicon glyphicon-pencil"></span>
                                 </button>
                               </p>

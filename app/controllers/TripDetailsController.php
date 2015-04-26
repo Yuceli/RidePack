@@ -5,7 +5,7 @@ class TripDetailsController extends BaseController {
 
 	public function showWelcome()
 	{
-		return View::make('trip_details');
+		return View::make('TripDetails');
 	}
 	
 	public function showDetails($id){
@@ -14,7 +14,7 @@ class TripDetailsController extends BaseController {
 			$user_id = $trip -> user_id;
 			$user = User::find($user_id);
 			$trips = $user -> trips;
-			return View::make('trip_details', compact("trip", "user", "trips"));
+			return View::make('TripDetails', compact("trip", "user", "trips"));
 		}
 	}
 

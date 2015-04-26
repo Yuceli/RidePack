@@ -142,7 +142,7 @@
             </div>
           </div>
         </div>
-        <a href="/upcoming-trips" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Atras</a>
+        <a href="/upcoming/trips" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Atras</a>
       </div>
 
       <div class="col-md-3">

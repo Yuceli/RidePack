@@ -33,7 +33,7 @@
     <header id="header" class="header">  
       <div class="container">            
         <h1 class="logo pull-left">
-          <a href="{{URL::to('/')}}">
+          <a class="scrollto" href="">
             <span class="logo-title">RidePack</span>
           </a>
         </h1><!--//logo-->              
@@ -48,11 +48,11 @@
           </div><!--//navbar-header-->            
           <div class="navbar-collapse collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
-              <li class="active nav-item sr-only"><a class="scrollto" href="{{URL::to('/')}}">Home</a></li>
-              <li class="nav-item"><a href="{{URL::to('profile')}}">Perfil</a></li>
-              <li class="nav-item"><a href="{{URL::to('search')}}">Buscar</a></li>
-              <li class="nav-item active"><a href="{{URL::to('post/package')}}">Publicar paquete</a></li>                        
-              <li class="nav-item"><a href="{{URL::to('post/travel')}}">Publicar viaje</a></li>
+              <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
+              <li class="nav-item"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
+              <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
+              <li class="nav-item"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
+              <li class="nav-item active"><a href="{{ URL::asset('post/travel')}}">Publicar viaje</a></li>
               <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
             </ul><!--//nav-->
           </div><!--//navabr-collapse-->
@@ -65,47 +65,40 @@
       {{Form::model($trip, array('TripController.updateTrip', $trip->id))}}
       <div class="row">
         <div class="col-md-12">
-          <h2>Editar viaje</h2>
+          <h2>Publica tu viaje</h2>
           <hr class="colorgraph">
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="form-group">
-                {{Form::select('travel', array(null => 'Estoy viajando...', '1'=>'Via terrestre', '2'=>'Via áerea', '3'=>'Vía marítima'), null, array('class' => 'form-control input-lg', 'id' => 'travel', 'name' => 'travel', 'required' => 'required', 'tabindex'=>'1'))}}
+                {{Form::select('travel', array(null => 'Estoy viajando...', 'Vía terrestre'=>'Vía terrestre', 'Vía áerea'=>'Vía áerea', 'Vía marítima'=>'Vía marítima'), null, array('class' => 'form-control input-lg', 'id' => 'travel', 'name' => 'travel', 'tabindex'=>'1', 'required'=>'required'))}}
                 <div>{{ $errors -> first('travel')}}</div>
               </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="form-group">
-                {{Form::select('package', array('' => 'Puedo transportar un paquete...', '1'=>'Extra pequeño', '2'=>'Pequeño', '3'=>'Mediano', '4'=>'Grande', '5'=>'Extra grande'), null, array('class' => 'form-control input-lg', 'id' => 'package', 'name' => 'package', 'required'=>'required', 'tabindex'=>'2'))}}
+                {{Form::select('package', array('' => 'Puedo transportar un paquete...', '1'=>'Extra pequeño', '2'=>'Pequeño', '3'=>'Mediano', '4'=>'Grande', '5'=>'Extra grande'), null, array('class' => 'form-control input-lg', 'name' => 'package', 'required'=>'required', 'tabindex'=>'2'))}}
                 <div>{{ $errors -> first('package')}}</div>
             </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-xs-12 col-sm-4 col-md-4">
+          <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-              {{Form::number('quantity', null, array('id'=>'quantity', 'name'=>'quantity', 'min' => '1', 'max' => '15', 'class'=>'form-control input-lg','tabindex'=>'3', 'placeholder' => 'Peso en Kg', 'required'=>'true'))}}
+              {{Form::number('quantity', null, array('id'=>'quantity', 'name'=>'quantity', 'min'=>'0', 'class'=>'form-control input-lg','tabindex'=>'5', 'placeholder' => 'Peso en Kg', 'tabindex'=>'3', 'required'=>'required'))}}
               <div>{{ $errors->first('quantity') }}</div>
             </div>
           </div>
-          <div class="col-xs-12 col-sm-4 col-md-4">
+          <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-              {{Form::number('volume', null, array('id'=>'volume', 'name'=>'volume', 'min' => '1', 'max' => '15', 'class'=>'form-control input-lg','placeholder'=>'Volumen del paquete','tabindex'=>'4',  'required'=>'true'))}}
-              <div>{{ $errors->first('volume') }}</div>
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-4 col-md-4">
-            <div class="form-group">
-              {{Form::number('reward ', null, array('id'=>'reward', 'name'=>'reward', 'min' => '0', 'class'=>'form-control input-lg','placeholder'=>'Recompensa por paquete','tabindex'=>'5',  'required'=>'true'))}}
+              {{Form::number('reward ', null, array('id'=>'reward', 'name'=>'reward', 'min'=>'0',  'class'=>'form-control input-lg','placeholder'=>'Recompensa por paquete','tabindex'=>'4', 'required'=>'required'))}}
               <div>{{ $errors->first('reward') }}</div>
             </div>
           </div>
         </div>
-
-
+        
         <div class="form-group">
-          {{Form::text('search_from_city', null, array('id'=>'search_from_city','class'=>'form-control input-lg', 'name'=>'ciudad_salida', 'placeholder'=>'Ciudad de salida','tabindex'=>'6', 'required'=>'required'))}}
+          {{Form::text('search_from_city', null, array('id'=>'search_from_city','class'=>'form-control input-lg', 'name'=>'ciudad_salida', 'placeholder'=>'Ciudad de salida','tabindex'=>'5', 'required'=>'required'))}}
           {{Form::hidden('from_city', null, array('id'=>'from_city'))}}
           <div>{{ $errors->first('from_city') }}</div>
         </div>
@@ -129,7 +122,7 @@
         </div>
 
         <div class="form-group">
-            {{Form::text('search_to_city', null, array('id'=>'search_to_city', 'name'=>'ciudad_destino' ,'class'=>'form-control input-lg','placeholder'=>'Ciudad de destino','tabindex'=>'7', 'required'=>'required'))}}
+            {{Form::text('search_to_city', null, array('id'=>'search_to_city', 'name'=>'ciudad_destino' ,'class'=>'form-control input-lg','placeholder'=>'Ciudad de destino','tabindex'=>'6', 'required'=>'required'))}}
             {{Form::hidden('to_city', null, array('id'=>'to_city'))}}
             <div>{{ $errors->first('to_city') }}</div>
         </div>
@@ -155,30 +148,30 @@
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-              <input type="text" name="departure_date" id="date" class="form-control input-lg" placeholder="Fecha de salida" required="required" tabindex="8" onfocus="(this.type='date')" onblur="(this.type='text')" >
+              {{Form::text('departure_date', null, array('id'=>'date', 'name'=>'departure_date' ,'class'=>'form-control input-lg','placeholder'=>'Fecha salida','tabindex'=>'7', 'onfocus'=>"(this.type='date')", 'onblur'=>"(this.type='text')", 'required'=>'required'))}}
                <div>{{ $errors->first('departure_date') }}</div>
             </div>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-              <input type="text" name="arrival_date" id="date" class="form-control input-lg" placeholder="Fecha de llegada" required="required" tabindex="9" onfocus="(this.type='date')" onblur="(this.type='text')">
+              {{Form::text('arrival_date', null, array('id'=>'date', 'name'=>'arrival_date' ,'class'=>'form-control input-lg','placeholder'=>'Fecha llegada','tabindex'=>'8', 'onfocus'=>"(this.type='date')", 'onblur'=>"(this.type='text')", 'required'=>'required'))}}
               <div>{{ $errors->first('arrival_date') }}</div>
            </div>
          </div>
        </div>
+
        <div class="row">
         <div class="col-md-12">
-            {{Form::textarea('observation', null, array('id'=>'observation','class'=>'form-control input-lg','placeholder'=>'Observaciones y comentarios','tabindex'=>'10','rows'=>'3','maxlength'=>'100'))}}
+            {{Form::textarea('observation', null, array('id'=>'observation','class'=>'form-control input-lg','placeholder'=>'Observaciones y comentarios','tabindex'=>'9','rows'=>'3','maxlength'=>'100'))}}
             <div>{{ $errors->first('observation') }}</div>
         </div>
       </div>
     </div>
-    
     <div class="container">
       <hr class="colorgraph">
       <div class="row">
         <div class="col-md-6  col-sm-offset-3">
-          {{Form::submit('Editar viaje', array('class'=>'btn btn-primary btn-block btn-lg','tabindex'=>'11', 'value'=>'Editar viaje'))}}
+          {{Form::submit('Editar viaje', array('class'=>'btn btn-primary btn-block btn-lg','tabindex'=>'10', 'value'=>'Editar viaje'))}}
         </div>
       </div>
     </div>
@@ -212,64 +205,64 @@
 
 <script type="text/javascript">
 
-  var gp1, gp2;
+   var googlePlaceFrom, googlePlaceTo;
   window.onload= function(){
-    var gp1 = new googlePlaces();
+    var googlePlaceFrom = new googlePlaces();
 
-    gp1.displaySearch = function() {
-      var place = gp1.autocomplete.getPlace();
+    googlePlaceFrom.displaySearch = function() {
+      var place = googlePlaceFrom.autocomplete.getPlace();
 
-      gp1.displayPlaceDetails(place);
+      googlePlaceFrom.displayPlaceDetails(place);
     };
 
-    gp1.initAutocomplete(document.getElementById('search_from_city'));
+    googlePlaceFrom.initAutocomplete(document.getElementById('search_from_city'));
 
-    gp1.inputPlaceID = document.getElementById('from_city');
+    googlePlaceFrom.inputPlaceID = document.getElementById('from_city');
 
-    gp1.outputCity = document.getElementById('city_from');
-    gp1.outputState = document.getElementById('state_from');
-    gp1.outputCountry = document.getElementById('country_from');
+    googlePlaceFrom.outputCity = document.getElementById('city_from');
+    googlePlaceFrom.outputState = document.getElementById('state_from');
+    googlePlaceFrom.outputCountry = document.getElementById('country_from');
 
-    gp1.showPlaceDetails = function (place, status) {
+    googlePlaceFrom.showPlaceDetails = function (place, status) {
       
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-            gp1.displayPlaceDetails(place);
+            googlePlaceFrom.displayPlaceDetails(place);
         }else{
-            gp1.displayPlaceDetails({});
+            googlePlaceFrom.displayPlaceDetails({});
         }
     };
 
-    gp1.getPlaceDetails();
+    googlePlaceFrom.getPlaceDetails();
 
 
 
-    gp2 = new googlePlaces();
+    googlePlaceTo = new googlePlaces();
 
-    gp2.displaySearch = function() {
-      var place = gp2.autocomplete.getPlace();
+    googlePlaceTo.displaySearch = function() {
+      var place = googlePlaceTo.autocomplete.getPlace();
 
-      gp2.displayPlaceDetails(place);
+      googlePlaceTo.displayPlaceDetails(place);
     };
 
 
-    gp2.initAutocomplete(document.getElementById('search_to_city'));
+    googlePlaceTo.initAutocomplete(document.getElementById('search_to_city'));
 
-    gp2.inputPlaceID = document.getElementById('to_city');
+    googlePlaceTo.inputPlaceID = document.getElementById('to_city');
 
-    gp2.outputCity = document.getElementById('city_to');
-    gp2.outputState = document.getElementById('state_to');
-    gp2.outputCountry = document.getElementById('country_to');
+    googlePlaceTo.outputCity = document.getElementById('city_to');
+    googlePlaceTo.outputState = document.getElementById('state_to');
+    googlePlaceTo.outputCountry = document.getElementById('country_to');
 
-    gp2.showPlaceDetails = function (place, status) {
+    googlePlaceTo.showPlaceDetails = function (place, status) {
       
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-            gp2.displayPlaceDetails(place);
+            googlePlaceTo.displayPlaceDetails(place);
         }else{
-            gp2.displayPlaceDetails({});
+            googlePlaceTo.displayPlaceDetails({});
         }
     };
 
-    gp2.getPlaceDetails();
+    googlePlaceTo.getPlaceDetails();
   };
 
 
