@@ -5,7 +5,7 @@ class ManagementController extends BaseController {
 
 	public function index()
 	{
-	    $packs = Auth::user() -> packs;
+	    $packs = Auth::user() -> packs()-> paginate(5);
 	    $items = $this->getInfoTrips();
 	    $total = count($items);
 	    $perPage = 5;
