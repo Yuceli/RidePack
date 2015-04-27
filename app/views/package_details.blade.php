@@ -133,10 +133,11 @@
 
                   <tr>
                     <?php 
-                        $arrival_date = explode(" ", $pack -> arrival_date);
+                        /*$arrival_date = explode(" ", $pack -> arrival_date);
                         $arrival_date = $arrival_date[0];
                         $arrival_date = explode("-", $arrival_date);
-                        $arrival_date = $arrival_date[2]."/".$arrival_date[1]."/".substr($arrival_date[0], 2);
+                        $arrival_date = $arrival_date[2]."/".$arrival_date[1]."/".substr($arrival_date[0], 2);*/
+                        $arrival_date = $pack -> arrival_date -> format('d/m/y');
                     ?>
                     <td colspan="8"><strong>Fecha de entrega: </strong>{{$arrival_date}}</td>
                   </tr>
@@ -180,10 +181,11 @@
                   </tr>
                   <tr>
                     <?php
-                        $created = explode(" ", $user -> created_at);
+                        /*$created = explode(" ", $user -> created_at);
                         $created = $created[0];
                         $created = explode("-", $created);
-                        $created = $created[2]."/".$created[1]."/".substr($created[0], 2);
+                        $created = $created[2]."/".$created[1]."/".substr($created[0], 2);*/
+                        $created =  $user -> created_at -> format('d/m/y');
                     ?>
                     <td colspan="8"><strong>Miembro desde: </strong>{{$created}}</td>
                   </tr>
