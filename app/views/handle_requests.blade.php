@@ -99,9 +99,10 @@
                           <th>Rechazar</th>
                         </thead>
                         <tbody>
-                            @foreach($requests as $request)
-                                @if($request->status=='onhold')
-                                <?php 
+                            @foreach(Auth::user()->packs as $pack)
+                                        @foreach($pack -> requests as $request)
+                                            @if($request->status=='onhold')
+                                  <?php 
                                     $created = explode(" ", $request -> created_at);
                                     $created = $created[0];
                                     $created = explode("-", $created);
@@ -134,9 +135,9 @@
                                       )) }}
                                       {{ Form::close() }}
                                     </td>
-                                </tr>
-                                
-                                @endif
+                                </tr>                               
+                                  @endif
+                                @endforeach
                             @endforeach
                         </tbody>
                       </table>
@@ -192,7 +193,6 @@
                                       {{ Form::close() }}
                                       </td>
                                   </tr>
-                                  
                                   @endif
                               @endforeach
                           @endforeach
@@ -214,7 +214,8 @@
                             <th>Ver perfil</th>
                           </thead>
                           <tbody>
-                          @foreach($requests as $request)
+                          @foreach(Auth::user()->packs as $pack)
+                              @foreach($pack -> requests as $request)
                                   @if($request->status=='accepted')
                                   <?php 
                                       $created = explode(" ", $request -> created_at);
@@ -248,7 +249,47 @@
                                       <td><a href="{{ URL::to('/users/' . $user->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="fa fa-user"></span></a></td>
 
                                   </tr>
+                              @endif
+                            @endforeach
+                          @endforeach
+
+                          @foreach(Auth::user()->trips as $trip)
+                              @foreach($trip -> requests as $request)
+                                  @if($request->status=='accepted')
+                                  <?php 
+                                      $created = explode(" ", $request -> created_at);
+                                      $created = $created[0];
+                                      $created = explode("-", $created);
+                                      $created = $created[2]."/".$created[1]."/".substr($created[0], 2);
+                                      $id_user = $request -> from_user;
+                                      $user = User::find($id_user);
+                                  ?>
+                                  <tr>
+                                      <td>{{$request -> id}}</td>
+                                      <td>{{$created}}</td>
+                                      <td>{{$user -> name}} ha aceptado tu viaje</td>
+                                      <td><a href="{{ URL::to('/users/' . $user->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="fa fa-user"></span></a></td>
+
+                                  </tr>
                                   @endif
+                                  @if($request->status=='refused')
+                                  <?php 
+                                      $created = explode(" ", $request -> created_at);
+                                      $created = $created[0];
+                                      $created = explode("-", $created);
+                                      $created = $created[2]."/".$created[1]."/".substr($created[0], 2);
+                                      $id_user = $request -> from_user;
+                                      $user = User::find($id_user);
+                                  ?>
+                                  <tr>
+                                      <td>{{$request -> id}}</td>
+                                      <td>{{$created}}</td>
+                                      <td>{{$user -> name}} ha rechazado tu viaje</td>
+                                      <td><a href="{{ URL::to('/users/' . $user->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="fa fa-user"></span></a></td>
+
+                                  </tr>
+                              @endif
+                            @endforeach
                           @endforeach
                         </tbody>
                         </table>
