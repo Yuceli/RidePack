@@ -99,8 +99,7 @@
                           <th>Rechazar</th>
                         </thead>
                         <tbody>
-                        @foreach(Auth::user()->packs as $pack)
-                            @foreach($pack -> requests as $request)
+                            @foreach($requests as $request)
                                 @if($request->status=='onhold')
                                 <?php 
                                     $created = explode(" ", $request -> created_at);
@@ -114,7 +113,9 @@
                                     <td>{{$request -> id}}</td>
                                     <td>{{$created}}</td>
                                     <td>{{$user -> name}} se ha postulado para transportar tu paquete</td>
-                                    <td><button class="btn btn-primary btn-xs"><span class="fa fa-user"></span></button></td>
+                                    <td>
+                                      <a href="{{ URL::to('/users/' . $user->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="fa fa-user"></span></a>
+                                    </td>
                                     <td>
                                       {{ Form::open( array('action' => array('HandleRequestsController@acceptRequest', $request->id)))}}
                                       {{ Form::button("<span class='fa fa-check'></span>", array(
@@ -124,12 +125,19 @@
                                       )) }}
                                       {{ Form::close() }}
                                     </td>
-                                    <td><button class="btn btn-danger btn-xs"><span class="fa fa-times"></span></button></td>
+                                    <td>
+                                      {{ Form::open( array('action' => array('HandleRequestsController@refuseRequest', $request->id)))}}
+                                      {{ Form::button("<span class='fa fa-times'></span>", array(
+                                        'type' => 'submit',
+                                        'class' => 'btn btn-danger btn-xs ',
+                                        'name' => 'submit',
+                                      )) }}
+                                      {{ Form::close() }}
+                                    </td>
                                 </tr>
                                 
                                 @endif
                             @endforeach
-                        @endforeach
                         </tbody>
                       </table>
                     </div>
@@ -164,7 +172,7 @@
                                       <td>{{$request -> id}}</td>
                                       <td>{{$created}}</td>
                                       <td>{{$user -> name}} ha solicitado tu viaje</td>
-                                      <td><button class="btn btn-primary btn-xs"><span class="fa fa-user"></span></button></td>
+                                      <td><a href="{{ URL::to('/users/' . $user->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="fa fa-user"></span></a></td>
                                       <td>
                                       {{ Form::open( array('action' => array('HandleRequestsController@acceptRequest', $request->id)))}}
                                       {{ Form::button("<span class='fa fa-check'></span>", array(
@@ -173,8 +181,16 @@
                                         'name' => 'submit',
                                       )) }}
                                       {{ Form::close() }}
-                                    </td>                                      
-                                    <td><button class="btn btn-danger btn-xs"><span class="fa fa-times"></span></button></td>
+                                      </td>                                      
+                                      <td>
+                                      {{ Form::open( array('action' => array('HandleRequestsController@refuseRequest', $request->id)))}}
+                                      {{ Form::button("<span class='fa fa-times'></span>", array(
+                                        'type' => 'submit',
+                                        'class' => 'btn btn-danger btn-xs ',
+                                        'name' => 'submit',
+                                      )) }}
+                                      {{ Form::close() }}
+                                      </td>
                                   </tr>
                                   
                                   @endif
@@ -212,7 +228,24 @@
                                       <td>{{$request -> id}}</td>
                                       <td>{{$created}}</td>
                                       <td>{{$user -> name}} ha solicitado tu viaje</td>
-                                      <td><button class="btn btn-primary btn-xs"><span class="fa fa-user"></span></button></td>
+                                      <td><a href="{{ URL::to('/users/' . $user->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="fa fa-user"></span></a></td>
+
+                                  </tr>
+                                  @endif
+                                  @if($request->status=='refused')
+                                  <?php 
+                                      $created = explode(" ", $request -> created_at);
+                                      $created = $created[0];
+                                      $created = explode("-", $created);
+                                      $created = $created[2]."/".$created[1]."/".substr($created[0], 2);
+                                      $id_user = $request -> from_user;
+                                      $user = User::find($id_user);
+                                  ?>
+                                  <tr>
+                                      <td>{{$request -> id}}</td>
+                                      <td>{{$created}}</td>
+                                      <td>{{$user -> name}} ha rechazado tu viaje</td>
+                                      <td><a href="{{ URL::to('/users/' . $user->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="fa fa-user"></span></a></td>
 
                                   </tr>
                                   @endif

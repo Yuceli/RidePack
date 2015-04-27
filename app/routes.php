@@ -156,7 +156,13 @@ Route::group(array('before' => 'auth'), function()
 	 *Ruta para aceptar una petición de paquete, Ruta para aceptar una solicitud de viaje
 	 *CU-15.ResponderPeticiónAPaquetesv1.0, CU-20.ResponderPeticionRealizadaAlViajev1.0
 	*/
-	Route::post('/handle/request/{id}', 'HandleRequestsController@acceptRequest');
+	Route::post('/handle/request/accpet/{id}', 'HandleRequestsController@acceptRequest');
+
+	/*
+	 *Ruta para rechazar una petición de paquete, Ruta para rechazar una solicitud de viaje
+	 *CU-15.ResponderPeticiónAPaquetesv1.0, CU-20.ResponderPeticionRealizadaAlViajev1.0
+	*/
+	Route::post('/handle/request/refuse/{id}', 'HandleRequestsController@refuseRequest');
 
 
 });
