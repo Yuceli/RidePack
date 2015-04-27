@@ -203,24 +203,13 @@
                             @if (count($packs) > 0)
                                 @foreach ($packs as $pack) 
                               <?php
-                                $created = explode(" ", $pack -> created_at);
-                                $created = $created[0];
-                                $created = explode("-", $created);
-                                $created = $created[2]."/".$created[1]."/".substr($created[0], 2);
+                                
+                                $created = $pack -> created_at -> format("d/m/y");
+                                $sending_date = $pack -> sending_date -> format("d/m/y");
+                                $arrival_date = $pack -> arrival_date -> format("d/m/y");
 
-                                $sending_date = explode(" ", $pack -> sending_date);
-                                $sending_date = $sending_date[0];
-                                $sending_date = explode("-", $sending_date);
-                                $sending_date = $sending_date[2]."/".$sending_date[1]."/".substr($sending_date[0], 2);
-
-                                $arrival_date = explode(" ", $pack -> arrival_date);
-                                $arrival_date = $arrival_date[0];
-                                $arrival_date = explode("-", $arrival_date);
-                                $arrival_date = $arrival_date[2]."/".$arrival_date[1]."/".substr($arrival_date[0], 2);
-
-
-                                /*$volumes = array('1' => 'Extra pequeño', '2'=>'Pequeño','3'=>'Mediano', '4'=>'Grande', '5'=>'Extra grande');       
-                                $volume = $volumes[''.$pack -> volume.''];*/
+                                $volumes = array('1' => 'Extra pequeño', '2'=>'Pequeño','3'=>'Mediano', '4'=>'Grande', '5'=>'Extra grande');       
+                                $volume = $volumes[''.$pack -> volume.''];
                               ?>
                                 <tr>
                                   <td>{{$pack -> id}}</td>
@@ -234,7 +223,7 @@
                                     <input type="hidden" placeid="placeid" value="{{$pack->to_city}}">
                                     <span placeid="city-{{$pack->to_city}}"></span> - {{$arrival_date}}
                                   </td>
-                                  <td>{{$pack -> size}}</td>
+                                  <td>{{$volume}}</td>
                                   <td>{{$pack -> weight}}Kg</td>
                                   <td>${{$pack -> reward}}</td>
                                   <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="{{url('edit/package/'.$pack->id)}}"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
@@ -253,7 +242,7 @@
                           </table>
 
                           <div class="clearfix"></div>
-                          <ul class="pagination pull-right">
+                          <!--<ul class="pagination pull-right">
                             <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
                             <li class="active"><a href="#">1</a></li>
                             <li><a href="#">2</a></li>
@@ -261,7 +250,8 @@
                             <li><a href="#">4</a></li>
                             <li><a href="#">5</a></li>
                             <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-                          </ul>
+                          </ul>-->
+                          {{$packs -> links()}}
                     </div>
                   
 
