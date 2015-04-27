@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterTripsTable extends Migration {
+class AlterTripsTableSecond extends Migration {
 
 	/**
 	 * Run the migrations.
