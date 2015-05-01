@@ -6,11 +6,12 @@ class ManagementController extends BaseController {
 	public function index()
 	{
 	    $packs = Auth::user() -> packs()-> paginate(5);
-	    $items = $this->getInfoTrips();
+	    $trips = Auth::user() -> trips()-> paginate(5);
+/*	    $items = $this->getInfoTrips();
 	    $total = count($items);
 	    $perPage = 5;
-	    $myTrips = Paginator::make($items, $total, $perPage);
-		return View::make('management', compact("packs"), compact("myTrips"));
+	    $myTrips = Paginator::make($items, $total, $perPage);*/
+		return View::make('management', compact("packs"), compact("trips"));
 	}
 
 	private function getInfoTrips()

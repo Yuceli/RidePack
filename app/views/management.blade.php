@@ -114,26 +114,26 @@
                           <th>Borrar</th>
                         </thead>
                         <tbody>
-                        @if(count($myTrips->getItems()) > 0)
-                          @foreach($myTrips->getItems() as $myTrip)
+                        @if(count($trips) > 0)
+                          @foreach($trips as $trip)
                           <tr>
-                            <td align="center">{{$myTrip['created_at']}}</td>
+                            <td align="center">{{$trip -> created_at -> format("d/m/y")}}</td>
                             <td>
-                              <input type="hidden" placeid="placeid" value="{{$myTrip['departure_city']}}">
-                              <span placeid="city-{{$myTrip['departure_city']}}"></span> - {{$myTrip['departure_date']}}
+                              <input type="hidden" placeid="placeid" value="{{$trip -> departure_city}}">
+                              <span placeid="city-{{$trip -> departure_city}}"></span> - {{$trip -> departure_date -> format("d/m/y")}}
                             </td>
                             <td>
-                              <input type="hidden" placeid="placeid" value="{{$myTrip['arrival_city']}}">
-                              <span placeid="city-{{$myTrip['arrival_city']}}"></span> - {{$myTrip['arrival_date']}}
+                              <input type="hidden" placeid="placeid" value="{{$trip -> arrival_city}}">
+                              <span placeid="city-{{$trip -> arrival_city}}"></span> - {{$trip -> arrival_date -> format("d/m/y")}}
                             </td>
-                            <td align="center">{{$myTrip['max_size']}}</td>
-                            <td align="center">{{$myTrip['max_weight']}}kg</td>
-                            <td align="center">{{$myTrip['transport']}}</td>
-                            <td align="center">${{$myTrip['carry_reward']}}</td>
+                            <td align="center">{{$trip -> max_size}}</td>
+                            <td align="center">{{$trip -> max_weight}}kg</td>
+                            <td align="center">{{$trip -> transport}}</td>
+                            <td align="center">${{$trip -> carry_reward}}</td>
                             <td>
                               <p data-placement="top" data-toggle="tooltip" title="Edit">
                                 <?php
-                                $tripid=$myTrip['id'];
+                                $tripid=$trip -> id;
                                 echo "<a href='edit/travel/$tripid'><button type='button' class='btn btn-primary btn-xs' data-title='Edit' data-toggle='modal' data-tripid='$tripid'>"?>
 
                                   <span class="glyphicon glyphicon-pencil"></span>
@@ -143,7 +143,7 @@
                             <td>
                               <p data-placement="top" data-toggle="tooltip" title="Delete">
                                 <?php
-                                $tripid=$myTrip['id'];
+                                $tripid=$trip -> id;
                                 echo "<button type='button' class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-tripid='$tripid' data-target='#delete_trip' >"?>
                                   <span class="glyphicon glyphicon-trash"></span>
                                 </button>
@@ -157,7 +157,7 @@
                         </tbody>
                       </table>
                       <div class="clearfix"></div>
-                      {{$myTrips->links()}}
+                      {{$trips->links()}}
                     </div>
 
                     <div class="modal fade" id="delete_trip" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
@@ -208,8 +208,8 @@
                                 $sending_date = $pack -> sending_date -> format("d/m/y");
                                 $arrival_date = $pack -> arrival_date -> format("d/m/y");
 
-                                $volumes = array('1' => 'Extra pequeño', '2'=>'Pequeño','3'=>'Mediano', '4'=>'Grande', '5'=>'Extra grande');       
-                                $volume = $volumes[''.$pack -> volume.''];
+                                /*$volumes = array('1' => 'Extra pequeño', '2'=>'Pequeño','3'=>'Mediano', '4'=>'Grande', '5'=>'Extra grande');       
+                                $volume = $volumes[''.$pack -> volume.''];*/
                               ?>
                                 <tr>
                                   <td>{{$pack -> id}}</td>
@@ -223,7 +223,7 @@
                                     <input type="hidden" placeid="placeid" value="{{$pack->to_city}}">
                                     <span placeid="city-{{$pack->to_city}}"></span> - {{$arrival_date}}
                                   </td>
-                                  <td>{{$volume}}</td>
+                                  <td></td>
                                   <td>{{$pack -> weight}}Kg</td>
                                   <td>${{$pack -> reward}}</td>
                                   <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="{{url('edit/package/'.$pack->id)}}"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
