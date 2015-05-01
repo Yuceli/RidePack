@@ -106,23 +106,13 @@
                     <td colspan="8"><strong>Hacia: </strong><input type="hidden" placeid="placeid" value="{{$trip->arrival_city}}">
                       <span placeid="city-{{$trip->arrival_city}}"></span></td>
                   </tr>
-                  <?php 
-                        $arrival_date = explode(" ", $trip -> arrival_date);
-                        $arrival_date = $arrival_date[0];
-                        $arrival_date = explode("-", $arrival_date);
-                        $arrival_date = $arrival_date[2]."/".$arrival_date[1]."/".substr($arrival_date[0], 2);
-
-                        $departure_date = explode(" ", $trip -> departure_date);
-                        $departure_date = $departure_date[0];
-                        $departure_date = explode("-", $departure_date);
-                        $departure_date = $departure_date[2]."/".$departure_date[1]."/".substr($departure_date[0], 2);
-                    ?>
+                  
                   <tr>
-                    <td colspan="8"><strong>Fecha salida: </strong>{{$departure_date}}</td>
+                    <td colspan="8"><strong>Fecha salida: </strong>{{$trip -> departure_date -> format("d/m/y")}}</td>
                   </tr>
 
                   <tr>
-                    <td colspan="8"><strong>Fecha llegada: </strong>{{$arrival_date}}</td>
+                    <td colspan="8"><strong>Fecha llegada: </strong>{{$trip -> arrival_date -> format("d/m/y")}}</td>
                   </tr>
 
                   <tr>
