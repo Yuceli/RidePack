@@ -8,12 +8,12 @@ class TripController extends BaseController {
 	{
 		//Reglas para validar los campos del nuevo paquete
 		$rules = array(
-			'travel' => 'required',
-			'package' => 'required',
-			'quantity' => 'numeric|min:1|max:15|required',
-			'reward' => 'required|min:0',
-			'from_city' => 'required',
-			'to_city' => 'required',
+			'transport' => 'required',
+			'max_size' => 'required',
+			'max_weight' => 'numeric|min:1|max:15|required',
+			'carry_reward' => 'required|min:0',
+			'departure_city' => 'required',
+			'arrival_city' => 'required',
 			'departure_date' => 'date|date_format:Y-m-d|required',
 			'arrival_date' => 'date|date_format:Y-m-d|required',
 			'observation' => 'max:100'
@@ -33,13 +33,13 @@ class TripController extends BaseController {
 	    //Se asignan los datos del formulario al nuevo paquete
 	    $trip->departure_date = Input::get('departure_date');
 	    $trip->arrival_date = Input::get('arrival_date');
-	    $trip->max_volume = Input::get('package');
-	    $trip->max_weight = Input::get('quantity');
+	    $trip->max_size = Input::get('max_size');
+	    $trip->max_weight = Input::get('max_weight');
 	    $trip->observation = Input::get('observation');
-	    $trip->carry_reward = Input::get('reward');
-	    $trip->transport = Input::get('travel');
-	    $trip->departure_city = Input::get('from_city');
-	    $trip->arrival_city = Input::get('to_city');
+	    $trip->carry_reward = Input::get('carry_reward');
+	    $trip->transport = Input::get('transport');
+	    $trip->departure_city = Input::get('departure_city');
+	    $trip->arrival_city = Input::get('arrival_city');
 	    
 	    //Se guarda el paquete
 	    Auth::user()->trips()->save($trip);
@@ -72,14 +72,15 @@ class TripController extends BaseController {
 		//Reglas para validar el formulario
 		$rules = array(
 			'travel' => 'required',
-			'package' => 'required',
-			'quantity' => 'numeric|min:1|max:15|required',
-			'reward' => 'required|min:0',
-			'from_city' => 'required',
-			'to_city' => 'required',
+			'max_weight' => 'numeric|min:1|max:15|required',
+			'carry_reward' => 'required|min:0',
 			'departure_date' => 'date|date_format:Y-m-d|required',
 			'arrival_date' => 'date|date_format:Y-m-d|required',
-			'observation' => 'max:100'
+			'arrival_city' => 'required',
+			'departure_city' => 'required',
+			'observation' => 'max:100',
+			'max_size' => 'required'
+
 		);
 	    
 	    //Se valdiadn los datos del formulario
@@ -94,13 +95,14 @@ class TripController extends BaseController {
 	    //Se obtienen los nuevos campos del formulario
 	    $trip->departure_date = Input::get('departure_date');
 	    $trip->arrival_date = Input::get('arrival_date');
-	    $trip->max_volume = Input::get('package');
-	    $trip->max_weight = Input::get('quantity');
+	    $trip->max_weight = Input::get('max_weight');
 	    $trip->observation = Input::get('observation');
-	    $trip->carry_reward = Input::get('reward');
+	    $trip->carry_reward = Input::get('carry_reward');
 	    $trip->transport = Input::get('travel');
-	    $trip->departure_city = Input::get('from_city');
-	    $trip->arrival_city = Input::get('to_city');
+	    $trip->departure_city = Input::get('departure_city');
+	    $trip->arrival_city = Input::get('arrival_city');
+  	    $trip->max_size = Input::get('max_size');
+
 
 	    //Se guardan los datos modificados
 	    $trip->save();

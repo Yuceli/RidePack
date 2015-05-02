@@ -65,19 +65,19 @@
     {{Form::model($trip, array('files'=>true))}}
       <div class="row">
         <div class="col-md-12">
-          <h2>Publica tu viaje</h2>
+          <h2>Editar viaje</h2>
           <hr class="colorgraph">
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="form-group">
-                {{Form::select('travel', array(null => 'Estoy viajando...', 'Vía terrestre'=>'Vía terrestre', 'Vía áerea'=>'Vía áerea', 'Vía marítima'=>'Vía marítima'), $trip->transport, array('class' => 'form-control input-lg', 'id' => 'travel', 'name' => 'travel', 'tabindex'=>'1', 'required'=>'required'))}}
-                <div>{{ $errors -> first('travel')}}</div>
+                {{Form::select('transport', array(null => 'Estoy viajando...', 'Vía terrestre'=>'Vía terrestre', 'Vía áerea'=>'Vía áerea', 'Vía marítima'=>'Vía marítima'), $trip->transport, array('class' => 'form-control input-lg', 'id' => 'travel', 'name' => 'travel', 'tabindex'=>'1', 'required'=>'required'))}}
+                <div>{{ $errors -> first('transport')}}</div>
               </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="form-group">
-                {{Form::select('package', array('' => 'Puedo transportar un paquete...', '1'=>'Extra pequeño', '2'=>'Pequeño', '3'=>'Mediano', '4'=>'Grande', '5'=>'Extra grande'), $trip->max_volume, array('class' => 'form-control input-lg', 'name' => 'package', 'required'=>'required', 'tabindex'=>'2'))}}
-                <div>{{ $errors -> first('package')}}</div>
+                {{Form::select('max_size', array(null => 'Puedo transportar un paquete...', '1'=>'Extra pequeño', '2'=>'Pequeño', '3'=>'Mediano', '4'=>'Grande', '5'=>'Extra grande'), null, array('class' => 'form-control input-lg', 'name' => 'max_size', 'required'=>'required', 'tabindex'=>'2'))}}
+                <div>{{ $errors -> first('max_size')}}</div>
             </div>
           </div>
         </div>
@@ -85,22 +85,22 @@
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-              {{Form::number('quantity', $trip->max_weight, array('id'=>'quantity', 'name'=>'quantity', 'min'=>'0', 'class'=>'form-control input-lg','tabindex'=>'5', 'placeholder' => 'Peso en Kg', 'tabindex'=>'3', 'required'=>'required'))}}
+              {{Form::number('max_weight', $trip->max_weight, array('id'=>'max_weight', 'name'=>'max_weight', 'min'=>'0', 'class'=>'form-control input-lg','tabindex'=>'5', 'placeholder' => 'Peso en Kg', 'tabindex'=>'3', 'required'=>'required'))}}
               <div>{{ $errors->first('quantity') }}</div>
             </div>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-              {{Form::number('reward ', $trip->carry_reward, array('id'=>'reward', 'name'=>'reward', 'min'=>'0',  'class'=>'form-control input-lg','placeholder'=>'Recompensa por paquete','tabindex'=>'4', 'required'=>'required'))}}
-              <div>{{ $errors->first('reward') }}</div>
+              {{Form::number('carry_reward ', $trip->carry_reward, array('id'=>'carry_reward', 'name'=>'carry_reward', 'min'=>'0',  'class'=>'form-control input-lg','placeholder'=>'Recompensa por paquete','tabindex'=>'4', 'required'=>'required'))}}
+              <div>{{ $errors->first('carry_reward') }}</div>
             </div>
           </div>
-        </div>
-        
+        </div>   
+
         <div class="form-group">
-          {{Form::text('search_from_city', null, array('id'=>'search_from_city','class'=>'form-control input-lg', 'name'=>'ciudad_salida', 'placeholder'=>'Ciudad de salida','tabindex'=>'5', 'required'=>'required'))}}
-          {{Form::hidden('from_city', null, array('id'=>'from_city'))}}
-          <div>{{ $errors->first('from_city') }}</div>
+          {{Form::text('search_departure_city', null, array('id'=>'search_departure_city','class'=>'form-control input-lg', 'name'=>'ciudad_salida', 'placeholder'=>'Ciudad de salida','tabindex'=>'5', 'required'=>'required'))}}
+          {{Form::hidden('departure_city', $trip->departure_city, array('id'=>'departure_city'))}}
+          <div>{{ $errors->first('departure_city') }}</div>
         </div>
 
         <div class="row">
@@ -122,9 +122,9 @@
         </div>
 
         <div class="form-group">
-            {{Form::text('search_to_city', null, array('id'=>'search_to_city', 'name'=>'ciudad_destino' ,'class'=>'form-control input-lg','placeholder'=>'Ciudad de destino','tabindex'=>'6', 'required'=>'required'))}}
-            {{Form::hidden('to_city', null, array('id'=>'to_city'))}}
-            <div>{{ $errors->first('to_city') }}</div>
+            {{Form::text('search_arrival_city', null, array('id'=>'search_arrival_city', 'name'=>'ciudad_destino' ,'class'=>'form-control input-lg','placeholder'=>'Ciudad de destino','tabindex'=>'6', 'required'=>'required'))}}
+            {{Form::hidden('arrival_city', $trip->arrival_city, array('id'=>'arrival_city'))}}
+            <div>{{ $errors->first('arrival_city') }}</div>
         </div>
 
         <div class="row">
@@ -215,9 +215,9 @@
       googlePlaceFrom.displayPlaceDetails(place);
     };
 
-    googlePlaceFrom.initAutocomplete(document.getElementById('search_from_city'));
+    googlePlaceFrom.initAutocomplete(document.getElementById('search_departure_city'));
 
-    googlePlaceFrom.inputPlaceID = document.getElementById('from_city');
+    googlePlaceFrom.inputPlaceID = document.getElementById('departure_city');
 
     googlePlaceFrom.outputCity = document.getElementById('city_from');
     googlePlaceFrom.outputState = document.getElementById('state_from');
@@ -245,9 +245,9 @@
     };
 
 
-    googlePlaceTo.initAutocomplete(document.getElementById('search_to_city'));
+    googlePlaceTo.initAutocomplete(document.getElementById('search_arrival_city'));
 
-    googlePlaceTo.inputPlaceID = document.getElementById('to_city');
+    googlePlaceTo.inputPlaceID = document.getElementById('arrival_city');
 
     googlePlaceTo.outputCity = document.getElementById('city_to');
     googlePlaceTo.outputState = document.getElementById('state_to');
@@ -267,6 +267,9 @@
 
 
 </script>
+
+
+  </script>
 
 </body>
 </html>
