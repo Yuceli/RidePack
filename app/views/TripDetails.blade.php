@@ -162,13 +162,8 @@
                     </td>
                   </tr>
                   <tr>
-                    <?php
-                        $created = explode(" ", $user -> created_at);
-                        $created = $created[0];
-                        $created = explode("-", $created);
-                        $created = $created[2]."/".$created[1]."/".substr($created[0], 2);
-                    ?>
-                    <td colspan="8"><strong>Miembro desde: </strong>{{$created}}</td>
+                   
+                    <td colspan="8"><strong>Miembro desde: </strong>{{$user->created_at->toDateString()}}</td>
                   </tr>
                   <tr>
                     <td colspan="8"><strong>Viajes publicados: </strong>{{count($trips)}} viajes</td>
