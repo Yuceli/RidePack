@@ -62,7 +62,7 @@
 
     <br><br><br><br>
     <div class="container">
-      {{Form::model($trip, array('TripController.updateTrip', $trip->id))}}
+    {{Form::model($trip, array('files'=>true))}}
       <div class="row">
         <div class="col-md-12">
           <h2>Publica tu viaje</h2>
@@ -70,13 +70,13 @@
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="form-group">
-                {{Form::select('travel', array(null => 'Estoy viajando...', 'Vía terrestre'=>'Vía terrestre', 'Vía áerea'=>'Vía áerea', 'Vía marítima'=>'Vía marítima'), null, array('class' => 'form-control input-lg', 'id' => 'travel', 'name' => 'travel', 'tabindex'=>'1', 'required'=>'required'))}}
+                {{Form::select('travel', array(null => 'Estoy viajando...', 'Vía terrestre'=>'Vía terrestre', 'Vía áerea'=>'Vía áerea', 'Vía marítima'=>'Vía marítima'), $trip->transport, array('class' => 'form-control input-lg', 'id' => 'travel', 'name' => 'travel', 'tabindex'=>'1', 'required'=>'required'))}}
                 <div>{{ $errors -> first('travel')}}</div>
               </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="form-group">
-                {{Form::select('package', array('' => 'Puedo transportar un paquete...', '1'=>'Extra pequeño', '2'=>'Pequeño', '3'=>'Mediano', '4'=>'Grande', '5'=>'Extra grande'), null, array('class' => 'form-control input-lg', 'name' => 'package', 'required'=>'required', 'tabindex'=>'2'))}}
+                {{Form::select('package', array('' => 'Puedo transportar un paquete...', '1'=>'Extra pequeño', '2'=>'Pequeño', '3'=>'Mediano', '4'=>'Grande', '5'=>'Extra grande'), $trip->max_volume, array('class' => 'form-control input-lg', 'name' => 'package', 'required'=>'required', 'tabindex'=>'2'))}}
                 <div>{{ $errors -> first('package')}}</div>
             </div>
           </div>
@@ -85,13 +85,13 @@
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-              {{Form::number('quantity', null, array('id'=>'quantity', 'name'=>'quantity', 'min'=>'0', 'class'=>'form-control input-lg','tabindex'=>'5', 'placeholder' => 'Peso en Kg', 'tabindex'=>'3', 'required'=>'required'))}}
+              {{Form::number('quantity', $trip->max_weight, array('id'=>'quantity', 'name'=>'quantity', 'min'=>'0', 'class'=>'form-control input-lg','tabindex'=>'5', 'placeholder' => 'Peso en Kg', 'tabindex'=>'3', 'required'=>'required'))}}
               <div>{{ $errors->first('quantity') }}</div>
             </div>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-              {{Form::number('reward ', null, array('id'=>'reward', 'name'=>'reward', 'min'=>'0',  'class'=>'form-control input-lg','placeholder'=>'Recompensa por paquete','tabindex'=>'4', 'required'=>'required'))}}
+              {{Form::number('reward ', $trip->carry_reward, array('id'=>'reward', 'name'=>'reward', 'min'=>'0',  'class'=>'form-control input-lg','placeholder'=>'Recompensa por paquete','tabindex'=>'4', 'required'=>'required'))}}
               <div>{{ $errors->first('reward') }}</div>
             </div>
           </div>
@@ -148,13 +148,13 @@
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-              {{Form::text('departure_date', null, array('id'=>'date', 'name'=>'departure_date' ,'class'=>'form-control input-lg','placeholder'=>'Fecha salida','tabindex'=>'7', 'onfocus'=>"(this.type='date')", 'onblur'=>"(this.type='text')", 'required'=>'required'))}}
+              {{Form::text('departure_date', $trip->departure_date->toDateString(), array('id'=>'date', 'name'=>'departure_date' ,'class'=>'form-control input-lg','placeholder'=>'Fecha salida','tabindex'=>'7', 'onfocus'=>"(this.type='date')", 'onblur'=>"(this.type='text')", 'required'=>'required'))}}
                <div>{{ $errors->first('departure_date') }}</div>
             </div>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-              {{Form::text('arrival_date', null, array('id'=>'date', 'name'=>'arrival_date' ,'class'=>'form-control input-lg','placeholder'=>'Fecha llegada','tabindex'=>'8', 'onfocus'=>"(this.type='date')", 'onblur'=>"(this.type='text')", 'required'=>'required'))}}
+              {{Form::text('arrival_date', $trip->arrival_date->toDateString(), array('id'=>'date', 'name'=>'arrival_date' ,'class'=>'form-control input-lg','placeholder'=>'Fecha llegada','tabindex'=>'8', 'onfocus'=>"(this.type='date')", 'onblur'=>"(this.type='text')", 'required'=>'required'))}}
               <div>{{ $errors->first('arrival_date') }}</div>
            </div>
          </div>
