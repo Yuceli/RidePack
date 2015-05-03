@@ -144,68 +144,70 @@
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
 <script type="text/javascript" src="{{ URL::asset('js/googlePlaces2.js') }}"></script>
 
-  <script type="text/javascript">
+ <script type="text/javascript">
 
-    var gp1, gp2;
-    window.onload= function(){
-      var gp1 = new googlePlaces();
+  var googlePlaceFrom, googlePlaceTo;
+  window.onload= function(){
+    var googlePlaceFrom = new googlePlaces();
 
-      gp1.displaySearch = function() {
-        var place = gp1.autocomplete.getPlace();
+    googlePlaceFrom.displaySearch = function() {
+      var place = googlePlaceFrom.autocomplete.getPlace();
 
-        gp1.displayPlaceDetails(place);
-      };
-
-      gp1.initAutocomplete(document.getElementById('from_search'));
-
-      gp1.inputPlaceID = document.getElementById('from_city');
-
-      gp1.outputCity = document.getElementById('from_search');
-      //gp1.outputState = document.getElementById('state_from');
-      //gp1.outputCountry = document.getElementById('country_from');
-
-      gp1.showPlaceDetails = function (place, status) {
-        
-          if (status == google.maps.places.PlacesServiceStatus.OK) {
-              gp1.displayPlaceDetails(place);
-          }else{
-              gp1.displayPlaceDetails({});
-          }
-      };
-
-      gp1.getPlaceDetails();
-
-
-
-      gp2 = new googlePlaces();
-
-      gp2.displaySearch = function() {
-        var place = gp2.autocomplete.getPlace();
-
-        gp2.displayPlaceDetails(place);
-      };
-
-
-      gp2.initAutocomplete(document.getElementById('to_search'));
-
-      gp2.inputPlaceID = document.getElementById('to_city');
-
-      gp2.outputCity = document.getElementById('to_search');
-      //gp2.outputState = document.getElementById('state_to');
-      //gp2.outputCountry = document.getElementById('country_to');
-
-      gp2.showPlaceDetails = function (place, status) {
-        
-          if (status == google.maps.places.PlacesServiceStatus.OK) {
-              gp2.displayPlaceDetails(place);
-          }else{
-              gp2.displayPlaceDetails({});
-          }
-      };
-
-      gp2.getPlaceDetails();
+      googlePlaceFrom.displayPlaceDetails(place);
     };
-  </script>
+
+    googlePlaceFrom.initAutocomplete(document.getElementById('search_from_city'));
+
+    googlePlaceFrom.inputPlaceID = document.getElementById('from_city');
+
+    googlePlaceFrom.outputCity = document.getElementById('city_from');
+    googlePlaceFrom.outputState = document.getElementById('state_from');
+    googlePlaceFrom.outputCountry = document.getElementById('country_from');
+
+    googlePlaceFrom.showPlaceDetails = function (place, status) {
+      
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+            googlePlaceFrom.displayPlaceDetails(place);
+        }else{
+            googlePlaceFrom.displayPlaceDetails({});
+        }
+    };
+
+    googlePlaceFrom.getPlaceDetails();
+
+
+
+    googlePlaceTo = new googlePlaces();
+
+    googlePlaceTo.displaySearch = function() {
+      var place = googlePlaceTo.autocomplete.getPlace();
+
+      googlePlaceTo.displayPlaceDetails(place);
+    };
+
+
+    googlePlaceTo.initAutocomplete(document.getElementById('search_to_city'));
+
+    googlePlaceTo.inputPlaceID = document.getElementById('to_city');
+
+    googlePlaceTo.outputCity = document.getElementById('city_to');
+    googlePlaceTo.outputState = document.getElementById('state_to');
+    googlePlaceTo.outputCountry = document.getElementById('country_to');
+
+    googlePlaceTo.showPlaceDetails = function (place, status) {
+      
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+            googlePlaceTo.displayPlaceDetails(place);
+        }else{
+            googlePlaceTo.displayPlaceDetails({});
+        }
+    };
+
+    googlePlaceTo.getPlaceDetails();
+  };
+
+
+</script>
 
   <script type="text/javascript">
     
