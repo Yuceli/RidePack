@@ -156,13 +156,13 @@
       googlePlaceFrom.displayPlaceDetails(place);
     };
 
-    googlePlaceFrom.initAutocomplete(document.getElementById('search_from_city'));
+    googlePlaceFrom.initAutocomplete(document.getElementById('from_search'));
 
     googlePlaceFrom.inputPlaceID = document.getElementById('from_city');
 
-    googlePlaceFrom.outputCity = document.getElementById('city_from');
-    googlePlaceFrom.outputState = document.getElementById('state_from');
-    googlePlaceFrom.outputCountry = document.getElementById('country_from');
+    googlePlaceFrom.outputCity = document.createElement('div');
+    googlePlaceFrom.outputState = document.createElement('div');
+    googlePlaceFrom.outputCountry = document.createElement('div');
 
     googlePlaceFrom.showPlaceDetails = function (place, status) {
       
@@ -186,13 +186,13 @@
     };
 
 
-    googlePlaceTo.initAutocomplete(document.getElementById('search_to_city'));
+    googlePlaceTo.initAutocomplete(document.getElementById('to_search'));
 
     googlePlaceTo.inputPlaceID = document.getElementById('to_city');
 
-    googlePlaceTo.outputCity = document.getElementById('city_to');
-    googlePlaceTo.outputState = document.getElementById('state_to');
-    googlePlaceTo.outputCountry = document.getElementById('country_to');
+    googlePlaceTo.outputCity = document.createElement('div');
+    googlePlaceTo.outputState = document.createElement('div');
+    googlePlaceTo.outputCountry = document.createElement('div');
 
     googlePlaceTo.showPlaceDetails = function (place, status) {
       
@@ -239,8 +239,6 @@
         continue;
 
       aPlacess.push(placeID);
-
-      console.log(placeID);
 
       var request = {
           placeId: placeID
