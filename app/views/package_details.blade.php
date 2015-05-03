@@ -169,7 +169,7 @@
                   </tr>
                   <tr>
                     <td colspan="8">
-                      {{ Form::open( array('action' => array('PackageDetailsController@sendRequest', $pack->id)))}}
+                      {{ Form::open( array('action' => array('PackController@sendRequest', $pack->id)))}}
                       {{ Form::button("Postularme a paquete<span class='glyphicon glyphicon-chevron-right'></span>", array(
                         'type' => 'submit',
                         'class' => 'btn btn-primary pull-right ' . (($user -> id == Auth::user()-> id)? 'disabled' : ''),
