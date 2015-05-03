@@ -40,6 +40,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->password;
 	}
 
+	public function requests(){
+    	return $this->hasMany('Petition','from_user');
+    }
+
 	public function getRememberToken()
 	{
 		return $this->remember_token;
