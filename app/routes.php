@@ -134,9 +134,9 @@ Route::group(array('before' => 'auth'), function()
 	 *	Ruta para ver los detalles de un viaje.
 	 *  CU-28
 	 */
-	Route::get('/trip/details/{id}', 'TripDetailsController@showDetails');
+	Route::get('/trip/details/{id}', 'TripController@showDetails');
 
-	Route::post('/trip/details/{id}', 'TripDetailsController@sendRequest');
+	Route::post('/trip/details/{id}', 'TripController@sendRequest');
 
 	/*
 	 * Ruta par eliminar un viaje
