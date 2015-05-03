@@ -132,19 +132,14 @@
                             <td align="center">${{$trip -> carry_reward}}</td>
                             <td>
                               <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                <?php
-                                $tripid=$trip -> id;
-                                echo "<a href='edit/travel/$tripid'><button type='button' class='btn btn-primary btn-xs' data-title='Edit' data-toggle='modal' data-tripid='$tripid'>"?>
-
+                                <a href='edit/travel/{{$trip -> id}}'><button type='button' class='btn btn-primary btn-xs' data-title='Edit' data-toggle='modal' data-tripid='{{$trip -> id}}'>
                                   <span class="glyphicon glyphicon-pencil"></span>
                                 </button>
                               </p>
                             </td>
                             <td>
                               <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                <?php
-                                $tripid=$trip -> id;
-                                echo "<button type='button' class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-tripid='$tripid' data-target='#delete_trip' >"?>
+                                <button type='button' class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-tripid='{{$trip -> id}}' data-target='#delete_trip' >
                                   <span class="glyphicon glyphicon-trash"></span>
                                 </button>
                               </p>
@@ -202,35 +197,25 @@
                              
                             @if (count($packs) > 0)
                                 @foreach ($packs as $pack) 
-                              <?php
-                                
-                                $created = $pack -> created_at -> format("d/m/y");
-                                $sending_date = $pack -> sending_date -> format("d/m/y");
-                                $arrival_date = $pack -> arrival_date -> format("d/m/y");
-
-                                /*$volumes = array('1' => 'Extra pequeño', '2'=>'Pequeño','3'=>'Mediano', '4'=>'Grande', '5'=>'Extra grande');       
-                                $volume = $volumes[''.$pack -> volume.''];*/
-                              ?>
+                              
                                 <tr>
                                   <td>{{$pack -> id}}</td>
-                                  <td>{{$created}}</td>
+                                  <td>{{$pack -> created_at -> format("d/m/y")}}</td>
                                   <td>{{{$pack -> title}}}</td>
                                   <td> 
                                     <input type="hidden" placeid="placeid" value="{{$pack->from_city}}">
-                                    <span placeid="city-{{$pack->from_city}}"></span> - {{$sending_date}}
+                                    <span placeid="city-{{$pack->from_city}}"></span> - {{$pack -> sending_date -> format("d/m/y")}}
                                   </td>
                                   <td>
                                     <input type="hidden" placeid="placeid" value="{{$pack->to_city}}">
-                                    <span placeid="city-{{$pack->to_city}}"></span> - {{$arrival_date}}
+                                    <span placeid="city-{{$pack->to_city}}"></span> - {{$pack -> arrival_date -> format("d/m/y")}}
                                   </td>
                                   <td></td>
                                   <td>{{$pack -> weight}}Kg</td>
                                   <td>${{$pack -> reward}}</td>
                                   <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="{{url('edit/package/'.$pack->id)}}"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
                                   <td><p data-placement="top" data-toggle="tooltip" title="Delete">
-                                    <?php
-                                $packid=$pack->id;
-                                echo "<button type='button' class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-packid='$packid' data-target='#delete_package' >"?>
+                                    <button type='button' class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-packid='{{$pack->id}}' data-target='#delete_package' >
                                   <span class="glyphicon glyphicon-trash"></span>
                                 </button></p></td>
                                 </tr>

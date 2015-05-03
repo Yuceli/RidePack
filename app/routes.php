@@ -150,7 +150,7 @@ Route::group(array('before' => 'auth'), function()
 	 */
     Route::post('/DeletePack', 'PackController@DeletePack');
 
-	Route::get('/management', 'ManagementController@index');
+	Route::get('/management', 'ManagementController@showManagement');
 
 	/*
 	 *Ruta para aceptar una petición de paquete, Ruta para aceptar una solicitud de viaje

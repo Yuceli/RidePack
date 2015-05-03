@@ -3,11 +3,15 @@
 
 class ManagementController extends BaseController {
 
-	public function index()
+	/*
+	* Función para mostrar viajes y paquetes del usuario
+	* cuando desea gestionarlos
+	*/
+	public function showManagement()
 	{
 	    $packs = Auth::user() -> packs()-> paginate(5);
 	    $trips = Auth::user() -> trips()-> paginate(5);
-		return View::make('management', compact("packs"), compact("trips"));
+		return View::make('Management', compact("packs"), compact("trips"));
 	}
 	
 }
