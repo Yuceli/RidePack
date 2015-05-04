@@ -211,54 +211,58 @@
 
   <script type="text/javascript">
     
-    var aPlacess = [];
-    var aInputPlaceIDs = $('input[placeid="placeid"]');
+    var places = [];
+    var placeIDInputs = $('input[placeid="placeid"]');
 
-    var getAddressElement = function(type, aAddress){
-      var sAddressElement = '';
+    var getAddressElement = function(addressComponentType, addressCompenents){
+      var addressElement = '';
 
-      if(!aAddress) return sAddressElement;
+      if(!addressCompenents) return addressElement;
 
-      for(var i=0; i<aAddress.length; i++){
-          var typesLength = aAddress[i].types.length;
-          for(var j=0; j<typesLength; j++){
-              if(aAddress[i] && aAddress[i].types[j] == type){
-                  sAddressElement = aAddress[i].long_name;
+      for(var componentNumber = 0; componentNumber < addressCompenents.length; componentNumber++){
+
+          var addressComponent = addressCompenents[componentNumber];
+          var addressTypesLength = addressComponent.types.length;
+
+          for(var addressTypeNumber = 0; addressTypeNumber < addressTypesLength; addressTypeNumber++){
+
+              if(addressComponent && addressComponent.types[addressTypeNumber] == addressComponentType){
+                  addressElement = addressComponent.long_name;
               }
           }
       }
 
-      return sAddressElement;
+      return addressElement;
     };
 
-    for(var i=0; i<aInputPlaceIDs.length; i++){
+    for(var inputNumber = 0; inputNumber < placeIDInputs.length; inputNumber++){
 
-      var placeID = aInputPlaceIDs[i].value;
+      var placeID = placeIDInputs[inputNumber].value;
 
-      if(aPlacess && placeID && aPlacess.indexOf(placeID) >= 0)
+      if(places && placeID && places.indexOf(placeID) >= 0)
         continue;
 
-      aPlacess.push(placeID);
+      places.push(placeID);
 
       var request = {
           placeId: placeID
       };
 
-      var oDvMap = document.createElement('div');
-      var service = new google.maps.places.PlacesService(oDvMap);
+      var mapContainer = document.createElement('div');
+      var service = new google.maps.places.PlacesService(mapContainer);
       service.getDetails(request, function(place, status){
 
         if (status == google.maps.places.PlacesServiceStatus.OK) {
 
-          var oCitySpans = $('span[placeid="city-'+place.place_id+'"]');
-          var oStateSpans = $('span[placeid="state-'+place.place_id+'"]');
-          var oCountrySpans = $('span[placeid="country-'+place.place_id+'"]');
+          var cityContainer = $('span[placeid="city-'+place.place_id+'"]');
+          var stateContainer = $('span[placeid="state-'+place.place_id+'"]');
+          var countryContainer = $('span[placeid="country-'+place.place_id+'"]');
 
-          for(var j=0; j<oCitySpans.length; j++){
+          for(var j=0; j<cityContainer.length; j++){
 
-            oCitySpans[j].innerHTML = getAddressElement('locality',place.address_components);
-            oStateSpans[j].innerHTML = getAddressElement('administrative_area_level_1',place.address_components)
-            oCountrySpans[j].innerHTML = getAddressElement('country',place.address_components)
+            cityContainer[j].innerHTML = getAddressElement('locality',place.address_components);
+            stateContainer[j].innerHTML = getAddressElement('administrative_area_level_1',place.address_components)
+            countryContainer[j].innerHTML = getAddressElement('country',place.address_components)
           }
         }
       });
