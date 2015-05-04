@@ -151,7 +151,7 @@
                   </tr>
                   <tr>
                     <td colspan="8">
-                      {{ Form::open( array('action' => array('TripController@sendRequest', $trip->id)))}}
+                      {{ Form::open( array('action' => array('TripDetailsController@sendRequest', $trip->id)))}}
                       {{ Form::button("Enviar petici&oacute;n<span class='glyphicon glyphicon-chevron-right'></span>", array(
                         'type' => 'submit',
                         'class' => 'btn btn-primary pull-right ' . (($user -> id == Auth::user()-> id)? 'disabled' : ''),
