@@ -31,7 +31,7 @@
             <span class="month">{{$trip->departure_date->formatLocalized('%b')}}</span>
           </time>
           @if($trip->user->picture)
-            <img src="{{ $trip->user->picture }}" />
+            <img src="{{ asset($trip->user->picture) }}" />
           @else
             <img src="https://s3.amazonaws.com/FringeBucket/default-user.png" />
           @endif

@@ -31,7 +31,7 @@
             <span class="month">{{$pack->sending_date->formatLocalized('%b')}}</span>
           </time>
           @if($pack->user->picture)
-            <img src="{{ $pack->user->picture }}" />
+            <img src="{{ asset($pack->user->picture) }}" />
           @else
             <img src="https://s3.amazonaws.com/FringeBucket/default-user.png" />
           @endif
