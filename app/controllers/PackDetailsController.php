@@ -1,6 +1,6 @@
 <?php
 
-class PackageDetailsController extends BaseController {
+class PackDetailsController extends BaseController {
 
 
 	public function showWelcome()
@@ -8,7 +8,7 @@ class PackageDetailsController extends BaseController {
 		return View::make('package_details');
 	}
 
-	public function showDetails($id){
+	public function showPackDetails($id){
 		if (Auth::check()){
 			$pack = Pack::find($id);
 			$user_id = $pack -> user_id;

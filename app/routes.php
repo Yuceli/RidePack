@@ -126,9 +126,9 @@ Route::group(array('before' => 'auth'), function()
 	 *	Ruta par ver los detalles de un paquete.
 	 *	CU-19
 	 */
-	Route::get('/package/details/{id}', 'PackageDetailsController@showDetails');
+	Route::get('/package/details/{id}', 'PackDetailsController@showPackDetails');
 
-	Route::post('/package/details/{id}', 'PackageDetailsController@sendRequest');
+	Route::post('/package/details/{id}', 'PackDetailsController@sendRequest');
 	
 	/*
 	 *	Ruta para ver los detalles de un viaje.
