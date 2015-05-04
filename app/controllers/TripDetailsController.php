@@ -8,7 +8,7 @@ class TripDetailsController extends BaseController {
 		return View::make('TripDetails');
 	}
 	
-	public function showDetails($id){
+	public function showTripDetails($id){
 		if (Auth::check()){
 			$trip = Trip::find($id);
 			$user_id = $trip -> user_id;
