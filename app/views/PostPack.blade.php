@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="{{ URL::asset('plugins/prism/prism.css') }}">
 <!-- Theme CSS -->  
   <link id="theme-style" rel="stylesheet" href="{{ URL::asset('css/styles.css') }}">
-  <link id="theme-style" rel="stylesheet" href="{{ URL::asset('css/profile.css')}}">
+
   <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet" media="screen">  
    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
