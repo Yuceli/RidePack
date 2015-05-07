@@ -49,12 +49,12 @@
         </div><!--//navbar-header-->            
         <div class="navbar-collapse collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
-            <li class="nav-item active"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
-            <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
-            <li class="nav-item"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
-            <li class="nav-item"><a href="{{ URL::asset('post/travel')}}">Publicar viaje</a></li>
-            <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
+              <li class="active nav-item sr-only"><a class="scrollto" href="{{URL::to('/')}}">Home</a></li>
+              <li class="nav-item"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
+              <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
+              <li class="nav-item"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
+              <li class="nav-item"><a href="{{ URL::asset('post/trip')}}">Publicar viaje</a></li>
+              <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
           </ul><!--//nav-->
         </div><!--//navabr-collapse-->
       </nav><!--//main-nav-->
@@ -86,7 +86,7 @@
                         <div class="col-xs-12 col-sm-8">
                             <h2>{{ Auth::user()->name; }}  {{ Auth::user()->last_name; }}</h2>
                             <p><strong>Email: </strong> {{ Auth::user()->email; }} </p>
-                            <p><strong>Usuario desde: </strong> {{ Auth::user()->created_at->toDateString(); }}  </p>
+                            <p><strong>Usuario desde: </strong> {{ Auth::user() -> created_at ->  format("d/m/y"); }}  </p>
                             <p><strong>Edad: </strong>{{ Auth::user()->birthdate?Auth::user()->birthdate->age:'' }}</p>
                             <input id="city_id" value="{{ Auth::user()->city_id; }}" type="hidden">
                             <p><strong>Pais: </strong><span id="country"> </span></p>
