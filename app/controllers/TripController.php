@@ -11,9 +11,7 @@ class TripController extends BaseController {
 			'transport' => 'required',
 			'max_size' => 'required',
 			'max_weight' => 'numeric|min:1|max:15|required',
-			'carry_reward' => 'required|min:0',
-			'departure_city' => 'required',
-			'arrival_city' => 'required',
+			'carry_reward' => 'numeric|min:0',
 			'departure_date' => 'date|date_format:Y-m-d|required',
 			'arrival_date' => 'date|date_format:Y-m-d|required',
 			'observation' => 'max:100'
