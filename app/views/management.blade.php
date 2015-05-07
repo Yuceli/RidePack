@@ -94,7 +94,7 @@
                   <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Dummy</a></li>
                 </ul>
 
-                {{Form::open(array('url'=>'DeleteTrip'))}}
+                {{Form::open(array('url'=>'delete/trip'))}}
                 <!-- Tab panes -->
                 <div class="tab-content">
                   <div role="tabpanel" class="tab-pane active" id="home"> 
@@ -178,7 +178,7 @@
                   </div>
                   {{Form::close()}}
                   <div role="tabpanel" class="tab-pane" id="profile">
-                    {{Form::open(array('url'=>'DeletePack'))}}
+                    {{Form::open(array('url'=>'/delete/pack'))}}
                     <h4>Paquetes publicados</h4>
                           <div class="table-responsive">
                             <table id="mytable" class="table table-bordred table-striped">

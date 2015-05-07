@@ -100,19 +100,15 @@
                         </thead>
                         <tbody>
                             @foreach(Auth::user()->packs as $pack)
-                                        @foreach($pack -> requests as $request)
-                                            @if($request->status=='onhold')
+                              @foreach($pack -> requests as $request)
+                                @if($request->status=='onhold')
                                   <?php 
-                                    $created = explode(" ", $request -> created_at);
-                                    $created = $created[0];
-                                    $created = explode("-", $created);
-                                    $created = $created[2]."/".$created[1]."/".substr($created[0], 2);
                                     $id_user = $request -> from_user;
                                     $user = User::find($id_user);
                                 ?>
                                 <tr>
                                     <td>{{$request -> id}}</td>
-                                    <td>{{$created}}</td>
+                                    <td>{{$request -> created_at -> format('d/m/y')}}</td>
                                     <td>{{$user -> name}} se ha postulado para transportar tu paquete</td>
                                     <td>
                                       <a href="{{ URL::to('/users/' . $user->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="fa fa-user"></span></a>
@@ -162,16 +158,12 @@
                               @foreach($trip -> requests as $request)
                                   @if($request->status=='onhold')
                                   <?php 
-                                      $created = explode(" ", $request -> created_at);
-                                      $created = $created[0];
-                                      $created = explode("-", $created);
-                                      $created = $created[2]."/".$created[1]."/".substr($created[0], 2);
                                       $id_user = $request -> from_user;
                                       $user = User::find($id_user);
                                   ?>
                                   <tr>
                                       <td>{{$request -> id}}</td>
-                                      <td>{{$created}}</td>
+                                      <td>{{$request -> created_at -> format('d/m/y')}}</td>
                                       <td>{{$user -> name}} ha solicitado tu viaje</td>
                                       <td><a href="{{ URL::to('/users/' . $user->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="fa fa-user"></span></a></td>
                                       <td>
@@ -215,40 +207,62 @@
                           </thead>
                           <tbody>
                           @foreach(Auth::user()->requests as $request)
-                                  @if($request->status=='accepted')
+                            @if($request->requestable_type=='Pack')
+                              @if($request->status=='accepted')
                                   <?php 
-                                      $created = explode(" ", $request -> created_at);
-                                      $created = $created[0];
-                                      $created = explode("-", $created);
-                                      $created = $created[2]."/".$created[1]."/".substr($created[0], 2);
                                       $id_user = $request -> from_user;
                                       $user = User::find($id_user);
                                   ?>
                                   <tr>
                                       <td>{{$request -> id}}</td>
-                                      <td>{{$created}}</td>
-                                      <td>{{$user -> name}} ha solicitado tu viaje</td>
+                                      <td>{{$request -> created_at -> format('d/m/y')}}</td>
+                                      <td>{{$request -> requestable -> user -> name}} ha solicitado tu paquete</td>
                                       <td><a href="{{ URL::to('/users/' . $user->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="fa fa-user"></span></a></td>
 
                                   </tr>
                                   @endif
                                   @if($request->status=='refused')
                                   <?php 
-                                      $created = explode(" ", $request -> created_at);
-                                      $created = $created[0];
-                                      $created = explode("-", $created);
-                                      $created = $created[2]."/".$created[1]."/".substr($created[0], 2);
                                       $id_user = $request -> from_user;
                                       $user = User::find($id_user);
                                   ?>
                                   <tr>
                                       <td>{{$request -> id}}</td>
-                                      <td>{{$created}}</td>
-                                      <td>{{$user -> name}} ha rechazado tu viaje</td>
+                                      <td>{{$request -> created_at -> format('d/m/y')}}</td>
+                                      <td>{{$request -> requestable -> user -> name}} ha rechazado tu viaje</td>
                                       <td><a href="{{ URL::to('/users/' . $user->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="fa fa-user"></span></a></td>
 
                                   </tr>
                               @endif
+                            @endif
+                            @if($request->requestable_type=='Trip')
+                              @if($request->status=='accepted')
+                                  <?php 
+                                      $id_user = $request -> from_user;
+                                      $user = User::find($id_user);
+                                  ?>
+                                  <tr>
+                                      <td>{{$request -> id}}</td>
+                                      <td>{{$request -> created_at -> format('d/m/y')}}</td>
+                                      <td>{{$request -> requestable -> user -> name}} ha solicitado tu viaje</td>
+                                      <td><a href="{{ URL::to('/users/' . $user->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="fa fa-user"></span></a></td>
+
+                                  </tr>
+                                  @endif
+                                  @if($request->status=='refused')
+                                  <?php 
+                                      $id_user = $request -> from_user;
+                                      $user = User::find($id_user);
+                                  ?>
+                                  <tr>
+                                      <td>{{$request -> id}}</td>
+                                      <td>{{$request -> created_at -> format('d/m/y')}}</td>
+                                      <td>{{$request -> requestable -> user -> name}} ha rechazado tu viaje</td>
+                                      <td><a href="{{ URL::to('/users/' . $user->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="fa fa-user"></span></a></td>
+
+                                  </tr>
+                              @endif
+                            @endif
                           @endforeach
                         </tbody>
                         </table>
