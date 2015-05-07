@@ -21,7 +21,7 @@ class PackDetailsController extends BaseController {
 	public function sendRequest($id)
 	{
 		
-			$myPetitions = Petition::where('from_user', '=', Auth::id())->where('requestable_id', '=', $id)->get();
+			$myPetitions = Petition::where('from_user', '=', Auth::id())->where('requestable_id', '=', $id)->where('requestable_type', '=', 'Pack')->get();
 			if( sizeof($myPetitions->toArray())==0 )
 			{
 				$petition = new Petition;
