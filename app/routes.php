@@ -74,9 +74,9 @@ Route::group(array('before' => 'auth'), function()
 	 * Rutas para publicar un viaje.
 	 * CU-08
 	 */
-	Route::get('/post/travel', 'TripController@showPostTrip');
+	Route::get('/post/trip', 'TripController@showPostTrip');
 
-	Route::post('/post/travel', 'TripController@createTrip');
+	Route::post('/post/trip', 'TripController@createTrip');
 
 	/*
 	 * Rutas para publicar un paquete.
@@ -98,9 +98,9 @@ Route::group(array('before' => 'auth'), function()
 	 * Rutas para editar un viaje.
 	 * CU-22
 	*/
-	Route::get('/edit/travel/{id}', 'TripController@showUpdateTrip');
+	Route::get('/edit/trip/{id}', 'TripController@showUpdateTrip');
 	
-	Route::post('/edit/travel/{id}', 'TripController@updateTrip');
+	Route::post('/edit/trip/{id}', 'TripController@updateTrip');
 
 	/*
 	 *	Ruta para ver los últimos paquetes registrados.
@@ -142,13 +142,13 @@ Route::group(array('before' => 'auth'), function()
 	 * Ruta par eliminar un viaje
 	 * CU-23
 	 */
-    Route::post('/DeleteTrip', 'TripController@deleteTrip');
+    Route::post('/delete/trip', 'TripController@deleteTrip');
 
 	/*
 	 * Ruta par eliminar un paquete
 	 * CU-23
 	 */
-    Route::post('/DeletePack', 'PackController@DeletePack');
+    Route::post('/delete/pack', 'PackController@DeletePack');
 
 	Route::get('/management', 'ManagementController@showManagement');
 

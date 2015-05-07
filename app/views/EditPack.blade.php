@@ -49,10 +49,10 @@
           <div class="navbar-collapse collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
               <li class="active nav-item sr-only"><a class="scrollto" href="{{URL::to('/')}}">Home</a></li>
-              <li class="nav-item"><a href="{{URL::to('profile')}}">Perfil</a></li>
-              <li class="nav-item"><a href="{{URL::to('upcoming-packages')}}">Buscar</a></li>
-              <li class="nav-item active"><a href="{{URL::to('post_package')}}">Publicar paquete</a></li>                        
-              <li class="nav-item"><a href="{{URL::to('post_travel')}}">Publicar viaje</a></li>
+              <li class="nav-item"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
+              <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
+              <li class="nav-item"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
+              <li class="nav-item"><a href="{{ URL::asset('post/trip')}}">Publicar viaje</a></li>
               <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
             </ul><!--//nav-->
           </div><!--//navabr-collapse-->
@@ -102,7 +102,7 @@
 
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
-            {{Form::date('sending_date', $pack->sending_date->toDateString(), array('id'=>'sending_date','class'=>'form-control input-lg', 'required'=>'true', 'tabindex'=>'5'))}}
+            {{Form::text('sending_date', $pack->sending_date->format("d/m/y"), array('id'=>'sending_date', 'class'=>'form-control input-lg', 'required'=>'true', 'tabindex'=>'5', 'placeholder'=>'Fecha de salida', 'onfocus'=>"(this.type='date')", 'onblur'=>"(this.type='text')"))}}
             <div>{{ $errors->first('sending_date') }}</div>
           </div>
         </div>
@@ -137,7 +137,7 @@
 
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
-            {{Form::date('arrival_date', $pack->arrival_date->toDateString(), array('id'=>'arrival_date','class'=>'form-control input-lg', 'required'=>'true', 'tabindex'=>'7'))}}
+            {{Form::text('arrival_date', $pack->arrival_date-> format("d/m/y"), array('id'=>'arrival_date', 'class'=>'form-control input-lg', 'required'=>'true', 'tabindex'=>'7', 'placeholder'=>'Fecha de llegada', 'onfocus'=>"(this.type='date')", 'onblur'=>"(this.type='text')"))}}
             <div>{{ $errors->first('arrival_date') }}</div>
           </div>
         </div>

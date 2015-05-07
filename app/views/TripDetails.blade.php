@@ -52,7 +52,7 @@
               <li class="nav-item"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
               <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
               <li class="nav-item"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
-              <li class="nav-item"><a href="{{ URL::asset('post/travel')}}">Publicar viaje</a></li>
+              <li class="nav-item"><a href="{{ URL::asset('post/trip')}}">Publicar viaje</a></li>
               <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
             </ul><!--//nav-->
           </div><!--//navabr-collapse-->
@@ -64,7 +64,7 @@
   <br><br><br><br><br>
   <div class="container">
     @if(Session::has('message'))
-     <div class="alert alert-warning alert-dismissable">
+     <div class="alert alert-success alert-dismissable">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong >{{ Session::get('message') }}</strong> 
       </div>
@@ -163,7 +163,7 @@
                   </tr>
                   <tr>
                    
-                    <td colspan="8"><strong>Miembro desde: </strong>{{$user->created_at->toDateString()}}</td>
+                    <td colspan="8"><strong>Miembro desde: </strong>{{$user -> created_at -> format("d/m/y")}}</td>
                   </tr>
                   <tr>
                     <td colspan="8"><strong>Viajes publicados: </strong>{{count($trips)}} viajes</td>

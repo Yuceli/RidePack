@@ -48,11 +48,11 @@
           </div><!--//navbar-header-->            
           <div class="navbar-collapse collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
-              <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
+              <li class="active nav-item sr-only"><a class="scrollto" href="{{URL::to('/')}}">Home</a></li>
               <li class="nav-item"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
               <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
               <li class="nav-item"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
-              <li class="nav-item active"><a href="{{ URL::asset('post/travel')}}">Publicar viaje</a></li>
+              <li class="nav-item"><a href="{{ URL::asset('post/trip')}}">Publicar viaje</a></li>
               <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
             </ul><!--//nav-->
           </div><!--//navabr-collapse-->
@@ -148,13 +148,13 @@
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-              {{Form::text('departure_date', $trip->departure_date->toDateString(), array('id'=>'date', 'name'=>'departure_date' ,'class'=>'form-control input-lg','placeholder'=>'Fecha salida','tabindex'=>'7', 'onfocus'=>"(this.type='date')", 'onblur'=>"(this.type='text')", 'required'=>'required'))}}
+              {{Form::text('departure_date', $trip->departure_date->format("d/m/y"), array('id'=>'date', 'name'=>'departure_date' ,'class'=>'form-control input-lg','placeholder'=>'Fecha salida','tabindex'=>'7', 'onfocus'=>"(this.type='date')", 'onblur'=>"(this.type='text')", 'required'=>'required'))}}
                <div>{{ $errors->first('departure_date') }}</div>
             </div>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-              {{Form::text('arrival_date', $trip->arrival_date->toDateString(), array('id'=>'date', 'name'=>'arrival_date' ,'class'=>'form-control input-lg','placeholder'=>'Fecha llegada','tabindex'=>'8', 'onfocus'=>"(this.type='date')", 'onblur'=>"(this.type='text')", 'required'=>'required'))}}
+              {{Form::text('arrival_date', $trip->arrival_date->format("d/m/y"), array('id'=>'date', 'name'=>'arrival_date' ,'class'=>'form-control input-lg','placeholder'=>'Fecha llegada','tabindex'=>'8', 'onfocus'=>"(this.type='date')", 'onblur'=>"(this.type='text')", 'required'=>'required'))}}
               <div>{{ $errors->first('arrival_date') }}</div>
            </div>
          </div>
