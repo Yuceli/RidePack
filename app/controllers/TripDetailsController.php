@@ -9,11 +9,17 @@ class TripDetailsController extends BaseController {
 	}
 	
 	public function showTripDetails($id){
+		//Se determina ue el usuario este logeado
 		if (Auth::check()){
+			//Se busca el viaje de acuerdo al id
 			$trip = Trip::find($id);
+			//Se obtiene el id del usuario de acuerdo al viaje a visualizar
 			$user_id = $trip -> user_id;
+			//Se busca el usuario de acuerdo al id
 			$user = User::find($user_id);
+			//Se obtienen los viajes del usuario
 			$trips = $user -> trips;
+			//Carga la vista TripDetails con las varibles "trip", "user" y "trips"
 			return View::make('TripDetails', compact("trip", "user", "trips"));
 		}
 	}

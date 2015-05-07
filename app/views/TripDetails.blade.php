@@ -237,34 +237,34 @@
   <script type="text/javascript" src="{{ URL::asset('js/googlePlaces2.js') }}"></script>
   <script type="text/javascript">
     
-    var aPlacess = [];
-    var aInputPlaceIDs = $('input[placeid="placeid"]');
+    var places = [];
+    var inputPlaceIDs = $('input[placeid="placeid"]');
 
-    var getAddressElement = function(type, aAddress){
-      var sAddressElement = '';
+    var getAddressElement = function(type, address){
+      var addressElement = '';
 
-      if(!aAddress) return sAddressElement;
+      if(!address) return addressElement;
 
-      for(var i=0; i<aAddress.length; i++){
-          var typesLength = aAddress[i].types.length;
+      for(var i=0; i<address.length; i++){
+          var typesLength = address[i].types.length;
           for(var j=0; j<typesLength; j++){
-              if(aAddress[i] && aAddress[i].types[j] == type){
-                  sAddressElement = aAddress[i].long_name;
+              if(address[i] && address[i].types[j] == type){
+                  addressElement = address[i].long_name;
               }
           }
       }
 
-      return sAddressElement;
+      return addressElement;
     };
 
-    for(var i=0; i<aInputPlaceIDs.length; i++){
+    for(var i=0; i<inputPlaceIDs.length; i++){
 
-      var placeID = aInputPlaceIDs[i].value;
+      var placeID = inputPlaceIDs[i].value;
 
-      if(aPlacess && placeID && aPlacess.indexOf(placeID) >= 0)
+      if(places && placeID && places.indexOf(placeID) >= 0)
         continue;
 
-      aPlacess.push(placeID);
+      places.push(placeID);
 
       console.log(placeID);
 
@@ -272,19 +272,19 @@
           placeId: placeID
       };
 
-      var oDvMap = document.createElement('div');
-      var service = new google.maps.places.PlacesService(oDvMap);
+      var divMap = document.createElement('div');
+      var service = new google.maps.places.PlacesService(divMap);
       service.getDetails(request, function(place, status){
 
         if (status == google.maps.places.PlacesServiceStatus.OK) {
 
-          var oCitySpans = $('span[placeid="city-'+place.place_id+'"]');
+          var citySpans = $('span[placeid="city-'+place.place_id+'"]');
           //var oStateSpans = $('span[placeid="state-'+place.place_id+'"]');
           //var oCountrySpans = $('span[placeid="country-'+place.place_id+'"]');
 
-          for(var j=0; j<oCitySpans.length; j++){
+          for(var j=0; j<citySpans.length; j++){
 
-            oCitySpans[j].innerHTML = getAddressElement('locality',place.address_components);
+            citySpans[j].innerHTML = getAddressElement('locality',place.address_components);
             //oStateSpans[j].innerHTML = getAddressElement('administrative_area_level_1',place.address_components)
             //oCountrySpans[j].innerHTML = getAddressElement('country',place.address_components)
           }
