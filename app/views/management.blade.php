@@ -334,52 +334,52 @@
 
   <script type="text/javascript">
     
-    var aPlacess = [];
-    var aInputPlaceIDs = $('input[placeid="placeid"]');
+    var places = [];
+    var inputPlaceIDs = $('input[placeid="placeid"]');
 
-    var getAddressElement = function(type, aAddress){
-      var sAddressElement = '';
+    var getAddressElement = function(type, address){
+      var addressElement = '';
 
-      if(!aAddress) return sAddressElement;
+      if(!address) return addressElement;
 
-      for(var i=0; i<aAddress.length; i++){
-          var typesLength = aAddress[i].types.length;
+      for(var i=0; i<address.length; i++){
+          var typesLength = address[i].types.length;
           for(var j=0; j<typesLength; j++){
-              if(aAddress[i] && aAddress[i].types[j] == type){
-                  sAddressElement = aAddress[i].long_name;
+              if(address[i] && address[i].types[j] == type){
+                  addressElement = address[i].long_name;
               }
           }
       }
 
-      return sAddressElement;
+      return addressElement;
     };
 
-    for(var i=0; i<aInputPlaceIDs.length; i++){
+    for(var i=0; i<inputPlaceIDs.length; i++){
 
-      var placeID = aInputPlaceIDs[i].value;
+      var placeID = inputPlaceIDs[i].value;
 
-      if(aPlacess && placeID && aPlacess.indexOf(placeID) >= 0)
+      if(places && placeID && places.indexOf(placeID) >= 0)
         continue;
 
-      aPlacess.push(placeID);
+      places.push(placeID);
 
       var request = {
           placeId: placeID
       };
 
-      var oDvMap = document.createElement('div');
-      var service = new google.maps.places.PlacesService(oDvMap);
+      var divMap = document.createElement('div');
+      var service = new google.maps.places.PlacesService(divMap);
       service.getDetails(request, function(place, status){
 
         if (status == google.maps.places.PlacesServiceStatus.OK) {
 
-          var oCitySpans = $('span[placeid="city-'+place.place_id+'"]');
+          var citySpans = $('span[placeid="city-'+place.place_id+'"]');
           //var oStateSpans = $('span[placeid="state-'+place.place_id+'"]');
           //var oCountrySpans = $('span[placeid="country-'+place.place_id+'"]');
 
-          for(var j=0; j<oCitySpans.length; j++){
+          for(var j=0; j<citySpans.length; j++){
 
-            oCitySpans[j].innerHTML = getAddressElement('locality',place.address_components);
+            citySpans[j].innerHTML = getAddressElement('locality',place.address_components);
             //oStateSpans[j].innerHTML = getAddressElement('administrative_area_level_1',place.address_components)
             //oCountrySpans[j].innerHTML = getAddressElement('country',place.address_components)
           }
@@ -388,28 +388,28 @@
     }
 
   </script>
-<!-- Dialog show event handler -->
-<script type="text/javascript">
- $('#delete_trip').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('tripid') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-footer input').val(recipient)
-})
-</script>
+  <!-- Dialog show event handler -->
+  <script type="text/javascript">
+  $('#delete_trip').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var recipient = button.data('tripid') // Extract info from data-* attributes
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    var modal = $(this)
+    modal.find('.modal-footer input').val(recipient)
+  })
+  </script>
 
-<script type="text/javascript">
- $('#delete_package').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('packid') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text('New message to ' + recipient)
-  modal.find('.modal-footer input').val(recipient)
-})
-</script>
+  <script type="text/javascript">
+  $('#delete_package').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var recipient = button.data('packid') // Extract info from data-* attributes
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    var modal = $(this)
+    modal.find('.modal-title').text('New message to ' + recipient)
+    modal.find('.modal-footer input').val(recipient)
+  })
+  </script>
 </body>
 </html>
