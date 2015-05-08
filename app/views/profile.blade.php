@@ -223,7 +223,7 @@
 
                        </div>
                        <div class="modal-footer ">
-                        <form method="POST" action="{{ url('deleteUser') }}">
+                        <form method="POST" action="{{ url('delete/user') }}">
                             <button type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Si</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
                         </form>

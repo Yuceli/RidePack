@@ -2,12 +2,13 @@
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| Archivo de rutas
 |--------------------------------------------------------------------------
 |
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
+| Aquí se encuentran registradas todas las rutas para el proyecto Ridepack
+|	La raíz muestra la vista de presentación de la aplicación
+|	El grupo indica todas las rutas que requieren la autenticación del usuario en la aplicación
+|	Las rutas que se encuentran fuera del grupo no requieren autenticación
 |
 */
 
@@ -68,7 +69,7 @@ Route::group(array('before' => 'auth'), function()
 	 *	Rutas para eliminar la cuenta de un usuario.
 	 *	CU-07
 	 */
-	Route::post('/deleteUser', 'UserController@deleteUser');
+	Route::post('/delete/user', 'UserController@deleteUser');
 
 	/*
 	 * Rutas para publicar un viaje.
@@ -87,33 +88,18 @@ Route::group(array('before' => 'auth'), function()
 	Route::post('/post/package', 'PackController@createPack');
 
 	/*
-	 * Rutas para editar un paquete.
-	 * CU-17
-	 */
-	Route::get('/edit/package/{id}', 'PackController@showUpdatePack');
-	
-	Route::post('/edit/package/{id}', 'PackController@updatePack');
-    
-	/*
-	 * Rutas para editar un viaje.
-	 * CU-22
+	 *Ruta para aceptar una petición de paquete, Ruta para aceptar una solicitud de viaje
+	 *CU-15.ResponderPeticiónAPaquetesv1.0, CU-20.ResponderPeticionRealizadaAlViajev1.0
 	*/
-	Route::get('/edit/trip/{id}', 'TripController@showUpdateTrip');
-	
-	Route::post('/edit/trip/{id}', 'TripController@updateTrip');
+	Route::post('/handle/request/accpet/{id}', 'HandleRequestsController@acceptRequest');
 
 	/*
-	 *	Ruta para ver los últimos paquetes registrados.
-	 *	CU-26
-	 */
-	Route::get('/upcoming/packages', 'SearchController@showLastPacks');
+	 *Ruta para rechazar una petición de paquete, Ruta para rechazar una solicitud de viaje
+	 *CU-15.ResponderPeticiónAPaquetesv1.0, CU-20.ResponderPeticionRealizadaAlViajev1.0
+	*/
+	Route::post('/handle/request/refuse/{id}', 'HandleRequestsController@refuseRequest');
 
-	/*
-	 *	Ruta para ver los últimos viajes registrados.
-	 *	CU-27
-	 */
-	Route::get('/upcoming/trips', 'SearchController@showLastTrips');
-    
+
 
 	/*
 	 *	Ruta para aceptar o rechazar solicitudes.
@@ -121,6 +107,16 @@ Route::group(array('before' => 'auth'), function()
 	 *  CU-20
 	 */
 	Route::get('/handle/request', 'HandleRequestsController@showWelcome');
+
+
+	/*
+	 * Rutas para editar un paquete.
+	 * CU-17
+	 */
+	Route::get('/edit/package/{id}', 'PackController@showUpdatePack');
+	
+	Route::post('/edit/package/{id}', 'PackController@updatePack');
+    
 
 	/*
 	 *	Ruta par ver los detalles de un paquete.
@@ -130,13 +126,15 @@ Route::group(array('before' => 'auth'), function()
 
 	Route::post('/package/details/{id}', 'PackDetailsController@sendRequest');
 	
-	/*
-	 *	Ruta para ver los detalles de un viaje.
-	 *  CU-28
-	 */
-	Route::get('/trip/details/{id}', 'TripDetailsController@showTripDetails');
 
-	Route::post('/trip/details/{id}', 'TripDetailsController@sendRequest');
+	/*
+	 * Rutas para editar un viaje.
+	 * CU-22
+	*/
+	Route::get('/edit/trip/{id}', 'TripController@showUpdateTrip');
+	
+	Route::post('/edit/trip/{id}', 'TripController@updateTrip');
+
 
 	/*
 	 * Ruta par eliminar un viaje
@@ -152,17 +150,28 @@ Route::group(array('before' => 'auth'), function()
 
 	Route::get('/management', 'ManagementController@showManagement');
 
-	/*
-	 *Ruta para aceptar una petición de paquete, Ruta para aceptar una solicitud de viaje
-	 *CU-15.ResponderPeticiónAPaquetesv1.0, CU-20.ResponderPeticionRealizadaAlViajev1.0
-	*/
-	Route::post('/handle/request/accpet/{id}', 'HandleRequestsController@acceptRequest');
 
 	/*
-	 *Ruta para rechazar una petición de paquete, Ruta para rechazar una solicitud de viaje
-	 *CU-15.ResponderPeticiónAPaquetesv1.0, CU-20.ResponderPeticionRealizadaAlViajev1.0
-	*/
-	Route::post('/handle/request/refuse/{id}', 'HandleRequestsController@refuseRequest');
+	 *	Ruta para ver los últimos paquetes registrados.
+	 *	CU-26
+	 */
+	Route::get('/upcoming/packages', 'SearchController@showLastPacks');
+
+	/*
+	 *	Ruta para ver los últimos viajes registrados.
+	 *	CU-27
+	 */
+	Route::get('/upcoming/trips', 'SearchController@showLastTrips');
+    
+
+	/*
+	 *	Ruta para ver los detalles de un viaje.
+	 *  CU-28
+	 */
+	Route::get('/trip/details/{id}', 'TripDetailsController@showTripDetails');
+
+	Route::post('/trip/details/{id}', 'TripDetailsController@sendRequest');
+
 
 
 });
