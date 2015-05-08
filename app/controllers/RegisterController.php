@@ -7,13 +7,13 @@ class RegisterController extends BaseController {
 	|	Register Controller
 	--------------------------------------------------------------------------
 	|  Controlador para el registro de usuario
-	|	Contiene funciones para mostrar la vista 
-	|	para el registro de usuarios y registrar
-	|	a un usuario en el sistema.
 	|
 	|	Rutas:
 	|		Route::get('/register', 'RegisterController@showUserRegister');
 	|		Route::post('/register','RegisterController@registerUser');
+	|	Métodos:
+	|		showUserRegister()
+	|		registerUser()
 	|
 	*/
 	
