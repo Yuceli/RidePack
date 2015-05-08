@@ -2,6 +2,29 @@
 
 
 class TripController extends BaseController {
+	/*
+	--------------------------------------------------------------------------
+	|	trip Controller
+	--------------------------------------------------------------------------
+	|  Controlador de viajes
+	|	Rutas:
+	|		Route::post('/post/trip', 'TripController@createTrip');
+	|		Route::post('/delete/trip', 'TripController@deleteTrip');
+	|		Route::post('/edit/trip/{id}', 'TripController@updateTrip');		
+	|		Route::get('/edit/trip/{id}', 'TripController@showUpdateTrip');
+	|		Route::get('/post/trip', 'TripController@showPostTrip');
+	|
+	|	Métodos:
+	|		createTrip()
+	|		deleteTrip()
+	|		updateTrip($id)
+	|		getTrip($id)
+	|		showUpdateTrip($id)
+	|		showPostTrip()
+	|		
+	*/
+	
+
 
 	//Función para crear un nuevo paquete
 	public function createTrip()
