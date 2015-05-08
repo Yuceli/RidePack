@@ -2,6 +2,22 @@
 
 class TripDetailsController extends BaseController {
 
+		/*
+	--------------------------------------------------------------------------
+	|	Trip Details Controller
+	--------------------------------------------------------------------------
+	|  Controlador para los detalles de los paquetes
+	|	Rutas:
+	|		Route::get('/trip/details/{id}', 'TripDetailsController@showTripDetails');
+	|		Route::post('/trip/details/{id}', 'TripDetailsController@sendRequest');
+	|
+	|	Métodos:
+	|		showPackDetails($id)
+	|		sendRequest($id)
+	|
+	*/
+
+
 	//Esta función crea la vista TripDetails sin mandar ningun dato para que funcione.
 	public function showWelcome()
 	{
