@@ -14,6 +14,8 @@ class TripController extends BaseController {
 			'carry_reward' => 'numeric|min:0',
 			'departure_date' => 'date|date_format:Y-m-d|required',
 			'arrival_date' => 'date|date_format:Y-m-d|required',
+			'arrival_city' => 'required',
+			'departure_city' => 'required',
 			'observation' => 'max:100'
 		);
 		//Valida los campos con las reglas dadas.
@@ -71,7 +73,7 @@ class TripController extends BaseController {
 		$rules = array(
 			'travel' => 'required',
 			'max_weight' => 'numeric|min:1|max:15|required',
-			'carry_reward' => 'required|min:0',
+			'carry_reward' => 'min:0',
 			'departure_date' => 'date|date_format:Y-m-d|required',
 			'arrival_date' => 'date|date_format:Y-m-d|required',
 			'arrival_city' => 'required',

@@ -50,7 +50,7 @@
         <div class="navbar-collapse collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
               <li class="active nav-item sr-only"><a class="scrollto" href="{{URL::to('/')}}">Home</a></li>
-              <li class="nav-item"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
+              <li class="nav-item active"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
               <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
               <li class="nav-item"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
               <li class="nav-item"><a href="{{ URL::asset('post/trip')}}">Publicar viaje</a></li>
@@ -100,7 +100,7 @@
                             <div class="col-xs-12 col-sm-6 emphasis">
                                 <h2><strong> {{count(Auth::user()->trips)}} </strong></h2>                    
                                 <p><small>Viajes publicados</small></p>
-                                <a href="post/travel"><button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Publicar viaje</button></a>
+                                <a href="post/trip"><button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Publicar viaje</button></a>
                             </div>
                             <div class="col-xs-12 col-sm-6 emphasis">
                                 <h2><strong>{{count(Auth::user()->packs)}}</strong></h2>                    

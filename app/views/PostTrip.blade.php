@@ -52,7 +52,7 @@
               <li class="nav-item"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
               <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
               <li class="nav-item"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
-              <li class="nav-item"><a href="{{ URL::asset('post/trip')}}">Publicar viaje</a></li>
+              <li class="nav-item active" ><a href="{{ URL::asset('post/trip')}}">Publicar viaje</a></li>
               <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
             </ul><!--//nav-->
           </div><!--//navabr-collapse-->
@@ -98,7 +98,7 @@
         </div>
         
         <div class="form-group">
-          {{Form::text('search_departure_city', null, array('id'=>'search_departure_city','class'=>'form-control input-lg', 'name'=>'ciudad_salida', 'placeholder'=>'Ciudad de salida','tabindex'=>'5'))}}
+          {{Form::text('search_departure_city', null, array('id'=>'search_departure_city','class'=>'form-control input-lg', 'name'=>'ciudad_salida', 'placeholder'=>'Ciudad de salida','tabindex'=>'5', 'required'=>'required'))}}
           {{Form::hidden('departure_city', null, array('id'=>'departure_city'))}}
           <div>{{ $errors->first('departure_city') }}</div>
         </div>
@@ -122,7 +122,7 @@
         </div>
 
         <div class="form-group">
-            {{Form::text('search_arrival_city', null, array('id'=>'search_arrival_city', 'name'=>'ciudad_destino' ,'class'=>'form-control input-lg','placeholder'=>'Ciudad de destino','tabindex'=>'6'))}}
+            {{Form::text('search_arrival_city', null, array('id'=>'search_arrival_city', 'name'=>'ciudad_destino' ,'class'=>'form-control input-lg','placeholder'=>'Ciudad de destino','tabindex'=>'6', 'required'=>'required'))}}
             {{Form::hidden('arrival_city', null, array('id'=>'arrival_city'))}}
             <div>{{ $errors->first('arrival_city') }}</div>
         </div>

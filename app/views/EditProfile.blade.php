@@ -36,7 +36,7 @@
         <div class="navbar-collapse collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
               <li class="active nav-item sr-only"><a class="scrollto" href="{{URL::to('/')}}">Home</a></li>
-              <li class="nav-item"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
+              <li class="nav-item active"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
               <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
               <li class="nav-item"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
               <li class="nav-item"><a href="{{ URL::asset('post/trip')}}">Publicar viaje</a></li>

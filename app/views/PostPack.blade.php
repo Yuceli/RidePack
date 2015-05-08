@@ -52,7 +52,7 @@
               <li class="active nav-item sr-only"><a class="scrollto" href="{{URL::to('/')}}">Home</a></li>
               <li class="nav-item"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
               <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
-              <li class="nav-item"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
+              <li class="nav-item active"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
               <li class="nav-item"><a href="{{ URL::asset('post/trip')}}">Publicar viaje</a></li>
               <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
             </ul><!--//nav-->
@@ -95,7 +95,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
-            {{Form::text('search_from_city', null, array('id'=>'search_from_city','class'=>'form-control input-lg','placeholder'=>'Buscar ciudad de salida','tabindex'=>'4'))}}
+            {{Form::text('search_from_city', null, array('id'=>'search_from_city','class'=>'form-control input-lg','placeholder'=>'Buscar ciudad de salida','tabindex'=>'4', 'required'=>'true'))}}
             {{Form::hidden('from_city', null, array('id'=>'from_city'))}}
             <div>{{ $errors->first('from_city') }}</div>
           </div>

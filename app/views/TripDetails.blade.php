@@ -73,7 +73,7 @@
       <div class="col-md-12">
         <ol class="breadcrumb">
           <li><a href="#">RidePack</a></li>
-          <li class="active">Detalles del viaje</li>
+          <li >Detalles del viaje</li>
         </ol>
       </div>
     </div>

@@ -51,7 +51,7 @@
           <ul class="nav navbar-nav">
             <li class="active nav-item sr-only"><a class="scrollto" href="{{URL::to('/')}}">Home</a></li>
             <li class="nav-item"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
-            <li class="nav-item active"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
+            <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
             <li class="nav-item"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
             <li class="nav-item"><a href="{{ URL::asset('post/trip')}}">Publicar viaje</a></li>
             <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
@@ -70,7 +70,7 @@
       <div class="col-md-12">
         <ol class="breadcrumb">
           <li><a href="#">RidePack</a></li>
-          <li class="active">Gestión de paquetes y viajes</li>
+          <li>Gestión de paquetes y viajes</li>
         </ol>
       </div>
     </div>
