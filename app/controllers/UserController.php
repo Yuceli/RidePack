@@ -62,7 +62,7 @@ class UserController extends BaseController {
 	public function logout(){
 		//Cierra la sesión y redirecciona al usuario al login con mensaje
 		Auth::logout();
-		return Redirect::to('Login')->with('error_message', 'Se ha cerrado sesión exitosamente');
+		return Redirect::to('login')->with('error_message', 'Se ha cerrado sesión exitosamente');
 	}
 
 	//Función para actualizar los datos del usuario autentificado.
