@@ -2,13 +2,36 @@
 
 class UsersProfileController extends BaseController {
 
+	/*
+	--------------------------------------------------------------------------
+	|	Users Profile Controller
+	--------------------------------------------------------------------------
+	|  Controlador para visualizar perfil de usuarios
+	|
+	|	Rutas:
+	|		Route::get('/users/{user_id}','UsersProfileController@showUserProfile');
+	|		Route::post('/users/{user_id}', array(
+	|			'as' => 'users',
+	|			'uses' => 'UsersProfileController@sendMessage'));
+	|		
+	|	Métodos:
+	|		showUserProfile($user_id)
+	|		sendMessage($user_id)
+	|		showLastTrips()
+	|
+	*/
+
+
+
+	//Muestra la página del perfil de otro usuario
 	public function showUserProfile($user_id)
-	{		//Muestra la página del perfil de otro usuario
+	{		
 
 		$user = User::findOrFail($user_id);
 		return View::make('UsersProfile')->with('user', $user);
 	}
 
+	//Función para enviar mensajes a otro usuario
 	public function sendMessage($user_id)
 	{
 		//Se determina si el usuario esta logeado y que el metodo de solicitud sea POST
@@ -38,7 +61,7 @@ class UsersProfileController extends BaseController {
 				$message->subject('Nuevo mensaje');
 			});
 			//Mensaje de envio correcto
-			Session::flash('message','Mensaje enviado!');
+			Session::flash('message','¡Mensaje enviado!');
 			Session::flash('class', 'success');
 			//Regresa a la vista UsersProfile
 			return Redirect::back();
