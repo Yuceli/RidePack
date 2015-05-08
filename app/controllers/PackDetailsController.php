@@ -45,7 +45,7 @@ class PackDetailsController extends BaseController {
 			//Este if ocurre si la petición se ha guardado correctamente y redirige a la vista management.
 			if($petition->save() && $pack->requests()->save($petition))
 			{
-				Session::flash('message','La petición a sido registrada');
+				Session::flash('message','La petición ha sido registrada');
 				Session::flash('class', 'success');
 				return Redirect::to('/management');
 			}
