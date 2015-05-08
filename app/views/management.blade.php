@@ -102,53 +102,54 @@
                     <div class="table-responsive">
                       <table id="mytable" class="table table-bordred table-striped">
 
-                        <thead>
-                          <th>Fecha publicación</th>
-                          <th>Salida</th>
-                          <th>Destino</th>
-                          <th>Tamaño</th>
-                          <th>Peso</th>
-                          <th>Via</th>
-                          <th>Recompensa</th>
-                          <th>Editar</th>
-                          <th>Borrar</th>
-                        </thead>
-                        <tbody>
+                        
                         @if(count($trips) > 0)
-                          @foreach($trips as $trip)
-                          <tr>
-                            <td align="center">{{$trip -> created_at -> format("d/m/y")}}</td>
-                            <td>
-                              <input type="hidden" placeid="placeid" value="{{$trip -> departure_city}}">
-                              <span placeid="city-{{$trip -> departure_city}}"></span> - {{$trip -> departure_date -> format("d/m/y")}}
-                            </td>
-                            <td>
-                              <input type="hidden" placeid="placeid" value="{{$trip -> arrival_city}}">
-                              <span placeid="city-{{$trip -> arrival_city}}"></span> - {{$trip -> arrival_date -> format("d/m/y")}}
-                            </td>
-                            <td align="center">{{$trip -> max_size}}</td>
-                            <td align="center">{{$trip -> max_weight}}kg</td>
-                            <td align="center">{{$trip -> transport}}</td>
-                            <td align="center">${{$trip -> carry_reward}}</td>
-                            <td>
-                              <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                <a href='edit/trip/{{$trip -> id}}'><button type='button' class='btn btn-primary btn-xs' data-title='Edit' data-toggle='modal' data-tripid='{{$trip -> id}}'>
-                                  <span class="glyphicon glyphicon-pencil"></span>
-                                </button>
-                              </p>
-                            </td>
-                            <td>
-                              <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                <button type='button' class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-tripid='{{$trip -> id}}' data-target='#delete_trip' >
-                                  <span class="glyphicon glyphicon-trash"></span>
-                                </button>
-                              </p>
-                            </td>
-                          </tr>
-                          @endforeach
-                        @else
-                          No hay viajes publicados
-                        @endif  
+                          <thead>
+                            <th>Fecha publicación</th>
+                            <th>Salida</th>
+                            <th>Destino</th>
+                            <th>Tamaño</th>
+                            <th>Peso</th>
+                            <th>Via</th>
+                            <th>Recompensa</th>
+                            <th>Editar</th>
+                            <th>Borrar</th>
+                          </thead>
+                          <tbody>
+                            @foreach($trips as $trip)
+                            <tr>
+                              <td align="center">{{$trip -> created_at -> format("d/m/y")}}</td>
+                              <td>
+                                <input type="hidden" placeid="placeid" value="{{$trip -> departure_city}}">
+                                <span placeid="city-{{$trip -> departure_city}}"></span> - {{$trip -> departure_date -> format("d/m/y")}}
+                              </td>
+                              <td>
+                                <input type="hidden" placeid="placeid" value="{{$trip -> arrival_city}}">
+                                <span placeid="city-{{$trip -> arrival_city}}"></span> - {{$trip -> arrival_date -> format("d/m/y")}}
+                              </td>
+                              <td align="center">{{$trip -> max_size}}</td>
+                              <td align="center">{{$trip -> max_weight}}kg</td>
+                              <td align="center">{{$trip -> transport}}</td>
+                              <td align="center">${{$trip -> carry_reward}}</td>
+                              <td>
+                                <p data-placement="top" data-toggle="tooltip" title="Edit">
+                                  <a href='edit/trip/{{$trip -> id}}'><button type='button' class='btn btn-primary btn-xs' data-title='Edit' data-toggle='modal' data-tripid='{{$trip -> id}}'>
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                  </button>
+                                </p>
+                              </td>
+                              <td>
+                                <p data-placement="top" data-toggle="tooltip" title="Delete">
+                                  <button type='button' class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-tripid='{{$trip -> id}}' data-target='#delete_trip' >
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                  </button>
+                                </p>
+                              </td>
+                            </tr>
+                            @endforeach
+                          @else
+                            No hay viajes publicados
+                          @endif  
                         </tbody>
                       </table>
                       <div class="clearfix"></div>
@@ -183,46 +184,47 @@
                           <div class="table-responsive">
                             <table id="mytable" class="table table-bordred table-striped">
 
-                             <thead>
-                               <th>ID</th>
-                               <th>Fecha publicación</th>
-                               <th>Descripción</th>
-                               <th>Salida</th>
-                               <th>Destino</th>
-                               <th>Volumen</th>
-                               <th>Peso</th>
-                               <th>Recompesa</th>
-                             </thead>
-                             <tbody>
+                             
                              
                             @if (count($packs) > 0)
-                                @foreach ($packs as $pack) 
-                              
-                                <tr>
-                                  <td>{{$pack -> id}}</td>
-                                  <td>{{$pack -> created_at -> format("d/m/y")}}</td>
-                                  <td>{{{$pack -> title}}}</td>
-                                  <td> 
-                                    <input type="hidden" placeid="placeid" value="{{$pack->from_city}}">
-                                    <span placeid="city-{{$pack->from_city}}"></span> - {{$pack -> sending_date -> format("d/m/y")}}
-                                  </td>
-                                  <td>
-                                    <input type="hidden" placeid="placeid" value="{{$pack->to_city}}">
-                                    <span placeid="city-{{$pack->to_city}}"></span> - {{$pack -> arrival_date -> format("d/m/y")}}
-                                  </td>
-                                  <td></td>
-                                  <td>{{$pack -> weight}}Kg</td>
-                                  <td>${{$pack -> reward}}</td>
-                                  <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="{{url('edit/package/'.$pack->id)}}"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
-                                  <td><p data-placement="top" data-toggle="tooltip" title="Delete">
-                                    <button type='button' class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-pack_id= '{{$pack->id}}' data-target='#delete_package' >
-                                  <span class="glyphicon glyphicon-trash"></span>
-                                </button></p></td>
-                                </tr>
-                                @endforeach
-                              @else
-                                No hay paquetes publicados
-                              @endif
+                              <thead>
+                                 <th>ID</th>
+                                 <th>Fecha publicación</th>
+                                 <th>Descripción</th>
+                                 <th>Salida</th>
+                                 <th>Destino</th>
+                                 <th>Volumen</th>
+                                 <th>Peso</th>
+                                 <th>Recompesa</th>
+                               </thead>
+                               <tbody>
+                                  @foreach ($packs as $pack) 
+                                
+                                  <tr>
+                                    <td>{{$pack -> id}}</td>
+                                    <td>{{$pack -> created_at -> format("d/m/y")}}</td>
+                                    <td>{{{$pack -> title}}}</td>
+                                    <td> 
+                                      <input type="hidden" placeid="placeid" value="{{$pack->from_city}}">
+                                      <span placeid="city-{{$pack->from_city}}"></span> - {{$pack -> sending_date -> format("d/m/y")}}
+                                    </td>
+                                    <td>
+                                      <input type="hidden" placeid="placeid" value="{{$pack->to_city}}">
+                                      <span placeid="city-{{$pack->to_city}}"></span> - {{$pack -> arrival_date -> format("d/m/y")}}
+                                    </td>
+                                    <td></td>
+                                    <td>{{$pack -> weight}}Kg</td>
+                                    <td>${{$pack -> reward}}</td>
+                                    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="{{url('edit/package/'.$pack->id)}}"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
+                                    <td><p data-placement="top" data-toggle="tooltip" title="Delete">
+                                      <button type='button' class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-pack_id= '{{$pack->id}}' data-target='#delete_package' >
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                  </button></p></td>
+                                  </tr>
+                                  @endforeach
+                                @else
+                                  No hay paquetes publicados
+                                @endif
                             </tbody>
                           </table>
 
