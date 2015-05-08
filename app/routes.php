@@ -186,7 +186,7 @@ Route::post('login', 'UserController@login');
  */
 Route::get('/register', 'RegisterController@showUserRegister');
 
-Route::post('register-user','RegisterController@register');
+Route::post('/register','RegisterController@registerUser');
 
 
 /*
