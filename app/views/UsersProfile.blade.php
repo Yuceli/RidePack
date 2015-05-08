@@ -74,7 +74,7 @@
       <div class="col-md-12">
         <ol class="breadcrumb">
           <li><a href="#">RidePack</a></li>
-          <li class="active">Perfil de usuario</li>
+          <li>Perfil de usuario</li>
         </ol>
       </div>
     </div>
