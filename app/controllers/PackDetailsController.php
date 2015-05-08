@@ -2,11 +2,22 @@
 
 class PackDetailsController extends BaseController {
 
-	//Esta función crea la vista PackDetails sin mandar ningun dato para que funcione.
-	public function showWelcome()
-	{
-		return View::make('PackDetails');
-	}
+	/*
+	--------------------------------------------------------------------------
+	|	Pack Details Controller
+	--------------------------------------------------------------------------
+	|  Controlador para los detalles de los paquetes
+	|	Rutas:
+	|		Route::get('/package/details/{id}', 'PackDetailsController@showPackDetails');
+	|		Route::post('/package/details/{id}', 'PackDetailsController@sendRequest');
+	|		Route::post('/package/details/{id}', 'PackDetailsController@sendRequest');
+	|
+	|	Métodos:
+	|		showPackDetails($id)
+	|		sendRequest($id)
+	|
+	*/
+
 
 	//Esta función crea la vista PackDetails, recibiendo un id y mandando los detalles del paquete, el usuario y los viajes.
 	public function showPackDetails($id){
@@ -21,7 +32,7 @@ class PackDetailsController extends BaseController {
 			//Recibe los viajes del dueño del paquete.
 			$trips = $user -> trips;
 			//Crea la vista que muestra los detalles del paquete, pasando los datos del paquete, usuario y viajes.
-			return View::make('PackDetails', compact("pack", "user", "trips"));
+			return View::make('PackDetails', compact('pack', 'user', 'trips'));
 		}
 	}
 
