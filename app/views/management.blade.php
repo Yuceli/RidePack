@@ -94,7 +94,7 @@
                   <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Dummy</a></li>
                 </ul>
 
-                {{Form::open(array('url'=>'delete/trip'))}}
+                
                 <!-- Tab panes -->
                 <div class="tab-content">
                   <div role="tabpanel" class="tab-pane active" id="home"> 
@@ -117,6 +117,7 @@
                           </thead>
                           <tbody>
                             @foreach($trips as $trip)
+                            {{Form::open(array('url'=>'delete/trip/$trip->$id'))}}
                             <tr>
                               <td align="center">{{$trip -> created_at -> format("d/m/y")}}</td>
                               <td>
@@ -179,7 +180,7 @@
                   </div>
                   {{Form::close()}}
                   <div role="tabpanel" class="tab-pane" id="profile">
-                    {{Form::open(array('url'=>'/delete/pack'))}}
+
                     <h4>Paquetes publicados</h4>
                           <div class="table-responsive">
                             <table id="mytable" class="table table-bordred table-striped">
@@ -199,7 +200,7 @@
                                </thead>
                                <tbody>
                                   @foreach ($packs as $pack) 
-                                
+                                    {{Form::open(array('url'=>'/delete/pack/$pack->$id'))}}
                                   <tr>
                                     <td>{{$pack -> id}}</td>
                                     <td>{{$pack -> created_at -> format("d/m/y")}}</td>

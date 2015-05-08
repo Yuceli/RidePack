@@ -100,10 +100,13 @@ class PackController extends BaseController {
 	}
 
 	// Borrar un paquete
-	public function deletePack()
+	public function deletePack($id)
 	{
+		//Se obtiene el id del viaje
 		$pack=Pack::findorFail(Input::get('pack_id'));
+		//Se borra
 		$pack->delete();
+		//Se redirecciona al usuario a la vista de gestión de viajes
 		return Redirect::to('/management');
 	}
 

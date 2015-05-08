@@ -71,7 +71,7 @@ class TripController extends BaseController {
 	}
 
 	//Función para borrar un viaje
-	public function deleteTrip()
+	public function deleteTrip($id)
 	{
 		//Se obtiene el id del viaje
 		$trip=Trip::findorFail(Input::get('tripid'));
