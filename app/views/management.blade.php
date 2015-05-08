@@ -215,7 +215,7 @@
                                   <td>${{$pack -> reward}}</td>
                                   <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="{{url('edit/package/'.$pack->id)}}"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
                                   <td><p data-placement="top" data-toggle="tooltip" title="Delete">
-                                    <button type='button' class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-packid='{{$pack->id}}' data-target='#delete_package' >
+                                    <button type='button' class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-pack_id= '{{$pack->id}}' data-target='#delete_package' >
                                   <span class="glyphicon glyphicon-trash"></span>
                                 </button></p></td>
                                 </tr>
@@ -253,7 +253,7 @@
 
                        </div>
                        <div class="modal-footer ">
-                        {{ Form::hidden('packid', '', array('id' => 'packid')) }}
+                        {{ Form::hidden('pack_id', '', array('id' => 'pack_id')) }}
                         <button type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Si</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
                       </div>
@@ -403,7 +403,7 @@
   <script type="text/javascript">
   $('#delete_package').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
-    var recipient = button.data('packid') // Extract info from data-* attributes
+    var recipient = button.data('pack_id') // Extract info from data-* attributes
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
     var modal = $(this)

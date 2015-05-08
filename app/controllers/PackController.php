@@ -3,6 +3,29 @@
 
 class PackController extends BaseController {
 
+	/*
+	--------------------------------------------------------------------------
+	|	Pack Controller
+	--------------------------------------------------------------------------
+	|  Controlador de paquetes
+	|
+	|	Rutas:
+	|		Route::post('/post/package', 'PackController@createPack');
+	|		Route::post('/delete/pack', 'PackController@DeletePack');
+	|		Route::post('/edit/package/{id}', 'PackController@updatePack');
+	|		Route::get('/post/package', 'PackController@showPostPack');
+	|		Route::get('/edit/package/{id}', 'PackController@showUpdatePack');
+	|		
+	|	Métodos:
+	|		createPack()
+	|		deletePack()
+	|		updatePack($id)
+	|		showPostPack()
+	|		showUpdatePack($id);
+	|
+	*/
+
+
  	// Crear un nuevo paquete.
 	public function createPack()
 	{
@@ -79,7 +102,7 @@ class PackController extends BaseController {
 	// Borrar un paquete
 	public function deletePack()
 	{
-		$pack=Pack::findorFail(Input::get('packid'));
+		$pack=Pack::findorFail(Input::get('pack_id'));
 		$pack->delete();
 		return Redirect::to('/management');
 	}
