@@ -204,12 +204,12 @@ Route::post('/register','RegisterController@registerUser');
  */
 Route::any("/request", [
  "as" => "user/request",
- "uses" => "RemindersController@request"
+ "uses" => "PasswordRemindersController@requestPasswordReset"
 ]);
  
 Route::any("/reset/{token}", [
  "as" => "user/reset",
- "uses" => "RemindersController@reset"
+ "uses" => "PasswordRemindersController@reset"
 ]);
 
 ?>
