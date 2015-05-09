@@ -87,6 +87,8 @@ Route::group(array('before' => 'auth'), function()
 
 	Route::post('/post/package', 'PackController@createPack');
 
+	Route::get('/post/package/match/{tripID}', 'PackController@showPostPackMatchTrip');
+
 	/*
 	 *Ruta para aceptar una petición de paquete, Ruta para aceptar una solicitud de viaje
 	 *CU-15.ResponderPeticiónAPaquetesv1.0, CU-20.ResponderPeticionRealizadaAlViajev1.0
@@ -212,5 +214,4 @@ Route::any("/reset/{token}", [
  "as" => "user/reset",
  "uses" => "PasswordRemindersController@reset"
 ]);
-
 ?>

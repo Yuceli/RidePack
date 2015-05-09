@@ -33,7 +33,7 @@
           @if($trip->user->picture)
             <img src="{{ asset($trip->user->picture) }}" />
           @else
-            <img src="https://s3.amazonaws.com/FringeBucket/default-user.png" />
+            <img src="{{ asset('img/default_user.png') }}" />
           @endif
 
           <div class="info">

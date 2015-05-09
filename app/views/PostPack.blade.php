@@ -34,7 +34,7 @@
     <header id="header" class="header">  
       <div class="container">            
         <h1 class="logo pull-left">
-          <a class="scrollto" href="">
+          <a href="{{url('/')}}">
             <span class="logo-title">RidePack</span>
           </a>
         </h1><!--//logo-->              
@@ -49,12 +49,18 @@
           </div><!--//navbar-header-->            
           <div class="navbar-collapse collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
-              <li class="active nav-item sr-only"><a class="scrollto" href="{{URL::to('/')}}">Home</a></li>
-              <li class="nav-item"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
-              <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
-              <li class="nav-item active"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
-              <li class="nav-item"><a href="{{ URL::asset('post/trip')}}">Publicar viaje</a></li>
-              <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
+              <li class="nav-item"><a href="{{ url('profile')}}">Perfil</a></li>
+              <li class="nav-item"><a href="{{ url('upcoming/trips')}}">Buscar</a></li>
+              <li class="nav-item active"><a href="{{ url('post/package')}}">Publicar paquete</a></li>                        
+              <li class="nav-item"><a href="{{ url('post/trip')}}">Publicar viaje</a></li>
+              <li class="nav-item"><a href="{{ url('logout')}}">Cerrar sesión</a></li>
+              <li class="nav-item last">
+                @if(Auth::user()->picture)
+                  <img class="media-object img-circle" src="{{asset(Auth::user()->picture)}}" width="50px" height="50px" alt="profile">
+                @else
+                  <img class="media-object img-circle" src="{{asset('img/default_user.png')}}" width="50px" height="50px" alt="profile">
+                @endif
+              </li>
             </ul><!--//nav-->
           </div><!--//navabr-collapse-->
         </nav><!--//main-nav-->
@@ -65,7 +71,7 @@
 
     <br><br><br><br>
   <div class="container">
-    {{Form::open(array('files'=>true))}}
+    {{Form::open(array('url'=>url('post/package'),'files'=>true))}}
     <div class="row">
         
       <h2>Publica tus paquetes</h2>
@@ -95,7 +101,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
-            {{Form::text('search_from_city', null, array('id'=>'search_from_city','class'=>'form-control input-lg','placeholder'=>'Buscar ciudad de salida','tabindex'=>'4', 'required'=>'true'))}}
+            {{Form::text('search_from_city', null, array('id'=>'search_from_city','class'=>'form-control input-lg','placeholder'=>'Buscar ciudad de salida','tabindex'=>'4'))}}
             {{Form::hidden('from_city', null, array('id'=>'from_city'))}}
             <div>{{ $errors->first('from_city') }}</div>
           </div>

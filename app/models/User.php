@@ -88,7 +88,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	/*
 	Funciónque calcula y devuelve el rating promedio de un usuario.
 	*/
-		public function Rating()
+	public function Rating()
 	{
 		if($this->number_ratings==0){
 		return $this->number_ratings;
@@ -96,4 +96,21 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		$Rating=round($this->total_rating/$this->number_ratings);
 		return $Rating;
 	}
+
+	public function getPacksMatchTrip($trip){
+
+		$matchPacks = [];
+
+		if($trip){
+			$matchPacks = $this->packs()
+				->where('from_city',	$trip->departure_city)
+				->where('to_city',   	$trip->arrival_city)
+				->where('sending_date',	$trip->departure_date->toDateString())
+				->where('arrival_date',	$trip->arrival_date->toDateString())
+				->get();
+		}
+
+		return $matchPacks;
+	}
+	
 }

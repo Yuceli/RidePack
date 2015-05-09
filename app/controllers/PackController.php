@@ -100,14 +100,26 @@ class PackController extends BaseController {
 	}
 
 	// Borrar un paquete
-	public function deletePack($id)
+	public function deletePack()
 	{
-		//Se obtiene el id del viaje
-		$pack=Pack::findorFail(Input::get('pack_id'));
-		//Se borra
+		// Se obtiene el paquete
+		$pack=Pack::findorFail(Input::get('packid'));
+		//Se obtienen las peticiones del paquete.
+		$packPetitions = $pack->requests;
+		//Se obtienen las peticiones asociadas al paquete.
+		$linkedPetitions = Petition::where('pack_trip_id', $pack->id)->where('requestable_type','Trip')->get();
+		//Se unen los dos resultados
+		$petitions = $packPetitions->merge($linkedPetitions);
+		//Se borran todas las peticiones asociadas al viaje.
+		$petitions->each(function($petition){
+			$petition->delete();
+		});
+		//Se borra el paquete
 		$pack->delete();
-		//Se redirecciona al usuario a la vista de gestión de viajes
-		return Redirect::to('/management');
+		//Se redirecciona al usuario a la vista de gestión de paquetes
+		return Redirect::to('/management')
+			->withMessage('Se ha eliminado el paquete.')
+			->withClass('success');
 	}
 
 	// Actualizar un paquete
@@ -207,6 +219,23 @@ class PackController extends BaseController {
 
 		// Se crea la vista con los datos del paquete.
 		return View::make('EditPack')->withPack($pack);
+	}
+
+	// Mostrar la vista para publicar un paquete de acuerdo a los datos de un viaje.
+	public function showPostPackMatchTrip($tripID){
+
+		$trip = Trip::find($tripID);
+
+		Session::flash('_old_input', array(
+			'from_city' => $trip->departure_city,
+			'to_city' => $trip->arrival_city,
+			'sending_date' => $trip->departure_date->toDateString(),
+			'arrival_date' => $trip->arrival_date->toDateString(),
+			'size' => $trip->max_size,
+			'weight' => $trip->max_weight,
+		));
+
+		return View::make('PostPack');
 	}
 
 }
