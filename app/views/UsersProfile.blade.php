@@ -98,7 +98,7 @@
                 
                 <tbody>
                   <tr>
-                    <td colspan="8"><strong>Miembro desde: </strong>{{$user->created_at->toDateString()}}</td>
+                    <td colspan="8"><strong>Miembro desde: </strong>{{$user->created_at->format('d/m/y')}}</td>
                   </tr>
 
                    <tr>

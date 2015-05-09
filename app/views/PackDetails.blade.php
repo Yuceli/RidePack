@@ -34,7 +34,7 @@
     <header id="header" class="header">  
       <div class="container">            
         <h1 class="logo pull-left">
-          <a class="scrollto" href="">
+          <a href="{{ url('/') }}">
             <span class="logo-title">RidePack</span>
           </a>
         </h1><!--//logo-->              
@@ -49,12 +49,18 @@
           </div><!--//navbar-header-->            
           <div class="navbar-collapse collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
-              <li class="active nav-item sr-only"><a class="scrollto" href="{{URL::to('/')}}">Home</a></li>
-              <li class="nav-item"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
-              <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
-              <li class="nav-item"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
-              <li class="nav-item"><a href="{{ URL::asset('post/trip')}}">Publicar viaje</a></li>
-              <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
+              <li class="nav-item"><a href="{{ url('profile')}}">Perfil</a></li>
+              <li class="nav-item"><a href="{{ url('upcoming/packages')}}">Buscar</a></li>
+              <li class="nav-item"><a href="{{ url('post/package')}}">Publicar paquete</a></li>                        
+              <li class="nav-item"><a href="{{ url('post/trip')}}">Publicar viaje</a></li>
+              <li class="nav-item"><a href="{{ url('logout')}}">Cerrar sesión</a></li>
+              <li class="nav-item last">
+                @if($authUser->picture)
+                  <img class="media-object img-circle" src="{{asset($authUser->picture)}}" width="50px" height="50px" alt="profile">
+                @else
+                  <img class="media-object img-circle" src="{{asset('img/default_user.png')}}" width="50px" height="50px" alt="profile">
+                @endif
+              </li>
             </ul><!--//nav-->
           </div><!--//navabr-collapse-->
         </nav><!--//main-nav-->
@@ -64,22 +70,33 @@
   <br><br><br><br><br>
   <div class="container">
     @if(Session::has('message'))
-      <div class="alert alert-{{ Session::get('class') }}">{{ Session::get('message')}}</div>
+     <div class="alert alert-{{ Session::get('class') }} alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ Session::get('message') }}
+      </div>
     @endif
     <div class="row">
       <div class="col-md-12">
         <ol class="breadcrumb">
-          <li><a href="#">RidePack</a></li>
+          <li><a href="{{url('/')}}">RidePack</a></li>
           <li>Detalles del paquete</li>
         </ol>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-9">
+      @if( $user->id == $authUser->id )
+        <div class="col-md-12">
+      @else
+        <div class="col-md-9">
+      @endif
         <div class="panel panel-info panel-shadow">
           <div class="panel-heading">
             <h3>
-              <img class="img-circle img-thumbnail" src="http://bootdey.com/img/Content/user_3.jpg">
+              @if( $user->picture )
+                <img class="img-circle" width="100px" height="100px" src="{{ asset( $user->picture ) }}">
+              @else
+                <img class="img-circle img-thumbnail" width="100px" height="100px" src="{{ asset('img/default_user.png') }}">
+              @endif
               {{$user -> name}} {{$user -> last_name}}
             </h3>
           </div>
@@ -97,18 +114,14 @@
                 <tbody>
                   <tr>
                     <td>
-                    @if($pack->user->picture)
-                      <img src="{{ $pack->user->picture }}" class="img-cart" />
+                    @if($pack->picture)
+                      <img src="{{ asset($pack->picture) }}" width="160px" height="160px" class="img-cart" />
                     @else
-                      <img src="https://s3.amazonaws.com/FringeBucket/default-user.png" class="img-cart" />
+                      <img src="{{ asset('img/default_img.png') }}" width="180px" height="180px" class="img-cart" />
                     @endif
                     </td>
                     <td>
                       <p>{{$pack -> title }}</p>
-                      <!-- <?php 
-                        //$volumes = array('1' => 'Extra pequeño', '2'=>'Pequeño','3'=>'Mediano', '4'=>'Grande', '5'=>'Extra grande');       
-                        //$volume = $volumes[''.$pack -> volume.''];
-                      ?> !-->
                       <strong>Volumen:</strong><p>{{$pack -> size}}</p> 
                       <strong>Peso:</strong><p>{{$pack -> weight }} kg</p>
                       <strong>Recompensa:</strong><p>${{$pack -> reward }}</p>  
@@ -132,81 +145,77 @@
                   </tr>
 
                   <tr>
-                    <?php 
-                        /*$arrival_date = explode(" ", $pack -> arrival_date);
-                        $arrival_date = $arrival_date[0];
-                        $arrival_date = explode("-", $arrival_date);
-                        $arrival_date = $arrival_date[2]."/".$arrival_date[1]."/".substr($arrival_date[0], 2);*/
-                        $arrival_date = $pack -> arrival_date -> format('d/m/y');
-                    ?>
-                    <td colspan="8"><strong>Fecha de entrega: </strong>{{$arrival_date}}</td>
+                    <td colspan="8"><strong>Fecha de entrega: </strong>{{$pack -> arrival_date -> format('d/m/y')}}</td>
                   </tr>
 
                   <tr>
                     <td colspan="8"><strong>Observaciones: </strong>{{$pack -> observation}}</td>
                   </tr>
-                </tbody>
 
-              </table>
-            </div>
-          </div>
-        </div>
-        <a href="/upcoming-packages" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Atras</a>
-      </div>
-
-      <div class="col-md-3">
-        <div class="panel panel-info panel-shadow">
-          <div class="panel-heading">
-            <h3>Opciones de contacto</h3>
-          </div>
-          <div class="panel-body"> 
-            <div class="table-responsive">
-              <table class="table">
-
-                <tbody>
-                  <tr>
-                    <td colspan="8"> <a href="#" class="btn btn-primary pull-right <?php echo ($user -> id == Auth::user()-> id)? 'disabled' : '';?>" data-toggle="modal" data-target="#ratings">Valorar usuario<span class="glyphicon glyphicon-chevron-right"></span></a></td>
-                  </tr>
-                  <tr>
-                    <td colspan="8">
-                      {{ Form::open( array('action' => array('PackDetailsController@sendRequest', $pack->id)))}}
-                      {{ Form::button("Postularme a paquete<span class='glyphicon glyphicon-chevron-right'></span>", array(
-                        'type' => 'submit',
-                        'class' => 'btn btn-primary pull-right ' . (($user -> id == Auth::user()-> id)? 'disabled' : ''),
-                        'name' => 'submit',
-                        'value' => 'Postularme a paquete'
-                      )) }}
-                      {{ Form::close() }}
-                    </td>
-                  </tr>
-                  <tr>
-                    <?php
-                        /*$created = explode(" ", $user -> created_at);
-                        $created = $created[0];
-                        $created = explode("-", $created);
-                        $created = $created[2]."/".$created[1]."/".substr($created[0], 2);*/
-                        $created =  $user -> created_at -> format('d/m/y');
-                    ?>
-                    <td colspan="8"><strong>Miembro desde: </strong>{{$created}}</td>
-                  </tr>
-                  <tr>
-                    <td colspan="8"><strong>Viajes publicados: </strong>{{count($trips)}} viajes</td>
-                  </tr>
-
-                  <tr>
-                    <td colspan="8"><strong>Paquetes transportados: </strong>10 paquetes</td>
-                  </tr>
+                  @if( $user->id == $authUser->id )
+                    <tr>
+                      <td colspan="8"><strong>Observaciones: </strong>{{$pack -> observation}}</td>
+                    </tr>
+                  @endif
                   
-                  <tr>
-                    <td colspan="8"><strong>Rating: </strong>{{$user -> total_rating}}/5</td>
-                  </tr>
                 </tbody>
-              
+
               </table>
             </div>
           </div>
         </div>
+        <a href="{{ url('upcoming/packages') }}" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Atras</a>
       </div>
+
+      @if( $user->id != $authUser->id )
+        <div class="col-md-3">
+          <div class="panel panel-info panel-shadow">
+            <div class="panel-heading">
+              <h3>Opciones de contacto</h3>
+            </div>
+            <div class="panel-body"> 
+              <div class="table-responsive">
+                <table class="table">
+
+                  <tbody>
+                    <tr>
+                      <td colspan="8"> <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#ratings">Valorar usuario <span class="glyphicon glyphicon-chevron-right"></span></a></td>
+                    </tr>
+                    <tr>
+                      <td colspan="8">
+                        {{ Form::open( array('action' => array('PackDetailsController@sendRequest', $pack->id)))}}
+                        {{ Form::button("Postularme a paquete <span class='glyphicon glyphicon-chevron-right'></span>", array(
+                          'type' => 'submit',
+                          'class' => 'btn btn-primary pull-right ',
+                          'name' => 'submit',
+                          'value' => 'Postularme a paquete'
+                        )) }}
+                        {{ Form::close() }}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="8"><strong>Miembro desde: </strong>{{$user -> created_at -> format('d/m/y')}}</td>
+                    </tr>
+                    <tr>
+                      <td colspan="8"><strong>Viajes publicados: </strong>{{count($user->trips)}}</td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="8"><strong>Paquetes publicados: </strong>{{count($user->packs)}}</td>
+                    </tr>
+                    
+                    <tr>
+                      <td colspan="8"><strong>Rating: </strong>{{$user -> total_rating}}/5</td>
+                    </tr>
+                  </tbody>
+                
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      @endif
+
     </div>
   </div>
 
@@ -290,8 +299,6 @@
         continue;
 
       aPlacess.push(placeID);
-
-      console.log(placeID);
 
       var request = {
           placeId: placeID

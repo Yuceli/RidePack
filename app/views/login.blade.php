@@ -64,7 +64,7 @@
         <div class="account-wall">
           <div id="my-tab-content" class="tab-content">
             <div class="tab-pane active" id="login">
-              <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
+              <img class="profile-img" src="https://s3.amazonaws.com/FringeBucket/default-user.png"
               alt="">
               <hr class="colorgraph">
               <?php

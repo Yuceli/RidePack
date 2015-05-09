@@ -86,6 +86,8 @@ Route::group(array('before' => 'auth'), function()
 
 	Route::post('/post/package', 'PackController@createPack');
 
+	Route::get('/post/package/match/{tripID}', 'PackController@showPostPackMatchTrip');
+
 	/*
 	 * Rutas para editar un paquete.
 	 * CU-17
@@ -202,5 +204,4 @@ Route::any("/reset/{token}", [
  "as" => "user/reset",
  "uses" => "RemindersController@reset"
 ]);
-
 ?>

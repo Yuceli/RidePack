@@ -65,7 +65,7 @@
 
     <br><br><br><br>
   <div class="container">
-    {{Form::open(array('files'=>true))}}
+    {{Form::open(array('url'=>url('post/package'),'files'=>true))}}
     <div class="row">
         
       <h2>Publica tus paquetes</h2>
@@ -95,7 +95,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
-            {{Form::text('search_from_city', null, array('id'=>'search_from_city','class'=>'form-control input-lg','placeholder'=>'Buscar ciudad de salida','tabindex'=>'4', 'required'=>'true'))}}
+            {{Form::text('search_from_city', null, array('id'=>'search_from_city','class'=>'form-control input-lg','placeholder'=>'Buscar ciudad de salida','tabindex'=>'4'))}}
             {{Form::hidden('from_city', null, array('id'=>'from_city'))}}
             <div>{{ $errors->first('from_city') }}</div>
           </div>

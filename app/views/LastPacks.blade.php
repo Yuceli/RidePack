@@ -63,4 +63,4 @@
 <div class="clearfix"></div>
 
 {{ $packs->links() }}
-@stop
+@endsection
