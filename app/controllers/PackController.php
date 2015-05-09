@@ -94,7 +94,9 @@ class PackController extends BaseController {
 		//Se borra el paquete
 		$pack->delete();
 		//Se redirecciona al usuario a la vista de gestión de paquetes
-		return Redirect::to('/management');
+		return Redirect::to('/management')
+			->withMessage('Se ha eliminado el paquete.')
+			->withClass('success');
 	}
 
 	// Actualizar un paquete

@@ -30,10 +30,10 @@
             <span class="day">{{$pack->sending_date->day}}</span>
             <span class="month">{{$pack->sending_date->formatLocalized('%b')}}</span>
           </time>
-          @if($pack->user->picture)
-            <img src="{{ asset($pack->user->picture) }}" />
+          @if($pack->picture)
+            <img src="{{ asset($pack->picture) }}" />
           @else
-            <img src="https://s3.amazonaws.com/FringeBucket/default-user.png" />
+            <img src="{{ asset('img/default_img.png') }}" />
           @endif
 
           <div class="info">

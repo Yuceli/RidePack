@@ -3,8 +3,11 @@
 class UsersProfileController extends BaseController {
 
 	public function showUserProfile($user_id)
-	{		//Muestra la página del perfil de otro usuario
-
+	{		
+		if($user_id == Auth::id()){
+			return Redirect::to('profile');
+		}
+		//Muestra la página del perfil de otro usuario
 		$user = User::findOrFail($user_id);
 		return View::make('UsersProfile')->with('user', $user);
 	}

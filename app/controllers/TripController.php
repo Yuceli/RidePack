@@ -65,7 +65,9 @@ class TripController extends BaseController {
 		//Se borra el viaje
 		$trip->delete();
 		//Se redirecciona al usuario a la vista de gestión de viajes
-		return Redirect::to('/management');
+		return Redirect::to('/management')
+			->withMessage('Se ha eliminado el viaje.')
+			->withClass('success');
 	}
 
 	//Función para actualizar un viaje

@@ -91,12 +91,14 @@
         <div class="panel panel-info panel-shadow">
           <div class="panel-heading">
             <h3>
-              @if( $user->picture )
-                <img class="img-circle" width="100px" height="100px" src="{{ asset( $user->picture ) }}">
-              @else
-                <img class="img-circle img-thumbnail" width="100px" height="100px" src="{{ asset('img/default_user.png') }}">
-              @endif
-              {{$user -> name}} {{$user -> last_name}}
+              <a href="{{ url('users/'.$user->id) }}">
+                @if( $user->picture )
+                  <img class="img-circle" width="100px" height="100px" src="{{ asset( $user->picture ) }}">
+                @else
+                  <img class="img-circle img-thumbnail" width="100px" height="100px" src="{{ asset('img/default_user.png') }}">
+                @endif
+                {{$user -> name}} {{$user -> last_name}}
+              </a>
             </h3>
           </div>
           <div class="panel-body"> 

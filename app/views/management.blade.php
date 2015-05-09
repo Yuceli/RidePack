@@ -122,8 +122,6 @@
                           <th>Peso</th>
                           <th>Via</th>
                           <th>Recompensa</th>
-                          <th>Editar</th>
-                          <th>Borrar</th>
                         </thead>
                         <tbody>
                           @foreach($trips as $trip)
@@ -143,14 +141,14 @@
                             <td align="center">${{$trip -> carry_reward}}</td>
                             <td>
                               <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                <a href="{{ url('edit/trip/'.$trip->id) }}"><button type='button' class='btn btn-primary btn-xs' data-title='Edit' data-toggle='modal' data-tripid='{{$trip -> id}}'>
+                                <a href="{{ url('edit/trip/'.$trip->id) }}"><button type='button' class='btn btn-primary btn-xs'>
                                   <span class="glyphicon glyphicon-pencil"></span>
                                 </button>
                               </p>
                             </td>
                             <td>
                               <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                <button type='button' class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-tripid='{{$trip -> id}}' data-target='#delete_trip' >
+                                <button type='button' class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-tripid="{{$trip->id}}" data-target='#delete_trip' >
                                   <span class="glyphicon glyphicon-trash"></span>
                                 </button>
                               </p>
@@ -180,8 +178,8 @@
                             {{Form::open(array('url'=>'delete/trip'))}}
                             {{ Form::hidden('tripid', '', array('id' => 'tripid')) }}
                             <button type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Si</button>
-                            {{Form::close()}}
                             <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                            {{Form::close()}}
                           </div>
                         </div>
                         <!-- /.modal-content --> 
@@ -219,13 +217,13 @@
                                 <input type="hidden" placeid="placeid" value="{{$pack->to_city}}">
                                 <span placeid="city-{{$pack->to_city}}"></span> - {{$pack -> arrival_date -> format("d/m/y")}}
                               </td>
-                              <td>$pack -> size</td>
+                              <td>{{$pack -> size}}</td>
                               <td>{{$pack -> weight}}Kg</td>
                               <td>${{$pack -> reward}}</td>
                               <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="{{url('edit/package/'.$pack->id)}}"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
                               <td>
                                 <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                  <button type='button' class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-packid='{{$pack->id}}' data-target='#delete_package' >
+                                  <button type='button' class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-packid="{{$pack->id}}" data-target='#delete_package' >
                                   <span class="glyphicon glyphicon-trash"></span>
                                   </button>
                                 </p>
@@ -255,8 +253,8 @@
                             {{Form::open(array('url'=>'/delete/pack'))}}
                             {{ Form::hidden('packid', '', array('id' => 'packid')) }}
                             <button type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Si</button>
-                            {{Form::close()}}
                             <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                            {{Form::close()}}
                           </div>
                         </div>
                         <!-- /.modal-content 2 --> 
@@ -288,13 +286,6 @@
                  
                   <tr>
                     <td colspan="8"><strong>Paquetes publicados: </strong>{{ count(Auth::user()->packs) }}</td>
-                  </tr>
-
-                  <tr>
-                    <td colspan="8"><strong>Paquetes a transportar: </strong>{{ count(Auth::user()->packs->has('trips')) }}</td>
-                  </tr>
-                  <tr>
-                    <td colspan="8"><strong>Paquetes en envio: </strong>{{ count(Auth::user()->trips->has('packs')) }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -380,6 +371,28 @@
       });
     }
 
+  </script>
+  <!-- Dialog show event handler -->
+  <script type="text/javascript">
+  $('#delete_trip').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var recipient = button.data('tripid') // Extract info from data-* attributes
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    var modal = $(this)
+    modal.find('.modal-footer input').val(recipient)
+  })
+  </script>
+
+  <script type="text/javascript">
+  $('#delete_package').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var recipient = button.data('packid') // Extract info from data-* attributes
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    var modal = $(this)
+    modal.find('.modal-footer input').val(recipient)
+  })
   </script>
 </body>
 </html>
