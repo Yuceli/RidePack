@@ -4,6 +4,25 @@
 class SearchController extends BaseController {
 
 	/*
+	--------------------------------------------------------------------------
+	|	Search Controller
+	--------------------------------------------------------------------------
+	|  Controlador para la búsqueda de paquetes/viajes y mostrar últimos paquetes/viajes
+	|
+	|	Rutas:
+	|		Route::post('/search', 'SearchController@search');
+	|		Route::get('/upcoming/packages', 'SearchController@showLastPacks');
+	|		Route::get('/upcoming/trips', 'SearchController@showLastTrips');
+    
+	|		
+	|	Métodos:
+	|		search()
+	|		showLastPacks()
+	|		showLastTrips()
+	|
+	*/
+
+	/*
 	 * Función para buscar paquetes o viajes de acuerdo a
 	 * su fecha de envío, lugar de origen y lugar de destino.
 	 */

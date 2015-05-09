@@ -67,16 +67,20 @@
               <img class="profile-img" src="https://s3.amazonaws.com/FringeBucket/default-user.png"
               alt="">
               <hr class="colorgraph">
-              <?php
-                if(isset($message)){
-                  echo "<p>".$message."</p>";
-                }
-              ?>
+              
               {{Form::open(array('class'=>'form-signin'))}}
-              @if(Session::has('error_message'))
+              @if(Session::has('error_message') )
               <div class="alert alert-warning alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <strong >{{ Session::get('error_message') }}</strong> 
+              </div>
+
+              @endif
+
+              @if(Session::has('message') )
+              <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong >{{ Session::get('message') }}</strong> 
               </div>
 
               @endif

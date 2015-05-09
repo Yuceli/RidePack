@@ -2,6 +2,36 @@
 
 class UserController extends BaseController {
 
+
+	/*
+	--------------------------------------------------------------------------
+	|	User Controller
+	--------------------------------------------------------------------------
+	|  Controlador para el manejo de usuarios
+	|
+	|	Rutas:
+	|		Route::get('login', 'UserController@showLogin');
+	|		Route::post('login', 'UserController@login');
+	|		Route::get('logout', 'UserController@logout');
+	|		Route::get('/edit/profile', 'UserController@showUpdateUser');
+	|		Route::post('/edit/profile', 'UserController@updateUser');
+	|		Route::post('/delete/user', 'UserController@deleteUser');
+	|		Route::get('/profile', 'UserController@showMyProfile');
+	|		Route::get('/edit/profile', 'UserController@showUpdateUser');
+	|		Route::post('/edit/profile', 'UserController@updateUser');
+	|		
+	|	Métodos:
+	|		showLogin()
+	|		login()
+	|		logout()
+	|		updateUser()
+	|		deleteUser()
+	|		showMyProfile()
+	|		showUpdateUser()
+	|
+	*/
+
+
 	//Función para mostrar la página de login
 	public function showLogin()
 	{
@@ -11,7 +41,7 @@ class UserController extends BaseController {
 			return Redirect::to('/');
 		}else{
 			//Muestra la página de login
-			return View::make('login');
+			return View::make('Login');
 		}
 	}
 

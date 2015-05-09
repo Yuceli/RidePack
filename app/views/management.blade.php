@@ -113,7 +113,6 @@
                     @if(count($trips) > 0)
                     <div class="table-responsive">
                       <table id="mytable" class="table table-bordred table-striped">
-
                         <thead>
                           <th>Fecha publicación</th>
                           <th>Salida</th>
@@ -387,7 +386,7 @@
   <script type="text/javascript">
   $('#delete_package').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
-    var recipient = button.data('packid') // Extract info from data-* attributes
+    var recipient = button.data('pack_id') // Extract info from data-* attributes
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
     var modal = $(this)
