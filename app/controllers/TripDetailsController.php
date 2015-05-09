@@ -16,12 +16,14 @@ class TripDetailsController extends BaseController {
 			$trip = Trip::findOrFail($id);
 			//Obtiene al usuario ligado al viaje.
 			$user = $trip -> user;
+			//Se obtienen los paquete relacionado con el viaje.
+			$tripPacks = $trip->packs;
 			//Obtiene al usuario autenticado.
 			$authUser = Auth::user();
 			//Paquetes que coinciden con el viaje.
 			$matchPacks = $authUser->getPacksMatchTrip($trip);
 			//Crea la vista que muestra los detalles del viaje, pasando los datos del viaje, usuario y otros viajes.
-			return View::make('TripDetails', compact('trip', 'user','authUser','matchPacks'));
+			return View::make('TripDetails', compact('trip', 'user','authUser','matchPacks','tripPacks'));
 		}
 	}
 

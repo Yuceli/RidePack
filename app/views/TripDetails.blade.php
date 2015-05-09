@@ -48,10 +48,10 @@
           </div><!--//navbar-header-->            
           <div class="navbar-collapse collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
-              <li class="nav-item"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
-              <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
-              <li class="nav-item"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
-              <li class="nav-item"><a href="{{ URL::asset('post/trip')}}">Publicar viaje</a></li>
+              <li class="nav-item"><a href="{{ url('profile')}}">Perfil</a></li>
+              <li class="nav-item"><a href="{{ url('upcoming/trips')}}">Buscar</a></li>
+              <li class="nav-item"><a href="{{ url('post/package')}}">Publicar paquete</a></li>                        
+              <li class="nav-item"><a href="{{ url('post/trip')}}">Publicar viaje</a></li>
               <li class="nav-item"><a href="{{ url('logout')}}">Cerrar sesión</a></li>
               <li class="nav-item last">
                 @if($authUser->picture)
@@ -140,6 +140,17 @@
                   <tr>
                     <td colspan="8"><strong>Observaciones: </strong>{{$trip -> observation}}</td>
                   </tr>
+
+                  @if(count($tripPacks)>0)
+                  <tr>
+                    <td colspan="8">
+                      <strong>Transportando: </strong><br><br>
+                      @foreach( $tripPacks as $tripPack)
+                        <a href="{{ url('package/details/'.$tripPack->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="glyphicon glyphicon-briefcase"></span></a>
+                      @endforeach
+                    </td>
+                  </tr>
+                  @endif
                 </tbody>
                 
               </table>

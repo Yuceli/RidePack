@@ -29,7 +29,6 @@
 </head> 
 
 <body>
-
    <!-- ******HEADER****** --> 
     <header id="header" class="header">  
       <div class="container">            
@@ -152,9 +151,12 @@
                     <td colspan="8"><strong>Observaciones: </strong>{{$pack -> observation}}</td>
                   </tr>
 
-                  @if( $user->id == $authUser->id )
+                  @if( $packTrip )
                     <tr>
-                      <td colspan="8"><strong>Observaciones: </strong>{{$pack -> observation}}</td>
+                      <td colspan="8">
+                        <strong>Transportado en: </strong><br><br>
+                        <a href="{{ url('trip/details/'.$packTrip->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="glyphicon glyphicon-plane"></span></a>
+                      </td>
                     </tr>
                   @endif
                   

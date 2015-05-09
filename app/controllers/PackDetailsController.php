@@ -13,13 +13,15 @@ class PackDetailsController extends BaseController {
 		//Checa si el usuario ha sido autenticado.
 		if (Auth::check()){
 			//Busca el paquete por el id por el parametro recibido.
-			$pack = Pack::find($id);
+			$pack = Pack::findOrFail($id);
 			//Busca al usuario dueño del paquete.
 			$user = $pack -> user;
+			//Se obtiene el viaje relacionado con el paquete.
+			$packTrip = $pack->trips->first();
 			//Obtiene al usuario autenticado.
 			$authUser = Auth::user();
 			//Crea la vista que muestra los detalles del paquete, pasando los datos del paquete, usuario y viajes.
-			return View::make('PackDetails', compact('pack', 'user','authUser'));
+			return View::make('PackDetails', compact('pack', 'user','authUser','packTrip'));
 		}
 	}
 
@@ -30,11 +32,15 @@ class PackDetailsController extends BaseController {
 		$user = Auth::user();
 		//Se pide que se encuentren los paquetes iguales al id.
 		$pack = Pack::find($id);
+
+		if(count($pack->trips) > 0) {
+			return Redirect::back()
+				->withMessage('No se pudo enviar la solicitud. El paquete ya esta siendo transportado.')
+				->withClass('danger');
+		}
 		/*Esta es la petición a la base de datos, donde se pide todas las peticiones relacionadas con el usuario autenticado
 		y el creaddor de la petición tenga un id igual al recibido.*/
 		$myPetitions = $pack->requests()->where('from_user', $user->id)->get();
-
-		//$myPetitions = Petition::where('from_user', '=', Auth::id())->where('requestable_id', '=', $id)->where('requestable_type', '=', 'Pack')->get();
 
 		//Este if busca discriminar si la petición es valida, es decir si ya sea ha postulado antes.
 		if( sizeof($myPetitions->toArray())==0 )
@@ -43,8 +49,8 @@ class PackDetailsController extends BaseController {
 			$trip = $user->trips()
 				->where('departure_city', $pack->from_city)
 				->where('arrival_city',   $pack->to_city)
-				->where('departure_date', $pack->sending_date)
-				->where('arrival_date',   $pack->arrival_date)
+				->where('departure_date', $pack->sending_date->toDateString())
+				->where('arrival_date',   $pack->arrival_date->toDateString())
 				->first();
 
 			// Sino crea el viaje con las características del paquete.

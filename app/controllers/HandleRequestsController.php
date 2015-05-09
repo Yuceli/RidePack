@@ -28,6 +28,12 @@ class HandleRequestsController extends BaseController {
 				// Se obtiene el viaje y el paquete asociados con la petición.
 				$trip = $petition->trip;
 				$pack = $petition->requestable;
+
+				if(count($pack->trips) > 0) {
+					return Redirect::back()
+						->withMessage('El paquete ya esta siendo transportado.')
+						->withClass('danger');
+				}
 			}
 			// Si la petición fue hecha a un viaje.
 			else if($petition->requestable_type == 'Trip'){
@@ -37,9 +43,9 @@ class HandleRequestsController extends BaseController {
 				$trip = $petition->requestable;
 			}
 			else {
-				Session::flash('message','El tipo de petición es inválido. Notifica a la administración.');
-				Session::flash('class', 'danger');
-				return Redirect::back();
+				return Redirect::back()
+					->withMessage('El tipo de petición es inválido. Notifica a la administración.')
+					->withClass('danger');
 			}
 
 			// Si ya no existe el viaje asociado se cancela la petición y se envía un mensaje de error.

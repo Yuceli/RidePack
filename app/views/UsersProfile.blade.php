@@ -35,7 +35,7 @@
   <header id="header" class="header">  
     <div class="container">            
       <h1 class="logo pull-left">
-        <a class="scrollto" href="">
+        <a href="{{ url('/')}}">
           <span class="logo-title">RidePack</span>
         </a>
       </h1><!--//logo-->              
@@ -50,12 +50,18 @@
         </div><!--//navbar-header-->            
         <div class="navbar-collapse collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
-              <li class="active nav-item sr-only"><a class="scrollto" href="{{URL::to('/')}}">Home</a></li>
-              <li class="nav-item"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
-              <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
-              <li class="nav-item"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
-              <li class="nav-item"><a href="{{ URL::asset('post/trip')}}">Publicar viaje</a></li>
-              <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
+            <li class="nav-item"><a href="{{ url('profile')}}">Perfil</a></li>
+            <li class="nav-item"><a href="{{ url('upcoming/trips')}}">Buscar</a></li>
+            <li class="nav-item"><a href="{{ url('post/package')}}">Publicar paquete</a></li>                        
+            <li class="nav-item"><a href="{{ url('post/trip')}}">Publicar viaje</a></li>
+            <li class="nav-item"><a href="{{ url('logout')}}">Cerrar sesión</a></li>
+            <li class="nav-item last">
+              @if(Auth::user()->picture)
+                <img class="media-object img-circle" src="{{asset(Auth::user()->picture)}}" width="50px" height="50px" alt="profile">
+              @else
+                <img class="media-object img-circle" src="{{asset('img/default_user.png')}}" width="50px" height="50px" alt="profile">
+              @endif
+            </li>
           </ul><!--//nav-->
         </div><!--//navabr-collapse-->
       </nav><!--//main-nav-->
@@ -73,7 +79,7 @@
     <div class="row">
       <div class="col-md-12">
         <ol class="breadcrumb">
-          <li><a href="#">RidePack</a></li>
+          <li><a href="{{url('/')}}">RidePack</a></li>
           <li>Perfil de usuario</li>
         </ol>
       </div>
@@ -137,8 +143,7 @@
             </div>
           </div>
         </div>
-        <!--El href debe ser cambiando por base_url o similar. Fines de prueba-->
-        <a href="http://localhost/ridepack/public/handle_request" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Atras</a>
+        <a href="{{ url('/') }}" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Atras</a>
       </div>
     </div>
   </div>

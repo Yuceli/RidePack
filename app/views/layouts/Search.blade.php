@@ -52,7 +52,14 @@
             <li class="nav-item active"><a href="{{ url('upcoming/packages')}}">Buscar</a></li>
             <li class="nav-item"><a href="{{ url('post/package')}}">Publicar paquete</a></li>                        
             <li class="nav-item"><a href="{{ url('post/trip')}}">Publicar viaje</a></li>
-            <li class="nav-item last"><a href="{{ url('logout')}}">Cerrar sesión</a></li>
+            <li class="nav-item"><a href="{{ url('logout')}}">Cerrar sesión</a></li>
+            <li class="nav-item last">
+              @if(Auth::user()->picture)
+                <img class="media-object img-circle" src="{{asset(Auth::user()->picture)}}" width="50px" height="50px" alt="profile">
+              @else
+                <img class="media-object img-circle" src="{{asset('img/default_user.png')}}" width="50px" height="50px" alt="profile">
+              @endif
+            </li>
           </ul><!--//nav-->
         </div><!--//navabr-collapse-->
       </nav><!--//main-nav-->

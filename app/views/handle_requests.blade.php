@@ -45,10 +45,10 @@
         </div><!--//navbar-header-->            
         <div class="navbar-collapse collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="nav-item active"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
-            <li class="nav-item"><a href="{{ URL::asset('upcoming/packages')}}">Buscar</a></li>
-            <li class="nav-item"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
-            <li class="nav-item"><a href="{{ URL::asset('post/trip')}}">Publicar viaje</a></li>
+            <li class="nav-item active"><a href="{{ url('profile')}}">Perfil</a></li>
+            <li class="nav-item"><a href="{{ url('upcoming/packages')}}">Buscar</a></li>
+            <li class="nav-item"><a href="{{ url('post/package')}}">Publicar paquete</a></li>                        
+            <li class="nav-item"><a href="{{ url('post/trip')}}">Publicar viaje</a></li>
             <li class="nav-item"><a href="{{ url('logout')}}">Cerrar sesión</a></li>
             <li class="nav-item last">
               @if($user->picture)
