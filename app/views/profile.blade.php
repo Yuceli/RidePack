@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="{{ URL::asset('plugins/prism/prism.css') }}">
   <!-- Theme CSS -->  
     <link id="theme-style" rel="stylesheet" href="{{ URL::asset('css/styles.css') }}">
-    <link id="theme-style" rel="stylesheet" href="{{ URL::asset('css/profile.css')}}">
     <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet" media="screen">  
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -91,11 +90,14 @@
                             <p><strong>Pais: </strong><span id="country"> </span></p>
                             <p><strong>Estado: </strong><span id="state"> </span></p>
                             <p><strong>Ciudad: </strong><span id="city"> </span></p>
-                            </div>             
+                            </div>
+                             <div class="col-xs-12 col-sm-4 container-img">
+                                <img src="http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
+                             </div>             
                         </div>
                         <div class="col-xs-12 divider text-center">
                              <a href="edit/profile"><button class="btn btn-default btn-block"><span class="fa fa-plus-circle"></span> Editar perfil</button></a><hr>
-                            <a href="management"><button class="btn btn-primary btn-block"><span class="fa fa-plus-circle"></span> Gestionar mis viajes</button></a>
+                            <a href="management"><button class="btn btn-primary btn-block"><span class="fa fa-plus-circle"></span> Mis viajes y paquetes</button></a>
                             <div class="col-xs-12 col-sm-6 emphasis">
                                 <h2><strong> {{count(Auth::user()->trips)}} </strong></h2>                    
                                 <p><small>Viajes publicados</small></p>

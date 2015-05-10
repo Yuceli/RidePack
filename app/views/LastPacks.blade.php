@@ -51,7 +51,7 @@
             <p class="desc">Peso: {{ $pack->weight }} kg, Tamaño: {{ $pack->size }}</p>
              
             <ul>
-              <a href="../package/details/{{ $pack->id }}"><li style="width:100%;"><span class="fa fa-user-plus"></span></li></a>
+              <a href="../package/details/{{ $pack->id }}"><li style="width:100%;">Ver detalles</li></a>
             </ul>
           </div>
         </li>

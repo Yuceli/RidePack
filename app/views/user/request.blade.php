@@ -18,7 +18,6 @@
     <!-- Plugins CSS -->    
     <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="plugins/prism/prism.css">
-    <link rel="stylesheet" href="css/login.css">
     <!-- Theme CSS -->  
     <link id="theme-style" rel="stylesheet" href="css/styles.css">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -68,15 +67,15 @@
             			<div class="tab-pane active" align="center">  
                     {{ Form::open() }}
                       @if (Session::get("error"))
-                        {{ Session::get("error") }}<br />
+                        {{ Session::get("error") }}<br>
                       @endif
                       @if (Session::get("status"))
-                        {{ Session::get("status") }}<br />
+                        {{ Session::get("status") }}<br>
                       @endif
-                      {{ Form::label("email", "Email:") }}<br />
-                      {{ Form::text("email", Input::old("email")) }}<br />
-                      <br />
-                      {{ Form::submit("Reenviar") }}
+                      <!--{{ Form::text("email", Input::old("email")) }}--><br>
+                      {{Form::text('email',  Input::old('email') , array('id'=>'weight','class'=>'form-control input-lg','placeholder'=>'Email','tabindex'=>'3','required'=>'true','min'=>'0'));}} 
+                      <br>
+                      {{Form::submit('Reenviar contraseña', array('class'=>'btn btn-primary btn-block btn-lg','tabindex'=>'11'))}}
                     {{ Form::close() }}
                     <hr class="colorgraph">
             			</div>
@@ -86,8 +85,6 @@
         </div>
     </div>
 
-
-<br><br>
           <!-- ******FOOTER****** --> 
           <footer class="footer">
             <div class="container text-center">

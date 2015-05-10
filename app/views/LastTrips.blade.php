@@ -51,7 +51,7 @@
             <p class="desc">Espacio disponible: {{ $trip->max_weight }} kg, Tamaño: {{ $trip->max_size }}</p>
              
             <ul>
-              <a href="../trip/details/{{ $trip->id }}"><li style="width:100%;"><span class="fa fa-suitcase"></span></li></a>
+              <a href="../trip/details/{{ $trip->id }}"><li style="width:100%;">Ver detalles</li></a>
             </ul>
           </div>
         </li>

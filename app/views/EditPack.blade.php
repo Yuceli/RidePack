@@ -194,7 +194,7 @@
 
       <div class="row">
         <div class="col-md-6  col-sm-offset-3">
-          {{Form::submit('Editar paquete', array('class'=>'btn btn-primary btn-block btn-lg','tabindex'=>'11'))}}
+          {{Form::submit('Guardar cambios', array('class'=>'btn btn-primary btn-block btn-lg','tabindex'=>'11'))}}
         </div>
       </div>
 
