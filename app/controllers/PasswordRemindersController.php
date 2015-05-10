@@ -69,7 +69,7 @@ class PasswordRemindersController extends BaseController {
 
 			//si se restableción la contraseña muestra la página de login
 			if($response === Password::PASSWORD_RESET) {
-				return Redirect::action("UserController@showLogin");
+				return Redirect::action('UserController@showLogin');
 			}
 			//En caso contrario se redirecciona con errores
 			return Redirect::back()
