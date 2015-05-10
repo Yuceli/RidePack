@@ -224,8 +224,9 @@
           </h4>
         </div>
         <div class="modal-body">
+          {{ Form::open( array('action' => array('PackDetailsController@rateUser', $user -> id)))}}
           <p>Puedes elegir un número 1 al 5 para calificar a este usuario</p>
-          <select class="form-control">
+          <select name="rate" class="form-control">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -235,7 +236,14 @@
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Calificar</button>
+          {{ Form::button("Calificar", array(
+            'type' => 'submit',
+            'class' => 'btn btn-primary' . (($user -> id == Auth::user()-> id)? 'disabled' : ''),
+            'name' => 'submit',
+            'data-dismiss' => 'modal'
+            'value' => 'Calificar'
+          )) }}
+          {{ Form::close() }}
         </div>
       </div>
     </div>
