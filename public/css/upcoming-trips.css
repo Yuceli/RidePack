@@ -36,11 +36,11 @@ section {
     opacity: 1;
 }
 .submit.btn.btn-lg {
-    font-size: 28px;
+    font-size: 30px;
     color: #999;
-    border: 1px dotted;
     background-color: transparent;
     border-radius: 0;
+
 }
 
 /*Css parte posterior*/

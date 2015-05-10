@@ -30,7 +30,7 @@
   <header id="header" class="header">  
     <div class="container">            
       <h1 class="logo pull-left">
-        <a class="scrollto" href="">
+        <a href="{{url('/')}}">
           <span class="logo-title">RidePack</span>
         </a>
       </h1><!--//logo-->              
@@ -45,26 +45,37 @@
         </div><!--//navbar-header-->            
         <div class="navbar-collapse collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
-            <li class="nav-item active"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
-            <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
-            <li class="nav-item"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
-            <li class="nav-item"><a href="{{ URL::asset('post/travel')}}">Publicar viaje</a></li>
-            <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
-            <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/48.jpg" alt="profile">
+            <li class="nav-item active"><a href="{{ url('profile')}}">Perfil</a></li>
+            <li class="nav-item"><a href="{{ url('upcoming/packages')}}">Buscar</a></li>
+            <li class="nav-item"><a href="{{ url('post/package')}}">Publicar paquete</a></li>                        
+            <li class="nav-item"><a href="{{ url('post/trip')}}">Publicar viaje</a></li>
+            <li class="nav-item"><a href="{{ url('logout')}}">Cerrar sesión</a></li>
+            <li class="nav-item last">
+              @if($user->picture)
+                <img class="media-object img-circle" src="{{asset($user->picture)}}" width="50px" height="50px" alt="profile">
+              @else
+                <img class="media-object img-circle" src="{{asset('img/default_user.png')}}" width="50px" height="50px" alt="profile">
+              @endif
+            </li>
           </ul><!--//nav-->
         </div><!--//navabr-collapse-->
       </nav><!--//main-nav-->
     </div>
   </header><!--//header--> 
 
-  <br><br>
+  <br><br><br><br><br>
   <div class="container-fluid">
+    @if(Session::has('message'))
+     <div class="alert alert-{{ Session::get('class') }} alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ Session::get('message') }}
+      </div>
+    @endif
     <div class="row">
       <div class="col-md-12 container-profile">
         <ol class="breadcrumb">
-          <li><a href="#">RidePack</a></li>
-          <li class="active">Gestor de solicitudes</li>
+          <li><a href="{{url('/')}}">RidePack</a></li>
+          <li>Solicitudes</li>
         </ol>
       </div>
     </div>
@@ -73,49 +84,43 @@
 
     <div class="panel panel-info panel-shadow">
       <div class="panel-heading">
-        <h3>Gestor de solicitudes</h3>
+        <h3>Solicitudes</h3>
       </div>
       <div class="panel-body"> 
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12" id="logout">
-              <div class="comment-tabs">
+              <div class="request-tabs">
                 <ul class="nav nav-tabs" role="tablist">
-                  <li class="active"><a href="#comments-logout" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Solicitudes de paquetes</h4></a></li>
-                  <li><a href="#add-comment" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Solicitudes de viajes</h4></a></li>
-                  <li><a href="#account-settings" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Solicitudes rechazadas/aceptadas</h4></a></li>
+                  <li class="active"><a href="#pack-requests" role="tab" data-toggle="tab"><h4 class="text-center reviews text-capitalize">A paquetes</h4></a></li>
+                  <li><a href="#trip-requests" role="tab" data-toggle="tab"><h4 class="text-center reviews text-capitalize">A viajes</h4></a></li>
+                  <li><a href="#sent-requests" role="tab" data-toggle="tab"><h4 class="text-center reviews text-capitalize">Enviadas</h4></a></li>
                 </ul>            
                 <div class="tab-content">
-                  <div class="tab-pane active" id="comments-logout">                
+                  <div class="tab-pane active" id="pack-requests">                
                     <div class="table-responsive">
                       <table id="mytable" class="table table-bordred table-striped">
 
                         <thead>
-                          <th>ID</th>
                           <th>Fecha</th>
                           <th>Descripción</th>
-                          <th>Ver pefil</th>
+                          <th>Ver viaje</th>
+                          <th>Ver paquete</th>
                           <th>Aceptar</th>
                           <th>Rechazar</th>
                         </thead>
                         <tbody>
-                            @foreach(Auth::user()->packs as $pack)
-                                        @foreach($pack -> requests as $request)
-                                            @if($request->status=='onhold')
-                                  <?php 
-                                    $created = explode(" ", $request -> created_at);
-                                    $created = $created[0];
-                                    $created = explode("-", $created);
-                                    $created = $created[2]."/".$created[1]."/".substr($created[0], 2);
-                                    $id_user = $request -> from_user;
-                                    $user = User::find($id_user);
-                                ?>
-                                <tr>
-                                    <td>{{$request -> id}}</td>
-                                    <td>{{$created}}</td>
-                                    <td>{{$user -> name}} se ha postulado para transportar tu paquete</td>
+                            @foreach($user->packs as $pack)
+                              @foreach($pack->requests as $request)
+                                @if($request->status=='onhold')
+                                  <tr>
+                                    <td>{{$request -> created_at -> format('d/m/y')}}</td>
+                                    <td>{{$request->fromUser->name}} se ha postulado para transportar tu paquete</td>
                                     <td>
-                                      <a href="{{ URL::to('/users/' . $user->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="fa fa-user"></span></a>
+                                      <a href="{{ url('trip/details/' . $request->trip->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="glyphicon glyphicon-plane"></span></a>
+                                    </td>
+                                    <td>
+                                      <a href="{{ url('package/details/' . $request->requestable->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="glyphicon glyphicon-briefcase"></span></a>
                                     </td>
                                     <td>
                                       {{ Form::open( array('action' => array('HandleRequestsController@acceptRequest', $request->id)))}}
@@ -135,45 +140,40 @@
                                       )) }}
                                       {{ Form::close() }}
                                     </td>
-                                </tr>                               
-                                  @endif
-                                @endforeach
-                            @endforeach
+                                  </tr>
+                                @endif
+                              @endforeach
+                          @endforeach
                         </tbody>
                       </table>
                     </div>
                   </div>
 
-                  <div class="tab-pane" id="add-comment">
-                    <div class="tab-pane active" id="comments-logout">                
+                  <div class="tab-pane" id="trip-requests">      
                       <div class="table-responsive">
                         <table id="mytable" class="table table-bordred table-striped">
 
                           <thead>
-                            <th>ID</th>
                             <th>Fecha</th>
                             <th>Descripción</th>
-                            <th>Ver perfil</th>
+                            <th>Ver paquete</th>
+                            <th>Ver viaje</th>
                             <th>Aceptar</th>
-                            <th>Borrar</th>
+                            <th>Rechazar</th>
                           </thead>
                           <tbody>
-                          @foreach(Auth::user()->trips as $trip)
+                          @foreach($user->trips as $trip)
                               @foreach($trip -> requests as $request)
                                   @if($request->status=='onhold')
-                                  <?php 
-                                      $created = explode(" ", $request -> created_at);
-                                      $created = $created[0];
-                                      $created = explode("-", $created);
-                                      $created = $created[2]."/".$created[1]."/".substr($created[0], 2);
-                                      $id_user = $request -> from_user;
-                                      $user = User::find($id_user);
-                                  ?>
                                   <tr>
-                                      <td>{{$request -> id}}</td>
-                                      <td>{{$created}}</td>
-                                      <td>{{$user -> name}} ha solicitado tu viaje</td>
-                                      <td><a href="{{ URL::to('/users/' . $user->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="fa fa-user"></span></a></td>
+                                      <td>{{ $request->created_at->format('d/m/y') }}</td>
+                                      <td>{{ $request->fromUser->name }} ha solicitado tu viaje</td>
+                                      <td>
+                                        <a href="{{ url('package/details/' . $request->pack->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="glyphicon glyphicon-briefcase"></span></a>
+                                      </td>
+                                      <td>
+                                        <a href="{{ url('trip/details/' . $request->requestable->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="glyphicon glyphicon-plane"></span></a>
+                                      </td>
                                       <td>
                                       {{ Form::open( array('action' => array('HandleRequestsController@acceptRequest', $request->id)))}}
                                       {{ Form::button("<span class='fa fa-check'></span>", array(
@@ -199,60 +199,60 @@
                         </tbody>
                         </table>
                       </div>
-                    </div>
                   </div>
 
-                  <div class="tab-pane" id="account-settings">     
-                    <div class="tab-pane active" id="comments-logout">
+                  <div class="tab-pane" id="sent-requests">     
                       <div class="table-responsive">
                         <table id="mytable" class="table table-bordred table-striped">
 
                           <thead>
-                            <th>ID</th>
                             <th>Fecha</th>
                             <th>Descripción</th>
-                            <th>Ver perfil</th>
+                            <th>Ver paquete</th>
+                            <th>Ver viaje</th>
                           </thead>
                           <tbody>
-                          @foreach(Auth::user()->requests as $request)
-                                  @if($request->status=='accepted')
-                                  <?php 
-                                      $created = explode(" ", $request -> created_at);
-                                      $created = $created[0];
-                                      $created = explode("-", $created);
-                                      $created = $created[2]."/".$created[1]."/".substr($created[0], 2);
-                                      $id_user = $request -> from_user;
-                                      $user = User::find($id_user);
-                                  ?>
-                                  <tr>
-                                      <td>{{$request -> id}}</td>
-                                      <td>{{$created}}</td>
-                                      <td>{{$user -> name}} ha solicitado tu viaje</td>
-                                      <td><a href="{{ URL::to('/users/' . $user->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="fa fa-user"></span></a></td>
+                          @foreach($user->requests as $request)
+                            @if($request->requestable_type=='Pack')
+                              <tr>
+                                <td>{{$request -> created_at -> format('d/m/y')}}</td>
+                                @if($request->status=='accepted')
+                                  <td>{{$request -> requestable -> user -> name}} ha aceptado tu viaje</td>
+                                @elseif($request->status=='refused')
+                                  <td>{{$request -> requestable -> user -> name}} ha rechazado rechazado viaje</td>
+                                @elseif($request->status=='onhold')
+                                  <td>{{$request -> requestable -> user -> name}} ha recibido tu postulación a paquete</td>
+                                @endif
+                                <td>
+                                  <a href="{{ url('package/details/' . $request->requestable->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="glyphicon glyphicon-briefcase"></span></a>
+                                </td>
+                                <td>
+                                  <a href="{{ url('trip/details/' . $request->trip->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="glyphicon glyphicon-plane"></span></a>
+                                </td>
+                              </tr>
+                            @elseif($request->requestable_type=='Trip')
+                              <tr>
+                                <td>{{$request -> created_at -> format('d/m/y')}}</td>
 
-                                  </tr>
-                                  @endif
-                                  @if($request->status=='refused')
-                                  <?php 
-                                      $created = explode(" ", $request -> created_at);
-                                      $created = $created[0];
-                                      $created = explode("-", $created);
-                                      $created = $created[2]."/".$created[1]."/".substr($created[0], 2);
-                                      $id_user = $request -> from_user;
-                                      $user = User::find($id_user);
-                                  ?>
-                                  <tr>
-                                      <td>{{$request -> id}}</td>
-                                      <td>{{$created}}</td>
-                                      <td>{{$user -> name}} ha rechazado tu viaje</td>
-                                      <td><a href="{{ URL::to('/users/' . $user->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="fa fa-user"></span></a></td>
+                                @if($request->status=='accepted')
+                                  <td>{{$request -> requestable -> user -> name}} ha aceptado tu paquete</td>
+                                @elseif($request->status=='refused')
+                                  <td>{{$request -> requestable -> user -> name}} ha rechazado rechazado paquete</td>
+                                @elseif($request->status=='onhold')
+                                  <td>{{$request -> requestable -> user -> name}} ha recibido tu solicitud de viaje</td>
+                                @endif
 
-                                  </tr>
-                              @endif
+                                <td>
+                                  <a href="{{ url('package/details/' . $request->pack->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="glyphicon glyphicon-briefcase"></span></a>
+                                </td>
+                                <td>
+                                  <a href="{{ url('trip/details/' . $request->requestable->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="glyphicon glyphicon-plane"></span></a>
+                                </td>
+                              </tr>
+                            @endif
                           @endforeach
                         </tbody>
-                        </table>
-                      </div>
+                      </table>
                     </div>
                   </div>
                 </div>

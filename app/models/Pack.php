@@ -11,11 +11,6 @@ class Pack extends Eloquent {
 		return $this->morphMany('Petition', 'requestable');
 	}
 
-	public function comment()
-	{
-		return $this->morphMany('Comment', 'commentable');
-	}
-
 	public function user(){
 		return $this->belongsTo('User');
 	}

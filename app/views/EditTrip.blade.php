@@ -33,7 +33,7 @@
     <header id="header" class="header">  
       <div class="container">            
         <h1 class="logo pull-left">
-          <a class="scrollto" href="">
+          <a href="{{ url('/')}}">
             <span class="logo-title">RidePack</span>
           </a>
         </h1><!--//logo-->              
@@ -48,12 +48,18 @@
           </div><!--//navbar-header-->            
           <div class="navbar-collapse collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
-              <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
-              <li class="nav-item"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
-              <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
-              <li class="nav-item"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
-              <li class="nav-item active"><a href="{{ URL::asset('post/travel')}}">Publicar viaje</a></li>
-              <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
+              <li class="nav-item"><a href="{{ url('profile')}}">Perfil</a></li>
+              <li class="nav-item"><a href="{{ url('upcoming/trips')}}">Buscar</a></li>
+              <li class="nav-item"><a href="{{ url('post/package')}}">Publicar paquete</a></li>                        
+              <li class="nav-item active"><a href="{{ url('post/trip')}}">Publicar viaje</a></li>
+              <li class="nav-item"><a href="{{ url('logout')}}">Cerrar sesión</a></li>
+              <li class="nav-item last">
+                @if(Auth::user()->picture)
+                  <img class="media-object img-circle" src="{{asset(Auth::user()->picture)}}" width="50px" height="50px" alt="profile">
+                @else
+                  <img class="media-object img-circle" src="{{asset('img/default_user.png')}}" width="50px" height="50px" alt="profile">
+                @endif
+              </li>
             </ul><!--//nav-->
           </div><!--//navabr-collapse-->
         </nav><!--//main-nav-->
@@ -76,7 +82,7 @@
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="form-group">
-                {{Form::select('max_size', array(null => 'Puedo transportar un paquete...', '1'=>'Extra pequeño', '2'=>'Pequeño', '3'=>'Mediano', '4'=>'Grande', '5'=>'Extra grande'), null, array('class' => 'form-control input-lg', 'name' => 'max_size', 'required'=>'required', 'tabindex'=>'2'))}}
+                {{Form::select('max_size', array(null => 'Puedo transportar un paquete...', 'Extra pequeño'=>'Extra pequeño', 'Pequeño'=>'Pequeño', 'Mediano'=>'Mediano', 'Grande'=>'Grande', 'Extra grande'=>'Extra grande'), null, array('class' => 'form-control input-lg', 'name' => 'max_size', 'required'=>'required', 'tabindex'=>'2'))}}
                 <div>{{ $errors -> first('max_size')}}</div>
             </div>
           </div>
@@ -91,14 +97,14 @@
           </div>
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-              {{Form::number('carry_reward ', $trip->carry_reward, array('id'=>'carry_reward', 'name'=>'carry_reward', 'min'=>'0',  'class'=>'form-control input-lg','placeholder'=>'Recompensa por paquete','tabindex'=>'4', 'required'=>'required'))}}
+              {{Form::number('carry_reward ', $trip->carry_reward, array('id'=>'carry_reward', 'name'=>'carry_reward', 'min'=>'0',  'class'=>'form-control input-lg','placeholder'=>'Recompensa por paquete','tabindex'=>'4'))}}
               <div>{{ $errors->first('carry_reward') }}</div>
             </div>
           </div>
         </div>   
 
         <div class="form-group">
-          {{Form::text('search_departure_city', null, array('id'=>'search_departure_city','class'=>'form-control input-lg', 'name'=>'ciudad_salida', 'placeholder'=>'Ciudad de salida','tabindex'=>'5', 'required'=>'required'))}}
+          {{Form::text('search_departure_city', null, array('id'=>'search_departure_city','class'=>'form-control input-lg', 'name'=>'ciudad_salida', 'placeholder'=>'Ciudad de salida','tabindex'=>'5'))}}
           {{Form::hidden('departure_city', $trip->departure_city, array('id'=>'departure_city'))}}
           <div>{{ $errors->first('departure_city') }}</div>
         </div>
@@ -122,7 +128,7 @@
         </div>
 
         <div class="form-group">
-            {{Form::text('search_arrival_city', null, array('id'=>'search_arrival_city', 'name'=>'ciudad_destino' ,'class'=>'form-control input-lg','placeholder'=>'Ciudad de destino','tabindex'=>'6', 'required'=>'required'))}}
+            {{Form::text('search_arrival_city', null, array('id'=>'search_arrival_city', 'name'=>'ciudad_destino' ,'class'=>'form-control input-lg','placeholder'=>'Ciudad de destino','tabindex'=>'6'))}}
             {{Form::hidden('arrival_city', $trip->arrival_city, array('id'=>'arrival_city'))}}
             <div>{{ $errors->first('arrival_city') }}</div>
         </div>

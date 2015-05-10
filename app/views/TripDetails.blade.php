@@ -33,7 +33,7 @@
     <header id="header" class="header">  
       <div class="container">            
         <h1 class="logo pull-left">
-          <a class="scrollto" href="">
+          <a href="{{url('/')}}">
             <span class="logo-title">RidePack</span>
           </a>
         </h1><!--//logo-->              
@@ -48,12 +48,18 @@
           </div><!--//navbar-header-->            
           <div class="navbar-collapse collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
-              <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
-              <li class="nav-item"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
-              <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
-              <li class="nav-item"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
-              <li class="nav-item"><a href="{{ URL::asset('post/travel')}}">Publicar viaje</a></li>
-              <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
+              <li class="nav-item"><a href="{{ url('profile')}}">Perfil</a></li>
+              <li class="nav-item"><a href="{{ url('upcoming/trips')}}">Buscar</a></li>
+              <li class="nav-item"><a href="{{ url('post/package')}}">Publicar paquete</a></li>                        
+              <li class="nav-item"><a href="{{ url('post/trip')}}">Publicar viaje</a></li>
+              <li class="nav-item"><a href="{{ url('logout')}}">Cerrar sesión</a></li>
+              <li class="nav-item last">
+                @if($authUser->picture)
+                  <img class="media-object img-circle" src="{{asset($authUser->picture)}}" width="50px" height="50px" alt="profile">
+                @else
+                  <img class="media-object img-circle" src="{{asset('img/default_user.png')}}" width="50px" height="50px" alt="profile">
+                @endif
+              </li>
             </ul><!--//nav-->
           </div><!--//navabr-collapse-->
         </nav><!--//main-nav-->
@@ -64,26 +70,36 @@
   <br><br><br><br><br>
   <div class="container">
     @if(Session::has('message'))
-     <div class="alert alert-warning alert-dismissable">
+     <div class="alert alert-{{ Session::get('class') }} alert-dismissable">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong >{{ Session::get('message') }}</strong> 
+        {{ Session::get('message') }}
       </div>
     @endif
     <div class="row">
       <div class="col-md-12">
         <ol class="breadcrumb">
-          <li><a href="#">RidePack</a></li>
-          <li class="active">Detalles del viaje</li>
+          <li><a href="{{url('/')}}">RidePack</a></li>
+          <li>Detalles del viaje</li>
         </ol>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-9">
+      @if( $user->id == $authUser->id )
+        <div class="col-md-12">
+      @else
+        <div class="col-md-9">
+      @endif
         <div class="panel panel-info panel-shadow">
           <div class="panel-heading">
             <h3>
-              <img class="img-circle img-thumbnail" src="http://bootdey.com/img/Content/user_3.jpg">
-              {{$user -> name}} {{$user -> last_name}}
+              <a href="{{ url('users/'.$user->id) }}">
+                @if( $user->picture )
+                  <img class="img-circle" width="100px" height="100px" src="{{ asset( $user->picture ) }}">
+                @else
+                  <img class="img-circle img-thumbnail" width="100px" height="100px" src="{{ asset('img/default_user.png') }}">
+                @endif
+                {{$user -> name}} {{$user -> last_name}}
+              </a>
             </h3>
           </div>
           <div class="panel-body"> 
@@ -126,62 +142,70 @@
                   <tr>
                     <td colspan="8"><strong>Observaciones: </strong>{{$trip -> observation}}</td>
                   </tr>
+
+                  @if(count($tripPacks)>0)
+                  <tr>
+                    <td colspan="8">
+                      <strong>Transportando: </strong><br><br>
+                      @foreach( $tripPacks as $tripPack)
+                        <a href="{{ url('package/details/'.$tripPack->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="glyphicon glyphicon-briefcase"></span></a>
+                      @endforeach
+                    </td>
+                  </tr>
+                  @endif
                 </tbody>
                 
               </table>
             </div>
           </div>
         </div>
-        <a href="/upcoming/trips" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Atras</a>
+        <a href="{{url('upcoming/trips')}}" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Atras</a>
       </div>
 
-      <div class="col-md-3">
-        <div class="panel panel-info panel-shadow">
-          <div class="panel-heading">
-            <h3>Opciones de contacto</h3>
-          </div>
-          <div class="panel-body"> 
-            <div class="table-responsive">
-              <table class="table">
+      @if( $user->id != $authUser->id )
+        <div class="col-md-3">
+          <div class="panel panel-info panel-shadow">
+            <div class="panel-heading">
+              <h3>Opciones de contacto</h3>
+            </div>
+            <div class="panel-body"> 
+              <div class="table-responsive">
+                <table class="table">
 
-                <tbody>
+                  <tbody>
+                    <tr>
+                      <td colspan="8"> <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#ratings">Valorar usuario <span class="glyphicon glyphicon-chevron-right"></span></a></td>
+                    </tr>
+                    <tr>
+                      <td colspan="8">
+                        <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#request">
+                          Solicitar viaje
+                          <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="8"><strong>Miembro desde: </strong>{{$user -> created_at -> format('d/m/y')}}</td>
+                    </tr>
+                    <tr>
+                      <td colspan="8"><strong>Viajes publicados: </strong>{{count($user->trips)}}</td>
+                    </tr>
 
-                   <tr>
-                    <td colspan="8"> <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#ratings">Valorar usuario<span class="glyphicon glyphicon-chevron-right"></span></a></td>
-                  </tr>
-                  <tr>
-                    <td colspan="8">
-                      {{ Form::open( array('action' => array('TripDetailsController@sendRequest', $trip->id)))}}
-                      {{ Form::button("Enviar petici&oacute;n<span class='glyphicon glyphicon-chevron-right'></span>", array(
-                        'type' => 'submit',
-                        'class' => 'btn btn-primary pull-right ' . (($user -> id == Auth::user()-> id)? 'disabled' : ''),
-                        'name' => 'submit',
-                        'value' => 'Enviar petici&oacute;n'
-                      )) }}
-                      {{ Form::close() }}
-                    </td>
-                  </tr>
-                  <tr>
-                   
-                    <td colspan="8"><strong>Miembro desde: </strong>{{$user->created_at->toDateString()}}</td>
-                  </tr>
-                  <tr>
-                    <td colspan="8"><strong>Viajes publicados: </strong>{{count($trips)}} viajes</td>
-                  </tr>
-
-                  <tr>
-                    <td colspan="8"><strong>Paquetes transportados: </strong>10 paquetes</td>
-                  </tr>
-                  
-                  <tr>
-                    <td colspan="8"><strong>Rating: </strong>{{$user -> total_rating}}/5</td>
-                  </tr>
-                </tbody>
-              </table>
+                    <tr>
+                      <td colspan="8"><strong>Paquetes publicados: </strong>{{count($user->packs)}}</td>
+                    </tr>
+                    
+                    <tr>
+                      <td colspan="8"><strong>Rating: </strong>{{$user -> total_rating}}/5</td>
+                    </tr>
+                  </tbody>
+                
+                </table>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      @endif
     </div>
   </div>
   
@@ -216,6 +240,50 @@
     </div>
   </div>
 
+  <!-- Modal pack request -->
+  <div class="modal fade" id="request" tabindex="-1" role="dialog" aria-labelledby="requestLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        {{ Form::open( array('action' => array('TripDetailsController@sendRequest', $trip->id)))}}
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">×</span>
+              <span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title" id="requestLabel">
+              Solicitar viaje
+            </h4>
+          </div>
+          <div class="modal-body">
+            @if(count($matchPacks) > 0)
+              <p>Elige o crea el paquete que deseas enviar en este viaje.</p>
+
+              <select class="form-control" id="requestPackID" name="requestPackID" required>
+                <option value="">Selecciona un paquete..</option>
+
+                @foreach($matchPacks as $matchPack)
+                  <option value="{{ $matchPack->id }}">{{ $matchPack->title }}</option>
+                @endforeach
+
+              </select>
+            @else
+              <p>No has publicado un paquete que coincida con las características del viaje.</p>
+            @endif
+          </div>
+          <div class="modal-footer">
+            <a href="{{ url('post/package/match/'.$trip->id) }}" class="btn btn-primary">Publicar paquete</a>
+            @if(count($matchPacks) > 0)
+              {{ Form::submit('Solicitar viaje', array(
+                'class' => 'btn btn-primary pull-right',
+                'value' => 'Solicitar viaje'
+              )) }}
+            @endif
+          </div>
+        {{ Form::close() }}
+      </div>
+    </div>
+  </div>
+
 
   <br><br><br><br><br>
   <!-- ******FOOTER****** --> 
@@ -237,34 +305,34 @@
   <script type="text/javascript" src="{{ URL::asset('js/googlePlaces2.js') }}"></script>
   <script type="text/javascript">
     
-    var aPlacess = [];
-    var aInputPlaceIDs = $('input[placeid="placeid"]');
+    var places = [];
+    var inputPlaceIDs = $('input[placeid="placeid"]');
 
-    var getAddressElement = function(type, aAddress){
-      var sAddressElement = '';
+    var getAddressElement = function(type, address){
+      var addressElement = '';
 
-      if(!aAddress) return sAddressElement;
+      if(!address) return addressElement;
 
-      for(var i=0; i<aAddress.length; i++){
-          var typesLength = aAddress[i].types.length;
+      for(var i=0; i<address.length; i++){
+          var typesLength = address[i].types.length;
           for(var j=0; j<typesLength; j++){
-              if(aAddress[i] && aAddress[i].types[j] == type){
-                  sAddressElement = aAddress[i].long_name;
+              if(address[i] && address[i].types[j] == type){
+                  addressElement = address[i].long_name;
               }
           }
       }
 
-      return sAddressElement;
+      return addressElement;
     };
 
-    for(var i=0; i<aInputPlaceIDs.length; i++){
+    for(var i=0; i<inputPlaceIDs.length; i++){
 
-      var placeID = aInputPlaceIDs[i].value;
+      var placeID = inputPlaceIDs[i].value;
 
-      if(aPlacess && placeID && aPlacess.indexOf(placeID) >= 0)
+      if(places && placeID && places.indexOf(placeID) >= 0)
         continue;
 
-      aPlacess.push(placeID);
+      places.push(placeID);
 
       console.log(placeID);
 
@@ -272,19 +340,19 @@
           placeId: placeID
       };
 
-      var oDvMap = document.createElement('div');
-      var service = new google.maps.places.PlacesService(oDvMap);
+      var divMap = document.createElement('div');
+      var service = new google.maps.places.PlacesService(divMap);
       service.getDetails(request, function(place, status){
 
         if (status == google.maps.places.PlacesServiceStatus.OK) {
 
-          var oCitySpans = $('span[placeid="city-'+place.place_id+'"]');
+          var citySpans = $('span[placeid="city-'+place.place_id+'"]');
           //var oStateSpans = $('span[placeid="state-'+place.place_id+'"]');
           //var oCountrySpans = $('span[placeid="country-'+place.place_id+'"]');
 
-          for(var j=0; j<oCitySpans.length; j++){
+          for(var j=0; j<citySpans.length; j++){
 
-            oCitySpans[j].innerHTML = getAddressElement('locality',place.address_components);
+            citySpans[j].innerHTML = getAddressElement('locality',place.address_components);
             //oStateSpans[j].innerHTML = getAddressElement('administrative_area_level_1',place.address_components)
             //oCountrySpans[j].innerHTML = getAddressElement('country',place.address_components)
           }

@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'AddAddRatingsToUserTable' => $baseDir . '/app/database/migrations/2015_04_07_024118_add_AddRatings_to_user_table.php',
     'AddForeignKeys' => $baseDir . '/app/database/migrations/2015_02_19_203117_add_foreign_keys.php',
+    'AddPackTripIdToRequestsTable' => $baseDir . '/app/database/migrations/2015_05_08_101320_add_pack_trip_id_to_requests_table.php',
     'AddUserAndPackImg' => $baseDir . '/app/database/migrations/2015_04_04_232619_add_user_and_pack_img.php',
     'AlterPacksTable' => $baseDir . '/app/database/migrations/2015_03_11_142201_alter_packs_table.php',
     'AlterPacksTableSecond' => $baseDir . '/app/database/migrations/2015_04_19_152612_alter_packs_table_second.php',
@@ -709,7 +710,7 @@ return array(
     'PHPParser_Unserializer_XML' => $vendorDir . '/nikic/php-parser/lib/PHPParser/Unserializer/XML.php',
     'Pack' => $baseDir . '/app/models/Pack.php',
     'PackController' => $baseDir . '/app/controllers/PackController.php',
-    'PackageDetailsController' => $baseDir . '/app/controllers/PackageDetailsController.php',
+    'PackDetailsController' => $baseDir . '/app/controllers/PackDetailsController.php',
     'Patchwork\\PHP\\Shim\\Iconv' => $vendorDir . '/patchwork/utf8/class/Patchwork/PHP/Shim/Iconv.php',
     'Patchwork\\PHP\\Shim\\Intl' => $vendorDir . '/patchwork/utf8/class/Patchwork/PHP/Shim/Intl.php',
     'Patchwork\\PHP\\Shim\\Mbstring' => $vendorDir . '/patchwork/utf8/class/Patchwork/PHP/Shim/Mbstring.php',

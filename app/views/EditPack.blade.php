@@ -33,7 +33,7 @@
     <header id="header" class="header">  
       <div class="container">            
         <h1 class="logo pull-left">
-          <a href="{{URL::to('/')}}">
+          <a href="{{ url('/')}}">
             <span class="logo-title">RidePack</span>
           </a>
         </h1><!--//logo-->              
@@ -48,12 +48,18 @@
           </div><!--//navbar-header-->            
           <div class="navbar-collapse collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
-              <li class="active nav-item sr-only"><a class="scrollto" href="{{URL::to('/')}}">Home</a></li>
-              <li class="nav-item"><a href="{{URL::to('profile')}}">Perfil</a></li>
-              <li class="nav-item"><a href="{{URL::to('upcoming-packages')}}">Buscar</a></li>
-              <li class="nav-item active"><a href="{{URL::to('post_package')}}">Publicar paquete</a></li>                        
-              <li class="nav-item"><a href="{{URL::to('post_travel')}}">Publicar viaje</a></li>
-              <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
+              <li class="nav-item"><a href="{{ url('profile')}}">Perfil</a></li>
+              <li class="nav-item"><a href="{{ url('upcoming/packages')}}">Buscar</a></li>
+              <li class="nav-item active"><a href="{{ url('post/package')}}">Publicar paquete</a></li>                        
+              <li class="nav-item"><a href="{{ url('post/trip')}}">Publicar viaje</a></li>
+              <li class="nav-item"><a href="{{ url('logout')}}">Cerrar sesión</a></li>
+              <li class="nav-item last">
+                @if(Auth::user()->picture)
+                  <img class="media-object img-circle" src="{{asset(Auth::user()->picture)}}" width="50px" height="50px" alt="profile">
+                @else
+                  <img class="media-object img-circle" src="{{asset('img/default_user.png')}}" width="50px" height="50px" alt="profile">
+                @endif
+              </li>
             </ul><!--//nav-->
           </div><!--//navabr-collapse-->
         </nav><!--//main-nav-->
@@ -102,7 +108,7 @@
 
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
-            {{Form::date('sending_date', $pack->sending_date->toDateString(), array('id'=>'sending_date','class'=>'form-control input-lg', 'required'=>'true', 'tabindex'=>'5'))}}
+            {{Form::text('sending_date', $pack->sending_date->format("d/m/y"), array('id'=>'sending_date', 'class'=>'form-control input-lg', 'required'=>'true', 'tabindex'=>'5', 'placeholder'=>'Fecha de salida', 'onfocus'=>"(this.type='date')", 'onblur'=>"(this.type='text')"))}}
             <div>{{ $errors->first('sending_date') }}</div>
           </div>
         </div>
@@ -137,7 +143,7 @@
 
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
-            {{Form::date('arrival_date', $pack->arrival_date->toDateString(), array('id'=>'arrival_date','class'=>'form-control input-lg', 'required'=>'true', 'tabindex'=>'7'))}}
+            {{Form::text('arrival_date', $pack->arrival_date-> format("d/m/y"), array('id'=>'arrival_date', 'class'=>'form-control input-lg', 'required'=>'true', 'tabindex'=>'7', 'placeholder'=>'Fecha de llegada', 'onfocus'=>"(this.type='date')", 'onblur'=>"(this.type='text')"))}}
             <div>{{ $errors->first('arrival_date') }}</div>
           </div>
         </div>
@@ -188,7 +194,7 @@
 
       <div class="row">
         <div class="col-md-6  col-sm-offset-3">
-          {{Form::submit('Editar paquete', array('class'=>'btn btn-primary btn-block btn-lg','tabindex'=>'11'))}}
+          {{Form::submit('Guardar cambios', array('class'=>'btn btn-primary btn-block btn-lg','tabindex'=>'11'))}}
         </div>
       </div>
 

@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="{{ URL::asset('plugins/prism/prism.css') }}">
   <!-- Theme CSS -->  
     <link id="theme-style" rel="stylesheet" href="{{ URL::asset('css/styles.css') }}">
-    <link id="theme-style" rel="stylesheet" href="{{ URL::asset('css/profile.css')}}">
     <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet" media="screen">  
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -34,7 +33,7 @@
   <header id="header" class="header">  
     <div class="container">            
       <h1 class="logo pull-left">
-        <a class="scrollto" href="">
+        <a href="{{ url('/')}}">
           <span class="logo-title">RidePack</span>
         </a>
       </h1><!--//logo-->              
@@ -49,35 +48,34 @@
         </div><!--//navbar-header-->            
         <div class="navbar-collapse collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
-            <li class="nav-item active"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
-            <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
-            <li class="nav-item"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
-            <li class="nav-item"><a href="{{ URL::asset('post/travel')}}">Publicar viaje</a></li>
-            <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
+            <li class="nav-item active"><a href="{{ url('profile')}}">Perfil</a></li>
+            <li class="nav-item"><a href="{{ url('upcoming/trips')}}">Buscar</a></li>
+            <li class="nav-item"><a href="{{ url('post/package')}}">Publicar paquete</a></li>                        
+            <li class="nav-item"><a href="{{ url('post/trip')}}">Publicar viaje</a></li>
+            <li class="nav-item"><a href="{{ url('logout')}}">Cerrar sesión</a></li>
+            <li class="nav-item last">
+              @if(Auth::user()->picture)
+                <img class="media-object img-circle" src="{{asset(Auth::user()->picture)}}" width="50px" height="50px" alt="profile">
+              @else
+                <img class="media-object img-circle" src="{{asset('img/default_user.png')}}" width="50px" height="50px" alt="profile">
+              @endif
+            </li>
           </ul><!--//nav-->
         </div><!--//navabr-collapse-->
       </nav><!--//main-nav-->
     </div>
   </header><!--//header--> 
 
-<body class="background">
+  <body class="background">
     <br><br><br>
     <div class="container-fluid">
 
-        @if(Session::has('error'))
-            <div class="alert alert-danger alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                {{ Session::get('error') }}
-            </div>
-        @endif
-
-        @if(Session::has('msg'))
-            <div class="alert alert-success alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                {{ Session::get('msg') }}
-            </div>
-        @endif
+      @if(Session::has('message'))
+       <div class="alert alert-{{ Session::get('class') }} alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          {{ Session::get('message') }}
+        </div>
+      @endif
 
         <div class="row">
             <div class="col-md-6 container-profile">
@@ -86,21 +84,24 @@
                         <div class="col-xs-12 col-sm-8">
                             <h2>{{ Auth::user()->name; }}  {{ Auth::user()->last_name; }}</h2>
                             <p><strong>Email: </strong> {{ Auth::user()->email; }} </p>
-                            <p><strong>Usuario desde: </strong> {{ Auth::user()->created_at->toDateString(); }}  </p>
+                            <p><strong>Usuario desde: </strong> {{ Auth::user() -> created_at ->  format("d/m/y"); }}  </p>
                             <p><strong>Edad: </strong>{{ Auth::user()->birthdate?Auth::user()->birthdate->age:'' }}</p>
                             <input id="city_id" value="{{ Auth::user()->city_id; }}" type="hidden">
                             <p><strong>Pais: </strong><span id="country"> </span></p>
                             <p><strong>Estado: </strong><span id="state"> </span></p>
                             <p><strong>Ciudad: </strong><span id="city"> </span></p>
-                            </div>             
+                            </div>
+                             <div class="col-xs-12 col-sm-4 container-img">
+                                <img src="http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
+                             </div>             
                         </div>
                         <div class="col-xs-12 divider text-center">
                              <a href="edit/profile"><button class="btn btn-default btn-block"><span class="fa fa-plus-circle"></span> Editar perfil</button></a><hr>
-                            <a href="management"><button class="btn btn-primary btn-block"><span class="fa fa-plus-circle"></span> Gestionar mis viajes</button></a>
+                            <a href="management"><button class="btn btn-primary btn-block"><span class="fa fa-plus-circle"></span> Mis viajes y paquetes</button></a>
                             <div class="col-xs-12 col-sm-6 emphasis">
                                 <h2><strong> {{count(Auth::user()->trips)}} </strong></h2>                    
                                 <p><small>Viajes publicados</small></p>
-                                <a href="post/travel"><button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Publicar viaje</button></a>
+                                <a href="post/trip"><button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Publicar viaje</button></a>
                             </div>
                             <div class="col-xs-12 col-sm-6 emphasis">
                                 <h2><strong>{{count(Auth::user()->packs)}}</strong></h2>                    
@@ -223,7 +224,7 @@
 
                        </div>
                        <div class="modal-footer ">
-                        <form method="POST" action="{{ url('deleteUser') }}">
+                        <form method="POST" action="{{ url('delete/user') }}">
                             <button type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Si</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
                         </form>

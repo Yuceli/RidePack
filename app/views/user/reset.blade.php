@@ -18,7 +18,6 @@
     <!-- Plugins CSS -->    
     <link rel="stylesheet" href="/plugins/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="/plugins/prism/prism.css">
-    <link rel="stylesheet" href="/css/login.css">
     <!-- Theme CSS -->  
     <link id="theme-style" rel="stylesheet" href="/css/styles.css">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -69,7 +68,7 @@
                         {{ Session::get("error") }}<br />
                       @endif
                       {{ Form::label("email", "Email") }}<br />
-                      {{ Form::text("email", Input::old("email")) }}
+                      {{ Form::text('email', Input::old("email")) }}
                       {{ $errors->first("email") }}<br />
                       {{ Form::label("password", "Contraseña") }}<br />
                       {{ Form::password("password") }}

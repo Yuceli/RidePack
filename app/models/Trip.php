@@ -16,11 +16,6 @@ class Trip extends Eloquent {
 		return $this->morphMany('Petition', 'requestable');
 	}
 
-	public function comment()
-	{
-		return $this->morphMany('Comment', 'commentable');
-	}
-
 	public function packs(){
 		return $this->belongsToMany('Pack')->withTimestamps();
 	}

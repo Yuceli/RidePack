@@ -34,7 +34,7 @@
   <header id="header" class="header">  
     <div class="container">            
       <h1 class="logo pull-left">
-        <a class="scrollto" href="">
+        <a href="{{ url('/')}}">
           <span class="logo-title">RidePack</span>
         </a>
       </h1><!--//logo-->              
@@ -49,12 +49,18 @@
         </div><!--//navbar-header-->            
         <div class="navbar-collapse collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
-            <li class="nav-item active"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
-            <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
-            <li class="nav-item"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
-            <li class="nav-item"><a href="{{ URL::asset('post/travel')}}">Publicar viaje</a></li>
-            <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
+            <li class="nav-item"><a href="{{ url('profile')}}">Perfil</a></li>
+            <li class="nav-item"><a href="{{ url('upcoming/trips')}}">Buscar</a></li>
+            <li class="nav-item"><a href="{{ url('post/package')}}">Publicar paquete</a></li>                        
+            <li class="nav-item"><a href="{{ url('post/trip')}}">Publicar viaje</a></li>
+            <li class="nav-item"><a href="{{ url('logout')}}">Cerrar sesión</a></li>
+            <li class="nav-item last">
+              @if(Auth::user()->picture)
+                <img class="media-object img-circle" src="{{asset(Auth::user()->picture)}}" width="50px" height="50px" alt="profile">
+              @else
+                <img class="media-object img-circle" src="{{asset('img/default_user.png')}}" width="50px" height="50px" alt="profile">
+              @endif
+            </li>
           </ul><!--//nav-->
         </div><!--//navabr-collapse-->
       </nav><!--//main-nav-->
@@ -64,13 +70,16 @@
   <br><br><br><br><br>
   <div class="container">
     @if(Session::has('message'))
-      <div class="alert alert-{{ Session::get('class') }}">{{ Session::get('message')}}</div>
+      <div class="alert alert-{{ Session::get('class') }} alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ Session::get('message') }}
+      </div>
     @endif
     <div class="row">
       <div class="col-md-12">
         <ol class="breadcrumb">
-          <li><a href="#">RidePack</a></li>
-          <li class="active">Gestión de paquetes y viajes</li>
+          <li><a href="{{ url('/') }}">RidePack</a></li>
+          <li>Gestión de paquetes y viajes</li>
         </ol>
       </div>
     </div>
@@ -79,29 +88,31 @@
         <div class="panel panel-info panel-shadow">
           <div class="panel-heading">
             <h3>
-              <img class="img-circle img-thumbnail" src="http://bootdey.com/img/Content/user_3.jpg">
+              @if( Auth::user()->picture )
+                <img class="img-circle" width="100px" height="100px" src="{{ asset( Auth::user()->picture ) }}">
+              @else
+                <img class="img-circle img-thumbnail" width="100px" height="100px" src="{{ asset('img/default_user.png') }}">
+              @endif
               {{Auth::user()->name}} {{Auth::user()->last_name}}
             </h3>
           </div>
+
           <div class="panel-body"> 
             <div class="table-responsive">
               <div role="tabpanel">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
-                  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Mis viajes</a></li>
-                  <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Mis paquetes</a></li>
-                  <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Dummy</a></li>
-                  <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Dummy</a></li>
+                  <li role="presentation" class="active"><a href="#trips" aria-controls="trips" role="tab" data-toggle="tab">Mis viajes</a></li>
+                  <li role="presentation"><a href="#packs" aria-controls="packs" role="tab" data-toggle="tab">Mis paquetes</a></li>
                 </ul>
 
-                {{Form::open(array('url'=>'DeleteTrip'))}}
                 <!-- Tab panes -->
                 <div class="tab-content">
-                  <div role="tabpanel" class="tab-pane active" id="home"> 
+                  <div role="tabpanel" class="tab-pane active" id="trips"> 
                     <h4>Viajes publicados</h4>
+                    @if(count($trips) > 0)
                     <div class="table-responsive">
                       <table id="mytable" class="table table-bordred table-striped">
-
                         <thead>
                           <th>Fecha publicación</th>
                           <th>Salida</th>
@@ -110,11 +121,8 @@
                           <th>Peso</th>
                           <th>Via</th>
                           <th>Recompensa</th>
-                          <th>Editar</th>
-                          <th>Borrar</th>
                         </thead>
                         <tbody>
-                        @if(count($trips) > 0)
                           @foreach($trips as $trip)
                           <tr>
                             <td align="center">{{$trip -> created_at -> format('d/m/y')}}</td>
@@ -132,28 +140,28 @@
                             <td align="center">${{$trip -> carry_reward}}</td>
                             <td>
                               <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                <a href='edit/travel/{{$trip -> id}}'><button type='button' class='btn btn-primary btn-xs' data-title='Edit' data-toggle='modal' data-tripid='{{$trip -> id}}'>
+                                <a href="{{ url('edit/trip/'.$trip->id) }}"><button type='button' class='btn btn-primary btn-xs'>
                                   <span class="glyphicon glyphicon-pencil"></span>
                                 </button>
                               </p>
                             </td>
                             <td>
                               <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                <button type='button' class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-tripid='{{$trip -> id}}' data-target='#delete_trip' >
+                                <button type='button' class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-tripid="{{$trip->id}}" data-target='#delete_trip' >
                                   <span class="glyphicon glyphicon-trash"></span>
                                 </button>
                               </p>
                             </td>
                           </tr>
                           @endforeach
-                        @else
-                          No hay viajes publicados
-                        @endif  
                         </tbody>
                       </table>
                       <div class="clearfix"></div>
                       {{$trips->links()}}
                     </div>
+                    @else
+                      No hay viajes publicados
+                    @endif
 
                     <div class="modal fade" id="delete_trip" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
                       <div class="modal-dialog">
@@ -166,116 +174,99 @@
                             <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> ¿Está seguro que desea eliminar este viaje?</div>
                           </div>
                           <div class="modal-footer ">
+                            {{Form::open(array('url'=>'delete/trip'))}}
                             {{ Form::hidden('tripid', '', array('id' => 'tripid')) }}
                             <button type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Si</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                            {{Form::close()}}
                           </div>
                         </div>
                         <!-- /.modal-content --> 
                       </div>
                       <!-- /.modal-dialog --> 
                     </div>
-                  </div>
-                  {{Form::close()}}
-                  <div role="tabpanel" class="tab-pane" id="profile">
-                    {{Form::open(array('url'=>'DeletePack'))}}
+                  </div><!-- /.tab-trips --> 
+                  <div role="tabpanel" class="tab-pane" id="packs">
                     <h4>Paquetes publicados</h4>
-                          <div class="table-responsive">
-                            <table id="mytable" class="table table-bordred table-striped">
+                      @if (count($packs) > 0)
+                      <div class="table-responsive">
+                        <table id="mytable" class="table table-bordred table-striped">
 
-                             <thead>
-                               <th>ID</th>
-                               <th>Fecha publicación</th>
-                               <th>Descripción</th>
-                               <th>Salida</th>
-                               <th>Destino</th>
-                               <th>Volumen</th>
-                               <th>Peso</th>
-                               <th>Recompesa</th>
-                             </thead>
-                             <tbody>
-                             
-                            @if (count($packs) > 0)
-                                @foreach ($packs as $pack) 
-                              
-                                <tr>
-                                  <td>{{$pack -> id}}</td>
-                                  <td>{{$pack -> created_at -> format('d/m/y')}}</td>
-                                  <td>{{{$pack -> title}}}</td>
-                                  <td> 
-                                    <input type="hidden" placeid="placeid" value="{{$pack->from_city}}">
-                                    <span placeid="city-{{$pack->from_city}}"></span> - {{$pack -> sending_date -> format('d/m/y')}}
-                                  </td>
-                                  <td>
-                                    <input type="hidden" placeid="placeid" value="{{$pack->to_city}}">
-                                    <span placeid="city-{{$pack->to_city}}"></span> - {{$pack -> arrival_date -> format('d/m/y')}}
-                                  </td>
-                                  <td></td>
-                                  <td>{{$pack -> weight}}Kg</td>
-                                  <td>${{$pack -> reward}}</td>
-                                  <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="{{url('edit/package/'.$pack->id)}}"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
-                                  <td><p data-placement="top" data-toggle="tooltip" title="Delete">
-                                    <button type='button' class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-packid='{{$pack->id}}' data-target='#delete_package' >
+                          <thead>
+                            <th>Fecha publicación</th>
+                            <th>Descripción</th>
+                            <th>Salida</th>
+                            <th>Destino</th>
+                            <th>Tamaño</th>
+                            <th>Peso</th>
+                            <th>Recompesa</th>
+                          </thead>
+                          <tbody>
+                            @foreach ($packs as $pack) 
+                            <tr>
+                              <td>{{$pack -> created_at -> format("d/m/y")}}</td>
+                              <td>{{{$pack -> title}}}</td>
+                              <td> 
+                                <input type="hidden" placeid="placeid" value="{{$pack->from_city}}">
+                                <span placeid="city-{{$pack->from_city}}"></span> - {{$pack -> sending_date -> format("d/m/y")}}
+                              </td>
+                              <td>
+                                <input type="hidden" placeid="placeid" value="{{$pack->to_city}}">
+                                <span placeid="city-{{$pack->to_city}}"></span> - {{$pack -> arrival_date -> format("d/m/y")}}
+                              </td>
+                              <td>{{$pack -> size}}</td>
+                              <td>{{$pack -> weight}}Kg</td>
+                              <td>${{$pack -> reward}}</td>
+                              <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="{{url('edit/package/'.$pack->id)}}"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
+                              <td>
+                                <p data-placement="top" data-toggle="tooltip" title="Delete">
+                                  <button type='button' class='btn btn-danger btn-xs' data-title='Delete' data-toggle='modal' data-packid="{{$pack->id}}" data-target='#delete_package' >
                                   <span class="glyphicon glyphicon-trash"></span>
-                                </button></p></td>
-                                </tr>
-                                @endforeach
-                              @else
-                                No hay paquetes publicados
-                              @endif
-                            </tbody>
-                          </table>
-
-                          <div class="clearfix"></div>
-                          <!--<ul class="pagination pull-right">
-                            <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-                          </ul>-->
-                          {{$packs -> links()}}
+                                  </button>
+                                </p>
+                              </td>
+                            </tr>
+                            @endforeach
+                          </tbody>
+                        </table>
+                      <div class="clearfix"></div>
+                      {{$packs -> links()}}
                     </div>
-                  
+                    @else
+                      No hay paquetes publicados
+                    @endif
 
-                  <div class="modal fade" id="delete_package" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                          <h4 class="modal-title custom_align" id="Heading">Eliminar paquete</h4>
+                    <div class="modal fade" id="delete_package" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                            <h4 class="modal-title custom_align" id="Heading">Eliminar paquete</h4>
+                          </div>
+                          <div class="modal-body">
+                            <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> ¿Está seguro que desea eliminar este paquete?</div>
+                          </div>
+                          <div class="modal-footer ">
+                            {{Form::open(array('url'=>'/delete/pack'))}}
+                            {{ Form::hidden('packid', '', array('id' => 'packid')) }}
+                            <button type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Si</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                            {{Form::close()}}
+                          </div>
                         </div>
-                        <div class="modal-body">
-
-                         <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> ¿Está seguro que desea eliminar este paquete?</div>
-
-                       </div>
-                       <div class="modal-footer ">
-                        {{ Form::hidden('packid', '', array('id' => 'packid')) }}
-                        <button type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Si</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                        <!-- /.modal-content 2 --> 
                       </div>
+                      <!-- /.modal-dialog 2 --> 
                     </div>
-                    <!-- /.modal-content 2 --> 
                   </div>
-                  <!-- /.modal-dialog 2 --> 
-                </div>
-                  </div>
-                   {{Form::close()}}
-                  <!-- /.Tabs dummys no borrar --> 
-                  <div role="tabpanel" class="tab-pane" id="messages">..ff.</div>
-                  <div role="tabpanel" class="tab-pane" id="settings">.gg..</div>
+                </div><!--//tab-content-->
+              </div><!--//tab-panel-->
+            </div><!--//table-responsive-->
+          </div><!--//panel-body-->
+        </div><!--//panel-info-->
 
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <a href="profile" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Atras</a>
-      </div>
+        <a href="{{ url('profile') }}" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Atras</a>
+      </div><!--//col-md-9-->
 
       <div class="col-md-3">
         <div class="panel panel-info panel-shadow">
@@ -285,33 +276,23 @@
           <div class="panel-body"> 
             <div class="table-responsive">
               <table class="table">
-
                 <tbody>
                   <tr>
-                    <td colspan="8"><strong>Viajes publicados: </strong>4 viajes</td>
+                    <td colspan="8"><strong>Viajes publicados: </strong>{{ count(Auth::user()->trips) }}</td>
                   </tr>
                  
                   <tr>
-                    <td colspan="8"><strong>Paquetes publicados: </strong>{{count($packs)}} paquetes</td>
-                  </tr>
-
-                  <tr>
-                    <td colspan="8"><strong>Paquetes a transportar: </strong>2 paquetes</td>
-                  </tr>
-                  <tr>
-                    <td colspan="8"><strong>Paquetes en envio: </strong>5 paquetes</td>
+                    <td colspan="8"><strong>Paquetes publicados: </strong>{{ count(Auth::user()->packs) }}</td>
                   </tr>
                 </tbody>
-              
               </table>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-        
-  
+      </div><!--//col-md-3-->
+
+    </div><!--//row-->
+  </div><!--//container-->
   
   <br><br><br>
 
@@ -334,52 +315,52 @@
 
   <script type="text/javascript">
     
-    var aPlacess = [];
-    var aInputPlaceIDs = $('input[placeid="placeid"]');
+    var places = [];
+    var inputPlaceIDs = $('input[placeid="placeid"]');
 
-    var getAddressElement = function(type, aAddress){
-      var sAddressElement = '';
+    var getAddressElement = function(type, address){
+      var addressElement = '';
 
-      if(!aAddress) return sAddressElement;
+      if(!address) return addressElement;
 
-      for(var i=0; i<aAddress.length; i++){
-          var typesLength = aAddress[i].types.length;
+      for(var i=0; i<address.length; i++){
+          var typesLength = address[i].types.length;
           for(var j=0; j<typesLength; j++){
-              if(aAddress[i] && aAddress[i].types[j] == type){
-                  sAddressElement = aAddress[i].long_name;
+              if(address[i] && address[i].types[j] == type){
+                  addressElement = address[i].long_name;
               }
           }
       }
 
-      return sAddressElement;
+      return addressElement;
     };
 
-    for(var i=0; i<aInputPlaceIDs.length; i++){
+    for(var i=0; i<inputPlaceIDs.length; i++){
 
-      var placeID = aInputPlaceIDs[i].value;
+      var placeID = inputPlaceIDs[i].value;
 
-      if(aPlacess && placeID && aPlacess.indexOf(placeID) >= 0)
+      if(places && placeID && places.indexOf(placeID) >= 0)
         continue;
 
-      aPlacess.push(placeID);
+      places.push(placeID);
 
       var request = {
           placeId: placeID
       };
 
-      var oDvMap = document.createElement('div');
-      var service = new google.maps.places.PlacesService(oDvMap);
+      var divMap = document.createElement('div');
+      var service = new google.maps.places.PlacesService(divMap);
       service.getDetails(request, function(place, status){
 
         if (status == google.maps.places.PlacesServiceStatus.OK) {
 
-          var oCitySpans = $('span[placeid="city-'+place.place_id+'"]');
+          var citySpans = $('span[placeid="city-'+place.place_id+'"]');
           //var oStateSpans = $('span[placeid="state-'+place.place_id+'"]');
           //var oCountrySpans = $('span[placeid="country-'+place.place_id+'"]');
 
-          for(var j=0; j<oCitySpans.length; j++){
+          for(var j=0; j<citySpans.length; j++){
 
-            oCitySpans[j].innerHTML = getAddressElement('locality',place.address_components);
+            citySpans[j].innerHTML = getAddressElement('locality',place.address_components);
             //oStateSpans[j].innerHTML = getAddressElement('administrative_area_level_1',place.address_components)
             //oCountrySpans[j].innerHTML = getAddressElement('country',place.address_components)
           }
@@ -388,28 +369,27 @@
     }
 
   </script>
-<!-- Dialog show event handler -->
-<script type="text/javascript">
- $('#delete_trip').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('tripid') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-footer input').val(recipient)
-})
-</script>
+  <!-- Dialog show event handler -->
+  <script type="text/javascript">
+  $('#delete_trip').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var recipient = button.data('tripid') // Extract info from data-* attributes
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    var modal = $(this)
+    modal.find('.modal-footer input').val(recipient)
+  })
+  </script>
 
-<script type="text/javascript">
- $('#delete_package').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('packid') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text('New message to ' + recipient)
-  modal.find('.modal-footer input').val(recipient)
-})
-</script>
+  <script type="text/javascript">
+  $('#delete_package').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var recipient = button.data('pack_id') // Extract info from data-* attributes
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    var modal = $(this)
+    modal.find('.modal-footer input').val(recipient)
+  })
+  </script>
 </body>
 </html>

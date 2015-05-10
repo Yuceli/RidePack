@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="{{ URL::asset('plugins/prism/prism.css') }}">
 <!-- Theme CSS -->  
   <link id="theme-style" rel="stylesheet" href="{{ URL::asset('css/styles.css') }}">
-  <link id="theme-style" rel="stylesheet" href="{{ URL::asset('css/profile.css')}}">
+
   <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet" media="screen">  
    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -34,7 +34,7 @@
     <header id="header" class="header">  
       <div class="container">            
         <h1 class="logo pull-left">
-          <a class="scrollto" href="">
+          <a href="{{url('/')}}">
             <span class="logo-title">RidePack</span>
           </a>
         </h1><!--//logo-->              
@@ -49,12 +49,18 @@
           </div><!--//navbar-header-->            
           <div class="navbar-collapse collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
-              <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
-              <li class="nav-item"><a href="{{ URL::asset('profile')}}">Perfil</a></li>
-              <li class="nav-item"><a href="{{ URL::asset('upcoming/trips')}}">Buscar</a></li>
-              <li class="nav-item active"><a href="{{ URL::asset('post/package')}}">Publicar paquete</a></li>                        
-              <li class="nav-item"><a href="{{ URL::asset('post/travel')}}">Publicar viaje</a></li>
-              <li class="nav-item last"><a href="{{URL::to('logout')}}">Cerrar sesión</a></li>
+              <li class="nav-item"><a href="{{ url('profile')}}">Perfil</a></li>
+              <li class="nav-item"><a href="{{ url('upcoming/trips')}}">Buscar</a></li>
+              <li class="nav-item active"><a href="{{ url('post/package')}}">Publicar paquete</a></li>                        
+              <li class="nav-item"><a href="{{ url('post/trip')}}">Publicar viaje</a></li>
+              <li class="nav-item"><a href="{{ url('logout')}}">Cerrar sesión</a></li>
+              <li class="nav-item last">
+                @if(Auth::user()->picture)
+                  <img class="media-object img-circle" src="{{asset(Auth::user()->picture)}}" width="50px" height="50px" alt="profile">
+                @else
+                  <img class="media-object img-circle" src="{{asset('img/default_user.png')}}" width="50px" height="50px" alt="profile">
+                @endif
+              </li>
             </ul><!--//nav-->
           </div><!--//navabr-collapse-->
         </nav><!--//main-nav-->
@@ -65,7 +71,7 @@
 
     <br><br><br><br>
   <div class="container">
-    {{Form::open(array('files'=>true))}}
+    {{Form::open(array('url'=>url('post/package'),'files'=>true))}}
     <div class="row">
         
       <h2>Publica tus paquetes</h2>
@@ -86,7 +92,7 @@
 
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
-            {{Form::number('weight', null, array('id'=>'weight','class'=>'form-control input-lg','placeholder'=>'Peso de mi paquete en kg','tabindex'=>'3','required'=>'true','min'=>'0'))}}
+            {{Form::text('weight', null, array('id'=>'weight','class'=>'form-control input-lg','placeholder'=>'Peso de mi paquete en kg','tabindex'=>'3','required'=>'true','min'=>'0'))}}
             <div>{{ $errors->first('weight') }}</div>
           </div>
         </div>
@@ -103,7 +109,7 @@
 
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
-            {{Form::date('sending_date', null, array('id'=>'sending_date','class'=>'form-control input-lg', 'required'=>'true', 'tabindex'=>'5'))}}
+            {{Form::text('sending_date', null, array('id'=>'sending_date', 'class'=>'form-control input-lg', 'required'=>'true', 'tabindex'=>'5', 'placeholder'=>'Fecha salida', 'onfocus'=>"(this.type='date')", 'onblur'=>"(this.type='text')"))}}
             <div>{{ $errors->first('sending_date') }}</div>
           </div>
         </div>
@@ -138,7 +144,7 @@
 
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
-            {{Form::date('arrival_date', null, array('id'=>'arrival_date','class'=>'form-control input-lg', 'required'=>'true', 'tabindex'=>'7'))}}
+            {{Form::text('arrival_date', null, array('id'=>'arrival_date', 'class'=>'form-control input-lg', 'required'=>'true', 'tabindex'=>'7', 'placeholder'=>'Fecha llegada', 'onfocus'=>"(this.type='date')", 'onblur'=>"(this.type='text')"))}}
             <div>{{ $errors->first('arrival_date') }}</div>
           </div>
         </div>

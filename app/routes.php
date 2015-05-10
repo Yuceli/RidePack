@@ -2,12 +2,13 @@
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| Archivo de rutas
 |--------------------------------------------------------------------------
 |
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
+| Aquí se encuentran registradas todas las rutas para el proyecto Ridepack
+|	La raíz muestra la vista de presentación de la aplicación
+|	El grupo indica todas las rutas que requieren la autenticación del usuario en la aplicación
+|	Las rutas que se encuentran fuera del grupo no requieren autenticación
 |
 */
 
@@ -68,15 +69,15 @@ Route::group(array('before' => 'auth'), function()
 	 *	Rutas para eliminar la cuenta de un usuario.
 	 *	CU-07
 	 */
-	Route::post('/deleteUser', 'UserController@deleteUser');
+	Route::post('/delete/user', 'UserController@deleteUser');
 
 	/*
 	 * Rutas para publicar un viaje.
 	 * CU-08
 	 */
-	Route::get('/post/travel', 'TripController@showPostTrip');
+	Route::get('/post/trip', 'TripController@showPostTrip');
 
-	Route::post('/post/travel', 'TripController@createTrip');
+	Route::post('/post/trip', 'TripController@createTrip');
 
 	/*
 	 * Rutas para publicar un paquete.
@@ -86,6 +87,30 @@ Route::group(array('before' => 'auth'), function()
 
 	Route::post('/post/package', 'PackController@createPack');
 
+	Route::get('/post/package/match/{tripID}', 'PackController@showPostPackMatchTrip');
+
+	/*
+	 *Ruta para aceptar una petición de paquete, Ruta para aceptar una solicitud de viaje
+	 *CU-15.ResponderPeticiónAPaquetesv1.0, CU-20.ResponderPeticionRealizadaAlViajev1.0
+	*/
+	Route::post('/handle/request/accpet/{id}', 'HandleRequestsController@acceptRequest');
+
+	/*
+	 *Ruta para rechazar una petición de paquete, Ruta para rechazar una solicitud de viaje
+	 *CU-15.ResponderPeticiónAPaquetesv1.0, CU-20.ResponderPeticionRealizadaAlViajev1.0
+	*/
+	Route::post('/handle/request/refuse/{id}', 'HandleRequestsController@refuseRequest');
+
+
+
+	/*
+	 *	Ruta para aceptar o rechazar solicitudes.
+	 *	CU-15
+	 *  CU-20
+	 */
+	Route::get('/handle/request', 'HandleRequestsController@showWelcome');
+
+
 	/*
 	 * Rutas para editar un paquete.
 	 * CU-17
@@ -94,13 +119,40 @@ Route::group(array('before' => 'auth'), function()
 	
 	Route::post('/edit/package/{id}', 'PackController@updatePack');
     
+
+	/*
+	 *	Ruta par ver los detalles de un paquete.
+	 *	CU-19
+	 */
+	Route::get('/package/details/{id}', 'PackDetailsController@showPackDetails');
+
+	Route::post('/package/details/{id}', 'PackDetailsController@sendRequest');
+	
+
 	/*
 	 * Rutas para editar un viaje.
 	 * CU-22
 	*/
-	Route::get('/edit/travel/{id}', 'TripController@showUpdateTrip');
+	Route::get('/edit/trip/{id}', 'TripController@showUpdateTrip');
 	
-	Route::post('/edit/travel/{id}', 'TripController@updateTrip');
+	Route::post('/edit/trip/{id}', 'TripController@updateTrip');
+
+
+	/*
+	 * Ruta par eliminar un viaje
+	 * CU-23
+	 */
+    Route::post('/delete/trip/{id}', 'TripController@deleteTrip');
+
+
+	/*
+	 * Ruta par eliminar un paquete
+	 * CU-23
+	 */
+    Route::post('/delete/pack/{id}', 'PackController@DeletePack');
+
+	Route::get('/management', 'ManagementController@showManagement');
+
 
 	/*
 	 *	Ruta para ver los últimos paquetes registrados.
@@ -116,21 +168,6 @@ Route::group(array('before' => 'auth'), function()
     
 
 	/*
-	 *	Ruta para aceptar o rechazar solicitudes.
-	 *	CU-15
-	 *  CU-20
-	 */
-	Route::get('/handle/request', 'HandleRequestsController@showWelcome');
-
-	/*
-	 *	Ruta par ver los detalles de un paquete.
-	 *	CU-19
-	 */
-	Route::get('/package/details/{id}', 'PackDetailsController@showPackDetails');
-
-	Route::post('/package/details/{id}', 'PackDetailsController@sendRequest');
-	
-	/*
 	 *	Ruta para ver los detalles de un viaje.
 	 *  CU-28
 	 */
@@ -138,31 +175,6 @@ Route::group(array('before' => 'auth'), function()
 
 	Route::post('/trip/details/{id}', 'TripDetailsController@sendRequest');
 
-	/*
-	 * Ruta par eliminar un viaje
-	 * CU-23
-	 */
-    Route::post('/DeleteTrip', 'TripController@deleteTrip');
-
-	/*
-	 * Ruta par eliminar un paquete
-	 * CU-23
-	 */
-    Route::post('/DeletePack', 'PackController@DeletePack');
-
-	Route::get('/management', 'ManagementController@showManagement');
-
-	/*
-	 *Ruta para aceptar una petición de paquete, Ruta para aceptar una solicitud de viaje
-	 *CU-15.ResponderPeticiónAPaquetesv1.0, CU-20.ResponderPeticionRealizadaAlViajev1.0
-	*/
-	Route::post('/handle/request/accpet/{id}', 'HandleRequestsController@acceptRequest');
-
-	/*
-	 *Ruta para rechazar una petición de paquete, Ruta para rechazar una solicitud de viaje
-	 *CU-15.ResponderPeticiónAPaquetesv1.0, CU-20.ResponderPeticionRealizadaAlViajev1.0
-	*/
-	Route::post('/handle/request/refuse/{id}', 'HandleRequestsController@refuseRequest');
 
 
 });
@@ -186,7 +198,7 @@ Route::post('login', 'UserController@login');
  */
 Route::get('/register', 'RegisterController@showUserRegister');
 
-Route::post('register-user','RegisterController@register');
+Route::post('/register','RegisterController@registerUser');
 
 
 /*
@@ -195,12 +207,11 @@ Route::post('register-user','RegisterController@register');
  */
 Route::any("/request", [
  "as" => "user/request",
- "uses" => "RemindersController@request"
+ "uses" => "PasswordRemindersController@requestPasswordReset"
 ]);
  
 Route::any("/reset/{token}", [
  "as" => "user/reset",
- "uses" => "RemindersController@reset"
+ "uses" => "PasswordRemindersController@reset"
 ]);
-
 ?>

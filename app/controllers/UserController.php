@@ -2,6 +2,36 @@
 
 class UserController extends BaseController {
 
+
+	/*
+	--------------------------------------------------------------------------
+	|	User Controller
+	--------------------------------------------------------------------------
+	|  Controlador para el manejo de usuarios
+	|
+	|	Rutas:
+	|		Route::get('login', 'UserController@showLogin');
+	|		Route::post('login', 'UserController@login');
+	|		Route::get('logout', 'UserController@logout');
+	|		Route::get('/edit/profile', 'UserController@showUpdateUser');
+	|		Route::post('/edit/profile', 'UserController@updateUser');
+	|		Route::post('/delete/user', 'UserController@deleteUser');
+	|		Route::get('/profile', 'UserController@showMyProfile');
+	|		Route::get('/edit/profile', 'UserController@showUpdateUser');
+	|		Route::post('/edit/profile', 'UserController@updateUser');
+	|		
+	|	Métodos:
+	|		showLogin()
+	|		login()
+	|		logout()
+	|		updateUser()
+	|		deleteUser()
+	|		showMyProfile()
+	|		showUpdateUser()
+	|
+	*/
+
+
 	//Función para mostrar la página de login
 	public function showLogin()
 	{
@@ -11,7 +41,7 @@ class UserController extends BaseController {
 			return Redirect::to('/');
 		}else{
 			//Muestra la página de login
-			return View::make('login');
+			return View::make('Login');
 		}
 	}
 
@@ -99,7 +129,9 @@ class UserController extends BaseController {
 	    // Se guarda la información del usuario
 	    $user->save();
 
-		return Redirect::to('profile')->withMsg('Los datos se han guardado satisfactoriamente.');
+		return Redirect::to('profile')
+			->withMessage('Los datos se han guardado satisfactoriamente.')
+			->withClass('success');
 	}
 
 	//Función para eliminar del sistema al usuario autentificado.
@@ -110,12 +142,16 @@ class UserController extends BaseController {
 
 		if ($user->delete()) {
 
-        	return Redirect::to('/')->with('msg', 'Tu cuenta ha sido eliminada satisfactoriamente.');
+        	return Redirect::to('/')
+        		->withMessage('Tu cuenta ha sido eliminada satisfactoriamente.')
+        		->withClass('success');
     	}
     	else {
     		Auth::login($user);
 
-    		return Redirect::back()->withError('Tu cuenta no pudo ser eliminada, intenta de nuevo.');
+    		return Redirect::back()
+    			->withMessage('Tu cuenta no pudo ser eliminada, intenta de nuevo.')
+    			->withClass('danger');
     	}
 	}
 

@@ -2,6 +2,29 @@
 
 
 class TripController extends BaseController {
+	/*
+	--------------------------------------------------------------------------
+	|	trip Controller
+	--------------------------------------------------------------------------
+	|  Controlador de viajes
+	|	Rutas:
+	|		Route::post('/post/trip', 'TripController@createTrip');
+	|		Route::post('/delete/trip', 'TripController@deleteTrip');
+	|		Route::post('/edit/trip/{id}', 'TripController@updateTrip');		
+	|		Route::get('/edit/trip/{id}', 'TripController@showUpdateTrip');
+	|		Route::get('/post/trip', 'TripController@showPostTrip');
+	|
+	|	Métodos:
+	|		createTrip()
+	|		deleteTrip()
+	|		updateTrip($id)
+	|		getTrip($id)
+	|		showUpdateTrip($id)
+	|		showPostTrip()
+	|		
+	*/
+	
+
 
 	//Función para crear un nuevo paquete
 	public function createTrip()
@@ -11,11 +34,11 @@ class TripController extends BaseController {
 			'transport' => 'required',
 			'max_size' => 'required',
 			'max_weight' => 'numeric|min:1|max:15|required',
-			'carry_reward' => 'required|min:0',
-			'departure_city' => 'required',
-			'arrival_city' => 'required',
+			'carry_reward' => 'numeric|min:0',
 			'departure_date' => 'date|date_format:Y-m-d|required',
 			'arrival_date' => 'date|date_format:Y-m-d|required',
+			'arrival_city' => 'required',
+			'departure_city' => 'required',
 			'observation' => 'max:100'
 		);
 		//Valida los campos con las reglas dadas.
@@ -52,10 +75,22 @@ class TripController extends BaseController {
 	{
 		//Se obtiene el id del viaje
 		$trip=Trip::findorFail(Input::get('tripid'));
-		//Se borra
+		//Se obtienen las peticiones del viaje.
+		$tripPetitions = $trip->requests;
+		//Se obtienen las peticiones asociadas.
+		$linkedPetitions = Petition::where('pack_trip_id', $trip->id)->where('requestable_type','Pack')->get();
+		//Se unen los dos resultados
+		$petitions = $tripPetitions->merge($linkedPetitions);
+		//Se borran todas las peticiones asociadas al viaje.
+		$petitions->each(function($petition){
+			$petition->delete();
+		});
+		//Se borra el viaje
 		$trip->delete();
 		//Se redirecciona al usuario a la vista de gestión de viajes
-		return Redirect::to('/management');
+		return Redirect::to('/management')
+			->withMessage('Se ha eliminado el viaje.')
+			->withClass('success');
 	}
 
 	//Función para actualizar un viaje
@@ -73,7 +108,7 @@ class TripController extends BaseController {
 		$rules = array(
 			'travel' => 'required',
 			'max_weight' => 'numeric|min:1|max:15|required',
-			'carry_reward' => 'required|min:0',
+			'carry_reward' => 'min:0',
 			'departure_date' => 'date|date_format:Y-m-d|required',
 			'arrival_date' => 'date|date_format:Y-m-d|required',
 			'arrival_city' => 'required',

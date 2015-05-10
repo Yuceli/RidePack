@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="{{ URL::asset('plugins/prism/prism.css') }}">
   <!-- Theme CSS -->  
   <link id="theme-style" rel="stylesheet" href="{{ URL::asset('css/styles.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('css/login.css') }}">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -20,7 +19,7 @@
   <header id="header" class="header">  
     <div class="container">            
       <h1 class="logo pull-left">
-        <a class="scrollto" href="#promo">
+        <a href="{{ url('/')}}">
           <span class="logo-title">RidePack</span>
         </a>
       </h1><!--//logo-->              
@@ -35,10 +34,18 @@
         </div><!--//navbar-header-->            
         <div class="navbar-collapse collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
-            <li class="nav-item"><a class="scrollto" href="#about">Buscar</a></li>
-            <li class="nav-item"><a class="scrollto" href="#features">Enviar paquete</a></li>                        
-            <li class="nav-item last"><a class="scrollto" href="#contact">Publicar viaje</a></li>
+            <li class="nav-item active"><a href="{{ url('profile')}}">Perfil</a></li>
+            <li class="nav-item"><a href="{{ url('upcoming/trips')}}">Buscar</a></li>
+            <li class="nav-item"><a href="{{ url('post/package')}}">Publicar paquete</a></li>                        
+            <li class="nav-item"><a href="{{ url('post/trip')}}">Publicar viaje</a></li>
+            <li class="nav-item"><a href="{{ url('logout')}}">Cerrar sesión</a></li>
+            <li class="nav-item last">
+              @if(Auth::user()->picture)
+                <img class="media-object img-circle" src="{{asset(Auth::user()->picture)}}" width="50px" height="50px" alt="profile">
+              @else
+                <img class="media-object img-circle" src="{{asset('img/default_user.png')}}" width="50px" height="50px" alt="profile">
+              @endif
+            </li>
           </ul><!--//nav-->
         </div><!--//navabr-collapse-->
       </nav><!--//main-nav-->
@@ -46,7 +53,7 @@
   </header><!--//header--> 
 
 
-  <br><br><br><br><br><br>
+  <br><br><br><br>
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -72,7 +79,7 @@
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-              {{Form::date('birthdate', Auth::user()->birthdate?Auth::user()->birthdate->toDateString():null, array('id'=>'birthdate','class'=>'form-control input-lg','placeholder'=>'Fecha de nacimiento','tabindex'=>'3'))}}
+              {{Form::text('birthdate', Auth::user()->birthdate? Auth::user()->birthdate->toDateString() : null, array('id'=>'birthdate', 'class'=>'form-control input-lg', 'tabindex'=>'3', 'placeholder'=>'Fecha de nacimiento', 'onfocus'=>"(this.type='date')", 'onblur'=>"(this.type='text')"))}}
               @if($errors->first('birthdate'))<div class="alert alert-danger" role="alert">{{ $errors->first('birthdate') }}</div>@endif
             </div>
           </div>

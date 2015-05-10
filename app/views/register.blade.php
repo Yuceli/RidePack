@@ -62,7 +62,7 @@
 	<div class="container register-wrap">
 		<div class="row">
 			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-				{{Form::open(array('action' => 'RegisterController@register', 'method' => 'post'))}}
+				{{Form::open(array('action' => 'RegisterController@registerUser', 'method' => 'post'))}}
 				<h2>Únete hoy a RidePack</h2>
 				<hr class="colorgraph">
 				<div class="row">
