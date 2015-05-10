@@ -9,9 +9,10 @@ class ManagementController extends BaseController {
 	*/
 	public function showManagement()
 	{
-	    $packs = Auth::user() -> packs()-> paginate(5);
-	    $trips = Auth::user() -> trips()-> paginate(5);
-		return View::make('Management', compact("packs"), compact("trips"));
+		$numberPerPage = 5;
+	    $packs = Auth::user() -> packs()-> paginate($numberPerPage);
+	    $trips = Auth::user() -> trips()-> paginate($numberPerPage);
+		return View::make('Management', compact('packs'), compact('trips'));
 	}
 	
 }

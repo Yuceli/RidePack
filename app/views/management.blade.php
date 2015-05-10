@@ -117,14 +117,14 @@
                         @if(count($trips) > 0)
                           @foreach($trips as $trip)
                           <tr>
-                            <td align="center">{{$trip -> created_at -> format("d/m/y")}}</td>
+                            <td align="center">{{$trip -> created_at -> format('d/m/y')}}</td>
                             <td>
                               <input type="hidden" placeid="placeid" value="{{$trip -> departure_city}}">
-                              <span placeid="city-{{$trip -> departure_city}}"></span> - {{$trip -> departure_date -> format("d/m/y")}}
+                              <span placeid="city-{{$trip -> departure_city}}"></span> - {{$trip -> departure_date -> format('d/m/y')}}
                             </td>
                             <td>
                               <input type="hidden" placeid="placeid" value="{{$trip -> arrival_city}}">
-                              <span placeid="city-{{$trip -> arrival_city}}"></span> - {{$trip -> arrival_date -> format("d/m/y")}}
+                              <span placeid="city-{{$trip -> arrival_city}}"></span> - {{$trip -> arrival_date -> format('d/m/y')}}
                             </td>
                             <td align="center">{{$trip -> max_size}}</td>
                             <td align="center">{{$trip -> max_weight}}kg</td>
@@ -200,15 +200,15 @@
                               
                                 <tr>
                                   <td>{{$pack -> id}}</td>
-                                  <td>{{$pack -> created_at -> format("d/m/y")}}</td>
+                                  <td>{{$pack -> created_at -> format('d/m/y')}}</td>
                                   <td>{{{$pack -> title}}}</td>
                                   <td> 
                                     <input type="hidden" placeid="placeid" value="{{$pack->from_city}}">
-                                    <span placeid="city-{{$pack->from_city}}"></span> - {{$pack -> sending_date -> format("d/m/y")}}
+                                    <span placeid="city-{{$pack->from_city}}"></span> - {{$pack -> sending_date -> format('d/m/y')}}
                                   </td>
                                   <td>
                                     <input type="hidden" placeid="placeid" value="{{$pack->to_city}}">
-                                    <span placeid="city-{{$pack->to_city}}"></span> - {{$pack -> arrival_date -> format("d/m/y")}}
+                                    <span placeid="city-{{$pack->to_city}}"></span> - {{$pack -> arrival_date -> format('d/m/y')}}
                                   </td>
                                   <td></td>
                                   <td>{{$pack -> weight}}Kg</td>
