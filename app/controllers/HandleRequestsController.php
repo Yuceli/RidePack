@@ -16,7 +16,7 @@ class HandleRequestsController extends BaseController {
 		$petition = Petition::findorFail($id);
 
 		// Se verifica que siga en espera.
-		if($petition -> status == "onhold"){
+		if($petition -> status == 'onhold'){
 
 			// Se inicializan las variables.
 			$trip = null;
@@ -65,7 +65,7 @@ class HandleRequestsController extends BaseController {
 			$pack->trips()->attach($trip->id);
 
 			// Se cambia el estado de la petición a aceptado.
-			$petition -> status = "accepted";
+			$petition -> status = 'accepted';
 			$petition -> save();
 
 			// Se notifica al usuario que su petición fue aceptada.
@@ -73,17 +73,17 @@ class HandleRequestsController extends BaseController {
 			Session::flash('class', 'success');
 			return Redirect::to('/handle/request');
 		}
-		if($petition -> status == "accepted"){
+		if($petition -> status == 'accepted'){
 			Session::flash('message','La petición ya habia sido aceptada');
 			Session::flash('class', 'danger');
 			return Redirect::back();
 		}
-		if($petition -> status == "refused"){
+		if($petition -> status == 'refused'){
 			Session::flash('message','La petición ya habia sido rechazada');
 			Session::flash('class', 'danger');
 			return Redirect::back();
 		}
-		if($petition -> status == "finished"){
+		if($petition -> status == 'finished'){
 			Session::flash('message','La petición ya no es válida o ha sido terminada');
 			Session::flash('class', 'danger');
 			return Redirect::back();
@@ -93,24 +93,24 @@ class HandleRequestsController extends BaseController {
 	public function refuseRequest($id){
 		$petition = Petition::findorFail($id);
 
-		if($petition -> status == "onhold"){
-			$petition -> status = "refused";
+		if($petition -> status == 'onhold'){
+			$petition -> status = 'refused';
 			$petition -> save();
 			Session::flash('message','La petición a sido rechazada');
 			Session::flash('class', 'success');
 			return Redirect::to('/handle/request');
 		}
-		if($petition -> status == "accepted"){
+		if($petition -> status == 'accepted'){
 			Session::flash('message','La petición ya habia sido aceptada');
 			Session::flash('class', 'danger');
 			return Redirect::back();
 		}
-		if($petition -> status == "refused"){
+		if($petition -> status == 'refused'){
 			Session::flash('message','La petición ya habia sido rechazada');
 			Session::flash('class', 'danger');
 			return Redirect::back();
 		}
-		if($petition -> status == "finished"){
+		if($petition -> status == 'finished'){
 			Session::flash('message','La petición ya no es válida o ha sido terminada');
 			Session::flash('class', 'danger');
 			return Redirect::back();
