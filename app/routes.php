@@ -90,6 +90,16 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('/post/package/match/{tripID}', 'PackController@showPostPackMatchTrip');
 
 	/*
+	 * Rutas para valorar un usuario.
+	 * CU-11
+	 */
+	Route::post('/trip/details/{id}/rate', 'TripDetailsController@rateUser');
+
+	Route::post('/pack/details/{id}/rate', 'PackDetailsController@rateUser');
+
+
+
+	/*
 	 *Ruta para aceptar una petición de paquete, Ruta para aceptar una solicitud de viaje
 	 *CU-15.ResponderPeticiónAPaquetesv1.0, CU-20.ResponderPeticionRealizadaAlViajev1.0
 	*/
@@ -127,6 +137,8 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('/package/details/{id}', 'PackDetailsController@showPackDetails');
 
 	Route::post('/package/details/{id}', 'PackDetailsController@sendRequest');
+
+	
 	
 
 	/*
@@ -174,7 +186,6 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('/trip/details/{id}', 'TripDetailsController@showTripDetails');
 
 	Route::post('/trip/details/{id}', 'TripDetailsController@sendRequest');
-
 
 
 });

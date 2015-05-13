@@ -38,8 +38,15 @@ class TripDetailsController extends BaseController {
 			$authUser = Auth::user();
 			//Paquetes que coinciden con el viaje.
 			$matchPacks = $authUser->getPacksMatchTrip($trip);
+			//Solicitudes de viajes
+			$canRate = false;
+			$myPetitions = $trip->requests()->where('from_user', $authUser->id)->where('status', 'accepted')->get();
+			if(sizeof($myPetitions->toArray()) > 0 ){
+				$canRate = true;
+			}
+
 			//Crea la vista que muestra los detalles del viaje, pasando los datos del viaje, usuario y otros viajes.
-			return View::make('TripDetails', compact('trip', 'user','authUser','matchPacks','tripPacks'));
+			return View::make('TripDetails', compact('trip', 'user','authUser','matchPacks','tripPacks', 'canRate'));
 		}
 	}
 
@@ -109,6 +116,50 @@ class TripDetailsController extends BaseController {
 		}
 		
 	}
+
+	public function rateUser($id){
+		$trip = Trip::find($id);
+		$user = Auth::user();
+		//obtenemos las requests que han sido aceptadas.
+		$myPetitions = $trip->requests()->where('from_user', $user->id)->where('status', 'accepted')->get();
+		//verificamos si ya ha asignado una calificacion a este usuario. 
+		$results = DB::select('select * from rates where id_user_rated = ? AND from_user = ?', array($trip -> user_id, $user -> id));
+		
+		if(sizeof($myPetitions->toArray()) > 0){
+			$rate = Input::get('rate');
+			//guardamos o actualizamos una calificación.
+			if(count($results) > 0){
+				DB::update('update rates set rate = ? where id_user_rated = ? AND from_user = ?', array($rate, $trip -> user_id, $user -> id));
+			}
+			else{
+				DB::insert('insert into rates (id_user_rated, from_user, rate) values (?, ?, ?)', array($trip -> user_id, $user -> id, $rate));
+
+			}
+			//calculamos la nueva calificacion del usuario.
+			$results = DB::select('select * from rates where id_user_rated = ?', array($trip -> user_id));
+			$averageRate = 0;
+			for($i = 0; $i < count($results) ; $i++) { 
+				$averageRate+= $results[$i]-> rate;
+			}
+			$averageRate = $averageRate / count($results);
+			$ratedUser = User::find($trip -> user_id);
+			$ratedUser -> total_rating = $averageRate;
+			$ratedUser -> number_ratings = count($results);
+			$ratedUser -> save();
+
+			//regresamos al usuario donde estaba.
+			Session::flash('message', 'Calificacion guardada.');
+			Session::flash('class', 'success');
+			return Redirect::back();
+		}
+		else{
+			//regresamos al usuario donde estaba.
+			Session::flash('message', 'El usuario no transporto este paquete. No puede ponerle una calificación.');
+			Session::flash('class', 'danger');
+			return Redirect::back();
+		}
+	}
+
 }
 
 ?>

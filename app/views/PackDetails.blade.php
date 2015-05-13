@@ -183,7 +183,9 @@
 
                   <tbody>
                     <tr>
+                      @if($canRate)
                       <td colspan="8"> <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#ratings">Valorar usuario <span class="glyphicon glyphicon-chevron-right"></span></a></td>
+                      @endif
                     </tr>
                     <tr>
                       <td colspan="8">
@@ -227,6 +229,7 @@
   <div class="modal fade" id="ratings" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
+        {{ Form::open( array('action' => array('PackDetailsController@rateUser', $pack->id)))}}
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">
             <span aria-hidden="true">×</span>
@@ -248,8 +251,10 @@
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Calificar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+          <input type="submit" class="btn btn-primary" value="Calificar">
         </div>
+        {{ Form::close() }}
       </div>
     </div>
   </div>

@@ -174,7 +174,9 @@
 
                   <tbody>
                     <tr>
+                      @if($canRate)
                       <td colspan="8"> <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#ratings">Valorar usuario <span class="glyphicon glyphicon-chevron-right"></span></a></td>
+                      @endif
                     </tr>
                     <tr>
                       <td colspan="8">
@@ -213,6 +215,7 @@
   <div class="modal fade" id="ratings" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
+        {{ Form::open( array('action' => array('TripDetailsController@rateUser', $trip->id)))}}
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">
             <span aria-hidden="true">×</span>
@@ -224,18 +227,19 @@
         </div>
         <div class="modal-body">
           <p>Puedes elegir un número 1 al 5 para calificar a este usuario</p>
-          <select class="form-control">
+          <select class="form-control" name="rate">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
           </select> 
-
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Calificar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+          <input type="submit" class="btn btn-primary" value="Calificar">
         </div>
+        {{ Form::close() }}
       </div>
     </div>
   </div>
