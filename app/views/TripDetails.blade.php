@@ -1,42 +1,4 @@
 @include('layouts.header')
-     <!-- ******HEADER****** --> 
-    <header id="header" class="header">  
-      <div class="container">            
-        <h1 class="logo pull-left">
-          <a href="{{url('/')}}">
-            <span class="logo-title">RidePack</span>
-          </a>
-        </h1><!--//logo-->              
-        <nav id="main-nav" class="main-nav navbar-right" role="navigation">
-          <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button><!--//nav-toggle-->
-          </div><!--//navbar-header-->            
-          <div class="navbar-collapse collapse" id="navbar-collapse">
-            <ul class="nav navbar-nav">
-              <li class="nav-item"><a href="{{ url('profile')}}">Perfil</a></li>
-              <li class="nav-item"><a href="{{ url('upcoming/trips')}}">Buscar</a></li>
-              <li class="nav-item"><a href="{{ url('post/package')}}">Publicar paquete</a></li>                        
-              <li class="nav-item"><a href="{{ url('post/trip')}}">Publicar viaje</a></li>
-              <li class="nav-item"><a href="{{ url('logout')}}">Cerrar sesión</a></li>
-              <li class="nav-item last">
-                @if($authUser->picture)
-                  <img class="media-object img-circle" src="{{asset($authUser->picture)}}" width="50px" height="50px" alt="profile">
-                @else
-                  <img class="media-object img-circle" src="{{asset('img/default_user.png')}}" width="50px" height="50px" alt="profile">
-                @endif
-              </li>
-            </ul><!--//nav-->
-          </div><!--//navabr-collapse-->
-        </nav><!--//main-nav-->
-      </div>
-    </header><!--//header-->   
- 
-
   <br><br><br><br><br>
   <div class="container">
     @if(Session::has('message'))
