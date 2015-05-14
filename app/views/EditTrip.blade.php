@@ -1,34 +1,4 @@
-<!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
-<head>
-  <title>RidePack</title>
-  <!-- Meta -->
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">    
-  <link rel="shortcut icon" href="{{ URL::asset('img/favicon.ico') }}">  
-  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
-  <!-- Global CSS -->
-  <link rel="stylesheet" href="{{ URL::asset('plugins/bootstrap/css/bootstrap.min.css') }}">
-  <!-- Plugins CSS -->    
-  <link rel="stylesheet" href="{{ URL::asset('plugins/font-awesome/css/font-awesome.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('plugins/prism/prism.css') }}">
-  <!-- Theme CSS -->  
-  <link id="theme-style" rel="stylesheet" href="{{ URL::asset('css/styles.css') }}">
-  <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet" media="screen">  
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-      <![endif]-->
-    </head> 
-
-  <body>  
+@include('layouts.header')
     <!-- ******HEADER****** --> 
     <header id="header" class="header">  
       <div class="container">            
@@ -187,25 +157,7 @@
 
 
 <br><br>
-<!-- ******FOOTER****** --> 
-<footer class="footer">
-  <div class="container text-center">
-    <small class="copyright">Desarrollado con <i class="fa fa-heart"></i> por desarrolladores de RidePack</small>
-  </div><!--//container-->
-</footer><!--//footer-->
-
-<!-- Javascript -->          
-<script type="text/javascript" src="{{ URL::asset('plugins/jquery-1.11.1.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('plugins/jquery-migrate-1.2.1.min.js') }}"></script>    
-<script type="text/javascript" src="{{ URL::asset('plugins/jquery.easing.1.3.js') }}"></script>   
-<script type="text/javascript" src="{{ URL::asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>     
-<script type="text/javascript" src="{{ URL::asset('plugins/jquery-scrollTo/jquery.scrollTo.min.js') }}"></script> 
-<script type="text/javascript" src="{{ URL::asset('plugins/prism/prism.js') }}"></script>    
-<script type="text/javascript" src="{{ URL::asset('js/main.js') }}"></script>  
- 
-
-<!--API de google-->
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+@include('layouts.footer')
 <script type="text/javascript" src="{{ URL::asset('js/googlePlaces2.js') }}"></script>
 
 

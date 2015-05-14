@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-  <html lang="en">
-  <head>
-  <meta charset="UTF-8">
-  <title>RidePack</title>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="{{ URL::asset('plugins/font-awesome/css/font-awesome.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('plugins/prism/prism.css') }}">
-  <!-- Theme CSS -->  
-  <link id="theme-style" rel="stylesheet" href="{{ URL::asset('css/styles.css') }}">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  </head>
-  <body>
-
+@include('layouts.header')
   <!-- ******HEADER****** --> 
   <header id="header" class="header">  
     <div class="container">            
@@ -162,33 +146,8 @@
   </div>
 
 
-
-  
-
-
-  
-
-
-
-
   <br><br><br>
-  <!-- ******FOOTER****** --> 
-  <footer class="footer">
-  <div class="container text-center">
-    <small class="copyright">Desarrollado con <i class="fa fa-heart"></i> por desarrolladores de RidePack</small>
-  </div><!--//container-->
-  </footer><!--//footer-->
-
-  <!-- Javascript -->          
-  <script type="text/javascript" src="{{ URL::asset('plugins/jquery-1.11.1.min.js') }}"></script>
-  <script type="text/javascript" src="{{ URL::asset('plugins/jquery-migrate-1.2.1.min.js') }}"></script>    
-  <script type="text/javascript" src="{{ URL::asset('plugins/jquery.easing.1.3.js') }}"></script>   
-  <script type="text/javascript" src="{{ URL::asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>     
-  <script type="text/javascript" src="{{ URL::asset('plugins/jquery-scrollTo/jquery.scrollTo.min.js') }}"></script> 
-  <script type="text/javascript" src="{{ URL::asset('plugins/prism/prism.js') }}"></script>    
-  <script type="text/javascript" src="{{ URL::asset('js/main.js') }}"></script>  
-
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+  @include('layouts.footer')
     <script type="text/javascript" src="{{ URL::asset('js/googlePlaces2.js') }}"></script>
 
     <script type="text/javascript">
