@@ -1,4 +1,6 @@
 @include('layouts.login.header')
+
+  @if(Auth::check())
      <!-- ******HEADER****** --> 
     <header id="header" class="header">  
       <div class="container">            
@@ -28,35 +30,38 @@
           </div><!--//navabr-collapse-->
         </nav><!--//main-nav-->
       </div>
-    </header><!--//header-->   
+    </header><!--//header-->
+  @endif
     
 	<div class="container container-reset">
     	<div class="row">
         	<div class="col-sm-6 col-md-4 col-md-offset-4">
             	<div class="account-wall">
                 	<div>
-            			<div id="login" align="center">  
-                    {{ Form::open() }}
-                      @if (Session::get("error"))
-                        {{ Session::get("error") }}<br />
-                      @endif
-                      @if (Session::get("status"))
-                        {{ Session::get("status") }}<br />
-                      @endif
-                      <!--{{ Form::text("email", Input::old("email")) }}--><br />
-                      {{Form::text('email',  Input::old('email') , array('id'=>'weight','class'=>'form-control input-lg','placeholder'=>'Email','tabindex'=>'3','required'=>'true','min'=>'0'));}} 
-                      <br />
-                      <!--{{ Form::submit("Reenviar") }}-->
-                      {{Form::submit('Reenviar contraseña', array('class'=>'btn btn-primary btn-block btn-lg','tabindex'=>'11'))}}
-                      </div>
-                    {{ Form::close() }}
+                    <hr class="colorgraph">
+                    
+            		    <div id="login" align="center">  
+                      {{ Form::open(array('class'=>'form-signin')) }}
+                        @if (Session::get("error"))
+                          {{ Session::get("error") }}
+                        @endif
+                        @if (Session::get("status"))
+                          {{ Session::get("status") }}
+                        @endif
+                        <!--{{ Form::text("email", Input::old("email")) }}-->
+                        {{Form::text('email',  Input::old('email') , array('id'=>'weight','class'=>'form-control input-lg','placeholder'=>'Email','tabindex'=>'3','required'=>'true','min'=>'0'));}} 
+                        <br />
+                        <!--{{ Form::submit("Reenviar") }}-->
+                        {{Form::submit('Restablecer contraseña', array('class'=>'btn btn-primary btn-block btn-lg','tabindex'=>'11'))}}
+                        
+                      {{ Form::close() }}
+                    </div>
                     <hr class="colorgraph">
             			</div>
-            		</div>
-            	</div>
-            </div>
-        </div>
-    </div>
+          		</div>
+        	</div>
+      </div>
+  </div>
 
 
 <br><br>

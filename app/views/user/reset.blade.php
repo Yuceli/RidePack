@@ -64,21 +64,18 @@
               <div class="account-wall">
                   <div id="my-tab-content" class="tab-content">
                   <div class="tab-pane active" align="center">
-                    {{ Form::open() }}
-                      @if (Session::get("error"))
-                        {{ Session::get("error") }}<br />
+                    <hr class="colorgraph">
+                    {{ Form::open(array('class'=>'form-signin')) }}
+                      @if (Session::get('error'))
+                        {{ Session::get('error') }}<br />
                       @endif
-                      {{ Form::label("email", "Email") }}<br />
-                      {{ Form::text("email", Input::old("email")) }}
-                      {{ $errors->first("email") }}<br />
-                      {{ Form::label("password", "Contraseña") }}<br />
-                      {{ Form::password("password") }}
-                      {{ $errors->first("password") }}<br />
-                      {{ Form::label("password_confirmation", "Confirmar contraseña") }}<br />
-                      {{ Form::password("password_confirmation") }}
-                      {{ $errors->first("password_confirmation") }}<br />
-                      <br />
-                      {{ Form::submit("Reiniciar") }}
+                      {{ Form::text('email', Input::old('email'),array('id'=>'email','class'=>'form-control input-lg','placeholder'=>'Email')) }}
+                      {{ $errors->first('email') }}<br />
+                      {{ Form::password('password',array('id'=>'password','class'=>'form-control input-lg','placeholder'=>'Contraseña')) }}
+                      {{ $errors->first('password') }}<br />
+                      {{ Form::password('password_confirmation',array('id'=>'password_confirmation','class'=>'form-control input-lg','placeholder'=>'Confirmar contraseña')) }}
+                      {{ $errors->first('password_confirmation') }}<br />
+                      {{ Form::submit('Cambiar contraseña',array('class'=>'btn btn-primary btn-block btn-lg')) }}
                     {{ Form::close() }}
             			<hr class="colorgraph">
                   </div>
@@ -88,14 +85,12 @@
         </div>
     </div>
 
-
-<br><br>
-          <!-- ******FOOTER****** --> 
-          <footer class="footer">
-            <div class="container text-center">
-              <small class="copyright">Desarrollado con <i class="fa fa-heart"></i></small>
-            </div><!--//container-->
-          </footer><!--//footer-->
+    <!-- ******FOOTER****** --> 
+    <footer class="footer">
+      <div class="container text-center">
+        <small class="copyright">Desarrollado con <i class="fa fa-heart"></i></small>
+      </div><!--//container-->
+    </footer><!--//footer-->
 
         <!-- Javascript -->          
     <script type="text/javascript" src="/plugins/jquery-1.11.1.min.js"></script>
