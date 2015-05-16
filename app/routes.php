@@ -20,6 +20,12 @@ Route::get('/', array( 'before' => 'guest', function()
 }));
 
 
+//Ruta para páginas de error 404
+App::missing(function($exception) 
+{
+    return Response::view('error.404', array(), 404);
+});
+
 /* 
 |------------------------
 |Nos indica que las rutas que están dentro de este grupo 
@@ -226,3 +232,5 @@ Route::any("/reset/{token}", [
  "uses" => "PasswordRemindersController@reset"
 ]);
 ?>
+
+
