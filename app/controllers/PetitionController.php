@@ -8,7 +8,7 @@ class PetitionController extends BaseController {
 	{
 		$user = Auth::user();
 
-		return View::make('handle_requests')->withUser($user);
+		return View::make('Petition')->withUser($user);
 	}
 
 	public function acceptPetition($id){
