@@ -48,7 +48,7 @@ class PasswordRemindersController extends BaseController {
 				->with('status', Lang::get($response));
 		}
 		//Crea la vista para la petición
-		return View::make('user/request');
+		return View::make('PasswordRequest');
 	}
 
 	//Método para restablecer la contraseña
@@ -76,7 +76,7 @@ class PasswordRemindersController extends BaseController {
 				->with('error', Lang::get($response));
 		}
 		//Muestra la vista para restablecer contraseña
-		return View::make('user/reset', compact('token'));
+		return View::make('ResetPassword', compact('token'));
 	}
 
 	//Método para obtener la respuesta de contraseña 

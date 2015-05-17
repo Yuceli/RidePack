@@ -55,7 +55,7 @@ class UsersProfileController extends BaseController {
 			$toMail = $addressee->email;
 			$toName = $addressee->name;
 			//Se envia el correo con la vista email/message, con la información del remitente
-			Mail::send('email.message', $sender_data, function($message) use ($toMail, $toName, $fromMail, $fromName)
+			Mail::send('Message', $sender_data, function($message) use ($toMail, $toName, $fromMail, $fromName)
 			{
 				//Correo y nombre del destinatario
 				$message->to($toMail, $toName);
