@@ -58,7 +58,7 @@
                                       <a href="{{ url('package/details/' . $request->requestable->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="glyphicon glyphicon-briefcase"></span></a>
                                     </td>
                                     <td>
-                                      {{ Form::open( array('action' => array('HandleRequestsController@acceptRequest', $request->id)))}}
+                                      {{ Form::open( array('action' => array('PetitionController@acceptPetition', $request->id)))}}
                                       {{ Form::button("<span class='fa fa-check'></span>", array(
                                         'type' => 'submit',
                                         'class' => 'btn btn-primary btn-xs ',
@@ -67,7 +67,7 @@
                                       {{ Form::close() }}
                                     </td>
                                     <td>
-                                      {{ Form::open( array('action' => array('HandleRequestsController@refuseRequest', $request->id)))}}
+                                      {{ Form::open( array('action' => array('PetitionController@rejectPetition', $request->id)))}}
                                       {{ Form::button("<span class='fa fa-times'></span>", array(
                                         'type' => 'submit',
                                         'class' => 'btn btn-danger btn-xs ',
@@ -110,7 +110,7 @@
                                         <a href="{{ url('trip/details/' . $request->requestable->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="glyphicon glyphicon-plane"></span></a>
                                       </td>
                                       <td>
-                                      {{ Form::open( array('action' => array('HandleRequestsController@acceptRequest', $request->id)))}}
+                                      {{ Form::open( array('action' => array('PetitionController@acceptPetition', $request->id)))}}
                                       {{ Form::button("<span class='fa fa-check'></span>", array(
                                         'type' => 'submit',
                                         'class' => 'btn btn-primary btn-xs ',
@@ -119,7 +119,7 @@
                                       {{ Form::close() }}
                                       </td>                                      
                                       <td>
-                                      {{ Form::open( array('action' => array('HandleRequestsController@refuseRequest', $request->id)))}}
+                                      {{ Form::open( array('action' => array('PetitionController@rejectPetition', $request->id)))}}
                                       {{ Form::button("<span class='fa fa-times'></span>", array(
                                         'type' => 'submit',
                                         'class' => 'btn btn-danger btn-xs ',
@@ -178,7 +178,7 @@
                                 @endif
 
                                 <td>
-                                  <a href="{{ url('package/details/' . $request->pack->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="glyphicon glyphicon-briefcase"></span></a>
+                                  <a href="{{ url('package/details/' . $request->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="glyphicon glyphicon-briefcase"></span></a>
                                 </td>
                                 <td>
                                   <a href="{{ url('trip/details/' . $request->requestable->id) }}" class="btn btn-mini btn-primary btn-xs"><span class="glyphicon glyphicon-plane"></span></a>
