@@ -3,14 +3,35 @@
 
 class PetitionController extends BaseController {
 
+	/*
+	--------------------------------------------------------------------------
+	|	Petition Controller
+	--------------------------------------------------------------------------
+	|  Controlador para el manejo de las peticiones de viajes y paquetes
+	|
+	|	Rutas:
+	|		Route::post('/handle/request/accpet/{id}', 'PetitionController@acceptPetition');
+	|		Route::post('/handle/request/refuse/{id}', 'PetitionController@rejectPetition');
+	|		Route::get('/handle/request', 'PetitionController@showPetitions');
+	|
+	|	Métodos:
+	|		showPetitions();
+	|		acceptPetitions($id);
+	|		rejectPetitions($id);
+	|		
+	*/
 
+
+	//Función que se encarga de mostrar las peticiones de un usuario.
 	public function showPetitions()
 	{
+		//Usuario auntenticado
 		$user = Auth::user();
-
+		//Crea vista de peticiones
 		return View::make('Petition')->withUser($user);
 	}
 
+	//Se encarga de gestionar las peticiones que se debn de aceptar
 	public function acceptPetition($id){
 		// Se obtiene la petición
 		$petition = Petition::findorFail($id);
@@ -73,16 +94,20 @@ class PetitionController extends BaseController {
 			Session::flash('class', 'success');
 			return Redirect::to('/handle/request');
 		}
+		//Si el estado de la petición es accepted muestra mensaje de error yy redirecciona al usuario
 		if($petition -> status == 'accepted'){
 			Session::flash('message','La petición ya habia sido aceptada');
 			Session::flash('class', 'danger');
 			return Redirect::back();
 		}
+		//Si el estado es refuse indica que la petición ya había sido rechazada
+		//Redirecciona al usuario
 		if($petition -> status == 'refused'){
 			Session::flash('message','La petición ya habia sido rechazada');
 			Session::flash('class', 'danger');
 			return Redirect::back();
 		}
+		//Si la petición tiene estado finished, indica ue la petición no es válida y redirecciona
 		if($petition -> status == 'finished'){
 			Session::flash('message','La petición ya no es válida o ha sido terminada');
 			Session::flash('class', 'danger');
@@ -90,26 +115,41 @@ class PetitionController extends BaseController {
 		}
 	}
 
+	//Método para rechazar peticiones
 	public function rejectPetition($id){
+		//Busca la petición
 		$petition = Petition::findorFail($id);
 
+		//Se revisa el estado de la petición
+
+		//Si el estado es onhold
 		if($petition -> status == 'onhold'){
+			//Cambia estado a refused y muestra mensaje de rechazo
 			$petition -> status = 'refused';
 			$petition -> save();
-			Session::flash('message','La petición a sido rechazada');
+			Session::flash('message','La petición ha sido rechazada');
 			Session::flash('class', 'success');
+			//Se redirecciona
 			return Redirect::to('/handle/request');
 		}
+
+		//Si el estado es accepted, muestra mensaje correspondiente y redireciona
 		if($petition -> status == 'accepted'){
 			Session::flash('message','La petición ya habia sido aceptada');
 			Session::flash('class', 'danger');
 			return Redirect::back();
 		}
+
+		//Si el estado es refused, muestra mensaje indicando que la petición ya había sido rechazada
+		//Redrecciona al usuario
 		if($petition -> status == 'refused'){
 			Session::flash('message','La petición ya habia sido rechazada');
 			Session::flash('class', 'danger');
 			return Redirect::back();
 		}
+
+		//Si el estado es finished, muestra mensaje indicando que la petición ya no es válida o ha sido terminada
+		//Redirecciona al usuario
 		if($petition -> status == 'finished'){
 			Session::flash('message','La petición ya no es válida o ha sido terminada');
 			Session::flash('class', 'danger');
