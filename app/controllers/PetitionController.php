@@ -1,17 +1,17 @@
 <?php 
 
 
-class HandleRequestsController extends BaseController {
+class PetitionController extends BaseController {
 
 
-	public function showWelcome()
+	public function showPetitions()
 	{
 		$user = Auth::user();
 
 		return View::make('handle_requests')->withUser($user);
 	}
 
-	public function acceptRequest($id){
+	public function acceptPetition($id){
 		// Se obtiene la petición
 		$petition = Petition::findorFail($id);
 
@@ -90,7 +90,7 @@ class HandleRequestsController extends BaseController {
 		}
 	}
 
-	public function refuseRequest($id){
+	public function rejectPetition($id){
 		$petition = Petition::findorFail($id);
 
 		if($petition -> status == 'onhold'){

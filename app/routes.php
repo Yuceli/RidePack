@@ -16,7 +16,7 @@
 
 Route::get('/', array( 'before' => 'guest', function()
 {
-	return View::make('hello');
+	return View::make('Ridepack');
 }));
 
 
@@ -109,13 +109,13 @@ Route::group(array('before' => 'auth'), function()
 	 *Ruta para aceptar una petición de paquete, Ruta para aceptar una solicitud de viaje
 	 *CU-15.ResponderPeticiónAPaquetesv1.0, CU-20.ResponderPeticionRealizadaAlViajev1.0
 	*/
-	Route::post('/handle/request/accpet/{id}', 'HandleRequestsController@acceptRequest');
+	Route::post('/handle/request/accpet/{id}', 'PetitionController@acceptPetition');
 
 	/*
 	 *Ruta para rechazar una petición de paquete, Ruta para rechazar una solicitud de viaje
 	 *CU-15.ResponderPeticiónAPaquetesv1.0, CU-20.ResponderPeticionRealizadaAlViajev1.0
 	*/
-	Route::post('/handle/request/refuse/{id}', 'HandleRequestsController@refuseRequest');
+	Route::post('/handle/request/refuse/{id}', 'PetitionController@rejectPetition');
 
 
 
@@ -124,7 +124,7 @@ Route::group(array('before' => 'auth'), function()
 	 *	CU-15
 	 *  CU-20
 	 */
-	Route::get('/handle/request', 'HandleRequestsController@showWelcome');
+	Route::get('/handle/request', 'PetitionController@showPetitions');
 
 
 	/*

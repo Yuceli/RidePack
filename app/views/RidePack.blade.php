@@ -16,7 +16,7 @@
                 <a class="btn btn-cta-primary" href="register">Registro</a>
             </div>
             <ul class="meta list-inline">
-                <li><br>Registrate y publica cuándo y donde deseas enviar un artículo.</li>
+                <li><br>Regístrate y publica cuándo y dónde deseas enviar un artículo.</li>
             </ul><!--//meta-->
         </div><!--//container-->
         <div class="social-media">
