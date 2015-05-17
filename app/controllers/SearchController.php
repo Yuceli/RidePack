@@ -13,7 +13,6 @@ class SearchController extends BaseController {
 	|		Route::post('/search', 'SearchController@search');
 	|		Route::get('/upcoming/packages', 'SearchController@showLastPacks');
 	|		Route::get('/upcoming/trips', 'SearchController@showLastTrips');
-    
 	|		
 	|	Métodos:
 	|		search()

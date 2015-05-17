@@ -10,10 +10,12 @@ class TripDetailsController extends BaseController {
 	|	Rutas:
 	|		Route::get('/trip/details/{id}', 'TripDetailsController@showTripDetails');
 	|		Route::post('/trip/details/{id}', 'TripDetailsController@sendRequest');
-	|
+	|		Route::post('/trip/details/{id}/rate', 'TripDetailsController@rateUser');
+	|	
 	|	Métodos:
-	|		showPackDetails($id)
+	|		showTripDetails($id)
 	|		sendRequest($id)
+	|		rateUser($id)
 	|
 	*/
 

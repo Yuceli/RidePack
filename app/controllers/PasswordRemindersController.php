@@ -18,10 +18,9 @@ class PasswordRemindersController extends BaseController {
  	|			"uses" => "PasswordRemindersController@reset"]);
 	|		
 	|	Métodos:
-	|		showUserProfile($user_id)
-	|		sendMessage($user_id)
-	|		showLastTrips()
-	|		getPasswordRemindResponse
+	|		requestPasswordReset()
+	|		reset($token)
+	|		getPasswordRemindResponse()
 	|		isInvalidUser($response)
 	|		resetPassword($credentials)
 	|		isPostRequest()

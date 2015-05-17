@@ -11,10 +11,12 @@ class PackDetailsController extends BaseController {
 	|		Route::get('/package/details/{id}', 'PackDetailsController@showPackDetails');
 	|		Route::post('/package/details/{id}', 'PackDetailsController@sendRequest');
 	|		Route::post('/package/details/{id}', 'PackDetailsController@sendRequest');
+	|		Route::post('/pack/details/{id}/rate', 'PackDetailsController@rateUser')
 	|
 	|	Métodos:
 	|		showPackDetails($id)
 	|		sendRequest($id)
+	|		rateUser($id)
 	|
 	*/
 

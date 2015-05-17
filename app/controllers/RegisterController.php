@@ -62,7 +62,7 @@ class RegisterController extends BaseController {
 		//Se valida que el campo de apellido sea correcto.
 		Validator::extend('validLastName', function($attribute, $value, $parameters)
 		{
-			$rexSafety = "/[\^<,\"@\/\{\}\(\)\*\$%\?=>:\|;#]+/i";
+			$rexSafety = '/[\^<,\"@\/\{\}\(\)\*\$%\?=>:\|;#]+/i';
 			$rexSafety2 = '/[0-9]/';
 			if (preg_match($rexSafety, $value) or preg_match($rexSafety2, $value)) {
 			    return false;
@@ -73,7 +73,7 @@ class RegisterController extends BaseController {
 		//Se valida que el campo de nombre contenga valores válidos		
 		Validator::extend('validName', function($attribute, $value, $parameters)
 		{
-			$rexSafety = "/[\^<,\"@\/\{\}\(\)\*\$%\?=>:\|;#]+/i";
+			$rexSafety = '/[\^<,\"@\/\{\}\(\)\*\$%\?=>:\|;#]+/i';
 			$rexSafety2 = '/[0-9]/';
 			if (preg_match($rexSafety, $value) or preg_match($rexSafety2, $value)) {
 			    return false;
@@ -134,11 +134,11 @@ class RegisterController extends BaseController {
 			$user -> save();
 
 			//Se redirige al usuario a su perfil en la aplicación
-			if(Auth::attempt(array("email" => $user -> email, "password" => Input::get('password'))))
+			if(Auth::attempt(array('email' => $user -> email, 'password' => Input::get('password'))))
 			{
 				return Redirect::intended('profile');			
 			}
-			return Redirect::Redirect('login')->with('message', "Registro Exitoso, inicia sesión.");
+			return Redirect::Redirect('login')->with('message', 'Registro Exitoso, inicia sesión.');
 		}	
 	}
 

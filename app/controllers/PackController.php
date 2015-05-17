@@ -22,6 +22,7 @@ class PackController extends BaseController {
 	|		updatePack($id)
 	|		showPostPack()
 	|		showUpdatePack($id);
+	|		showPostPackMatchTrip($tripID)
 	|
 	*/
 
@@ -223,9 +224,10 @@ class PackController extends BaseController {
 
 	// Mostrar la vista para publicar un paquete de acuerdo a los datos de un viaje.
 	public function showPostPackMatchTrip($tripID){
-
+		//Busca el viaje de acuerdo al ID
 		$trip = Trip::find($tripID);
 
+		//Muestra la vista para publicar un paquete de acuerdo a los datos de un viaje
 		Session::flash('_old_input', array(
 			'from_city' => $trip->departure_city,
 			'to_city' => $trip->arrival_city,
@@ -234,7 +236,7 @@ class PackController extends BaseController {
 			'size' => $trip->max_size,
 			'weight' => $trip->max_weight,
 		));
-
+		//Crea vista para publicar un paquete con los datos del viaje
 		return View::make('PostPack');
 	}
 

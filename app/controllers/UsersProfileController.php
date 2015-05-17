@@ -17,7 +17,7 @@ class UsersProfileController extends BaseController {
 	|	Métodos:
 	|		showUserProfile($user_id)
 	|		sendMessage($user_id)
-	|		showLastTrips()
+	|		
 	|
 	*/
 
@@ -45,10 +45,10 @@ class UsersProfileController extends BaseController {
 			$fromMail = $sender -> email;
 			$fromName = $sender -> name . " " . $sender -> last_name;
 			$sender_data = array(
-				"user_id" => $sender->id,
-				"name" => $fromName,
-				"email" => $fromMail,
-				"msg" => Input::get('message')
+				'user_id' => $sender->id,
+				'name' => $fromName,
+				'email' => $fromMail,
+				'msg' => Input::get('message')
 			);
 			//Se obtienen los datos del destinatario
 			$addressee = User::find($user_id);
