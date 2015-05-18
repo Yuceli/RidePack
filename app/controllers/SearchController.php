@@ -49,15 +49,18 @@ class SearchController extends BaseController {
 	    $toCity = Input::get('to_city');
 	    $sendingDate = Input::get('sending_date');
 
+	    //Se inicializan variables
 	    $trips = null;
 	    $packs = null;
+	    //Indica el número de elementos a mostrar por página
+	    $elementsPerPage = 5;
 	    
 	    // Si se quiere enviar un paquete, se realiza la búsqueda de viajes.
 	    if(Input::get('send_package')){
 	    	$trips = Trip::where('departure_city', '=', $fromCity)
 					->where('arrival_city', '=', $toCity)
 					->where('departure_date', '=', $sendingDate)
-					->paginate(5);
+					->paginate($elementsPerPage);
 
 	    }
 	    // Sino se realiza la búsqueda de paquetes.
@@ -65,7 +68,7 @@ class SearchController extends BaseController {
 	    	$packs = Pack::where('from_city', '=', $fromCity)
 					->where('to_city', '=', $toCity)
 					->where('sending_date', '=', $sendingDate)
-					->paginate(5);
+					->paginate($elementsPerPage);
 
 	    }
 
@@ -79,7 +82,10 @@ class SearchController extends BaseController {
 	public function showLastPacks(){
 
 		// Se obtienen los paquetes en páginas de 5 y en orden descendente de acuerdo a su fecha de creación.
-		$packs = Pack::orderBy('created_at','DESC')->paginate(5);
+
+	    //Indica el número de elementos a mostrar por página
+		$elementsPerPage = 5;
+		$packs = Pack::orderBy('created_at','DESC')->paginate($elementsPerPage);
 
 		return View::make('LastPacks', compact('packs'));
 	}
@@ -90,7 +96,10 @@ class SearchController extends BaseController {
 	public function showLastTrips(){
 
 		// Se obtienen los viajes en páginas de 5 y en orden descendente de acuerdo a su fecha de creación.
-		$trips = Trip::orderBy('created_at','DESC')->paginate(5);
+
+	    //Indica el número de elementos a mostrar por página
+		$elementsPerPage = 5;
+		$trips = Trip::orderBy('created_at','DESC')->paginate($elementsPerPage);
 
 		return View::make('LastTrips', compact('trips'));
 	}
