@@ -125,20 +125,20 @@ class TripDetailsController extends BaseController {
 		//obtenemos las requests que han sido aceptadas.
 		$myPetitions = $trip->requests()->where('from_user', $user->id)->where('status', 'accepted')->get();
 		//verificamos si ya ha asignado una calificacion a este usuario. 
-		$userRate = DB::select('select * from rates where id_user_rated = ? AND from_user = ?', array($trip -> user_id, $user -> id));
+		$userRate = DB::select("select * from rates where id_user_rated = ? AND from_user = ?", array($trip -> user_id, $user -> id));
 
 		if(sizeof($myPetitions->toArray()) > 0){
 			$rate = Input::get('rate');
 			//guardamos o actualizamos una calificación.
 			if(count($userRate) > 0){
-				DB::update('update rates set rate = ? where id_user_rated = ? AND from_user = ?', array($rate, $trip -> user_id, $user -> id));
+				DB::update("update rates set rate = ? where id_user_rated = ? AND from_user = ?", array($rate, $trip -> user_id, $user -> id));
 			}
 			else{
-				DB::insert('insert into rates (id_user_rated, from_user, rate) values (?, ?, ?)', array($trip -> user_id, $user -> id, $rate));
+				DB::insert("insert into rates (id_user_rated, from_user, rate) values (?, ?, ?)", array($trip -> user_id, $user -> id, $rate));
 			}
 			//calculamos la nueva calificacion del usuario.
 			$userRated = User::find($trip -> user_id);
-			$userRates = DB::select('select * from rates where id_user_rated = ?', array($trip -> user_id));
+			$userRates = DB::select("select * from rates where id_user_rated = ?", array($trip -> user_id));
 			$averageRate = 0;
 			for($i = 0; $i < count($userRates) ; $i++) { 
 				$averageRate+= $userRates[$i]-> rate;
