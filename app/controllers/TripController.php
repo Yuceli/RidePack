@@ -78,7 +78,7 @@ class TripController extends BaseController {
 		//Se obtienen las peticiones del viaje.
 		$tripPetitions = $trip->requests;
 		//Se obtienen las peticiones asociadas.
-		$linkedPetitions = Petition::where('pack_trip_id', $trip->id)->where('requestable_type','Pack')->get();
+		$linkedPetitions = Petition::where('requestable_id', $trip->id)->where('requestable_type','Pack')->get();
 		//Se unen los dos resultados
 		$petitions = $tripPetitions->merge($linkedPetitions);
 		//Se borran todas las peticiones asociadas al viaje.

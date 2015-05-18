@@ -108,7 +108,7 @@ class PackController extends BaseController {
 		//Se obtienen las peticiones del paquete.
 		$packPetitions = $pack->requests;
 		//Se obtienen las peticiones asociadas al paquete.
-		$linkedPetitions = Petition::where('pack_trip_id', $pack->id)->where('requestable_type','Trip')->get();
+		$linkedPetitions = Petition::where('requestable_id', $pack->id)->where('requestable_type','Trip')->get();
 		//Se unen los dos resultados
 		$petitions = $packPetitions->merge($linkedPetitions);
 		//Se borran todas las peticiones asociadas al viaje.
