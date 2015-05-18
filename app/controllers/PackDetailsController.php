@@ -127,39 +127,28 @@ class PackDetailsController extends BaseController {
 		//obtenemos las requests que han sido aceptadas.
 		$myPetitions = $pack->requests()->where('from_user', $user->id)->where('status', 'accepted')->get();
 		//verificamos si ya ha asignado una calificacion a este usuario. 
-		//$results = DB::select('select * from rates where id_user_rated = ? AND from_user = ?', array($pack -> user_id, $user -> id));
-		$rates = $user -> rates() -> where('from_user', $user -> id)-> where('id_user_rated', $pack -> user_id);
+		$userRate = DB::select('select * from rates where id_user_rated = ? AND from_user = ?', array($pack -> user_id, $user -> id));
 		
 		if(sizeof($myPetitions->toArray()) > 0){
 			$rate = Input::get('rate');
 			//guardamos o actualizamos una calificación.
-			if(count($rates) > 0){
-				//DB::update('update rates set rate = ? where id_user_rated = ? AND from_user = ?', array($rate, $pack -> user_id, $user -> id));
-				$existingRate = new Rate::find($pack -> user_id, $user -> id);
-				$existingRate -> rate = $rate;
-				$existingRate -> save();
+			if(count($userRate) > 0){
+				DB::update('update rates set rate = ? where id_user_rated = ? AND from_user = ?', array($rate, $pack -> user_id, $user -> id));
 			}
 			else{
-				$nonexistingRate = new Rate();
-				$nonexistingRate -> id_user_rated = $pack -> user_id;
-				$nonexistingRate -> from_user = $user -> id;
-				$nonexistingRate -> rate = $rate;
-				$nonexistingRate -> save();
-				//DB::insert('insert into rates (id_user_rated, from_user, rate) values (?, ?, ?)', array($pack -> user_id, $user -> id, $rate));
-
+				DB::insert('insert into rates (id_user_rated, from_user, rate) values (?, ?, ?)', array($pack -> user_id, $user -> id, $rate));
 			}
 			//calculamos la nueva calificacion del usuario.
 			$userRated = User::find($pack -> user_id);
-			$userRates = $userRated -> rates;
-			//$results = DB::select('select * from rates where id_user_rated = ?', array($pack -> user_id));
+			$userRates = DB::select('select * from rates where id_user_rated = ?', array($pack -> user_id));
 			$averageRate = 0;
 			for($i = 0; $i < count($userRates) ; $i++) { 
 				$averageRate+= $userRates[$i]-> rate;
 			}
-			//$averageRate = $averageRate / count($results);
+			//$averageRate = $averageRate / count($userRates);
 			$ratedUser = User::find($pack -> user_id);
 			$ratedUser -> total_rating = $averageRate;
-			$ratedUser -> number_ratings = count($results);
+			$ratedUser -> number_ratings = count($userRates);
 			$ratedUser -> save();
 
 			//regresamos al usuario donde estaba.
